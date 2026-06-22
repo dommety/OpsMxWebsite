@@ -113,31 +113,44 @@ const matrixData = {
 
 function OverviewCard() {
   return (
-    <div className="flex flex-col gap-6 h-full sticky top-0">
+    <div className="flex flex-col gap-5 h-full sticky top-0">
       <div>
-        <div className="mb-4">
+        <div className="mb-3">
           <Logo size="sm" href="/" />
         </div>
         <p className="text-[12px] font-black text-white mb-1">OpsMx Active Defense</p>
-        <p className="text-[11px] font-semibold text-cyan-400 leading-tight mb-4">Active Defense & Remediation Platform</p>
+        <p className="text-[11px] font-semibold text-cyan-400 leading-tight mb-3">Active Defense & Remediation Platform</p>
         <p className="text-[10px] text-slate-400 leading-relaxed">
           Detect, assess, and fix risk across code, AI, supply chain, cloud, runtime, and operations.
         </p>
       </div>
 
-      {/* Mini Flow */}
-      <div className="py-3 border-y border-white/6">
-        <div className="flex items-center justify-between text-[10px] font-semibold">
-          <span className="text-cyan-400">Detect</span>
-          <span className="text-slate-600">→</span>
-          <span className="text-blue-400">Assess</span>
-          <span className="text-slate-600">→</span>
-          <span className="text-emerald-400">Fix</span>
+      {/* Three Sections */}
+      <div className="space-y-4 py-2">
+        {/* Detect */}
+        <div>
+          <p className="text-[11px] font-bold text-cyan-400 mb-0.5">Detect</p>
+          <p className="text-[9px] text-slate-500">Find risk everywhere</p>
+        </div>
+
+        {/* Assess */}
+        <div>
+          <p className="text-[11px] font-bold text-cyan-400 mb-0.5">Assess</p>
+          <p className="text-[9px] text-slate-500">Understand what matters</p>
+        </div>
+
+        {/* Fix */}
+        <div>
+          <p className="text-[11px] font-bold text-cyan-400 mb-0.5">Fix</p>
+          <p className="text-[9px] text-slate-500">Remediate and verify</p>
         </div>
       </div>
 
+      {/* Divider */}
+      <div className="border-t border-white/6" />
+
       {/* CTA */}
-      <div className="space-y-1.5">
+      <div className="space-y-2">
         <Link to="/platform"
           className="flex items-center gap-1.5 text-[11px] font-bold text-cyan-400 hover:text-cyan-300 transition-colors group">
           Explore Platform
