@@ -19,8 +19,8 @@ const detectColumns = [
         items: [
           { label: 'SAST', href: 'https://www.opsmx.com/static-application-security-testing-with-opsmx-delivery-shield/' },
           { label: 'SCA', href: 'https://www.opsmx.com/software-composition-analysis-with-opsmx-delivery-shield/' },
-          { label: 'Secrets', href: '#' },
-          { label: 'AI Security', href: '#' },
+          { label: 'Secrets', href: '/secrets' },
+          { label: 'AI Security', href: '/ai-security' },
           { label: 'Code Remediation', href: 'https://www.opsmx.com/ai-guided-risk-remediation-with-opsmx-delivery-shield/' },
         ],
       },
@@ -28,8 +28,8 @@ const detectColumns = [
         label: 'Testing',
         items: [
           { label: 'DAST', href: 'https://www.opsmx.com/dynamic-application-security-testing-with-opsmx-delivery-shield/' },
-          { label: 'API Security', href: '#' },
-          { label: 'Penetration Testing', href: '#' },
+          { label: 'API Security', href: '/api-security' },
+          { label: 'Penetration Testing', href: '/penetration-testing' },
         ],
       },
     ],
@@ -45,18 +45,18 @@ const detectColumns = [
         label: 'BOM & Intelligence',
         items: [
           { label: 'SBOM', href: 'https://www.opsmx.com/software-bill-of-materials-with-opsmx-delivery-shield/' },
-          { label: 'XBOM', href: '#' },
-          { label: 'AI-BOM', href: '#' },
-          { label: 'Dependency Intelligence', href: '#' },
+          { label: 'XBOM', href: '/x-bom' },
+          { label: 'AI-BOM', href: '/ai-bom' },
+          { label: 'Dependency Intelligence', href: '/dependency-intelligence' },
           { label: 'OSS Risk', href: 'https://www.opsmx.com/open-source-risk-management-for-oss-with-opsmx-delivery-shield/' },
         ],
       },
       {
         label: 'Compliance',
         items: [
-          { label: 'License Risk', href: '#' },
-          { label: 'Provenance', href: '#' },
-          { label: 'Audit Reporting', href: '#' },
+          { label: 'License Risk', href: '/license-risk' },
+          { label: 'Provenance', href: '/provenance' },
+          { label: 'Audit Reporting', href: '/audit-reporting' },
         ],
       },
     ],
@@ -79,17 +79,17 @@ const detectColumns = [
       {
         label: 'Kubernetes',
         items: [
-          { label: 'Cluster Security', href: '#' },
-          { label: 'Workload Security', href: '#' },
+          { label: 'Cluster Security', href: '/cluster-security' },
+          { label: 'Workload Security', href: '/workload-security' },
           { label: 'Policy Enforcement', href: 'https://www.opsmx.com/deployment-firewall/' },
         ],
       },
       {
         label: 'Runtime',
         items: [
-          { label: 'Threat Correlation', href: '#' },
+          { label: 'Threat Correlation', href: '/threat-correlation' },
           { label: 'Runtime Risk', href: 'https://opsmx.com/dynamic-runtime-ai-security/' },
-          { label: 'Cloud Remediation', href: '#' },
+          { label: 'Cloud Remediation', href: '/cloud-remediation' },
         ],
       },
     ],
@@ -104,17 +104,17 @@ const detectColumns = [
       {
         label: 'Release & Deployment',
         items: [
-          { label: 'Change Risk', href: '#' },
+          { label: 'Change Risk', href: '/change-risk' },
           { label: 'Release Governance', href: 'https://www.opsmx.com/deployment-firewall/' },
-          { label: 'Deployment Verification', href: '#' },
+          { label: 'Deployment Verification', href: '/deployment-verification' },
         ],
       },
       {
         label: 'Diagnostics',
         items: [
-          { label: 'Root Cause Analysis', href: '#' },
-          { label: 'Incident Diagnostics', href: '#' },
-          { label: 'Operational Remediation', href: '#' },
+          { label: 'Root Cause Analysis', href: '/root-cause-analysis' },
+          { label: 'Incident Diagnostics', href: '/incident-diagnostics' },
+          { label: 'Operational Remediation', href: '/operational-remediation' },
         ],
       },
     ],
