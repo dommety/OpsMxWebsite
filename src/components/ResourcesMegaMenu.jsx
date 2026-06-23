@@ -10,7 +10,7 @@ const resourcesData = {
       color: '#a78bfa',
       desc: 'Learning materials and community',
       items: [
-        { icon: Newspaper, title: 'Blogs',                 desc: 'Security insights and industry updates', href: 'https://www.opsmx.com/blog/' },
+        { icon: Newspaper, title: 'Blogs',                 desc: 'Security insights and industry updates', href: 'https://opsmx.com/blog/' },
         { icon: Video,     title: 'Webinars',              desc: 'Live and recorded sessions',             href: 'https://www.opsmx.com/webinars/' },
         { icon: FileText,  title: 'Ebooks & Datasheets',   desc: 'Download resources',                    href: 'https://www.opsmx.com/guides-datasheets/' },
         { icon: BookOpen,  title: 'Customer Case Studies', desc: 'Real-world success stories',            href: 'https://www.opsmx.com/customer-case-study/' },
@@ -28,7 +28,7 @@ const resourcesData = {
       items: [
         { icon: Shield, title: 'What is ASPM?',                  desc: 'Application Security Posture Management', href: 'https://www.opsmx.com/what-is-application-security-posture-management/' },
         { icon: Shield, title: 'What is DevSecOps?',             desc: 'Security in the development lifecycle',   href: 'https://www.opsmx.com/what-is-devsecops/' },
-        { icon: Shield, title: 'What is Application Security?',  desc: 'Fundamentals and best practices',         href: 'https://opsmx.com/what-is-application-security-posture-management/' },
+        { icon: Shield, title: 'What is Application Security?',  desc: 'Fundamentals and best practices',         href: 'https://www.opsmx.com/what-is-application-security-posture-management/' },
         { icon: Shield, title: 'Secured Software Delivery',      desc: 'Safe and fast delivery practices',        href: 'https://www.opsmx.com/secured-software-delivery/' },
         { icon: Shield, title: 'Software Supply Chain Security', desc: 'Protecting your dependencies',            href: 'https://www.opsmx.com/blog/how-devsecops-ci-cd-pipeline-secures-the-software-supply-chain/' },
         { icon: Shield, title: 'SAST vs DAST vs SCA',            desc: 'Comparison and use cases',               href: 'https://www.opsmx.com/blog/differences-between-sast-dast-sca-comparing-appsec-strategies/' },
@@ -55,11 +55,11 @@ const resourcesData = {
       color: '#22d3ee',
       desc: 'Technical guides and references',
       items: [
-        { icon: BookOpen,   title: 'Scanning Source Code with OpsMx Delivery Shield on Demand',    desc: 'Code security scanning',        href: 'https://docs.opsmx.com/' },
-        { icon: BookOpen,   title: 'Scanning Artifacts with OpsMx Delivery Shield on Demand',      desc: 'Artifact security',             href: 'https://docs.opsmx.com/' },
-        { icon: BookOpen,   title: 'Securing Your Lovable Application with OpsMx Delivery Shield', desc: 'Application hardening',         href: 'https://docs.opsmx.com/' },
-        { icon: BookOpen,   title: 'OpsMx Intelligent Software Delivery for Argo',                 desc: 'Argo integration guide',        href: 'https://docs.opsmx.com/' },
-        { icon: BookOpen,   title: 'OpsMx Intelligent Software Delivery for Spinnaker',            desc: 'Spinnaker integration guide',   href: 'https://docs.opsmx.com/' },
+        { icon: BookOpen,   title: 'Scanning Source Code with OpsMx Delivery Shield on Demand',    desc: 'Code security scanning',        href: 'https://www.opsmx.com/opsmx-delivery-shield-on-demand-scan-source-code/' },
+        { icon: BookOpen,   title: 'Scanning Artifacts with OpsMx Delivery Shield on Demand',      desc: 'Artifact security',             href: 'https://www.opsmx.com/opsmx-delivery-shield-on-demand-scan-artifacts/' },
+        { icon: BookOpen,   title: 'Securing Your Lovable Application with OpsMx Delivery Shield', desc: 'Application hardening',         href: 'https://www.opsmx.com/securing-your-lovable-application-with-opsmx-delivery-shield/' },
+        { icon: BookOpen,   title: 'OpsMx Intelligent Software Delivery for Argo',                 desc: 'Argo integration guide',        href: 'https://docs.opsmx.com/opsmx-intelligent-software-delivery-isd-platform-argo/intelligent-software-delivery-isd-for-argo' },
+        { icon: BookOpen,   title: 'OpsMx Intelligent Software Delivery for Spinnaker',            desc: 'Spinnaker integration guide',   href: 'https://docs.opsmx.com/overview/opsmx-intelligent-software-delivery-isd-platform-spinnaker' },
         { icon: ArrowRight, title: 'Full Docs',                                                    desc: 'Complete documentation portal', href: 'https://docs.opsmx.com/' },
       ],
     },
@@ -96,15 +96,12 @@ function ResourceItem({ item, colColor }) {
 function Column({ col }) {
   return (
     <div className="flex flex-col min-w-0">
-      {/* Column header */}
       <div className="px-2 pb-2 mb-1 border-b border-white/6">
         <p className="text-[11px] font-black uppercase tracking-widest mb-1" style={{ color: col.color }}>
           {col.heading}
         </p>
         <p className="text-[10px] font-medium text-slate-400 leading-snug">{col.desc}</p>
       </div>
-
-      {/* Items */}
       <div className="flex-1 space-y-0.5 overflow-y-auto max-h-[420px] pr-1">
         {col.items.map((item, idx) => (
           <ResourceItem key={idx} item={item} colColor={col.color} />
@@ -145,7 +142,6 @@ export default function ResourcesMegaMenu({ onClose, onMouseEnter, onMouseLeave 
           boxShadow: '0 20px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.05)',
         }}
       >
-        {/* Menu header */}
         <div className="flex items-center justify-between px-5 pt-4 pb-3 border-b border-white/6">
           <div>
             <p className="text-sm font-bold text-white">Resources</p>
@@ -163,7 +159,6 @@ export default function ResourcesMegaMenu({ onClose, onMouseEnter, onMouseLeave 
           </a>
         </div>
 
-        {/* 4-column grid */}
         <div className="grid p-4 gap-4" style={{ gridTemplateColumns: '1fr 1fr 1fr 1fr' }}>
           {resourcesData.columns.map(col => (
             <Column key={col.id} col={col} />
