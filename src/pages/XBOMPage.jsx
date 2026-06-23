@@ -193,10 +193,10 @@ export default function XBOMPage() {
               Traditional SBOMs miss 60% of your supply chain risk. OpsMx X-BOM brings together software, SaaS, APIs, AI models, cryptography, CI/CD pipelines, cloud infrastructure, and compliance context into one source of truth—so auditors get what they need, and your team can actually fix things.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:from-cyan-400 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2">
+              <a href="https://www.opsmx.com/talk-to-an-application-security-expert/" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:from-cyan-400 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2">
                 Get a Demo
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </a>
               <button className="px-8 py-3 rounded-lg border border-white/20 text-white font-semibold hover:border-white/40 hover:bg-white/5 transition-all duration-200">
                 See How It Works
               </button>
@@ -390,10 +390,10 @@ export default function XBOMPage() {
             <p className="text-lg text-slate-300 mb-8">
               See everything that matters—software, SaaS, APIs, AI, crypto, pipelines, cloud—in one place. Audit faster. Fix vulnerabilities. Stay compliant.
             </p>
-            <button className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:from-cyan-400 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2 mx-auto">
+            <a href="https://www.opsmx.com/talk-to-an-application-security-expert/" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:from-cyan-400 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2 mx-auto">
               Schedule a Demo
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </a>
           </motion.div>
         </div>
       </section>

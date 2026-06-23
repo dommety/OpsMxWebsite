@@ -78,10 +78,10 @@ export default function SolutionDetailPage() {
               <p className="text-lg text-slate-400 leading-relaxed mb-8">{solution.desc}</p>
 
               <div className="flex flex-wrap gap-3">
-                <button className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-cyan-500 to-electric-500 hover:from-cyan-400 hover:to-electric-400 transition-all shadow-lg shadow-cyan-500/25">
+                <a href="https://www.opsmx.com/talk-to-an-application-security-expert/" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-cyan-500 to-electric-500 hover:from-cyan-400 hover:to-electric-400 transition-all shadow-lg shadow-cyan-500/25">
                   Request a Demo
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                </button>
+                </a>
                 <Link to="/platform"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-slate-300 glass border border-white/10 hover:border-white/20 hover:text-white transition-all">
                   Explore Platform
