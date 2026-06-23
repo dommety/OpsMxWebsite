@@ -14,7 +14,7 @@ const navLinks = [
   { label: 'Products',   mega: 'products',   href: '#' },
   { label: 'Solutions',  mega: 'solutions',  href: '/solutions' },
   { label: 'Customers',  mega: 'customers',  href: 'https://www.opsmx.com/customer-case-study/' },
-  { label: 'Pricing',    href: 'https://www.opsmx.com/pricing/' },
+  { label: 'Pricing',    href: '/pricing' },
   { label: 'Resources',  mega: 'resources',  href: 'https://www.opsmx.com/guides-datasheets/' },
   { label: 'Company',    isDropdown: true },
 ]
