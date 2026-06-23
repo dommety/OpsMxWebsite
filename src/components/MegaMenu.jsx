@@ -302,7 +302,7 @@ export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
             <HorizontalRiskRow layer={matrixData.assess} color="#60a5fa" />
 
             {/* Row 3: Fix Risk (Horizontal Band) */}
-            <HorizontalRiskRow layer={matrixData.fix} color="#34d399" />
+            <HorizontalRiskRow layer={matrixData.fix} color="#fbbf24" />
           </div>
         </div>
       </div>
