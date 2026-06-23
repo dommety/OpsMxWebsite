@@ -45,8 +45,8 @@ const detectColumns = [
         label: 'BOM & Intelligence',
         items: [
           { label: 'SBOM', href: 'https://www.opsmx.com/software-bill-of-materials-with-opsmx-delivery-shield/' },
-          { label: 'XBOM', href: '/x-bom' },
           { label: 'AI-BOM', href: '/ai-bom' },
+          { label: 'XBOM', href: '/x-bom' },
           { label: 'Dependency Intelligence', href: '/dependency-intelligence' },
           { label: 'OSS Risk', href: 'https://www.opsmx.com/open-source-risk-management-for-oss-with-opsmx-delivery-shield/' },
         ],
