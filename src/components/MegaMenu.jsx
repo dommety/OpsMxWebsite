@@ -305,21 +305,29 @@ function DetectRiskRow() {
                     </p>
                     {/* Group items */}
                     <div className="space-y-1">
-                      {group.items.map((item) => (
-                        <a
-                          key={item.label}
-                          href={item.href}
-                          className="flex items-center gap-1.5 group/item"
-                        >
-                          <div
-                            className="w-0.5 h-0.5 rounded-full flex-shrink-0"
-                            style={{ background: col.color, opacity: 0.4 }}
-                          />
-                          <span className="text-[9px] font-medium text-slate-400 group-hover/item:text-slate-200 transition-colors leading-tight">
-                            {item.label}
-                          </span>
-                        </a>
-                      ))}
+                      {group.items.map((item) => {
+                        const isExternal = item.href.startsWith('http')
+                        const LinkComponent = isExternal ? 'a' : Link
+                        const linkProps = isExternal
+                          ? { href: item.href, target: '_blank', rel: 'noopener noreferrer' }
+                          : { to: item.href }
+
+                        return (
+                          <LinkComponent
+                            key={item.label}
+                            {...linkProps}
+                            className="flex items-center gap-1.5 group/item"
+                          >
+                            <div
+                              className="w-0.5 h-0.5 rounded-full flex-shrink-0"
+                              style={{ background: col.color, opacity: 0.4 }}
+                            />
+                            <span className="text-[9px] font-medium text-slate-400 group-hover/item:text-slate-200 transition-colors leading-tight">
+                              {item.label}
+                            </span>
+                          </LinkComponent>
+                        )
+                      })}
                     </div>
                   </div>
                 ))}
