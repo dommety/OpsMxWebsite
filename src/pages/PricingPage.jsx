@@ -1,326 +1,373 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Check, X, ArrowRight } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Check, ArrowRight } from 'lucide-react'
 import Navbar from '../components/Navbar'
 
-const pricingTiers = [
+// ─── DATA ────────────────────────────────────────────────────────────────────
+
+const tabs = ['Security Pricing', 'DevOps/CD Pricing', 'OSS Support & Services']
+
+const securityTiers = [
   {
-    name: 'Starter',
-    description: 'For small teams getting started with security',
-    price: 'Custom',
-    cta: 'Request Demo',
+    name: 'Free',
+    subtitle: 'Complete Security for Solo Developers',
+    description:
+      'Secure your code, open-source, and AI projects at no cost—perfect for solo developers and creators starting their security journey.',
+    cta: 'Start Free',
+    ctaHref: 'https://www.opsmx.com/opsmx-delivery-shield-on-demand-scan-source-code/',
     highlighted: false,
     features: [
-      { name: 'SAST scanning', included: true },
-      { name: 'SCA & dependency tracking', included: true },
-      { name: 'Basic CSPM', included: true },
-      { name: 'Up to 5 applications', included: true },
-      { name: 'Community support', included: true },
-      { name: 'Advanced DAST', included: false },
-      { name: 'Runtime threat detection', included: false },
-      { name: 'Remediation agents', included: false },
+      'Solo devs, vibe coders, solopreneurs',
+      '1 app + AI security',
+      'Unified view + prioritization',
+      'Limited suggestions',
+      'Basic CI/CD + SCM',
+      'Basic coverage',
+      'Community support',
     ],
   },
   {
-    name: 'Professional',
-    description: 'For growing teams scaling security',
-    price: 'Custom',
-    cta: 'Request Demo',
+    name: 'For Teams',
+    subtitle: 'Advanced Security for Growing Teams',
+    description:
+      'Advanced security and automation for small to mid-sized teams, with deeper integrations, team analytics, and faster issue resolution.',
+    cta: 'Try Teams',
+    ctaHref: 'https://www.opsmx.com/talk-to-an-application-security-expert/',
     highlighted: true,
     features: [
-      { name: 'All Starter features', included: true },
-      { name: 'Advanced DAST & API security', included: true },
-      { name: 'Kubernetes security scanning', included: true },
-      { name: 'IaC scanning & remediation', included: true },
-      { name: 'Up to 50 applications', included: true },
-      { name: 'Priority support', included: true },
-      { name: 'Runtime threat detection', included: true },
-      { name: 'Basic remediation agents', included: true },
+      'Small & mid-size dev / DevSecOps teams',
+      'Multiple apps, team-wide security',
+      'Unified + expanded reporting & analytics',
+      'Expanded automation',
+      'Popular toolchain integrations',
+      'Standard team-level',
+      'Enhanced OSS tracking',
+      'Standard support',
     ],
   },
   {
-    name: 'Enterprise',
-    description: 'For large-scale security operations',
-    price: 'Custom',
+    name: 'For Enterprise',
+    subtitle: 'Advanced Modular Security for Enterprises',
+    description:
+      'Modular, scalable security with full automation, custom pipeline integrations, and robust governance—built for enterprise AppSec and large organizations.',
     cta: 'Contact Sales',
+    ctaHref: 'https://www.opsmx.com/contact-us/',
     highlighted: false,
     features: [
-      { name: 'All Professional features', included: true },
-      { name: 'Unlimited applications', included: true },
-      { name: 'Full remediation suite', included: true },
-      { name: 'AI-powered risk assessment', included: true },
-      { name: 'Supply chain integrity', included: true },
-      { name: 'Dedicated support & SLA', included: true },
-      { name: 'Custom integrations', included: true },
-      { name: 'On-premise deployment', included: true },
+      'Enterprise AppSec teams & large orgs',
+      'Unlimited apps & enterprise-scale security',
+      'Unified + enterprise dashboards, trend analysis',
+      'Full auto-remediation (fix PRs, policy-based enforcement)',
+      'Deep enterprise integrations + custom connectors',
+      'Rich policy & compliance management',
+      'Advanced OSS & AI model risk management',
+      'Premium support + onboarding',
     ],
   },
 ]
 
-const faqs = [
+const devopsTiers = [
   {
-    question: 'How is OpsMx priced?',
-    answer: 'OpsMx pricing is based on the number of applications, deployment environments, and features you need. We offer flexible pricing tiers to fit teams of all sizes.',
+    name: 'Free',
+    subtitle: '',
+    description:
+      'Effortless GitOps CD for solo developers—automate app and AI deployments on Kubernetes with community support and no DevOps hires.',
+    cta: 'Start Free',
+    ctaHref: 'https://www.opsmx.com/opsmx-delivery-shield-on-demand-scan-source-code/',
+    highlighted: false,
+    features: [
+      'Solo devs & solopreneurs',
+      'GitOps based delivery',
+      'Central dashboard + limited auto-diagnose',
+      'Limited via chat interface',
+      'Community',
+      'Basic security built-in',
+    ],
   },
   {
-    question: 'Do you offer a free trial?',
-    answer: 'Yes, we offer a free trial to help you evaluate OpsMx. Contact our sales team to get started with a demo.',
+    name: 'For Teams',
+    subtitle: '',
+    description:
+      'Reliable, repeatable delivery for growing teams—streamline CI/CD, boost diagnostics, and reduce DevOps overhead with built-in support.',
+    cta: 'Try Teams',
+    ctaHref: 'https://www.opsmx.com/talk-to-an-application-security-expert/',
+    highlighted: true,
+    features: [
+      'Small / mid-size dev & DevOps teams',
+      'Repeatable deployments & custom workflows',
+      'Deeper diagnostics, team-wide visibility',
+      'More automation, faster issue resolution',
+      'Some optional add-ons; basic integrations',
+      'Standard business hours support',
+      'Enhanced controls, best practices',
+    ],
   },
   {
-    question: 'Can I upgrade or downgrade my plan?',
-    answer: 'Absolutely. You can change your plan at any time as your needs evolve. We\'ll adjust your billing accordingly.',
-  },
-  {
-    question: 'What support is included?',
-    answer: 'All plans include email support. Professional and Enterprise plans include priority support with guaranteed response times and dedicated support engineers.',
-  },
-  {
-    question: 'Do you offer annual billing discounts?',
-    answer: 'Yes, we offer discounts for annual commitments. Contact sales to discuss volume and term discounts.',
-  },
-  {
-    question: 'How does the Remediation Control Plane work?',
-    answer: 'OpsMx automatically detects security issues and provides AI-assisted remediation recommendations, or can auto-remediate with your approval. This saves your team time and reduces manual work.',
+    name: 'For Enterprise',
+    subtitle: '',
+    description:
+      'Reliable, repeatable delivery for growing teams—streamline CI/CD, boost diagnostics, and reduce DevOps overhead with built-in support.',
+    cta: 'Contact Sales',
+    ctaHref: 'https://www.opsmx.com/contact-us/',
+    highlighted: false,
+    features: [
+      'Large enterprises with multicloud & compliance needs',
+      'Multicloud/hybrid, complex deployment patterns',
+      'Full observability, custom dashboards & analytics & More',
+      'Full automation + policies for auto remediation/fixing',
+      'Wide set of modular options (security, compliance, IDP, etc.), deep enterprise tool integration',
+      '24×7 critical support, SLA, dedicated resources / onboarding',
+      'Strong security & compliance modules, audit, enterprise governance & identity (IDP)',
+    ],
   },
 ]
 
-function PricingCard({ tier }) {
+const ossTiers = [
+  {
+    name: 'Argo OSS Support',
+    subtitle: 'Argo, made enterprise-ready.',
+    description: '',
+    cta: 'Contact Sales',
+    ctaHref: 'https://www.opsmx.com/contact-us/',
+    highlighted: false,
+    features: [
+      'Certified builds with hardened security patches',
+      'SLA-backed support for incidents and bug fixes',
+      'Guided upgrades, scaling, and high availability',
+      'Integration help with IDPs, policies, and enterprise toolchains',
+      'Expert GitOps consulting and best practices',
+    ],
+  },
+  {
+    name: 'Spinnaker OSS Support',
+    subtitle: 'Spinnaker support without the risk.',
+    description: '',
+    cta: 'Contact Sales',
+    ctaHref: 'https://www.opsmx.com/contact-us/',
+    highlighted: false,
+    features: [
+      'Security patches and backports for vulnerabilities',
+      'On-demand fixes before upstream merges land',
+      'Upgrade assistance and lifecycle planning',
+      'Multi-cloud and hybrid deployment expertise',
+      'Custom extensions, integrations, and tuning',
+    ],
+  },
+  {
+    name: 'Custom DevOps & Security Agents',
+    subtitle: 'AI agents, built for your enterprise.',
+    description: '',
+    cta: 'Contact Sales',
+    ctaHref: 'https://www.opsmx.com/contact-us/',
+    highlighted: false,
+    features: [
+      'Design and customize agents for CI/CD and AppSec workflows',
+      'AI-driven remediation and policy enforcement tailored to your org',
+      'In-IDE copilots that guide developers with security and compliance fixes',
+      'Operational AI agents for anomaly detection and diagnostics',
+      'Human-in-the-loop workflows blending automation with approvals',
+    ],
+  },
+]
+
+const tiersByTab = [securityTiers, devopsTiers, ossTiers]
+
+// ─── COMPONENTS ──────────────────────────────────────────────────────────────
+
+function PricingCard({ tier, index }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
-      className={`relative rounded-2xl overflow-hidden border transition-all duration-300 ${
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: index * 0.1 }}
+      className={`relative flex flex-col rounded-2xl p-8 border transition-all duration-300 ${
         tier.highlighted
-          ? 'border-cyan-500/50 bg-gradient-to-b from-cyan-500/10 to-transparent shadow-2xl shadow-cyan-500/20 ring-1 ring-cyan-500/50 scale-105'
-          : 'border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/8'
+          ? 'border-cyan-500/40 bg-gradient-to-b from-cyan-950/60 to-navy-900/80 shadow-lg shadow-cyan-500/10'
+          : 'border-white/8 bg-gradient-to-b from-white/4 to-white/2'
       }`}
     >
+      {/* Highlighted badge */}
       {tier.highlighted && (
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500" />
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+          <span className="bg-gradient-to-r from-cyan-500 to-electric-500 text-white text-xs font-bold px-4 py-1 rounded-full whitespace-nowrap">
+            Most Popular
+          </span>
+        </div>
       )}
 
-      <div className="p-8">
-        {tier.highlighted && (
-          <div className="inline-block mb-4 px-3 py-1 rounded-full bg-cyan-500/20 border border-cyan-500/50">
-            <p className="text-xs font-bold text-cyan-400">MOST POPULAR</p>
-          </div>
+      {/* Header */}
+      <div className="mb-6">
+        <h3 className="text-2xl font-bold text-white mb-1">{tier.name}</h3>
+        {tier.subtitle && (
+          <p className="text-sm font-semibold text-slate-300 mb-3">{tier.subtitle}</p>
         )}
+        {tier.description && (
+          <p className="text-sm text-slate-400 leading-relaxed">{tier.description}</p>
+        )}
+      </div>
 
-        <h3 className="text-2xl font-bold text-white mb-2">{tier.name}</h3>
-        <p className="text-sm text-slate-400 mb-6">{tier.description}</p>
-
-        <div className="mb-8">
-          <p className="text-4xl font-black text-white mb-1">{tier.price}</p>
-          {tier.price === 'Custom' && (
-            <p className="text-xs text-slate-500">Tailored to your needs</p>
-          )}
-        </div>
-
-        <button
-          className={`w-full py-3 rounded-lg font-semibold transition-all duration-200 mb-8 ${
+      {/* CTA button */}
+      <div className="mb-8">
+        <a
+          href={tier.ctaHref}
+          className={`flex items-center justify-center gap-2 w-full py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-200 border ${
             tier.highlighted
-              ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:from-cyan-400 hover:to-blue-400 shadow-lg shadow-cyan-500/20'
-              : 'bg-white/10 text-white border border-white/20 hover:bg-white/20 hover:border-white/30'
+              ? 'border-cyan-400/60 text-cyan-300 hover:bg-cyan-500/10 hover:border-cyan-400'
+              : 'border-white/20 text-white hover:bg-white/8 hover:border-white/30'
           }`}
+          style={{
+            background: 'linear-gradient(135deg, rgba(255,200,80,0.08), rgba(255,150,40,0.04))',
+          }}
         >
           {tier.cta}
-        </button>
-
-        <div className="space-y-4">
-          {tier.features.map((feature, idx) => (
-            <div key={idx} className="flex items-start gap-3">
-              {feature.included ? (
-                <Check className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-              ) : (
-                <X className="w-5 h-5 text-slate-600 flex-shrink-0 mt-0.5" />
-              )}
-              <span
-                className={`text-sm ${
-                  feature.included ? 'text-slate-300' : 'text-slate-500 line-through'
-                }`}
-              >
-                {feature.name}
-              </span>
-            </div>
-          ))}
-        </div>
+          <ArrowRight className="w-4 h-4" />
+        </a>
       </div>
+
+      {/* Features */}
+      <ul className="space-y-3 flex-1">
+        {tier.features.map((feature, i) => (
+          <li key={i} className="flex items-start gap-3">
+            <div className="flex-shrink-0 w-5 h-5 rounded-full bg-cyan-500/15 border border-cyan-500/25 flex items-center justify-center mt-0.5">
+              <Check className="w-3 h-3 text-cyan-400" strokeWidth={2.5} />
+            </div>
+            <span className="text-sm text-slate-300 leading-snug">{feature}</span>
+          </li>
+        ))}
+      </ul>
     </motion.div>
   )
 }
 
-function FAQItem({ faq, isOpen, onToggle }) {
-  return (
-    <motion.div
-      className="border-b border-white/10 py-6"
-      initial={false}
-    >
-      <button
-        onClick={onToggle}
-        className="flex items-center justify-between w-full text-left group"
-      >
-        <h3 className="text-lg font-semibold text-white group-hover:text-cyan-400 transition-colors">
-          {faq.question}
-        </h3>
-        <motion.div
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.3 }}
-          className="flex-shrink-0 ml-4"
-        >
-          <svg className="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </motion.div>
-      </button>
-      <motion.div
-        initial={false}
-        animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
-        className="overflow-hidden"
-      >
-        <p className="text-slate-400 mt-4">{faq.answer}</p>
-      </motion.div>
-    </motion.div>
-  )
-}
+// ─── PAGE ─────────────────────────────────────────────────────────────────────
 
 export default function PricingPage() {
-  const [openFAQ, setOpenFAQ] = useState(0)
+  const [activeTab, setActiveTab] = useState(0)
+
+  const currentTiers = tiersByTab[activeTab]
 
   return (
-    <div className="min-h-screen bg-slate-950">
+    <div className="min-h-screen bg-navy-950 text-white overflow-x-hidden">
       <Navbar />
-      <main className="pt-32 pb-20">
-        {/* Hero */}
-        <section className="px-6 mb-20">
-          <div className="max-w-4xl mx-auto text-center">
+
+      {/* Hero */}
+      <section className="relative pt-32 pb-16 overflow-hidden">
+        {/* Background glow */}
+        <div className="absolute inset-0 bg-gradient-radial from-cyan-500/6 via-electric-500/3 to-transparent pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-cyan-500/8 to-transparent blur-3xl pointer-events-none" />
+
+        <div className="relative max-w-7xl mx-auto px-6 text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
+          >
+            Modular and Affordable Pricing
+          </motion.h1>
+
+          {/* Tab switcher */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="inline-flex items-center gap-1 bg-white/5 border border-white/10 rounded-2xl p-1.5 mt-8"
+          >
+            {tabs.map((tab, i) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(i)}
+                className={`relative px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
+                  activeTab === i
+                    ? 'text-slate-900 shadow-md'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                {activeTab === i && (
+                  <motion.div
+                    layoutId="activeTab"
+                    className="absolute inset-0 rounded-xl bg-white"
+                    transition={{ type: 'spring', bounce: 0.2, duration: 0.4 }}
+                  />
+                )}
+                <span className="relative z-10">{tab}</span>
+              </button>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Pricing cards */}
+      <section className="relative pb-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <AnimatePresence mode="wait">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              key={activeTab}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
-              <h1 className="text-5xl lg:text-6xl font-black text-white mb-6">
-                Simple, Flexible <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Pricing</span>
-              </h1>
-              <p className="text-xl text-slate-400 mb-8 leading-relaxed">
-                Scale security across your entire software delivery lifecycle. No hidden fees. Pay for what you use.
-              </p>
+              {currentTiers.map((tier, i) => (
+                <PricingCard key={tier.name} tier={tier} index={i} />
+              ))}
             </motion.div>
-          </div>
-        </section>
+          </AnimatePresence>
+        </div>
+      </section>
 
-        {/* Pricing Cards */}
-        <section className="px-6 mb-20">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-8">
-              {pricingTiers.map((tier, idx) => (
-                <PricingCard key={idx} tier={tier} />
-              ))}
-            </div>
-          </div>
-        </section>
+      {/* Bottom CTA */}
+      <section className="relative py-20 overflow-hidden border-t border-white/6">
+        <div className="absolute inset-0 bg-gradient-radial from-cyan-500/5 to-transparent pointer-events-none" />
+        <div className="relative max-w-3xl mx-auto px-6 text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-3xl md:text-4xl font-bold text-white mb-4"
+          >
+            Ship Secure Faster
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-slate-400 mb-8 text-lg"
+          >
+            Talk to our team about the right plan for your organization.
+          </motion.p>
+          <motion.a
+            href="https://www.opsmx.com/talk-to-an-application-security-expert/"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-cyan-500 to-electric-500 hover:from-cyan-400 hover:to-electric-400 transition-all duration-200 shadow-lg shadow-cyan-500/20"
+          >
+            Talk to an Expert
+            <ArrowRight className="w-4 h-4" />
+          </motion.a>
+        </div>
+      </section>
 
-        {/* Comparison Table */}
-        <section className="px-6 mb-20">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl font-black text-white mb-12 text-center">Feature Comparison</h2>
-            <div className="overflow-x-auto rounded-xl border border-white/10 bg-white/5">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b border-white/10 bg-white/5">
-                    <th className="px-6 py-4 text-left text-sm font-bold text-white">Feature</th>
-                    <th className="px-6 py-4 text-center text-sm font-bold text-white">Starter</th>
-                    <th className="px-6 py-4 text-center text-sm font-bold text-cyan-400">Professional</th>
-                    <th className="px-6 py-4 text-center text-sm font-bold text-white">Enterprise</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-white/10">
-                  <tr className="hover:bg-white/5 transition-colors">
-                    <td className="px-6 py-4 text-sm font-semibold text-slate-300">SAST & SCA</td>
-                    <td className="px-6 py-4 text-center"><Check className="w-5 h-5 text-cyan-400 mx-auto" /></td>
-                    <td className="px-6 py-4 text-center"><Check className="w-5 h-5 text-cyan-400 mx-auto" /></td>
-                    <td className="px-6 py-4 text-center"><Check className="w-5 h-5 text-cyan-400 mx-auto" /></td>
-                  </tr>
-                  <tr className="hover:bg-white/5 transition-colors">
-                    <td className="px-6 py-4 text-sm font-semibold text-slate-300">DAST & API Security</td>
-                    <td className="px-6 py-4 text-center"><X className="w-5 h-5 text-slate-600 mx-auto" /></td>
-                    <td className="px-6 py-4 text-center"><Check className="w-5 h-5 text-cyan-400 mx-auto" /></td>
-                    <td className="px-6 py-4 text-center"><Check className="w-5 h-5 text-cyan-400 mx-auto" /></td>
-                  </tr>
-                  <tr className="hover:bg-white/5 transition-colors">
-                    <td className="px-6 py-4 text-sm font-semibold text-slate-300">Cloud & Runtime Security</td>
-                    <td className="px-6 py-4 text-center"><Check className="w-5 h-5 text-cyan-400 mx-auto" /></td>
-                    <td className="px-6 py-4 text-center"><Check className="w-5 h-5 text-cyan-400 mx-auto" /></td>
-                    <td className="px-6 py-4 text-center"><Check className="w-5 h-5 text-cyan-400 mx-auto" /></td>
-                  </tr>
-                  <tr className="hover:bg-white/5 transition-colors">
-                    <td className="px-6 py-4 text-sm font-semibold text-slate-300">Remediation Agents</td>
-                    <td className="px-6 py-4 text-center"><X className="w-5 h-5 text-slate-600 mx-auto" /></td>
-                    <td className="px-6 py-4 text-center"><Check className="w-5 h-5 text-cyan-400 mx-auto" /></td>
-                    <td className="px-6 py-4 text-center"><Check className="w-5 h-5 text-cyan-400 mx-auto" /></td>
-                  </tr>
-                  <tr className="hover:bg-white/5 transition-colors">
-                    <td className="px-6 py-4 text-sm font-semibold text-slate-300">AI Risk Assessment</td>
-                    <td className="px-6 py-4 text-center"><X className="w-5 h-5 text-slate-600 mx-auto" /></td>
-                    <td className="px-6 py-4 text-center"><X className="w-5 h-5 text-slate-600 mx-auto" /></td>
-                    <td className="px-6 py-4 text-center"><Check className="w-5 h-5 text-cyan-400 mx-auto" /></td>
-                  </tr>
-                  <tr className="hover:bg-white/5 transition-colors">
-                    <td className="px-6 py-4 text-sm font-semibold text-slate-300">Dedicated Support</td>
-                    <td className="px-6 py-4 text-center"><X className="w-5 h-5 text-slate-600 mx-auto" /></td>
-                    <td className="px-6 py-4 text-center"><X className="w-5 h-5 text-slate-600 mx-auto" /></td>
-                    <td className="px-6 py-4 text-center"><Check className="w-5 h-5 text-cyan-400 mx-auto" /></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-        {/* FAQs */}
-        <section className="px-6 mb-20">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-4xl font-black text-white mb-12 text-center">Frequently Asked Questions</h2>
-            <div className="border-t border-white/10">
-              {faqs.map((faq, idx) => (
-                <FAQItem
-                  key={idx}
-                  faq={faq}
-                  isOpen={openFAQ === idx}
-                  onToggle={() => setOpenFAQ(openFAQ === idx ? -1 : idx)}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4 }}
-              className="rounded-2xl border border-cyan-500/30 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 p-12"
+      {/* Footer note */}
+      <div className="border-t border-white/6 py-8">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <p className="text-slate-500 text-sm">
+            All plans include a free trial. No credit card required to start.{' '}
+            <a
+              href="https://www.opsmx.com/contact-us/"
+              className="text-cyan-400 hover:text-cyan-300 transition-colors"
             >
-              <h2 className="text-3xl font-black text-white mb-4">Ready to transform security?</h2>
-              <p className="text-lg text-slate-300 mb-8">
-                Talk to our team about the right plan for your organization
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:from-cyan-400 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2">
-                  Request Demo
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-                <button className="px-8 py-3 rounded-lg border border-white/20 text-white font-semibold hover:border-white/40 hover:bg-white/5 transition-all duration-200">
-                  Contact Sales
-                </button>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-      </main>
+              Contact us
+            </a>{' '}
+            for custom enterprise agreements.
+          </p>
+        </div>
+      </div>
     </div>
   )
 }
