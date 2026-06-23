@@ -17,7 +17,7 @@ const resourcesData = {
         { icon: Video,     title: 'Video Hub',             desc: 'Product demos and tutorials',           href: 'https://www.opsmx.com/videos/' },
         { icon: Calendar,  title: 'Events',                desc: 'Upcoming conferences and webinars',     href: 'https://opsmx.com/events/' },
         { icon: Code,      title: 'Docs',                  desc: 'API and integration documentation',    href: 'https://docs.opsmx.com/' },
-        { icon: Newspaper, title: 'News',                  desc: 'Company announcements',                 href: 'https://www.opsmx.com/news/' },
+        { icon: Newspaper, title: 'News',                  desc: 'Company announcements',                 href: 'https://www.opsmx.com/in-the-news/' },
       ],
     },
     {
@@ -28,7 +28,7 @@ const resourcesData = {
       items: [
         { icon: Shield, title: 'What is ASPM?',                  desc: 'Application Security Posture Management', href: 'https://www.opsmx.com/what-is-application-security-posture-management/' },
         { icon: Shield, title: 'What is DevSecOps?',             desc: 'Security in the development lifecycle',   href: 'https://www.opsmx.com/what-is-devsecops/' },
-        { icon: Shield, title: 'What is Application Security?',  desc: 'Fundamentals and best practices',         href: 'https://opsmx.com/what-is-appsec/' },
+        { icon: Shield, title: 'What is Application Security?',  desc: 'Fundamentals and best practices',         href: 'https://opsmx.com/what-is-application-security-posture-management/' },
         { icon: Shield, title: 'Secured Software Delivery',      desc: 'Safe and fast delivery practices',        href: 'https://www.opsmx.com/secured-software-delivery/' },
         { icon: Shield, title: 'Software Supply Chain Security', desc: 'Protecting your dependencies',            href: 'https://www.opsmx.com/blog/how-devsecops-ci-cd-pipeline-secures-the-software-supply-chain/' },
         { icon: Shield, title: 'SAST vs DAST vs SCA',            desc: 'Comparison and use cases',               href: 'https://www.opsmx.com/blog/differences-between-sast-dast-sca-comparing-appsec-strategies/' },
