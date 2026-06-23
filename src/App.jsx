@@ -8,6 +8,7 @@ import CaseStudiesPage from './pages/CaseStudiesPage'
 import CompanyPage from './pages/CompanyPage'
 import ContactPage from './pages/ContactPage'
 import PricingPage from './pages/PricingPage'
+import XBOMPage from './pages/XBOMPage'
 
 // Vite injects import.meta.env.BASE_URL from the `base` config (e.g. "/opsmx/" or "/").
 // React Router needs the basename without trailing slash.
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/company" element={<CompanyPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/pricing" element={<PricingPage />} />
+        <Route path="/x-bom" element={<XBOMPage />} />
       </Routes>
     </BrowserRouter>
   )

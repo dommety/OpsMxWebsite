@@ -23,6 +23,7 @@ export const securitySolutions = [
     color: '#a78bfa',
     desc: 'SBOM, XBOM, AI-BOM, dependency intelligence, and software supply chain risk.',
     badge: 'featured',
+    href: '/x-bom',
   },
   {
     slug: 'ai-penetration-testing',
