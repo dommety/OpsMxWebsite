@@ -129,19 +129,19 @@ function OverviewCard() {
       <div className="space-y-4 py-2">
         {/* Detect */}
         <div>
-          <p className="text-[11px] font-bold text-cyan-400 mb-0.5">Detect</p>
+          <p className="text-[11px] font-bold mb-0.5" style={{ color: '#60a5fa' }}>Detect</p>
           <p className="text-[9px] text-slate-500">Find risk everywhere</p>
         </div>
 
         {/* Assess */}
         <div>
-          <p className="text-[11px] font-bold text-cyan-400 mb-0.5">Assess</p>
+          <p className="text-[11px] font-bold mb-0.5" style={{ color: '#34d399' }}>Assess</p>
           <p className="text-[9px] text-slate-500">Understand what matters</p>
         </div>
 
         {/* Fix */}
         <div>
-          <p className="text-[11px] font-bold text-cyan-400 mb-0.5">Fix</p>
+          <p className="text-[11px] font-bold mb-0.5" style={{ color: '#fbbf24' }}>Fix</p>
           <p className="text-[9px] text-slate-500">Remediate and verify</p>
         </div>
       </div>
@@ -168,15 +168,11 @@ function OverviewCard() {
 // ─── Detect Risk Row (4-Column Grid)
 
 function DetectRiskRow({ layer, color }) {
-  const [firstWord, ...restWords] = layer.title.split(' ')
-
   return (
     <div className="border-t border-white/5 px-5 py-5">
       {/* Row Header */}
       <div className="mb-4 pb-3 border-b border-white/5">
-        <p className="text-[12px] font-black mb-1">
-          <span style={{ color }}>{firstWord}</span> <span className="text-white">{restWords.join(' ')}</span>
-        </p>
+        <p className="text-[12px] font-black mb-1" style={{ color }}>{layer.title}</p>
         <p className="text-[10px] text-slate-400">{layer.description}</p>
       </div>
 
@@ -226,15 +222,12 @@ function DetectRiskRow({ layer, color }) {
 function HorizontalRiskRow({ layer, color }) {
   // Flatten all items from all pillars
   const allItems = layer.pillars.flatMap(p => p.items)
-  const [firstWord, ...restWords] = layer.title.split(' ')
 
   return (
     <div className="border-t border-white/5 px-5 py-4">
       {/* Row Header */}
       <div className="mb-3 pb-3 border-b border-white/5">
-        <p className="text-[12px] font-black mb-1">
-          <span style={{ color }}>{firstWord}</span> <span className="text-white">{restWords.join(' ')}</span>
-        </p>
+        <p className="text-[12px] font-black mb-1" style={{ color }}>{layer.title}</p>
         <p className="text-[10px] text-slate-400">{layer.description}</p>
       </div>
 
