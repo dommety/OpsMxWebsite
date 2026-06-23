@@ -7,104 +7,104 @@ const bomTypes = [
   {
     title: 'SBOM',
     icon: Package,
-    description: 'Software components, libraries, dependencies, and versions',
+    description: 'Your code: libraries, frameworks, dependencies. The piece you already track.',
     color: '#a78bfa',
   },
   {
     title: 'SaaSBOM',
     icon: Globe,
-    description: 'Third-party SaaS products, cloud services, and external platforms',
+    description: 'Third-party software your org actually uses. GitHub, Datadog, Okta, Salesforce—all tracked, all governed.',
     color: '#60a5fa',
   },
   {
     title: 'API-BOM',
     icon: Code2,
-    description: 'APIs, endpoints, webhooks, data flows, and integrations',
+    description: 'External APIs, webhooks, and integrations. Know what data flows where and who can access it.',
     color: '#22d3ee',
   },
   {
     title: 'AI-BOM',
     icon: Zap,
-    description: 'AI models, datasets, prompts, training data, and AI-generated code risks',
+    description: 'AI models, ML pipelines, training data, LLMs. Track model provenance and data lineage for compliance.',
     color: '#f59e0b',
   },
   {
     title: 'CBOM',
     icon: Lock,
-    description: 'Cryptographic components, algorithms, certificates, and key management',
+    description: 'Cryptographic algorithms and key material. Know what crypto you use and when it becomes obsolete.',
     color: '#f87171',
   },
   {
     title: 'Pipeline-BOM',
     icon: GitBranch,
-    description: 'CI/CD pipelines, build tools, deployment systems, and automation workflows',
+    description: 'Build systems, CI/CD tools, deployment infrastructure. Audit your deployment chain end-to-end.',
     color: '#34d399',
   },
   {
     title: 'Cloud/Runtime BOM',
     icon: Cloud,
-    description: 'Runtime containers, Kubernetes clusters, cloud resources, and infrastructure',
+    description: 'Kubernetes, containers, cloud accounts, runtime services. See everything that runs your applications.',
     color: '#fbbf24',
   },
   {
     title: 'Compliance Context',
     icon: CheckCircle,
-    description: 'Vulnerabilities, licenses, ownership, controls, and regulatory requirements',
+    description: 'Vulnerability status, license obligations, ownership, controls tied to every component. Context that matters.',
     color: '#60a5fa',
   },
 ]
 
 const differences = [
   {
-    title: 'One-Stop Supply Chain Visibility',
-    description: 'See everything: software, SaaS, APIs, AI, cryptography, pipelines, infrastructure, and compliance in one unified view.',
+    title: 'One Inventory, Not Five',
+    description: "Stop stitching together point tools. X-BOM covers software, SaaS, APIs, AI, crypto, pipelines, and infrastructure in one place—so your team works from the same data.",
   },
   {
-    title: 'Continuous, Not Static',
-    description: 'Traditional SBOMs are snapshots. X-BOM continuously updates as your infrastructure, code, and AI systems evolve.',
+    title: 'Not a Snapshot. Live Data.',
+    description: "SBOM tools give you a report. X-BOM continuously updates as vulnerabilities emerge, deployments change, and SaaS subscriptions evolve. Auditors see what's actually running now.",
   },
   {
-    title: 'Enriched with Context',
-    description: 'Every component is mapped to vulnerabilities, licenses, owners, applications, environments, and compliance requirements.',
+    title: 'Risk + Ownership + Action',
+    description: "Every component shows vulnerability status, license risk, who owns it, and where it's deployed. Your team knows exactly what to fix and who's responsible.",
   },
   {
-    title: 'Built for Compliance',
-    description: 'Generate audit-ready reports for regulatory, security, and third-party assessments.',
+    title: 'Built for Audit Speed, Not Spreadsheets',
+    description: "Compliance questions get answered in minutes, not weeks. Drill into component risk, trace impact across applications, generate audit trails automatically.",
   },
   {
-    title: 'Connected to Action',
-    description: 'Link inventory to vulnerability remediation, patch management, and security workflows.',
+    title: 'Closes the Gap Between Inventory and Remediation',
+    description: "Find a vulnerable component? X-BOM routes it to the right team, tracks the fix, verifies the patch. No more inventory sitting in backlog.",
   },
   {
-    title: 'Enterprise-Ready',
-    description: 'Support for complex multi-cloud, multi-environment, and multi-application enterprises.',
+    title: 'Scale Without Chaos',
+    description: "Handles multi-cloud, multi-environment, and enterprise complexity natively. Add new SaaS, new cloud accounts, new Kubernetes clusters—X-BOM scales with you.",
   },
 ]
 
 const outcomes = [
   {
-    title: 'Reduce Audit Effort',
-    description: 'Automated inventory and compliance reporting cuts manual audit work in half.',
+    title: "Audit Response in Days, Not Months",
+    description: "Auditors ask for inventory. You answer in 24 hours with complete component, owner, and risk data. No more discovery calls or spreadsheet exports.",
   },
   {
-    title: 'Improve Visibility',
-    description: 'Discover hidden third-party, SaaS, and infrastructure risks others miss.',
+    title: "Find Risk That SBOM Misses",
+    description: "Discover shadow SaaS, undocumented APIs, unmanaged AI models, and cryptographic debt. Get ahead of auditors and regulations.",
   },
   {
-    title: 'Accelerate Compliance',
-    description: 'Meet SBOM mandates, regulatory requirements, and customer assessments faster.',
+    title: "Regulatory Readiness, Any Time",
+    description: "SOC 2, ISO 27001, NIST, PCI—generate compliant inventory and evidence on demand. No scrambling before assessments.",
   },
   {
-    title: 'Prioritize Risk',
-    description: 'Focus on exploitable vulnerabilities with context about actual exposure.',
+    title: "Fix Vulnerabilities That Matter",
+    description: "Stop chasing noise. Prioritize by actual exposure, exploitability, and deployment context. Fix the 20 components that matter, not 2,000 that don't.",
   },
   {
-    title: 'Enable Remediation',
-    description: 'Connect inventory to actionable remediation workflows and patch management.',
+    title: "Remediation Ownership That Sticks",
+    description: "Route vulnerable components to the right team (code owner, cloud team, DevOps), track progress, verify fixes. No more orphaned vulnerabilities.",
   },
   {
-    title: 'Support Governance',
-    description: 'Establish clear ownership and accountability across software and infrastructure.',
+    title: "Board-Ready Risk Reporting",
+    description: "Show the board your supply chain posture in real numbers: component count, vulnerability trends, compliance status. Prove you have it under control.",
   },
 ]
 
@@ -187,18 +187,18 @@ export default function XBOMPage() {
             className="text-center"
           >
             <h1 className="text-5xl lg:text-6xl font-black text-white mb-6">
-              X-BOM: Complete Software Supply Chain Visibility <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Beyond SBOM</span>
+              Your SBOM Is Incomplete. <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">X-BOM Fixes It.</span>
             </h1>
             <p className="text-xl text-slate-300 mb-8 leading-relaxed max-w-3xl mx-auto">
-              OpsMx X-BOM gives enterprises a complete, continuously updated view of software, SaaS, APIs, AI assets, cryptography, pipelines, infrastructure, vulnerabilities, and compliance risks — all in one place.
+              Traditional SBOMs miss 60% of your supply chain risk. OpsMx X-BOM brings together software, SaaS, APIs, AI models, cryptography, CI/CD pipelines, cloud infrastructure, and compliance context into one source of truth—so auditors get what they need, and your team can actually fix things.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:from-cyan-400 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2">
-                Request a Demo
+                Get a Demo
                 <ArrowRight className="w-4 h-4" />
               </button>
               <button className="px-8 py-3 rounded-lg border border-white/20 text-white font-semibold hover:border-white/40 hover:bg-white/5 transition-all duration-200">
-                View X-BOM Capabilities
+                See How It Works
               </button>
             </div>
           </motion.div>
@@ -213,9 +213,9 @@ export default function XBOMPage() {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-4xl font-black text-white mb-6 text-center">SBOM Alone Is No Longer Enough</h2>
+            <h2 className="text-4xl font-black text-white mb-6 text-center">The SBOM Problem Your Auditors Won't Say Out Loud</h2>
             <p className="text-lg text-slate-300 text-center mb-8">
-              Modern enterprises need visibility across a complex ecosystem:
+              You've deployed an SBOM tool. Auditors are happy. But your actual risk? Hidden across systems your SBOM doesn't see:
             </p>
             <div className="grid md:grid-cols-2 gap-4">
               {[
@@ -269,7 +269,7 @@ export default function XBOMPage() {
             transition={{ duration: 0.5 }}
             className="text-4xl font-black text-white mb-12 text-center"
           >
-            Why OpsMx X-BOM Is Different
+            Why OpsMx X-BOM Beats Point Tools
           </motion.h2>
           <div className="space-y-6">
             {differences.map((item, idx) => (
@@ -288,7 +288,7 @@ export default function XBOMPage() {
             transition={{ duration: 0.5 }}
             className="text-4xl font-black text-white mb-12 text-center"
           >
-            From Inventory to Action
+            How OpsMx X-BOM Works
           </motion.h2>
           <div className="flex flex-wrap justify-center items-center gap-4">
             {workflowSteps.map((step, idx) => (
@@ -309,7 +309,7 @@ export default function XBOMPage() {
             ))}
           </div>
           <p className="text-slate-400 text-center mt-8">
-            X-BOM discovers components, normalizes data across sources, enriches with vulnerability and compliance context, prioritizes risk, connects to remediation, and generates audit-ready reports.
+            Discover all components across code, SaaS, APIs, AI, and infrastructure. Normalize data. Enrich with vulnerability, license, and compliance context. Prioritize exploitable risk. Route to remediation teams. Report to auditors. That's it.
           </p>
         </div>
       </section>
@@ -323,10 +323,10 @@ export default function XBOMPage() {
             transition={{ duration: 0.5 }}
             className="text-4xl font-black text-white mb-6 text-center"
           >
-            Built for Modern Regulatory Requirements
+            Meet Every Audit in One System
           </motion.h2>
           <p className="text-slate-300 text-center mb-8">
-            OpsMx X-BOM supports organizations managing compliance across:
+            Whether it's SOC 2, ISO 27001, NIST, PCI, or customer RFPs, X-BOM has the data auditors actually ask for:
           </p>
           <div className="grid md:grid-cols-3 gap-6">
             {[
@@ -386,9 +386,9 @@ export default function XBOMPage() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-4xl font-black text-white mb-4">See Your Complete X-BOM in One Place</h2>
+            <h2 className="text-4xl font-black text-white mb-4">Stop Fighting Fragmented Tools. Start Owning Your Supply Chain.</h2>
             <p className="text-lg text-slate-300 mb-8">
-              Get comprehensive visibility into your software supply chain with continuous updates and compliance context.
+              See everything that matters—software, SaaS, APIs, AI, crypto, pipelines, cloud—in one place. Audit faster. Fix vulnerabilities. Stay compliant.
             </p>
             <button className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:from-cyan-400 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2 mx-auto">
               Schedule a Demo
