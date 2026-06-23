@@ -91,13 +91,13 @@ export default function Navbar() {
 
               // Regular links (Pricing)
               return (
-                
+                <Link
                   key={link.label}
-                  href={link.href}
+                  to={link.href}
                   className="flex items-center gap-1 px-3.5 py-2 text-sm text-slate-400 hover:text-white transition-colors rounded-lg hover:bg-white/5"
                 >
                   {link.label}
-                </a>
+                </Link>
               )
             })}
           </div>

@@ -70,7 +70,7 @@ function ResourceItem({ item, colColor }) {
   const Icon = item.icon
   return (
     <motion.div whileHover={{ x: 2 }}>
-      
+      <a
         href={item.href}
         className="flex items-start gap-2.5 px-2 py-1.5 rounded-lg group hover:bg-white/4 transition-colors duration-150 no-underline"
       >
@@ -149,7 +149,7 @@ export default function ResourcesMegaMenu({ onClose, onMouseEnter, onMouseLeave 
               Learning materials, documentation, and community resources
             </p>
           </div>
-          
+          <a
             href="https://www.opsmx.com/guides-datasheets/"
             className="flex items-center gap-1 text-[11px] font-bold text-cyan-400 hover:text-cyan-300 transition-colors group whitespace-nowrap no-underline"
             onClick={onClose}
