@@ -11,12 +11,12 @@ import Logo from './Logo'
 
 // Which nav link has a mega menu and which type
 const navLinks = [
-  { label: 'Products',      mega: 'products',  href: '#' },
-  { label: 'Solutions',     mega: 'solutions',  href: '/solutions' },
-  { label: 'Customers',     mega: 'customers', href: '#' },
-  { label: 'Pricing',       href: '#' },
-  { label: 'Resources',     mega: 'resources',  href: '#' },
-  { label: 'Company',       isDropdown: true },
+  { label: 'Products',   mega: 'products',   href: '#' },
+  { label: 'Solutions',  mega: 'solutions',  href: '/solutions' },
+  { label: 'Customers',  mega: 'customers',  href: 'https://www.opsmx.com/customer-case-study/' },
+  { label: 'Pricing',    href: 'https://www.opsmx.com/pricing/' },
+  { label: 'Resources',  mega: 'resources',  href: 'https://www.opsmx.com/guides-datasheets/' },
+  { label: 'Company',    isDropdown: true },
 ]
 
 export default function Navbar() {
@@ -63,7 +63,7 @@ export default function Navbar() {
                 )
               }
 
-              // Mega menus (Products, Solutions)
+              // Mega menus (Products, Solutions, Customers, Resources)
               if (link.mega) {
                 return (
                   <div
@@ -89,15 +89,15 @@ export default function Navbar() {
                 )
               }
 
-              // Regular links
+              // Regular links (Pricing)
               return (
-                <Link
+                
                   key={link.label}
-                  to={link.href}
+                  href={link.href}
                   className="flex items-center gap-1 px-3.5 py-2 text-sm text-slate-400 hover:text-white transition-colors rounded-lg hover:bg-white/5"
                 >
                   {link.label}
-                </Link>
+                </a>
               )
             })}
           </div>
