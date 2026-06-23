@@ -158,6 +158,13 @@ export const operationsSolutions = [
     badge: 'new',
   },
   {
+    slug: 'devsecops',
+    title: 'DevSecOps',
+    icon: Zap,
+    color: '#60a5fa',
+    desc: 'Integrate security throughout CI/CD pipelines with continuous scanning, policy enforcement, and automated remediation.',
+  },
+  {
     slug: 'devops-diagnostics',
     title: 'DevOps Diagnostics',
     icon: Microscope,
