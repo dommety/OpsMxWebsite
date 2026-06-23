@@ -17,12 +17,21 @@ export const BADGES = {
 
 export const securitySolutions = [
   {
-    slug: 'x-bom-supply-chain-security',
-    title: 'X-BOM & Supply Chain Security',
+    slug: 'x-bom',
+    title: 'X-BOM',
     icon: Package,
     color: '#a78bfa',
-    desc: 'SBOM, XBOM, AI-BOM, dependency intelligence, and software supply chain risk.',
+    desc: 'Complete software supply chain visibility: SBOM, SaaS, APIs, AI, cryptography, pipelines, and infrastructure.',
     badge: 'featured',
+    href: '/x-bom',
+  },
+  {
+    slug: 'supply-chain-security',
+    title: 'Supply Chain Security',
+    icon: Package,
+    color: '#a78bfa',
+    desc: 'Dependency intelligence, OSS risk management, and software supply chain threat detection.',
+    badge: null,
     href: '/x-bom',
   },
   {
