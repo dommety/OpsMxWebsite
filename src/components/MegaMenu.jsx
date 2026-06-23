@@ -167,7 +167,7 @@ function OverviewCard() {
 
 // ─── Detect Risk Row (4-Column Grid)
 
-function DetectRiskRow({ layer }) {
+function DetectRiskRow({ layer, color }) {
   return (
     <div className="border-t border-white/5 px-5 py-5">
       {/* Row Header */}
@@ -192,9 +192,9 @@ function DetectRiskRow({ layer }) {
               <div className="flex items-center gap-2">
                 <div
                   className="w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0"
-                  style={{ background: `${pillar.color}18`, border: `1px solid ${pillar.color}28` }}
+                  style={{ background: `${color}18`, border: `1px solid ${color}28` }}
                 >
-                  <Icon className="w-3 h-3" style={{ color: pillar.color }} strokeWidth={1.8} />
+                  <Icon className="w-3 h-3" style={{ color }} strokeWidth={1.8} />
                 </div>
                 <span className="text-[11px] font-bold text-white">{pillar.title}</span>
               </div>
@@ -204,7 +204,7 @@ function DetectRiskRow({ layer }) {
                 {pillar.items.map((item) => (
                   <div key={item} className="flex items-start gap-1.5">
                     <div className="w-0.5 h-0.5 rounded-full flex-shrink-0 mt-1.5"
-                      style={{ background: pillar.color, opacity: 0.5 }} />
+                      style={{ background: color, opacity: 0.5 }} />
                     <span className="text-[9px] font-medium text-slate-300">{item}</span>
                   </div>
                 ))}
@@ -296,10 +296,10 @@ export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
           {/* Right: 3×4 Matrix */}
           <div className="col-span-4">
             {/* Row 1: Detect Risk (4-Column) */}
-            <DetectRiskRow layer={matrixData.detect} />
+            <DetectRiskRow layer={matrixData.detect} color="#60a5fa" />
 
             {/* Row 2: Assess Risk (Horizontal Band) */}
-            <HorizontalRiskRow layer={matrixData.assess} color="#60a5fa" />
+            <HorizontalRiskRow layer={matrixData.assess} color="#34d399" />
 
             {/* Row 3: Fix Risk (Horizontal Band) */}
             <HorizontalRiskRow layer={matrixData.fix} color="#fbbf24" />
