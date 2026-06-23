@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
 import { ArrowRight, BookOpen, FileText, Video, Calendar, Newspaper, Code, Shield, GitBranch } from 'lucide-react'
 
 const resourcesData = {
@@ -11,14 +10,14 @@ const resourcesData = {
       color: '#a78bfa',
       desc: 'Learning materials and community',
       items: [
-        { icon: Newspaper, title: 'Blogs', desc: 'Security insights and industry updates' },
-        { icon: Video, title: 'Webinars', desc: 'Live and recorded sessions' },
-        { icon: FileText, title: 'Ebooks & Datasheets', desc: 'Download resources' },
-        { icon: BookOpen, title: 'Customer Case Studies', desc: 'Real-world success stories' },
-        { icon: Video, title: 'Video Hub', desc: 'Product demos and tutorials' },
-        { icon: Calendar, title: 'Events', desc: 'Upcoming conferences and webinars' },
-        { icon: Code, title: 'Docs', desc: 'API and integration documentation' },
-        { icon: Newspaper, title: 'News', desc: 'Company announcements' },
+        { icon: Newspaper, title: 'Blogs',                 desc: 'Security insights and industry updates', href: 'https://www.opsmx.com/blog/' },
+        { icon: Video,     title: 'Webinars',              desc: 'Live and recorded sessions',             href: 'https://www.opsmx.com/webinars/' },
+        { icon: FileText,  title: 'Ebooks & Datasheets',   desc: 'Download resources',                    href: 'https://www.opsmx.com/guides-datasheets/' },
+        { icon: BookOpen,  title: 'Customer Case Studies', desc: 'Real-world success stories',            href: 'https://www.opsmx.com/customer-case-study/' },
+        { icon: Video,     title: 'Video Hub',             desc: 'Product demos and tutorials',           href: 'https://www.opsmx.com/videos/' },
+        { icon: Calendar,  title: 'Events',                desc: 'Upcoming conferences and webinars',     href: 'https://opsmx.com/events/' },
+        { icon: Code,      title: 'Docs',                  desc: 'API and integration documentation',    href: 'https://docs.opsmx.com/' },
+        { icon: Newspaper, title: 'News',                  desc: 'Company announcements',                 href: 'https://www.opsmx.com/news/' },
       ],
     },
     {
@@ -27,13 +26,13 @@ const resourcesData = {
       color: '#34d399',
       desc: 'Security education and knowledge',
       items: [
-        { icon: Shield, title: 'What is ASPM?', desc: 'Application Security Posture Management' },
-        { icon: Shield, title: 'What is DevSecOps?', desc: 'Security in the development lifecycle' },
-        { icon: Shield, title: 'What is Application Security?', desc: 'Fundamentals and best practices' },
-        { icon: Shield, title: 'Secured Software Delivery', desc: 'Safe and fast delivery practices' },
-        { icon: Shield, title: 'Software Supply Chain Security', desc: 'Protecting your dependencies' },
-        { icon: Shield, title: 'SAST vs DAST vs SCA', desc: 'Comparison and use cases' },
-        { icon: Shield, title: 'OpsMx AppSec Community', desc: 'Join our security community' },
+        { icon: Shield, title: 'What is ASPM?',                  desc: 'Application Security Posture Management', href: 'https://www.opsmx.com/what-is-application-security-posture-management/' },
+        { icon: Shield, title: 'What is DevSecOps?',             desc: 'Security in the development lifecycle',   href: 'https://www.opsmx.com/what-is-devsecops/' },
+        { icon: Shield, title: 'What is Application Security?',  desc: 'Fundamentals and best practices',         href: 'https://opsmx.com/what-is-appsec/' },
+        { icon: Shield, title: 'Secured Software Delivery',      desc: 'Safe and fast delivery practices',        href: 'https://www.opsmx.com/secured-software-delivery/' },
+        { icon: Shield, title: 'Software Supply Chain Security', desc: 'Protecting your dependencies',            href: 'https://www.opsmx.com/blog/how-devsecops-ci-cd-pipeline-secures-the-software-supply-chain/' },
+        { icon: Shield, title: 'SAST vs DAST vs SCA',            desc: 'Comparison and use cases',               href: 'https://www.opsmx.com/blog/differences-between-sast-dast-sca-comparing-appsec-strategies/' },
+        { icon: Shield, title: 'OpsMx AppSec Community',         desc: 'Join our security community',            href: 'https://ssdcommunity.slack.com/' },
       ],
     },
     {
@@ -42,12 +41,12 @@ const resourcesData = {
       color: '#fbbf24',
       desc: 'DevOps and delivery learning',
       items: [
-        { icon: GitBranch, title: 'What is GitOps?', desc: 'Git-driven operations' },
-        { icon: GitBranch, title: 'What is Argo?', desc: 'GitOps with Argo CD' },
-        { icon: GitBranch, title: 'What is Spinnaker?', desc: 'Continuous deployment platform' },
-        { icon: GitBranch, title: 'What is Continuous Delivery?', desc: 'Fast and reliable releases' },
-        { icon: BookOpen, title: 'Spinnaker Course', desc: 'Learn Spinnaker deployment' },
-        { icon: Video, title: 'Tutorials and Podcasts', desc: 'Video and audio learning' },
+        { icon: GitBranch, title: 'What is GitOps?',              desc: 'Git-driven operations',          href: 'https://www.opsmx.com/what-is-gitops/' },
+        { icon: GitBranch, title: 'What is Argo?',                desc: 'GitOps with Argo CD',            href: 'https://www.opsmx.com/what-is-argocd/' },
+        { icon: GitBranch, title: 'What is Spinnaker?',           desc: 'Continuous deployment platform', href: 'https://www.opsmx.com/what-is-spinnaker/' },
+        { icon: GitBranch, title: 'What is Continuous Delivery?', desc: 'Fast and reliable releases',     href: 'https://www.opsmx.com/what-is-continuous-delivery/' },
+        { icon: BookOpen,  title: 'Spinnaker Course',             desc: 'Learn Spinnaker deployment',     href: 'https://www.opsmx.com/spinnaker-course/' },
+        { icon: Video,     title: 'Tutorials and Podcasts',       desc: 'Video and audio learning',       href: 'https://www.opsmx.com/tutorials-and-podcasts/' },
       ],
     },
     {
@@ -56,27 +55,30 @@ const resourcesData = {
       color: '#22d3ee',
       desc: 'Technical guides and references',
       items: [
-        { icon: BookOpen, title: 'Scanning Source Code with OpsMx Delivery Shield on Demand', desc: 'Code security scanning' },
-        { icon: BookOpen, title: 'Scanning Artifacts with OpsMx Delivery Shield on Demand', desc: 'Artifact security' },
-        { icon: BookOpen, title: 'Securing Your Lovable Application with OpsMx Delivery Shield', desc: 'Application hardening' },
-        { icon: BookOpen, title: 'OpsMx Intelligent Software Delivery for Argo', desc: 'Argo integration guide' },
-        { icon: BookOpen, title: 'OpsMx Intelligent Software Delivery for Spinnaker', desc: 'Spinnaker integration guide' },
-        { icon: ArrowRight, title: 'Full Docs', desc: 'Complete documentation portal' },
+        { icon: BookOpen,   title: 'Scanning Source Code with OpsMx Delivery Shield on Demand',    desc: 'Code security scanning',        href: 'https://docs.opsmx.com/' },
+        { icon: BookOpen,   title: 'Scanning Artifacts with OpsMx Delivery Shield on Demand',      desc: 'Artifact security',             href: 'https://docs.opsmx.com/' },
+        { icon: BookOpen,   title: 'Securing Your Lovable Application with OpsMx Delivery Shield', desc: 'Application hardening',         href: 'https://docs.opsmx.com/' },
+        { icon: BookOpen,   title: 'OpsMx Intelligent Software Delivery for Argo',                 desc: 'Argo integration guide',        href: 'https://docs.opsmx.com/' },
+        { icon: BookOpen,   title: 'OpsMx Intelligent Software Delivery for Spinnaker',            desc: 'Spinnaker integration guide',   href: 'https://docs.opsmx.com/' },
+        { icon: ArrowRight, title: 'Full Docs',                                                    desc: 'Complete documentation portal', href: 'https://docs.opsmx.com/' },
       ],
     },
   ],
 }
 
-function ResourceItem({ item }) {
+function ResourceItem({ item, colColor }) {
   const Icon = item.icon
   return (
     <motion.div whileHover={{ x: 2 }}>
-      <div className="flex items-start gap-2.5 px-2 py-1.5 rounded-lg group hover:bg-white/4 transition-colors duration-150 cursor-pointer">
+      
+        href={item.href}
+        className="flex items-start gap-2.5 px-2 py-1.5 rounded-lg group hover:bg-white/4 transition-colors duration-150 no-underline"
+      >
         <div
           className="w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5"
-          style={{ background: `${resourcesData.columns.find(col => col.items.includes(item))?.color}18`, border: `1px solid ${resourcesData.columns.find(col => col.items.includes(item))?.color}28` }}
+          style={{ background: `${colColor}18`, border: `1px solid ${colColor}28` }}
         >
-          <Icon className="w-3 h-3" style={{ color: resourcesData.columns.find(col => col.items.includes(item))?.color }} strokeWidth={1.8} />
+          <Icon className="w-3 h-3" style={{ color: colColor }} strokeWidth={1.8} />
         </div>
         <div className="min-w-0 flex-1">
           <p className="text-[12px] font-bold text-white transition-colors">
@@ -86,7 +88,7 @@ function ResourceItem({ item }) {
             {item.desc}
           </p>
         </div>
-      </div>
+      </a>
     </motion.div>
   )
 }
@@ -105,7 +107,7 @@ function Column({ col }) {
       {/* Items */}
       <div className="flex-1 space-y-0.5 overflow-y-auto max-h-[420px] pr-1">
         {col.items.map((item, idx) => (
-          <ResourceItem key={idx} item={item} />
+          <ResourceItem key={idx} item={item} colColor={col.color} />
         ))}
       </div>
     </div>
@@ -151,13 +153,14 @@ export default function ResourcesMegaMenu({ onClose, onMouseEnter, onMouseLeave 
               Learning materials, documentation, and community resources
             </p>
           </div>
-          <button
+          
+            href="https://www.opsmx.com/guides-datasheets/"
+            className="flex items-center gap-1 text-[11px] font-bold text-cyan-400 hover:text-cyan-300 transition-colors group whitespace-nowrap no-underline"
             onClick={onClose}
-            className="flex items-center gap-1 text-[11px] font-bold text-cyan-400 hover:text-cyan-300 transition-colors group whitespace-nowrap"
           >
             View all resources
             <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-          </button>
+          </a>
         </div>
 
         {/* 4-column grid */}
