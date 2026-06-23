@@ -168,11 +168,15 @@ function OverviewCard() {
 // ─── Detect Risk Row (4-Column Grid)
 
 function DetectRiskRow({ layer, color }) {
+  const [firstWord, ...restWords] = layer.title.split(' ')
+
   return (
     <div className="border-t border-white/5 px-5 py-5">
       {/* Row Header */}
       <div className="mb-4 pb-3 border-b border-white/5">
-        <p className="text-[12px] font-black mb-1" style={{ color }}>{layer.title}</p>
+        <p className="text-[12px] font-black mb-1">
+          <span style={{ color }}>{firstWord}</span> <span className="text-white">{restWords.join(' ')}</span>
+        </p>
         <p className="text-[10px] text-slate-400">{layer.description}</p>
       </div>
 
@@ -222,12 +226,15 @@ function DetectRiskRow({ layer, color }) {
 function HorizontalRiskRow({ layer, color }) {
   // Flatten all items from all pillars
   const allItems = layer.pillars.flatMap(p => p.items)
+  const [firstWord, ...restWords] = layer.title.split(' ')
 
   return (
     <div className="border-t border-white/5 px-5 py-4">
       {/* Row Header */}
       <div className="mb-3 pb-3 border-b border-white/5">
-        <p className="text-[12px] font-black mb-1" style={{ color }}>{layer.title}</p>
+        <p className="text-[12px] font-black mb-1">
+          <span style={{ color }}>{firstWord}</span> <span className="text-white">{restWords.join(' ')}</span>
+        </p>
         <p className="text-[10px] text-slate-400">{layer.description}</p>
       </div>
 
