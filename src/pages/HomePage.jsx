@@ -10,9 +10,14 @@ import Outcomes from '../components/Outcomes'
 import FinalCTA from '../components/FinalCTA'
 
 export default function HomePage() {
-  // Tell the prerenderer the page is ready to snapshot
+  // Tell the prerenderer the page is painted and ready to snapshot.
+  // Double rAF waits for the browser to finish layout/paint; the timeout
+  // is a fallback so the event always fires well within the 30s window.
   useEffect(() => {
-    document.dispatchEvent(new Event('render-event'))
+    const fire = () => document.dispatchEvent(new Event('render-event'))
+    const raf = requestAnimationFrame(() => requestAnimationFrame(fire))
+    const t = setTimeout(fire, 2000)
+    return () => { cancelAnimationFrame(raf); clearTimeout(t) }
   }, [])
 
   return (
