@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import CustomerLogos from '../components/CustomerLogos'
@@ -9,6 +10,11 @@ import Outcomes from '../components/Outcomes'
 import FinalCTA from '../components/FinalCTA'
 
 export default function HomePage() {
+  // Tell the prerenderer the page is ready to snapshot
+  useEffect(() => {
+    document.dispatchEvent(new Event('render-event'))
+  }, [])
+
   return (
     <div className="min-h-screen bg-navy-950 text-white overflow-x-hidden">
       <Navbar />
