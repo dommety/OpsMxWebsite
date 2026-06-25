@@ -8,7 +8,10 @@ export default defineConfig({
     prerender({
       routes: ['/'],
       renderer: '@prerenderer/renderer-puppeteer',
-      rendererOptions: { renderAfterDocumentEvent: 'render-event' },
+      rendererOptions: {
+        renderAfterTime: 5000,
+        launchOptions: { args: ['--no-sandbox', '--disable-setuid-sandbox'] },
+      },
     }),
   ],
   // Served under /opsmx/ on the VM behind nginx (also works at root in dev)
