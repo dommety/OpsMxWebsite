@@ -17,7 +17,7 @@ const detectColumns = [
       {
         label: 'Code Security',
         items: [
-          { label: 'SAST', href: 'https://www.opsmx.com/static-application-security-testing-with-opsmx-delivery-shield/' },
+          { label: 'SAST', href: '/static-application-security-testing' },
           { label: 'SCA', href: 'https://www.opsmx.com/software-composition-analysis-with-opsmx-delivery-shield/' },
           { label: 'Secrets', href: '/secrets' },
           { label: 'AI Security', href: '/ai-security' },

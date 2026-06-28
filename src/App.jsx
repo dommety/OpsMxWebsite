@@ -28,6 +28,7 @@ import RootCauseAnalysisPage from './pages/RootCauseAnalysisPage'
 import IncidentDiagnosticsPage from './pages/IncidentDiagnosticsPage'
 import OperationalRemediationPage from './pages/OperationalRemediationPage'
 import AIPenetrationTestingPage from './pages/AIPenetrationTestingPage'
+import SASTPage from './pages/SASTPage'
 
 const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/'
 
@@ -46,6 +47,7 @@ export default function App() {
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/x-bom" element={<XBOMPage />} />
         <Route path="/secrets" element={<SecretsPage />} />
+        <Route path="/static-application-security-testing" element={<SASTPage />} />
         <Route path="/ai-security" element={<AISecurityPage />} />
         <Route path="/api-security" element={<APISecurityPage />} />
         <Route path="/ai-penetration-testing" element={<AIPenetrationTestingPage />} />
