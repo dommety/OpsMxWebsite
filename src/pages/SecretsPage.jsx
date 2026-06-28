@@ -1,205 +1,277 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import {
-  ArrowRight,
-  Code2,
-  GitBranch,
-  Box,
-  Cloud,
-  Anchor,
-  TrendingUp,
-  ShieldCheck,
-  CheckCircle2,
-  Zap,
-  Database,
-  Lock,
-  Eye,
-  AlertCircle,
-} from 'lucide-react'
+import { ArrowRight, Code2, GitBranch, Package, Cloud, Zap, Lock, CheckCircle2, Shield, Database } from 'lucide-react'
 import Navbar from '../components/Navbar'
 
-// Coverage sections: Code, CI/CD, Artifacts, Cloud, Kubernetes, Production
-const coverageSections = [
-  {
-    title: 'Code',
-    icon: Code2,
-    description: 'Detect hardcoded secrets before they enter the delivery path.',
-    bullets: [
-      'GitHub, GitLab, Bitbucket',
-      'Pull requests and branches',
-      'Config files and IaC',
-      'Terraform, Helm, Kubernetes YAML',
-      'Dockerfiles and build scripts',
-    ],
-    color: '#f87171',
-  },
-  {
-    title: 'CI/CD',
-    icon: GitBranch,
-    description: 'Catch secrets exposed through pipelines, logs, variables, and automation.',
-    bullets: [
-      'Jenkins, GitHub Actions, GitLab CI',
-      'Argo CD, Spinnaker',
-      'Pipeline logs and build variables',
-      'Deployment automation',
-      'Build and release stages',
-    ],
-    color: '#60a5fa',
-  },
-  {
-    title: 'Artifacts',
-    icon: Box,
-    description: 'Find secrets embedded in built software before they reach production.',
-    bullets: [
-      'Container images and layers',
-      'SBOM/XBOM metadata',
-      'Package manifests',
-      'Deployment bundles',
-      'Build artifacts and registries',
-    ],
-    color: '#34d399',
-  },
-  {
-    title: 'Cloud',
-    icon: Cloud,
-    description: 'Connect leaked credentials to real cloud permissions and exposure.',
-    bullets: [
-      'AWS, Azure, GCP',
-      'IAM permissions and roles',
-      'Storage and database access',
-      'Key usage patterns',
-      'Sensitive data access paths',
-    ],
-    color: '#a78bfa',
-  },
-  {
-    title: 'Kubernetes',
-    icon: Anchor,
-    description: 'Understand how secrets are used across clusters, workloads, and namespaces.',
-    bullets: [
-      'Kubernetes Secrets and ConfigMaps',
-      'Environment variables',
-      'Workloads and namespaces',
-      'Runtime usage patterns',
-      'Service discovery and mounts',
-    ],
-    color: '#fbbf24',
-  },
-  {
-    title: 'Production',
-    icon: TrendingUp,
-    description: 'Prioritize exposed secrets based on where they run and what they impact.',
-    bullets: [
-      'Runtime exposure analysis',
-      'Internet-facing services',
-      'Service ownership and SLAs',
-      'Sensitive data paths',
-      'Business-critical workloads',
-    ],
-    color: '#fb7185',
-  },
-]
+// Animation showing secrets workflow
+function SecretsWorkflowAnimation() {
+  const steps = [
+    { label: 'Developer Commit', icon: Code2 },
+    { label: 'Secret Detected', icon: Lock },
+    { label: 'Credential Validated', icon: Shield },
+    { label: 'Cloud Permissions Mapped', icon: Cloud },
+    { label: 'Production Blast Radius', icon: Database },
+    { label: 'Owner Assigned', icon: GitBranch },
+    { label: 'Secret Rotated', icon: Zap },
+    { label: 'Verified Fix', icon: CheckCircle2 },
+  ]
 
-// Remediation workflow steps
-const remediationSteps = [
-  { number: '1', title: 'Detect', description: 'Exposed secret found in code, CI/CD, artifact, or runtime' },
-  { number: '2', title: 'Validate', description: 'Check if the credential is actually active and usable' },
-  { number: '3', title: 'Map', description: 'Link secret to service, owner, workload, and environment' },
-  { number: '4', title: 'Analyze', description: 'Understand cloud permissions and sensitive data access' },
-  { number: '5', title: 'Plan', description: 'Generate safe remediation path with minimal disruption' },
-  { number: '6', title: 'Remediate', description: 'Rotate, revoke, move to vault, rebuild, redeploy' },
-  { number: '7', title: 'Verify', description: 'Confirm old secret no longer works, record audit trail' },
-]
-
-// Prioritization factors
-const prioritizationFactors = [
-  'Active vs stale credential status',
-  'Production deployment status',
-  'Cloud/IAM permissions scope',
-  'Access to PII or sensitive data',
-  'Internet-facing workloads',
-  'Application and service ownership',
-  'Environment and business criticality',
-  'Exploit path and blast radius',
-]
-
-// Outcomes
-const outcomes = [
-  { title: 'Fewer Noisy Findings', description: 'Stop treating every secret the same. Real prioritization means fewer alerts that matter.' },
-  { title: 'Faster Owner Identification', description: 'Automatically map secrets to teams and services without manual detective work.' },
-  { title: 'Better Risk Prioritization', description: 'Focus on the secrets that actually create exposure, not just any exposed credential.' },
-  { title: 'Reduced Production Risk', description: 'Rotate and revoke active production credentials before attackers can exploit them.' },
-  { title: 'Verified Remediation', description: 'Know that the fix worked. Confirm the old secret no longer functions.' },
-  { title: 'Cleaner Audit Trail', description: 'Auditors see exactly when secrets were found, who owned them, and how they were fixed.' },
-]
-
-function CoverageCard({ section, index }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
-      className="rounded-xl border border-white/10 bg-white/5 p-6 hover:border-white/20 hover:bg-white/8 transition-all"
-    >
-      <div
-        className="p-3 rounded-lg inline-flex mb-4"
-        style={{ background: `${section.color}18`, border: `1px solid ${section.color}28` }}
-      >
-        <section.icon className="w-6 h-6" style={{ color: section.color }} />
-      </div>
-      <h3 className="text-lg font-bold text-white mb-2">{section.title}</h3>
-      <p className="text-sm text-slate-400 mb-4 leading-relaxed">{section.description}</p>
-      <ul className="space-y-2">
-        {section.bullets.map((bullet, i) => (
-          <li key={i} className="text-xs text-slate-400 flex items-start gap-2">
-            <span className="text-cyan-400 mt-1 flex-shrink-0">•</span>
-            <span>{bullet}</span>
-          </li>
-        ))}
-      </ul>
-    </motion.div>
-  )
-}
+    <div className="relative py-16 px-6 bg-gradient-to-b from-slate-950 to-slate-900/50 rounded-2xl border border-white/10">
+      <div className="max-w-5xl mx-auto">
+        <div className="flex flex-col lg:flex-row gap-12 items-center">
+          {/* Left: Text explanation */}
+          <div className="lg:w-1/3">
+            <p className="text-sm font-bold text-cyan-400 mb-2">SECRETS WORKFLOW</p>
+            <p className="text-2xl font-black text-white mb-4">Find. Understand. Fix. Verify.</p>
+            <p className="text-slate-300 text-sm leading-relaxed">OpsMx traces every exposed secret from detection through remediation, mapping ownership, blast radius, and verification at each step.</p>
+          </div>
 
-function OutcomeCard({ outcome, index }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
-      className="rounded-xl border border-white/10 bg-white/5 p-6 hover:border-cyan-500/50 hover:bg-cyan-500/5 transition-all"
-    >
-      <div className="flex items-start gap-3 mb-3">
-        <div className="w-2 h-2 rounded-full bg-cyan-400 mt-1 flex-shrink-0" />
-        <h3 className="text-sm font-bold text-white">{outcome.title}</h3>
-      </div>
-      <p className="text-sm text-slate-400">{outcome.description}</p>
-    </motion.div>
-  )
-}
+          {/* Right: Animated workflow */}
+          <div className="lg:w-2/3">
+            <svg viewBox="0 0 600 400" className="w-full h-auto max-h-96">
+              {/* Connection lines */}
+              {steps.map((_, idx) => {
+                if (idx < steps.length - 1) {
+                  const startX = (idx / (steps.length - 1)) * 540 + 30
+                  const endX = ((idx + 1) / (steps.length - 1)) * 540 + 30
+                  return (
+                    <motion.line
+                      key={`line-${idx}`}
+                      x1={startX}
+                      y1="200"
+                      x2={endX}
+                      y2="200"
+                      stroke="url(#lineGradient)"
+                      strokeWidth="2"
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 0.5, delay: idx * 0.3 }}
+                    />
+                  )
+                }
+                return null
+              })}
 
-function RemediationStep({ step, index }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
-      className="flex gap-4"
-    >
-      <div className="flex-shrink-0">
-        <div className="flex items-center justify-center h-10 w-10 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold">
-          {step.number}
+              <defs>
+                <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#22d3ee" />
+                  <stop offset="100%" stopColor="#34d399" />
+                </linearGradient>
+              </defs>
+
+              {/* Steps */}
+              {steps.map((step, idx) => {
+                const x = (idx / (steps.length - 1)) * 540 + 30
+                const isLast = idx === steps.length - 1
+                const Icon = step.icon
+
+                return (
+                  <motion.g key={step.label}>
+                    {/* Animated pulse circle */}
+                    <motion.circle
+                      cx={x}
+                      cy="200"
+                      r="24"
+                      fill="none"
+                      stroke={isLast ? '#34d399' : '#22d3ee'}
+                      strokeWidth="2"
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ delay: idx * 0.3, duration: 0.3 }}
+                    />
+                    <motion.circle
+                      cx={x}
+                      cy="200"
+                      r="24"
+                      fill="none"
+                      stroke={isLast ? '#34d399' : '#22d3ee'}
+                      strokeWidth="2"
+                      opacity="0.3"
+                      initial={{ scale: 1 }}
+                      animate={{ scale: 1.5 }}
+                      transition={{ delay: idx * 0.3, duration: 1, repeat: Infinity, repeatDelay: 0.5 }}
+                    />
+
+                    {/* Inner circle and icon */}
+                    <motion.circle
+                      cx={x}
+                      cy="200"
+                      r="18"
+                      fill={isLast ? 'rgba(52, 211, 153, 0.15)' : 'rgba(34, 211, 238, 0.15)'}
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: idx * 0.3, duration: 0.3 }}
+                    />
+
+                    {/* Label below */}
+                    <text
+                      x={x}
+                      y="270"
+                      textAnchor="middle"
+                      className="text-[11px] font-semibold fill-slate-300"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: idx * 0.3 + 0.2 }}
+                    >
+                      {step.label.split(' ')[0]}
+                    </text>
+                    <text
+                      x={x}
+                      y="285"
+                      textAnchor="middle"
+                      className="text-[10px] fill-slate-500"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: idx * 0.3 + 0.2 }}
+                    >
+                      {step.label.split(' ').slice(1).join(' ')}
+                    </text>
+                  </motion.g>
+                )
+              })}
+            </svg>
+          </div>
         </div>
       </div>
-      <div>
-        <h3 className="text-base font-bold text-white mb-1">{step.title}</h3>
-        <p className="text-sm text-slate-400">{step.description}</p>
+    </div>
+  )
+}
+
+// Problem cards
+function ProblemCard({ icon: Icon, title, description }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      className="rounded-xl border border-white/10 bg-white/5 p-6 hover:border-red-500/30 hover:bg-red-500/5 transition-all"
+    >
+      <div className="flex items-start gap-3 mb-3">
+        <Icon className="w-5 h-5 text-red-400 flex-shrink-0 mt-1" />
+        <h3 className="text-lg font-bold text-white">{title}</h3>
+      </div>
+      <p className="text-sm text-slate-300">{description}</p>
+    </motion.div>
+  )
+}
+
+// Coverage card
+function CoverageCard({ icon: Icon, title, description }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      className="rounded-lg border border-white/10 bg-white/5 p-4 hover:border-cyan-500/30 transition-all"
+    >
+      <div className="flex items-center gap-2 mb-2">
+        <Icon className="w-4 h-4 text-cyan-400" />
+        <h4 className="text-sm font-bold text-white">{title}</h4>
+      </div>
+      <p className="text-xs text-slate-400">{description}</p>
+    </motion.div>
+  )
+}
+
+// Workflow step
+function WorkflowStep({ number, label, description }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.4 }}
+      className="flex gap-4"
+    >
+      <div className="w-10 h-10 rounded-lg bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center flex-shrink-0">
+        <span className="text-sm font-bold text-cyan-400">{number}</span>
+      </div>
+      <div className="flex-1">
+        <h4 className="text-sm font-bold text-white mb-1">{label}</h4>
+        <p className="text-xs text-slate-400">{description}</p>
       </div>
     </motion.div>
   )
 }
+
+// Why OpsMx card
+function WhyOpsMxCard({ icon: Icon, title, description }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      className="rounded-lg border border-white/10 bg-white/5 p-6 hover:border-cyan-500/30 transition-all"
+    >
+      <Icon className="w-6 h-6 text-cyan-400 mb-3" />
+      <h3 className="text-sm font-bold text-white mb-2">{title}</h3>
+      <p className="text-xs text-slate-300 leading-snug">{description}</p>
+    </motion.div>
+  )
+}
+
+const coverageItems = [
+  { icon: Code2, title: 'Code', description: 'Git repos, commits, pull requests' },
+  { icon: GitBranch, title: 'CI/CD', description: 'Build logs, scripts, configurations' },
+  { icon: Package, title: 'Artifacts', description: 'Container images, layer history' },
+  { icon: Cloud, title: 'Cloud', description: 'AWS, Azure, GCP credential exposure' },
+  { icon: Lock, title: 'Kubernetes', description: 'Secrets resources, environment variables' },
+  { icon: Zap, title: 'Production', description: 'Runtime processes and logs' },
+]
+
+const workflowSteps = [
+  { label: 'Detect', description: 'Exposed secret found in code, CI/CD, artifact, or runtime' },
+  { label: 'Validate', description: 'Check if the credential is active and usable' },
+  { label: 'Map', description: 'Link secret to service, owner, workload, and environment' },
+  { label: 'Analyze', description: 'Understand cloud permissions and sensitive data access' },
+  { label: 'Plan', description: 'Generate safe remediation path with minimal disruption' },
+  { label: 'Remediate', description: 'Rotate, revoke, vault, rebuild, and redeploy' },
+  { label: 'Verify', description: 'Confirm old secret no longer works and record audit evidence' },
+]
+
+const outcomes = [
+  'Fewer noisy findings',
+  'Faster owner identification',
+  'Better risk prioritization',
+  'Reduced production risk',
+  'Verified remediation',
+  'Cleaner audit trail',
+]
+
+const integrations = [
+  'GitHub', 'GitLab', 'Bitbucket', 'Jenkins', 'GitHub Actions', 'GitLab CI', 'Argo CD', 'Spinnaker',
+  'AWS', 'Azure', 'GCP', 'Docker', 'Kubernetes', 'Container Registries',
+  'HashiCorp Vault', 'AWS Secrets Manager', 'Azure Key Vault', 'GCP Secret Manager',
+  'Jira', 'ServiceNow', 'Slack',
+]
+
+const whyOpsMx = [
+  {
+    icon: GitBranch,
+    title: 'Code-to-Cloud Context',
+    description: 'OpsMx connects secrets across source code, CI/CD, containers, cloud, Kubernetes, and runtime.',
+  },
+  {
+    icon: Database,
+    title: 'Blast Radius Prioritization',
+    description: 'OpsMx prioritizes active secrets by permissions, exposure, sensitive data access, production use, and business impact.',
+  },
+  {
+    icon: Zap,
+    title: 'Remediation Workflow',
+    description: 'OpsMx routes secrets to the right owners and coordinates revocation, rotation, vaulting, rebuilds, redeployments, and verification.',
+  },
+  {
+    icon: CheckCircle2,
+    title: 'Verified Fixes',
+    description: 'OpsMx confirms that exposed credentials no longer work and preserves audit evidence.',
+  },
+  {
+    icon: Shield,
+    title: 'Built for Enterprise',
+    description: 'OpsMx integrates with existing DevSecOps tools, cloud platforms, ticketing systems, and secret managers.',
+  },
+]
 
 export default function SecretsPage() {
   return (
@@ -208,38 +280,25 @@ export default function SecretsPage() {
 
       {/* Hero */}
       <section className="pt-32 pb-20 px-6">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-400 text-sm font-semibold mb-6">
-              <Lock className="w-4 h-4" /> Secrets Detection & Remediation
-            </div>
-            <h1 className="text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
-              Secrets Exposure Remediation{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-                from Code to Cloud
-              </span>
+            <h1 className="text-5xl lg:text-6xl font-black text-white mb-6">
+              Secrets Detection & Remediation <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">from Code to Cloud</span>
             </h1>
-            <p className="text-xl text-slate-300 mb-4 leading-relaxed max-w-3xl mx-auto">
-              Detect hardcoded secrets, leaked credentials, exposed tokens, and risky secret usage across code, CI/CD, containers, cloud, Kubernetes, and production — then prioritize by blast radius and remediate safely.
+            <p className="text-xl text-slate-300 mb-6 leading-relaxed max-w-3xl mx-auto">
+              Detect hardcoded secrets, leaked credentials, exposed tokens, and risky secret usage across code, CI/CD, containers, cloud, Kubernetes, and production — then prioritize by blast radius, remediate safely, and verify the fix.
             </p>
-            <p className="text-lg text-cyan-300 font-semibold max-w-2xl mx-auto mb-8">
-              Find secrets. Understand blast radius. Fix them safely.
-            </p>
+            <p className="text-lg text-slate-400 mb-8 font-semibold">Find secrets. Understand blast radius. Fix them safely.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="https://www.opsmx.com/talk-to-an-application-security-expert/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:from-cyan-400 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-cyan-500/20 inline-flex items-center justify-center gap-2"
-              >
-                See Secrets Blast Radius Demo <ArrowRight className="w-4 h-4" />
+              <a href="https://www.opsmx.com/talk-to-an-application-security-expert/" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold hover:from-red-400 hover:to-red-500 transition-all shadow-lg shadow-red-500/20 flex items-center justify-center gap-2">
+                See Secrets Blast Radius Demo
+                <ArrowRight className="w-4 h-4" />
               </a>
-              <button className="px-8 py-3 rounded-lg border border-white/20 text-white font-semibold hover:border-white/40 hover:bg-white/5 transition-all duration-200">
+              <button className="px-8 py-3 rounded-lg border border-white/20 text-white font-semibold hover:border-white/40 hover:bg-white/5 transition-all">
                 Explore Remediation Workflow
               </button>
             </div>
@@ -247,215 +306,193 @@ export default function SecretsPage() {
         </div>
       </section>
 
-      {/* Demo Story */}
-      <section className="py-20 px-6 bg-white/2">
+      {/* Secrets Workflow Animation */}
+      <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-12"
-          >
-            <h2 className="text-4xl font-black text-white mb-4 text-center">
-              AWS Key in Code. PII at Risk in Production.
-            </h2>
-            <p className="text-lg text-slate-300 text-center max-w-2xl mx-auto mb-12">
-              Real-world secrets exposure flow: from developer commit to production blast radius.
-            </p>
-          </motion.div>
+          <SecretsWorkflowAnimation />
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+      {/* Problem Section */}
+      <section className="py-20 px-6 bg-white/2">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl font-black text-white mb-4">Secret Leaks Are Not Equal</h2>
+            <p className="text-lg text-slate-300">Some are noise. Some are production risk.</p>
+          </motion.div>
+          <div className="grid md:grid-cols-3 gap-6">
+            <ProblemCard
+              icon={Package}
+              title="Too Many Findings"
+              description="Secret scanners generate large volumes of findings without explaining which credentials are active, deployed, or dangerous."
+            />
+            <ProblemCard
+              icon={Cloud}
+              title="No Blast Radius"
+              description="Teams need to know what the credential can access, where it runs, and whether sensitive data is exposed."
+            />
+            <ProblemCard
+              icon={Lock}
+              title="Hard to Fix Safely"
+              description="Rotating secrets requires owners, cloud permissions, CI/CD changes, rebuilds, redeployments, and verification."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Demo Story */}
+      <section className="py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="mb-12 text-center"
+          >
+            <h2 className="text-4xl font-black text-white mb-4">AWS Key in Code. PII at Risk in Production.</h2>
+          </motion.div>
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-8 space-y-4">
             {[
-              { num: '1', title: 'Developer commits AWS key', color: 'from-red-500 to-red-600' },
-              { num: '2', title: 'OpsMx detects in pull request', color: 'from-orange-500 to-orange-600' },
-              { num: '3', title: 'Secret appears in container layer', color: 'from-yellow-500 to-yellow-600' },
-              { num: '4', title: 'Image deployed to Kubernetes', color: 'from-cyan-500 to-blue-600' },
-              { num: '5', title: 'Key has S3 access to PII', color: 'from-purple-500 to-purple-600' },
-            ].map((step, idx) => (
+              { step: 1, text: 'Developer commits AWS key accidentally' },
+              { step: 2, text: 'OpsMx detects it in pull request' },
+              { step: 3, text: 'Secret persists in container layer' },
+              { step: 4, text: 'Image is deployed to Kubernetes cluster' },
+              { step: 5, text: 'Key has S3 access to customer PII' },
+              { step: 6, text: 'OpsMx maps owner, blast radius, remediation, and verification' },
+            ].map((item) => (
               <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.05 }}
-                className={`rounded-lg border border-white/10 bg-gradient-to-br ${step.color} bg-opacity-10 p-6 text-center`}
+                key={item.step}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: item.step * 0.1 }}
+                className="flex items-center gap-4"
               >
-                <div
-                  className={`inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r ${step.color} text-white font-bold mb-4`}
-                >
-                  {step.num}
+                <div className="w-8 h-8 rounded-lg bg-red-500/20 border border-red-500/40 flex items-center justify-center flex-shrink-0">
+                  <span className="text-sm font-bold text-red-400">{item.step}</span>
                 </div>
-                <p className="text-sm font-semibold text-white">{step.title}</p>
+                <span className="text-slate-300">{item.text}</span>
               </motion.div>
             ))}
           </div>
-
-          <div className="mt-8 p-6 rounded-xl border border-white/10 bg-white/5">
-            <p className="text-slate-300 text-center">
-              <span className="font-bold text-white">OpsMx maps the complete exposure:</span> Developer → Secret detected → Credential validated → Cloud permissions identified → Service owner found → Sensitive data at risk → Workload internet-facing → Blast radius calculated → Remediation path generated → Secret rotated → Image rebuilt → Deployment verified → Fix audited.
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="mt-6 p-4 rounded-lg border border-cyan-500/30 bg-cyan-500/5"
+          >
+            <p className="text-sm text-cyan-300">
+              <span className="font-bold">OpsMx maps the complete exposure path</span> from developer to production and drives the workflow to verified remediation.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Coverage Sections */}
-      <section className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
+      {/* Coverage Section */}
+      <section className="py-20 px-6 bg-white/2">
+        <div className="max-w-5xl mx-auto">
           <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-4xl font-black text-white mb-4 text-center"
+            className="text-4xl font-black text-white mb-12 text-center"
           >
             Secrets Coverage Across the SDLC
           </motion.h2>
-          <p className="text-lg text-slate-300 text-center max-w-2xl mx-auto mb-12">
-            From code to production: comprehensive detection across every stage of your delivery pipeline.
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {coverageSections.map((section, idx) => (
-              <CoverageCard key={idx} section={section} index={idx} />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {coverageItems.map((item) => (
+              <CoverageCard key={item.title} {...item} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Differentiation */}
-      <section className="py-20 px-6 bg-white/2">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <h2 className="text-4xl font-black text-white mb-6">
-                Stop Treating Every Secret Leak the Same
-              </h2>
-              <p className="text-lg text-slate-300 mb-8 leading-relaxed">
-                Most scanners produce secret findings. OpsMx correlates each exposed secret with runtime, cloud, application, ownership, and data context so teams can focus on the secrets that create real exposure.
-              </p>
-
-              <div className="mb-8">
-                <h3 className="text-sm font-bold text-cyan-400 mb-4 uppercase">Prioritization Factors</h3>
-                <div className="grid grid-cols-2 gap-3">
-                  {prioritizationFactors.map((factor, idx) => (
-                    <div key={idx} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-slate-300">{factor}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="space-y-4"
-            >
-              <div className="rounded-xl border border-red-500/30 bg-red-500/5 p-6">
-                <h3 className="font-bold text-white mb-3 flex items-center gap-2">
-                  <AlertCircle className="w-5 h-5 text-red-400" /> Without OpsMx
-                </h3>
-                <ul className="space-y-2 text-sm text-slate-300">
-                  <li>• 3,000 secret findings</li>
-                  <li>• No ownership context</li>
-                  <li>• No runtime visibility</li>
-                  <li>• No proof of fix</li>
-                  <li>• Manual investigation required</li>
-                </ul>
-              </div>
-
-              <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-6">
-                <h3 className="font-bold text-white mb-3 flex items-center gap-2">
-                  <ShieldCheck className="w-5 h-5 text-emerald-400" /> With OpsMx
-                </h3>
-                <ul className="space-y-2 text-sm text-slate-300">
-                  <li>• 12 active production secrets</li>
-                  <li>• Prioritized by blast radius</li>
-                  <li>• Routed to owners automatically</li>
-                  <li>• Remediated and verified</li>
-                  <li>• Complete audit trail</li>
-                </ul>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Remediation Workflow */}
+      {/* Differentiation Section */}
       <section className="py-20 px-6">
         <div className="max-w-5xl mx-auto">
           <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-4xl font-black text-white mb-4 text-center"
+            className="text-4xl font-black text-white mb-6 text-center"
           >
-            From Secret Finding to Verified Fix
+            Stop Treating Every Secret Leak the Same
           </motion.h2>
-          <p className="text-lg text-slate-300 text-center mb-12">
-            A complete 7-step workflow that takes secrets from detection to remediation with verification.
+          <p className="text-center text-slate-300 mb-12 max-w-3xl mx-auto">
+            Most tools identify exposed secrets. OpsMx correlates each secret with runtime, cloud, application, ownership, and data context so teams can focus on the credentials that create real exposure.
           </p>
 
-          <div className="space-y-6 mb-12">
-            {remediationSteps.map((step, idx) => (
-              <RemediationStep key={idx} step={step} index={idx} />
-            ))}
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-8">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="rounded-xl border border-white/10 bg-white/5 p-6"
+              className="rounded-lg border border-red-500/30 bg-red-500/5 p-6"
             >
-              <h3 className="text-lg font-bold text-white mb-4">Remediation Actions</h3>
+              <h3 className="text-lg font-bold text-white mb-4">Without OpsMx</h3>
               <ul className="space-y-2 text-sm text-slate-300">
-                <li className="flex items-center gap-2">
-                  <Zap className="w-4 h-4 text-cyan-400" /> Revoke exposed key
+                <li className="flex items-start gap-2">
+                  <span className="text-red-400 font-bold mt-1">•</span>
+                  <span>Thousands of secret findings</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <Zap className="w-4 h-4 text-cyan-400" /> Rotate credential
+                <li className="flex items-start gap-2">
+                  <span className="text-red-400 font-bold mt-1">•</span>
+                  <span>No ownership context</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <Zap className="w-4 h-4 text-cyan-400" /> Remove secret from repo history
+                <li className="flex items-start gap-2">
+                  <span className="text-red-400 font-bold mt-1">•</span>
+                  <span>No runtime visibility</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <Zap className="w-4 h-4 text-cyan-400" /> Move to HashiCorp Vault, AWS Secrets Manager, Azure Key Vault, or GCP Secret Manager
+                <li className="flex items-start gap-2">
+                  <span className="text-red-400 font-bold mt-1">•</span>
+                  <span>No cloud permission mapping</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-red-400 font-bold mt-1">•</span>
+                  <span>No proof of fix</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-red-400 font-bold mt-1">•</span>
+                  <span>Manual investigation</span>
                 </li>
               </ul>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.05 }}
-              className="rounded-xl border border-white/10 bg-white/5 p-6"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="rounded-lg border border-cyan-500/30 bg-cyan-500/5 p-6"
             >
-              <h3 className="text-lg font-bold text-white mb-4">Deployment Actions</h3>
+              <h3 className="text-lg font-bold text-white mb-4">With OpsMx</h3>
               <ul className="space-y-2 text-sm text-slate-300">
-                <li className="flex items-center gap-2">
-                  <Zap className="w-4 h-4 text-cyan-400" /> Replace hardcoded value with secret reference
+                <li className="flex items-start gap-2">
+                  <span className="text-cyan-400 font-bold mt-1">✓</span>
+                  <span>Active production secrets identified</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <Zap className="w-4 h-4 text-cyan-400" /> Update CI/CD variables
+                <li className="flex items-start gap-2">
+                  <span className="text-cyan-400 font-bold mt-1">✓</span>
+                  <span>Prioritized by blast radius</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <Zap className="w-4 h-4 text-cyan-400" /> Rebuild clean container image
+                <li className="flex items-start gap-2">
+                  <span className="text-cyan-400 font-bold mt-1">✓</span>
+                  <span>Routed to owners automatically</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <Zap className="w-4 h-4 text-cyan-400" /> Redeploy workload
+                <li className="flex items-start gap-2">
+                  <span className="text-cyan-400 font-bold mt-1">✓</span>
+                  <span>Remediation guidance generated</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-cyan-400 font-bold mt-1">✓</span>
+                  <span>Fixes verified</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-cyan-400 font-bold mt-1">✓</span>
+                  <span>Complete audit trail</span>
                 </li>
               </ul>
             </motion.div>
@@ -463,98 +500,161 @@ export default function SecretsPage() {
         </div>
       </section>
 
-      {/* Integrations */}
+      {/* Remediation Workflow Section */}
       <section className="py-20 px-6 bg-white/2">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-4xl font-black text-white mb-4 text-center"
+            className="text-4xl font-black text-white mb-12 text-center"
+          >
+            From Secret Finding to Verified Fix
+          </motion.h2>
+          <div className="space-y-4">
+            {workflowSteps.map((step, idx) => (
+              <WorkflowStep
+                key={idx}
+                number={idx + 1}
+                label={step.label}
+                description={step.description}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Remediation Actions Section */}
+      <section className="py-20 px-6">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl font-black text-white mb-12 text-center">Remediation Actions</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="rounded-lg border border-white/10 bg-white/5 p-6"
+            >
+              <h3 className="text-lg font-bold text-white mb-4">Secret Actions</h3>
+              <ul className="space-y-2 text-sm text-slate-300">
+                {['Revoke exposed key', 'Rotate credential', 'Remove secret from repo history', 'Move to HashiCorp Vault, AWS Secrets Manager, Azure Key Vault, or GCP Secret Manager'].map((action) => (
+                  <li key={action} className="flex items-start gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
+                    <span>{action}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="rounded-lg border border-white/10 bg-white/5 p-6"
+            >
+              <h3 className="text-lg font-bold text-white mb-4">Deployment Actions</h3>
+              <ul className="space-y-2 text-sm text-slate-300">
+                {['Replace hardcoded value with secret reference', 'Update CI/CD variables', 'Rebuild clean container image', 'Redeploy workload', 'Verify old credential no longer works'].map((action) => (
+                  <li key={action} className="flex items-start gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
+                    <span>{action}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Integrations Section */}
+      <section className="py-20 px-6 bg-white/2">
+        <div className="max-w-5xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl font-black text-white mb-12 text-center"
           >
             Works Across Your Security Stack
           </motion.h2>
-          <p className="text-lg text-slate-300 text-center mb-12 max-w-2xl mx-auto">
-            Integrates with your existing tools without replacement. OpsMx connects your entire delivery chain.
-          </p>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { title: 'Source Control', items: ['GitHub', 'GitLab', 'Bitbucket'] },
-              { title: 'CI/CD', items: ['Jenkins', 'GitHub Actions', 'GitLab CI', 'Argo CD', 'Spinnaker'] },
-              { title: 'Cloud Platforms', items: ['AWS', 'Azure', 'GCP'] },
-              { title: 'Container & K8s', items: ['Docker', 'Kubernetes', 'Container Registries'] },
-              { title: 'Secret Stores', items: ['HashiCorp Vault', 'AWS Secrets Manager', 'Azure Key Vault', 'GCP Secret Manager'] },
-              { title: 'Workflow & Ticketing', items: ['Jira', 'ServiceNow', 'Slack'] },
-            ].map((category, idx) => (
+          <div className="flex flex-wrap gap-3 justify-center">
+            {integrations.map((integration) => (
               <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.05 }}
-                className="rounded-xl border border-white/10 bg-white/5 p-6"
+                key={integration}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.2 }}
+                className="px-4 py-2 rounded-lg border border-white/10 bg-white/5 text-sm font-medium text-slate-300 hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all"
               >
-                <h3 className="font-bold text-white mb-4">{category.title}</h3>
-                <ul className="space-y-2">
-                  {category.items.map((item, i) => (
-                    <li key={i} className="text-sm text-slate-400 flex items-center gap-2">
-                      <span className="text-cyan-400">•</span> {item}
-                    </li>
-                  ))}
-                </ul>
+                {integration}
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Outcomes */}
+      {/* Outcomes Section */}
       <section className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-4xl font-black text-white mb-4 text-center"
+            className="text-4xl font-black text-white mb-12 text-center"
           >
             Outcomes Security and Engineering Can Measure
           </motion.h2>
-          <p className="text-lg text-slate-300 text-center mb-12">
-            Real impact on risk, velocity, and operational efficiency.
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {outcomes.map((outcome, idx) => (
-              <OutcomeCard key={idx} outcome={outcome} index={idx} />
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: idx * 0.05 }}
+                className="flex items-center gap-3 p-4 rounded-lg border border-white/10 bg-white/5"
+              >
+                <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0" />
+                <span className="text-sm text-slate-300">{outcome}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why OpsMx Section */}
+      <section className="py-20 px-6 bg-white/2">
+        <div className="max-w-5xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl font-black text-white mb-12 text-center"
+          >
+            Why OpsMx for Secrets?
+          </motion.h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+            {whyOpsMx.map((item, idx) => (
+              <WhyOpsMxCard key={idx} {...item} />
             ))}
           </div>
         </div>
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 px-6 bg-gradient-to-b from-cyan-950/20 to-slate-950">
+      <section className="py-20 px-6 bg-gradient-to-b from-slate-950 to-red-950/20">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-4xl font-black text-white mb-4">
-              Find Exposed Secrets Before Attackers Do
-            </h2>
+            <h2 className="text-4xl font-black text-white mb-4">Find Exposed Secrets Before Attackers Do</h2>
             <p className="text-lg text-slate-300 mb-8">
               See how OpsMx connects secrets, services, cloud permissions, data access, and remediation workflows into one code-to-cloud exposure view.
             </p>
-            <a
-              href="https://www.opsmx.com/talk-to-an-application-security-expert/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:from-cyan-400 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-cyan-500/20 inline-flex items-center justify-center gap-2"
-            >
-              See Secrets Blast Radius Demo <ArrowRight className="w-4 h-4" />
+            <a href="https://www.opsmx.com/talk-to-an-application-security-expert/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold hover:from-red-400 hover:to-red-500 transition-all shadow-lg shadow-red-500/20">
+              See Secrets Blast Radius Demo
+              <ArrowRight className="w-4 h-4" />
             </a>
           </motion.div>
         </div>

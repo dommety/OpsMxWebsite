@@ -142,8 +142,8 @@ function SecurityAreaCard({ area, index }) {
       >
         <area.icon className="w-6 h-6" style={{ color: area.color }} />
       </div>
-      <h3 className="text-lg font-bold text-white mb-2">{area.title}</h3>
-      <p className="text-sm text-slate-400 mb-4 leading-relaxed">{area.description}</p>
+      <h3 className="text-xl font-bold text-white mb-2">{area.title}</h3>
+      <p className="text-base text-slate-400 mb-4 leading-relaxed">{area.description}</p>
       <div className="mb-4 space-y-1">
         {area.capabilities.map((cap, i) => (
           <div key={i} className="text-xs text-slate-400 flex items-start gap-2">
@@ -267,8 +267,8 @@ export default function AISecurityPage() {
             transition={{ duration: 0.5 }}
             className="mb-12"
           >
-            <h2 className="text-4xl font-black text-white mb-4 text-center">AI Security Coverage</h2>
-            <p className="text-lg text-slate-300 text-center max-w-2xl mx-auto">
+            <h2 className="text-5xl font-black text-white mb-4 text-center">AI Security Coverage</h2>
+            <p className="text-xl text-slate-300 text-center max-w-2xl mx-auto">
               Comprehensive security across code, models, applications, data science workflows, and AI agents.
             </p>
           </motion.div>
