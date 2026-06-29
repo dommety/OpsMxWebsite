@@ -17,6 +17,8 @@ function BadgeChip({ type }) {
 
 function SolutionCard({ item, index }) {
   const Icon = item.icon
+  const href = item.href || `/solutions/${item.slug}`
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
@@ -26,7 +28,7 @@ function SolutionCard({ item, index }) {
       whileHover={{ y: -3 }}
     >
       <Link
-        to={`/solutions/${item.slug}`}
+        to={href}
         className="group flex items-start gap-3 p-4 rounded-xl border border-white/6 glass hover:border-white/12 transition-all duration-200 h-full"
         style={{ '--glow': item.color }}
       >
