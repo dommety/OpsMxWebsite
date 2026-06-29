@@ -42,14 +42,12 @@ function XBOMPlatformAnimation() {
                   whileInView={{ scale: 1, opacity: 1 }}
                   transition={{ delay: idx * 0.08, duration: 0.4 }}
                   viewport={{ once: false }}
-                  className="px-3 py-1.5 rounded-lg border-2 font-semibold text-xs text-white whitespace-nowrap absolute"
+                  className="px-3 py-1.5 rounded-lg border-2 font-semibold text-xs text-white whitespace-nowrap"
                   style={{
                     position: 'absolute',
-                    left: '50%',
-                    top: '50%',
-                    transform: `translate(${x}px, ${y}px)`,
-                    marginLeft: '-50%',
-                    marginTop: '-50%',
+                    left: `calc(50% + ${x}px)`,
+                    top: `calc(50% + ${y}px)`,
+                    transform: 'translate(-50%, -50%)',
                     borderColor: bom.color,
                     backgroundColor: `${bom.color}15`,
                   }}
