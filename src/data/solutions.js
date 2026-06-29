@@ -81,6 +81,14 @@ export const securitySolutions = [
     desc: 'Identify and remediate open source dependency, license, and package risk.',
   },
   {
+    slug: 'git-security-posture',
+    title: 'Git Security Posture',
+    icon: GitBranch,
+    color: '#22d3ee',
+    desc: 'Secure Git repositories against vulnerabilities, secrets exposure, and misconfigurations.',
+    href: '/git-security-posture',
+  },
+  {
     slug: 'container-security',
     title: 'Container Security',
     icon: Box,

@@ -12,6 +12,7 @@ import XBOMPage from './pages/XBOMPage'
 import SecretsPage from './pages/SecretsPage'
 import AISecurityPage from './pages/AISecurityPage'
 import APISecurityPage from './pages/APISecurityPage'
+import GitSecurityPage from './pages/GitSecurityPage'
 import PenetrationTestingPage from './pages/PenetrationTestingPage'
 import AIBOMPage from './pages/AIBOMPage'
 import DependencyIntelligencePage from './pages/DependencyIntelligencePage'
@@ -53,6 +54,7 @@ export default function App() {
         <Route path="/static-application-security-testing" element={<SASTPage />} />
         <Route path="/ai-security" element={<AISecurityPage />} />
         <Route path="/api-security" element={<APISecurityPage />} />
+        <Route path="/git-security-posture" element={<GitSecurityPage />} />
         <Route path="/ai-penetration-testing" element={<AIPenetrationTestingPage />} />
         <Route path="/penetration-testing" element={<PenetrationTestingPage />} />
         <Route path="/ai-bom" element={<AIBOMPage />} />
