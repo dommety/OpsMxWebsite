@@ -17,6 +17,15 @@ export const BADGES = {
 
 export const securitySolutions = [
   {
+    slug: 'regulatory-bom-reporting-suite',
+    title: 'Regulatory BOM Reporting Suite',
+    icon: FileCheck,
+    color: '#22d3ee',
+    desc: 'Generate every BOM, connect risk to remediation, and continuously produce audit-ready compliance evidence.',
+    badge: 'featured',
+    href: '/resources/solution-briefs/regulatory-bom-reporting-suite',
+  },
+  {
     slug: 'x-bom',
     title: 'X-BOM',
     icon: Package,

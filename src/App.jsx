@@ -31,6 +31,7 @@ import AIPenetrationTestingPage from './pages/AIPenetrationTestingPage'
 import SASTPage from './pages/SASTPage'
 import AdvancedBOMPage from './pages/AdvancedBOMPage'
 import WhyOpsMxXBOMPage from './pages/WhyOpsMxXBOMPage'
+import RegulatoryBOMSolutionBriefPage from './pages/RegulatoryBOMSolutionBriefPage'
 
 const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/'
 
@@ -57,6 +58,7 @@ export default function App() {
         <Route path="/ai-bom" element={<AIBOMPage />} />
         <Route path="/opsmx/advanced-bom-reporting" element={<AdvancedBOMPage />} />
         <Route path="/opsmx/bom-reporting-suite/why-opsmx-xbom" element={<WhyOpsMxXBOMPage />} />
+        <Route path="/resources/solution-briefs/regulatory-bom-reporting-suite" element={<RegulatoryBOMSolutionBriefPage />} />
         <Route path="/dependency-intelligence" element={<DependencyIntelligencePage />} />
         <Route path="/license-risk" element={<LicenseRiskPage />} />
         <Route path="/provenance" element={<ProvenancePage />} />
