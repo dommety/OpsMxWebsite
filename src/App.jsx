@@ -29,6 +29,7 @@ import IncidentDiagnosticsPage from './pages/IncidentDiagnosticsPage'
 import OperationalRemediationPage from './pages/OperationalRemediationPage'
 import AIPenetrationTestingPage from './pages/AIPenetrationTestingPage'
 import SASTPage from './pages/SASTPage'
+import AdvancedBOMPage from './pages/AdvancedBOMPage'
 
 const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/'
 
@@ -53,6 +54,7 @@ export default function App() {
         <Route path="/ai-penetration-testing" element={<AIPenetrationTestingPage />} />
         <Route path="/penetration-testing" element={<PenetrationTestingPage />} />
         <Route path="/ai-bom" element={<AIBOMPage />} />
+        <Route path="/opsmx/advanced-bom-reporting" element={<AdvancedBOMPage />} />
         <Route path="/dependency-intelligence" element={<DependencyIntelligencePage />} />
         <Route path="/license-risk" element={<LicenseRiskPage />} />
         <Route path="/provenance" element={<ProvenancePage />} />
