@@ -6,13 +6,13 @@ import Navbar from '../components/Navbar'
 // X-BOM Platform Animation
 function XBOMPlatformAnimation() {
   const boms = [
-    { label: 'SBOM', angle: 0 },
-    { label: 'CBOM', angle: 51.4 },
-    { label: 'QBOM', angle: 102.8 },
-    { label: 'AI-BOM', angle: 154.2 },
-    { label: 'HBOM', angle: 205.6 },
-    { label: 'DBOM', angle: 257 },
-    { label: 'Open Source BOM', angle: 308.4 },
+    { label: 'SBOM', color: '#22d3ee', angle: 0 },
+    { label: 'CBOM', color: '#f87171', angle: 51.4 },
+    { label: 'QBOM', color: '#fbbf24', angle: 102.8 },
+    { label: 'AI-BOM', color: '#a78bfa', angle: 154.2 },
+    { label: 'HBOM', color: '#34d399', angle: 205.6 },
+    { label: 'DBOM', color: '#60a5fa', angle: 257 },
+    { label: 'Open Source BOM', color: '#8b5cf6', angle: 308.4 },
   ]
 
   const workflow = [
@@ -27,44 +27,51 @@ function XBOMPlatformAnimation() {
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col items-center gap-12">
           {/* X-BOM Platform Center */}
-          <div className="relative w-80 h-80 flex items-center justify-center">
-            {/* Center Circle */}
-            <motion.div
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="absolute w-32 h-32 rounded-full border-2 border-cyan-500 bg-cyan-500/10 flex items-center justify-center"
-            >
-              <p className="text-center">
-                <span className="text-xs font-bold text-cyan-400">OpsMx</span>
-                <span className="text-xs text-slate-400 block">X-BOM Platform</span>
-              </p>
-            </motion.div>
-
+          <div className="relative w-96 h-96 flex items-center justify-center">
             {/* Orbiting BOMs */}
             {boms.map((bom, idx) => {
               const rad = (bom.angle * Math.PI) / 180
-              const x = 130 * Math.cos(rad)
-              const y = 130 * Math.sin(rad)
+              const radius = 140
+              const x = radius * Math.cos(rad)
+              const y = radius * Math.sin(rad)
 
               return (
                 <motion.div
                   key={idx}
                   initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ delay: idx * 0.08, duration: 0.3 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: idx * 0.08, duration: 0.4 }}
+                  viewport={{ once: false }}
+                  className="px-3 py-1.5 rounded-lg border-2 font-semibold text-xs text-white whitespace-nowrap absolute"
                   style={{
                     position: 'absolute',
                     left: '50%',
                     top: '50%',
-                    transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
+                    transform: `translate(${x}px, ${y}px)`,
+                    marginLeft: '-50%',
+                    marginTop: '-50%',
+                    borderColor: bom.color,
+                    backgroundColor: `${bom.color}15`,
                   }}
-                  className="px-3 py-1.5 rounded-lg border border-white/20 bg-white/5 text-xs font-semibold text-white whitespace-nowrap"
                 >
                   {bom.label}
                 </motion.div>
               )
             })}
+
+            {/* Center Circle */}
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: false }}
+              className="absolute z-10 w-32 h-32 rounded-full border-2 border-cyan-500 bg-cyan-500/10 flex items-center justify-center"
+            >
+              <div className="text-center">
+                <p className="text-xs font-bold text-cyan-400">OpsMx</p>
+                <p className="text-xs text-slate-400">X-BOM Platform</p>
+              </div>
+            </motion.div>
           </div>
 
           {/* Workflow */}
