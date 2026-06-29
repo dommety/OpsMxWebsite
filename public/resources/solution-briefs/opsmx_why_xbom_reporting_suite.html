@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why OpsMx X-BOM Reporting Suite | SBOM, CBOM, QBOM, AI-BOM, HBOM & DBOM</title>
+  <meta name="description" content="See why OpsMx X-BOM Reporting Suite goes beyond traditional SBOM tools with SBOM, CBOM, QBOM, AI-BOM, HBOM, DBOM, code-to-cloud traceability, remediation workflow, and continuous compliance reporting." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            opsmx: {
+              blue: '#0B1A3A',
+              light: '#1E3A8A',
+              accent: '#3B82F6',
+              highlight: '#06B6D4'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .gradient-text { background: linear-gradient(to right, #60A5FA, #06B6D4, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .bg-grid-pattern { background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 40px 40px; }
+    .hub-ring { animation: hubPulse 4s infinite ease-in-out; }
+    .hub-orbit { animation: floatSlow 7s infinite ease-in-out; }
+    .hub-orbit:nth-child(2) { animation-delay: .5s; }
+    .hub-orbit:nth-child(3) { animation-delay: 1s; }
+    .hub-orbit:nth-child(4) { animation-delay: 1.5s; }
+    .hub-orbit:nth-child(5) { animation-delay: 2s; }
+    .hub-orbit:nth-child(6) { animation-delay: 2.5s; }
+    .hub-line { stroke-dasharray: 8 10; animation: dashFlow 18s linear infinite; }
+    .workflow-stage { animation: stageGlow 10s infinite ease-in-out; }
+    .workflow-stage:nth-child(1) { animation-delay: 0s; }
+    .workflow-stage:nth-child(2) { animation-delay: 1.2s; }
+    .workflow-stage:nth-child(3) { animation-delay: 2.4s; }
+    .workflow-stage:nth-child(4) { animation-delay: 3.6s; }
+    .workflow-stage:nth-child(5) { animation-delay: 4.8s; }
+    .workflow-stage:nth-child(6) { animation-delay: 6s; }
+    .workflow-stage:nth-child(7) { animation-delay: 7.2s; }
+    .flow-pulse { position: absolute; left: 6%; top: 50%; width: 14px; height: 14px; border-radius: 9999px; background: #67e8f9; box-shadow: 0 0 22px rgba(103,232,249,.95), 0 0 44px rgba(59,130,246,.55); transform: translateY(-50%); animation: pulseTravel 10s infinite cubic-bezier(.65,0,.35,1); }
+    .flow-line { background: linear-gradient(90deg, rgba(96,165,250,.15), rgba(6,182,212,.75), rgba(96,165,250,.15)); background-size: 200% 100%; animation: lineFlow 4s infinite linear; }
+    @keyframes hubPulse { 0%,100% { box-shadow: 0 0 0 rgba(6,182,212,0); transform: scale(1); } 50% { box-shadow: 0 0 44px rgba(6,182,212,.30); transform: scale(1.03); } }
+    @keyframes floatSlow { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes dashFlow { to { stroke-dashoffset: -200; } }
+    @keyframes pulseTravel { 0%, 8% { left: 6%; opacity: 0; } 12% { opacity: 1; } 78% { opacity: 1; } 88%, 100% { left: 92%; opacity: 0; } }
+    @keyframes stageGlow { 0%, 18%, 100% { border-color: rgba(255,255,255,.12); background: rgba(15,23,42,.76); transform: translateY(0); } 7% { border-color: rgba(103,232,249,.75); background: rgba(30,58,138,.72); box-shadow: 0 0 28px rgba(6,182,212,.25); transform: translateY(-4px); } }
+    @keyframes lineFlow { from { background-position: 0% 50%; } to { background-position: 200% 50%; } }
+    @media (prefers-reduced-motion: reduce) { .hub-ring, .hub-orbit, .hub-line, .workflow-stage, .flow-pulse, .flow-line { animation: none !important; } }
+  </style>
+</head>
+<body class="font-sans antialiased text-slate-800 bg-white">
+  <nav class="fixed w-full z-50 bg-opsmx-blue/95 backdrop-blur-md border-b border-white/10 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="#" class="flex items-center" aria-label="OpsMx home">
+          <img src="data:image/png;base64,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" alt="OpsMx" class="h-10 md:h-12 w-auto" />
+        </a>
+        <div class="hidden md:flex space-x-8 items-center">
+          <a href="#difference" class="text-slate-300 hover:text-white transition-colors text-sm font-medium">Difference</a>
+          <a href="#boms" class="text-slate-300 hover:text-white transition-colors text-sm font-medium">BOMs</a>
+          <a href="#compare" class="text-slate-300 hover:text-white transition-colors text-sm font-medium">Compare</a>
+          <a href="#workflow" class="text-slate-300 hover:text-white transition-colors text-sm font-medium">Workflow</a>
+        </div>
+        <div class="hidden md:flex items-center space-x-4"><a href="#demo" class="bg-blue-600 hover:bg-blue-500 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-all shadow-lg shadow-blue-500/30">Request a Demo</a></div>
+        <button class="md:hidden text-slate-300 hover:text-white" aria-label="Open menu"><i data-lucide="menu" class="w-6 h-6"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="relative pt-32 pb-20 lg:pt-44 lg:pb-28 overflow-hidden bg-opsmx-blue">
+    <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl mix-blend-screen"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-600/20 rounded-full blur-3xl mix-blend-screen"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-300 text-sm font-medium mb-8">
+        <span class="flex h-2 w-2 rounded-full bg-blue-400 animate-pulse"></span>
+        Why OpsMx X-BOM Reporting Suite
+      </div>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-8 leading-tight max-w-6xl mx-auto">
+        One Platform. <span class="gradient-text">Every BOM.</span> Every Regulation.
+      </h1>
+      <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-5xl mx-auto leading-relaxed">
+        Generate, manage, correlate, and continuously report SBOM, CBOM, QBOM, AI-BOM, HBOM, and DBOM—while connecting every BOM to vulnerabilities, deployments, remediation, and audit-ready compliance evidence.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+        <a href="#demo" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all shadow-lg shadow-blue-500/30 flex items-center justify-center gap-2">Request a Demo <i data-lucide="arrow-right" class="w-5 h-5"></i></a>
+        <a href="#compare" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all backdrop-blur-sm border border-white/10">See Why OpsMx</a>
+      </div>
+
+      <div class="mt-16 max-w-5xl mx-auto relative rounded-3xl border border-white/10 bg-slate-950/55 backdrop-blur-xl shadow-2xl shadow-blue-950/40 p-6 md:p-10 overflow-hidden">
+        <div class="absolute top-12 left-16 w-28 h-28 bg-blue-500/20 rounded-full blur-2xl"></div>
+        <div class="absolute bottom-12 right-16 w-32 h-32 bg-cyan-400/20 rounded-full blur-2xl"></div>
+        <div class="relative grid lg:grid-cols-2 gap-10 items-center">
+          <div class="text-left">
+            <p class="text-xs uppercase tracking-[0.25em] text-cyan-300 font-semibold mb-3">Unified X-BOM Evidence Graph</p>
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">All BOMs feed one compliance and remediation system.</h2>
+            <p class="text-slate-300 leading-relaxed">Traditional tools generate artifacts. OpsMx connects artifacts to ownership, runtime exposure, deployment lineage, fixes, verification, and regulatory reporting.</p>
+          </div>
+          <div class="relative mx-auto w-full max-w-[420px] aspect-square">
+            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 420 420" role="img" aria-label="OpsMx X-BOM platform hub connecting SBOM, CBOM, QBOM, AI-BOM, HBOM, and DBOM">
+              <line class="hub-line" x1="210" y1="210" x2="210" y2="60" stroke="rgba(103,232,249,.45)" stroke-width="2" />
+              <line class="hub-line" x1="210" y1="210" x2="355" y2="135" stroke="rgba(103,232,249,.45)" stroke-width="2" />
+              <line class="hub-line" x1="210" y1="210" x2="355" y2="285" stroke="rgba(103,232,249,.45)" stroke-width="2" />
+              <line class="hub-line" x1="210" y1="210" x2="210" y2="360" stroke="rgba(103,232,249,.45)" stroke-width="2" />
+              <line class="hub-line" x1="210" y1="210" x2="65" y2="285" stroke="rgba(103,232,249,.45)" stroke-width="2" />
+              <line class="hub-line" x1="210" y1="210" x2="65" y2="135" stroke="rgba(103,232,249,.45)" stroke-width="2" />
+            </svg>
+            <div class="hub-ring absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-3xl border border-cyan-300/40 bg-blue-950/90 flex flex-col items-center justify-center text-white shadow-xl">
+              <i data-lucide="network" class="w-9 h-9 text-cyan-300 mb-2"></i>
+              <div class="font-extrabold text-lg">OpsMx</div>
+              <div class="text-xs text-cyan-200">X-BOM</div>
+            </div>
+            <div class="hub-orbit absolute left-1/2 top-0 -translate-x-1/2 bg-white/10 border border-white/15 backdrop-blur rounded-2xl px-4 py-3 text-white text-center"><b>AI-BOM</b><p class="text-xs text-slate-300">AI assets</p></div>
+            <div class="hub-orbit absolute right-0 top-[24%] bg-white/10 border border-white/15 backdrop-blur rounded-2xl px-4 py-3 text-white text-center"><b>QBOM</b><p class="text-xs text-slate-300">Quantum</p></div>
+            <div class="hub-orbit absolute right-0 bottom-[24%] bg-white/10 border border-white/15 backdrop-blur rounded-2xl px-4 py-3 text-white text-center"><b>HBOM</b><p class="text-xs text-slate-300">Infra</p></div>
+            <div class="hub-orbit absolute left-1/2 bottom-0 -translate-x-1/2 bg-white/10 border border-white/15 backdrop-blur rounded-2xl px-4 py-3 text-white text-center"><b>DBOM</b><p class="text-xs text-slate-300">Delivery</p></div>
+            <div class="hub-orbit absolute left-0 bottom-[24%] bg-white/10 border border-white/15 backdrop-blur rounded-2xl px-4 py-3 text-white text-center"><b>CBOM</b><p class="text-xs text-slate-300">Crypto</p></div>
+            <div class="hub-orbit absolute left-0 top-[24%] bg-white/10 border border-white/15 backdrop-blur rounded-2xl px-4 py-3 text-white text-center"><b>SBOM</b><p class="text-xs text-slate-300">Software</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="difference" class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Most BOM tools stop at inventory.</h2>
+          <p class="text-lg text-slate-600 mb-6 leading-relaxed">Traditional SBOM platforms answer one question: <strong class="text-slate-900">what software components do we have?</strong></p>
+          <p class="text-lg text-slate-600 mb-8 leading-relaxed">OpsMx answers the questions executives and regulators actually ask: <strong class="text-slate-900">what is exposed, who owns it, what must be fixed, was it remediated, and can we prove it?</strong></p>
+          <div class="border-l-4 border-blue-600 pl-6 py-2 bg-white rounded-r shadow-sm"><p class="text-xl font-medium text-slate-800 italic">"OpsMx turns BOMs from static artifacts into a continuous evidence and remediation workflow."</p></div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm"><p class="text-sm font-bold text-slate-500 uppercase mb-3">Traditional</p><div class="space-y-3 text-slate-700"><p>Code → SBOM</p><p>Static report</p><p>Manual audit prep</p><p>Separate remediation</p></div></div>
+          <div class="bg-slate-900 text-white border border-slate-800 rounded-2xl p-6 shadow-xl"><p class="text-sm font-bold text-cyan-300 uppercase mb-3">OpsMx</p><div class="space-y-3 text-slate-200"><p>Code → Cloud → Runtime</p><p>SBOM + CBOM + QBOM + AI-BOM + HBOM + DBOM</p><p>Continuous evidence</p><p>Verified remediation</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="boms" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-4xl mx-auto mb-14"><h2 class="text-blue-600 font-semibold tracking-wide uppercase text-sm mb-3">One Platform for Every BOM</h2><h3 class="text-3xl md:text-5xl font-bold text-slate-900 mb-6">Unified BOM Reporting Across Software, AI, Crypto, Infrastructure, and Delivery</h3><p class="text-lg text-slate-600">Each BOM provides a different view of risk. OpsMx brings them together into one evidence graph.</p></div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-lg transition-all"><i data-lucide="file-code" class="w-8 h-8 text-blue-600 mb-4"></i><h4 class="font-bold text-slate-900 mb-2">SBOM</h4><p class="text-sm text-slate-600">Components, dependencies, licenses, provenance, vulnerabilities, and third-party software risk.</p></div>
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-lg transition-all"><i data-lucide="key-round" class="w-8 h-8 text-purple-600 mb-4"></i><h4 class="font-bold text-slate-900 mb-2">CBOM</h4><p class="text-sm text-slate-600">Cryptographic algorithms, certificates, keys, weak crypto, policy exceptions, and PQC readiness.</p></div>
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-lg transition-all"><i data-lucide="atom" class="w-8 h-8 text-cyan-600 mb-4"></i><h4 class="font-bold text-slate-900 mb-2">QBOM</h4><p class="text-sm text-slate-600">Quantum-vulnerable cryptography, migration planning, risk scoring, and future-readiness reports.</p></div>
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-lg transition-all"><i data-lucide="brain-circuit" class="w-8 h-8 text-rose-600 mb-4"></i><h4 class="font-bold text-slate-900 mb-2">AI-BOM</h4><p class="text-sm text-slate-600">Models, prompts, datasets, agents, MCP servers, AI frameworks, notebooks, and lineage evidence.</p></div>
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-lg transition-all"><i data-lucide="server" class="w-8 h-8 text-emerald-600 mb-4"></i><h4 class="font-bold text-slate-900 mb-2">HBOM</h4><p class="text-sm text-slate-600">Cloud assets, Kubernetes, containers, firmware, infrastructure, IaC, and runtime context.</p></div>
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-lg transition-all"><i data-lucide="git-commit" class="w-8 h-8 text-orange-600 mb-4"></i><h4 class="font-bold text-slate-900 mb-2">DBOM</h4><p class="text-sm text-slate-600">Pipelines, artifacts, approvals, releases, deployment traceability, and production lineage.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="compare" class="py-24 bg-gradient-to-br from-slate-50 to-blue-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-4xl mx-auto mb-16"><h2 class="text-blue-600 font-semibold tracking-wide uppercase text-sm mb-3">Why OpsMx is Different</h2><h3 class="text-3xl md:text-5xl font-bold text-slate-900 mb-6">Beyond Traditional BOM Platforms</h3><p class="text-lg text-slate-600">Most vendors focus on SBOM or software composition. OpsMx unifies BOM reporting with deployment traceability, policy, remediation, and verification.</p></div>
+      <div class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
+        <div class="grid grid-cols-3 bg-slate-900 text-white text-sm font-bold"><div class="p-4">Capability</div><div class="p-4 text-center">Traditional BOM Tools</div><div class="p-4 text-center bg-blue-700">OpsMx X-BOM Suite</div></div>
+        <div class="divide-y divide-slate-200 text-sm">
+          <div class="grid grid-cols-3"><div class="p-4 font-medium">SBOM generation & management</div><div class="p-4 text-center">✓</div><div class="p-4 text-center font-bold text-blue-700">✓</div></div>
+          <div class="grid grid-cols-3 bg-slate-50"><div class="p-4 font-medium">CBOM / crypto inventory</div><div class="p-4 text-center text-slate-500">Limited</div><div class="p-4 text-center font-bold text-blue-700">✓</div></div>
+          <div class="grid grid-cols-3"><div class="p-4 font-medium">QBOM / quantum readiness</div><div class="p-4 text-center text-slate-500">Rare</div><div class="p-4 text-center font-bold text-blue-700">✓</div></div>
+          <div class="grid grid-cols-3 bg-slate-50"><div class="p-4 font-medium">AI-BOM / AI governance evidence</div><div class="p-4 text-center text-slate-500">Partial</div><div class="p-4 text-center font-bold text-blue-700">✓</div></div>
+          <div class="grid grid-cols-3"><div class="p-4 font-medium">HBOM / infrastructure visibility</div><div class="p-4 text-center text-slate-500">Rare</div><div class="p-4 text-center font-bold text-blue-700">✓</div></div>
+          <div class="grid grid-cols-3 bg-slate-50"><div class="p-4 font-medium">DBOM / deployment traceability</div><div class="p-4 text-center text-slate-500">No</div><div class="p-4 text-center font-bold text-blue-700">✓</div></div>
+          <div class="grid grid-cols-3"><div class="p-4 font-medium">Code-to-cloud visibility</div><div class="p-4 text-center text-slate-500">Limited</div><div class="p-4 text-center font-bold text-blue-700">✓</div></div>
+          <div class="grid grid-cols-3 bg-slate-50"><div class="p-4 font-medium">Remediation workflow</div><div class="p-4 text-center text-slate-500">Partial</div><div class="p-4 text-center font-bold text-blue-700">✓</div></div>
+          <div class="grid grid-cols-3"><div class="p-4 font-medium">Verified fixes & continuous reporting</div><div class="p-4 text-center text-slate-500">Partial</div><div class="p-4 text-center font-bold text-blue-700">✓</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-4xl mx-auto mb-14"><h2 class="text-blue-600 font-semibold tracking-wide uppercase text-sm mb-3">Built for Modern Compliance</h2><h3 class="text-3xl md:text-5xl font-bold text-slate-900 mb-6">One Evidence Layer for Every Regulation</h3><p class="text-lg text-slate-600">OpsMx helps teams generate continuous evidence for global software supply chain, application security, AI governance, and regulatory reporting programs.</p></div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6"><h4 class="font-bold text-slate-900 mb-2">Executive Order 14028</h4><p class="text-sm text-slate-600">SBOM, secure development, vulnerability management, and software integrity evidence.</p></div>
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6"><h4 class="font-bold text-slate-900 mb-2">EU CRA</h4><p class="text-sm text-slate-600">Product security, lifecycle vulnerability handling, SBOM, EUVD correlation, and evidence packs.</p></div>
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6"><h4 class="font-bold text-slate-900 mb-2">CERT-In & MeitY</h4><p class="text-sm text-slate-600">Application security, supply chain, incident evidence, remediation, and audit readiness.</p></div>
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6"><h4 class="font-bold text-slate-900 mb-2">AI Governance</h4><p class="text-sm text-slate-600">AI-BOM, models, prompts, agents, MCP servers, notebooks, AI testing, and governance evidence.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="workflow" class="py-24 bg-opsmx-blue text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-4xl mx-auto mb-14"><h2 class="text-cyan-300 font-semibold tracking-wide uppercase text-sm mb-3">Continuous X-BOM Workflow</h2><h3 class="text-3xl md:text-5xl font-bold mb-6">From BOM Data to Verified Risk Reduction</h3><p class="text-lg text-slate-300">OpsMx connects each BOM to risk, ownership, remediation, verification, and regulatory reporting.</p></div>
+      <div class="relative rounded-3xl border border-white/10 bg-slate-950/55 backdrop-blur-xl shadow-2xl shadow-blue-950/40 p-5 md:p-7 overflow-hidden">
+        <div class="relative hidden md:block py-4">
+          <div class="absolute left-[6%] right-[6%] top-1/2 h-1 rounded-full flow-line opacity-80"></div>
+          <div class="flow-pulse"></div>
+          <div class="relative grid grid-cols-7 gap-3">
+            <div class="workflow-stage rounded-2xl border p-4 text-center"><i data-lucide="search" class="w-7 h-7 text-blue-300 mx-auto mb-3"></i><h4 class="font-semibold text-sm">Discover</h4><p class="text-slate-400 text-xs mt-1">Assets + software</p></div>
+            <div class="workflow-stage rounded-2xl border p-4 text-center"><i data-lucide="network" class="w-7 h-7 text-cyan-300 mx-auto mb-3"></i><h4 class="font-semibold text-sm">Generate</h4><p class="text-slate-400 text-xs mt-1">X-BOM evidence</p></div>
+            <div class="workflow-stage rounded-2xl border p-4 text-center"><i data-lucide="radar" class="w-7 h-7 text-indigo-300 mx-auto mb-3"></i><h4 class="font-semibold text-sm">Correlate</h4><p class="text-slate-400 text-xs mt-1">Vulns + context</p></div>
+            <div class="workflow-stage rounded-2xl border p-4 text-center"><i data-lucide="list-filter" class="w-7 h-7 text-amber-300 mx-auto mb-3"></i><h4 class="font-semibold text-sm">Prioritize</h4><p class="text-slate-400 text-xs mt-1">Risk + exposure</p></div>
+            <div class="workflow-stage rounded-2xl border p-4 text-center"><i data-lucide="wrench" class="w-7 h-7 text-orange-300 mx-auto mb-3"></i><h4 class="font-semibold text-sm">Remediate</h4><p class="text-slate-400 text-xs mt-1">Owners + fixes</p></div>
+            <div class="workflow-stage rounded-2xl border p-4 text-center"><i data-lucide="check-check" class="w-7 h-7 text-emerald-300 mx-auto mb-3"></i><h4 class="font-semibold text-sm">Verify</h4><p class="text-slate-400 text-xs mt-1">Retest + proof</p></div>
+            <div class="workflow-stage rounded-2xl border p-4 text-center"><i data-lucide="file-check-2" class="w-7 h-7 text-green-300 mx-auto mb-3"></i><h4 class="font-semibold text-sm">Report</h4><p class="text-slate-400 text-xs mt-1">Audit package</p></div>
+          </div>
+        </div>
+        <div class="md:hidden grid grid-cols-2 gap-3">
+          <div class="workflow-stage rounded-2xl border border-white/10 bg-slate-900/70 p-4 text-center">Discover</div><div class="workflow-stage rounded-2xl border border-white/10 bg-slate-900/70 p-4 text-center">Generate</div><div class="workflow-stage rounded-2xl border border-white/10 bg-slate-900/70 p-4 text-center">Correlate</div><div class="workflow-stage rounded-2xl border border-white/10 bg-slate-900/70 p-4 text-center">Prioritize</div><div class="workflow-stage rounded-2xl border border-white/10 bg-slate-900/70 p-4 text-center">Verify</div><div class="workflow-stage rounded-2xl border border-white/10 bg-slate-900/70 p-4 text-center">Report</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16"><h2 class="text-blue-600 font-semibold tracking-wide uppercase text-sm mb-3">Why Customers Choose OpsMx</h2><h3 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">X-BOM Intelligence That Becomes Action</h3></div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-slate-50 border border-slate-200 p-8 rounded-2xl"><i data-lucide="layers-3" class="w-8 h-8 text-blue-600 mb-5"></i><h4 class="text-xl font-bold text-slate-900 mb-3">One Platform</h4><p class="text-slate-600 text-sm leading-relaxed">Eliminate separate tools for separate BOM types and consolidate reporting into one evidence graph.</p></div>
+        <div class="bg-slate-50 border border-slate-200 p-8 rounded-2xl"><i data-lucide="clock" class="w-8 h-8 text-cyan-600 mb-5"></i><h4 class="text-xl font-bold text-slate-900 mb-3">Continuous Reporting</h4><p class="text-slate-600 text-sm leading-relaxed">Keep evidence current as code, dependencies, AI assets, infrastructure, and deployments change.</p></div>
+        <div class="bg-slate-50 border border-slate-200 p-8 rounded-2xl"><i data-lucide="target" class="w-8 h-8 text-emerald-600 mb-5"></i><h4 class="text-xl font-bold text-slate-900 mb-3">Actionable Intelligence</h4><p class="text-slate-600 text-sm leading-relaxed">Connect BOM data to vulnerabilities, owners, exposure, business context, and remediation priorities.</p></div>
+        <div class="bg-slate-50 border border-slate-200 p-8 rounded-2xl"><i data-lucide="wrench" class="w-8 h-8 text-orange-600 mb-5"></i><h4 class="text-xl font-bold text-slate-900 mb-3">Remediation Built In</h4><p class="text-slate-600 text-sm leading-relaxed">Move directly from BOM risk to owner assignment, fix workflow, approvals, and verified remediation.</p></div>
+        <div class="bg-slate-50 border border-slate-200 p-8 rounded-2xl"><i data-lucide="file-json" class="w-8 h-8 text-indigo-600 mb-5"></i><h4 class="text-xl font-bold text-slate-900 mb-3">Open Standards</h4><p class="text-slate-600 text-sm leading-relaxed">Ingest third-party BOMs and support common standards such as SPDX and CycloneDX.</p></div>
+        <div class="bg-slate-50 border border-slate-200 p-8 rounded-2xl"><i data-lucide="rocket" class="w-8 h-8 text-rose-600 mb-5"></i><h4 class="text-xl font-bold text-slate-900 mb-3">Future Ready</h4><p class="text-slate-600 text-sm leading-relaxed">Extend from SBOM to AI, quantum, crypto, hardware, infrastructure, and emerging regulations.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="demo" class="py-24 bg-gradient-to-br from-blue-50 to-white relative overflow-hidden"><div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10"><h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">Every BOM. Every Release. <br><span class="text-blue-600">Every Regulation.</span></h2><p class="text-xl text-slate-600 mb-10 max-w-2xl mx-auto">Generate comprehensive X-BOM intelligence, automate compliance reporting, and continuously prove software security from development through production.</p><div class="bg-white p-8 rounded-2xl shadow-xl border border-slate-100 max-w-md mx-auto text-left"><form class="space-y-4"><div><label class="block text-sm font-medium text-slate-700 mb-1">Work Email</label><input type="email" placeholder="jane@company.com" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"></div><button type="button" onclick="alert('This is a demo layout.')" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-colors shadow-lg shadow-blue-500/30 flex items-center justify-center gap-2">Request X-BOM Demo <i data-lucide="arrow-right" class="w-4 h-4"></i></button><p class="text-xs text-center text-slate-500 mt-4">Talk to an OpsMx X-BOM compliance expert.</p></form></div></div></section>
+
+  <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12"><div><div class="flex items-center mb-6"><img src="data:image/png;base64,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" alt="OpsMx" class="h-8 w-auto" /></div><p class="text-sm">Unified X-BOM reporting and remediation workflow for modern software delivery.</p></div><div><h4 class="text-white font-semibold mb-4">BOM Suite</h4><ul class="space-y-2 text-sm"><li><a href="#" class="hover:text-blue-400 transition-colors">SBOM Reporting</a></li><li><a href="#" class="hover:text-blue-400 transition-colors">AI-BOM Reporting</a></li><li><a href="#" class="hover:text-blue-400 transition-colors">CBOM / QBOM</a></li></ul></div><div><h4 class="text-white font-semibold mb-4">Platform</h4><ul class="space-y-2 text-sm"><li><a href="#" class="hover:text-blue-400 transition-colors">X-BOM Intelligence</a></li><li><a href="#" class="hover:text-blue-400 transition-colors">Remediation Workflow</a></li><li><a href="#" class="hover:text-blue-400 transition-colors">Continuous Verification</a></li></ul></div><div><h4 class="text-white font-semibold mb-4">Company</h4><ul class="space-y-2 text-sm"><li><a href="#" class="hover:text-blue-400 transition-colors">About Us</a></li><li><a href="#" class="hover:text-blue-400 transition-colors">Contact</a></li><li><a href="#" class="hover:text-blue-400 transition-colors">Resources</a></li></ul></div></div><div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm"><p>&copy; 2026 OpsMx. All rights reserved.</p><div class="flex space-x-6 mt-4 md:mt-0"><a href="#" class="hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a><a href="#" class="hover:text-white transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a></div></div></div></footer>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

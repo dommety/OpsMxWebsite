@@ -135,7 +135,26 @@ function BOMCard({ icon: Icon, label, items, color }) {
 }
 
 // Regulation Card
-function RegulationCard({ title, description }) {
+function RegulationCard({ title, description, href }) {
+  if (href) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="rounded-lg border border-white/10 bg-white/5 p-5 hover:border-cyan-500/50 hover:bg-cyan-500/10 transition-all cursor-pointer group"
+        >
+          <h3 className="text-sm font-bold text-white mb-2 flex items-center justify-between">
+            {title}
+            <ArrowRight className="w-3 h-3 text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+          </h3>
+          <p className="text-xs text-slate-300">{description}</p>
+        </motion.div>
+      </a>
+    )
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -310,12 +329,12 @@ const workflowSteps = [
 const regulations = [
   { title: 'CERT-In', description: 'Continuous software supply chain visibility and vulnerability disclosure.' },
   { title: 'MeitY', description: 'Indian software security and supply chain governance requirements.' },
-  { title: 'Executive Order 14028', description: 'US federal software supply chain security and SBOMs.' },
-  { title: 'CRA', description: 'EU Cyber Resilience Act demands for software security and vulnerability management.' },
+  { title: 'Executive Order 14028', description: 'US federal software supply chain security and SBOMs.', href: '/resources/solution-briefs/opsmx_executive_order_14028_compliance_reporting.html' },
+  { title: 'CRA', description: 'EU Cyber Resilience Act demands for software security and vulnerability management.', href: '/resources/solution-briefs/opsmx_cra_appsec_ai_governance_compliance_reporting_logo_fixed.html' },
   { title: 'EUVD', description: 'EU Vulnerability Disclosure Directive for coordinated vulnerability response.' },
-  { title: 'RBI', description: 'Reserve Bank of India guidelines for software security and risk management.' },
-  { title: 'SEBI', description: 'Securities and Exchange Board of India compliance on cybersecurity.' },
-  { title: 'AI Governance', description: 'Emerging requirements for AI system transparency, safety, and accountability.' },
+  { title: 'RBI', description: 'Reserve Bank of India guidelines for software security and risk management.', href: '/resources/solution-briefs/opsmx_rbi_appsec_compliance_reporting.html' },
+  { title: 'SEBI', description: 'Securities and Exchange Board of India compliance on cybersecurity.', href: '/resources/solution-briefs/opsmx_sebi_appsec_compliance_reporting.html' },
+  { title: 'AI Governance', description: 'Emerging requirements for AI system transparency, safety, and accountability.', href: '/resources/solution-briefs/opsmx_ai_governance_appsec_compliance_reporting.html' },
   { title: 'NIST SSDF', description: 'US NIST Secure Software Development Framework.' },
   { title: 'ISO 27001', description: 'International information security management standard.' },
   { title: 'ISO 42001', description: 'AI governance and management systems.' },
