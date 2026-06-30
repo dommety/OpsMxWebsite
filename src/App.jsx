@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import PlatformPage from './pages/PlatformPage'
 import SolutionsPage from './pages/SolutionsPage'
-import SolutionDetailPage from './pages/SolutionDetailPage'
 import ResourcesVideosPage from './pages/ResourcesVideosPage'
 import CaseStudiesPage from './pages/CaseStudiesPage'
 import CompanyPage from './pages/CompanyPage'
@@ -43,7 +42,6 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/platform" element={<PlatformPage />} />
         <Route path="/solutions" element={<SolutionsPage />} />
-        <Route path="/solutions/:slug" element={<SolutionDetailPage />} />
         <Route path="/resources/videos" element={<ResourcesVideosPage />} />
         <Route path="/case-studies" element={<CaseStudiesPage />} />
         <Route path="/company" element={<CompanyPage />} />
