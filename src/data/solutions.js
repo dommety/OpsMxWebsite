@@ -99,7 +99,7 @@ export const securitySolutions = [
     icon: Box,
     color: '#60a5fa',
     desc: 'Analyze container images, packages, runtime exposure, and artifact risk.',
-    href: '/container-security',
+    href: '/workload-security',
   },
   {
     slug: 'api-security',
@@ -185,6 +185,7 @@ export const remediationSolutions = [
     icon: TrendingDown,
     color: '#f472b6',
     desc: 'Reduce critical vulnerability queues with context-aware remediation workflows.',
+    href: '/threat-correlation',
   },
 ]
 
