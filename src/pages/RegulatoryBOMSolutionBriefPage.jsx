@@ -773,7 +773,7 @@ export default function RegulatoryBOMSolutionBriefPage() {
                 Request Demo
                 <ArrowRight className="w-4 h-4" />
               </a>
-              <a href="/opsmx/advanced-bom-reporting" className="px-8 py-3 rounded-lg border border-white/20 text-white font-semibold hover:border-white/40 hover:bg-white/5 transition-all">
+              <a href="/solution-briefs/advanced-bom-reporting" className="px-8 py-3 rounded-lg border border-white/20 text-white font-semibold hover:border-white/40 hover:bg-white/5 transition-all">
                 Explore BOM Reporting Suite
               </a>
             </div>

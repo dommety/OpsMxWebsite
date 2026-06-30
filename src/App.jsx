@@ -42,7 +42,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/platform" element={<PlatformPage />} />
         <Route path="/solutions" element={<SolutionsPage />} />
-        <Route path="/resources/videos" element={<ResourcesVideosPage />} />
+        <Route path="/videos" element={<ResourcesVideosPage />} />
         <Route path="/case-studies" element={<CaseStudiesPage />} />
         <Route path="/company" element={<CompanyPage />} />
         <Route path="/contact" element={<ContactPage />} />
@@ -56,8 +56,8 @@ export default function App() {
         <Route path="/ai-penetration-testing" element={<AIPenetrationTestingPage />} />
         <Route path="/penetration-testing" element={<PenetrationTestingPage />} />
         <Route path="/ai-bom" element={<AIBOMPage />} />
-        <Route path="/opsmx/advanced-bom-reporting" element={<AdvancedBOMPage />} />
-        <Route path="/opsmx/bom-reporting-suite/why-opsmx-xbom" element={<WhyOpsMxXBOMPage />} />
+        <Route path="/solution-briefs/advanced-bom-reporting" element={<AdvancedBOMPage />} />
+        <Route path="/solution-briefs/why-opsmx-xbom" element={<WhyOpsMxXBOMPage />} />
         <Route path="/solution-briefs/regulatory-bom-reporting-suite" element={<RegulatoryBOMSolutionBriefPage />} />
         <Route path="/dependency-intelligence" element={<DependencyIntelligencePage />} />
         <Route path="/license-risk" element={<LicenseRiskPage />} />
