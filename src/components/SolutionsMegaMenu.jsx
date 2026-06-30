@@ -20,10 +20,11 @@ function Badge({ type }) {
 
 function SolutionItem({ item }) {
   const Icon = item.icon
+  const href = item.href || `/solutions/${item.slug}`
   return (
     <motion.div whileHover={{ x: 2 }}>
       <Link
-        to={`/solutions/${item.slug}`}
+        to={href}
         className="flex items-start gap-2.5 px-2 py-1.5 rounded-lg group hover:bg-white/4 transition-colors duration-150"
       >
         <div
