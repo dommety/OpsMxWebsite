@@ -23,7 +23,7 @@ export const securitySolutions = [
     color: '#22d3ee',
     desc: 'Generate every BOM, connect risk to remediation, and continuously produce audit-ready compliance evidence.',
     badge: 'featured',
-    href: '/resources/solution-briefs/regulatory-bom-reporting-suite',
+    href: '/solution-briefs/regulatory-bom-reporting-suite',
   },
   {
     slug: 'x-bom',
@@ -50,6 +50,7 @@ export const securitySolutions = [
     color: '#f472b6',
     desc: 'AI-assisted attack simulation, DAST, API testing, validation, and remediation guidance.',
     badge: 'featured',
+    href: '/ai-penetration-testing',
   },
   {
     slug: 'ai-code-security-remediation',
@@ -58,6 +59,7 @@ export const securitySolutions = [
     color: '#22d3ee',
     desc: 'Secure developer-written and AI-generated code with automated fix guidance.',
     badge: 'featured',
+    href: '/ai-security',
   },
   {
     slug: 'application-security-testing',
@@ -65,6 +67,7 @@ export const securitySolutions = [
     icon: Shield,
     color: '#60a5fa',
     desc: 'SAST, DAST, SCA, secrets, API security, and application risk analysis.',
+    href: '/static-application-security-testing',
   },
   {
     slug: 'cloud-kubernetes-security',
@@ -72,6 +75,7 @@ export const securitySolutions = [
     icon: Cloud,
     color: '#34d399',
     desc: 'CSPM, Kubernetes security, IaC, container risk, and cloud remediation.',
+    href: '/cloud-remediation',
   },
   {
     slug: 'open-source-security',
@@ -79,6 +83,7 @@ export const securitySolutions = [
     icon: GitBranch,
     color: '#a78bfa',
     desc: 'Identify and remediate open source dependency, license, and package risk.',
+    href: '/dependency-intelligence',
   },
   {
     slug: 'git-security-posture',
@@ -94,6 +99,7 @@ export const securitySolutions = [
     icon: Box,
     color: '#60a5fa',
     desc: 'Analyze container images, packages, runtime exposure, and artifact risk.',
+    href: '/container-security',
   },
   {
     slug: 'api-security',
@@ -101,6 +107,7 @@ export const securitySolutions = [
     icon: Globe,
     color: '#34d399',
     desc: 'Discover, test, and remediate API vulnerabilities and exposure.',
+    href: '/api-security',
   },
   {
     slug: 'vulnerability-reachability-prioritization',
@@ -108,6 +115,7 @@ export const securitySolutions = [
     icon: BarChart3,
     color: '#fbbf24',
     desc: 'Prioritize vulnerabilities using reachability, exploitability, business impact, and ownership.',
+    href: '/threat-correlation',
   },
   {
     slug: 'compliance-automation',
@@ -115,6 +123,7 @@ export const securitySolutions = [
     icon: FileCheck,
     color: '#fbbf24',
     desc: 'Automate evidence, policies, audit trails, and compliance reporting.',
+    href: '/audit-reporting',
   },
   {
     slug: 'security-policy-enforcement',
@@ -122,6 +131,7 @@ export const securitySolutions = [
     icon: Lock,
     color: '#f87171',
     desc: 'Enforce policy gates across code, pipelines, cloud, and deployments.',
+    href: '/secrets',
   },
 ]
 
@@ -135,6 +145,7 @@ export const remediationSolutions = [
     color: '#22d3ee',
     desc: 'Generate code fixes, dependency upgrades, and secure pull requests.',
     badge: 'remediation',
+    href: '/ai-security',
   },
   {
     slug: 'binary-artifact-remediation',
@@ -142,6 +153,7 @@ export const remediationSolutions = [
     icon: Box,
     color: '#a78bfa',
     desc: 'Remediate risks in containers, packages, images, and deployed artifacts.',
+    href: '/workload-security',
   },
   {
     slug: 'cloud-remediation',
@@ -149,6 +161,7 @@ export const remediationSolutions = [
     icon: Cloud,
     color: '#34d399',
     desc: 'Fix cloud misconfigurations, posture issues, exposure, and identity risks.',
+    href: '/cloud-remediation',
   },
   {
     slug: 'kubernetes-remediation',
@@ -156,6 +169,7 @@ export const remediationSolutions = [
     icon: GitMerge,
     color: '#60a5fa',
     desc: 'Remediate Kubernetes misconfigurations, workload risks, drift, and operational issues.',
+    href: '/incident-diagnostics',
   },
   {
     slug: 'devops-remediation',
@@ -163,6 +177,7 @@ export const remediationSolutions = [
     icon: Settings,
     color: '#fbbf24',
     desc: 'Fix CI/CD, GitOps, release, deployment, and operational workflow issues.',
+    href: '/operational-remediation',
   },
   {
     slug: 'vulnerability-backlog-reduction',
@@ -183,6 +198,7 @@ export const operationsSolutions = [
     color: '#a78bfa',
     desc: 'Assess security, operational, and business impact of AI agent, code, cloud, infrastructure, and deployment changes before execution.',
     badge: 'new',
+    href: '/change-risk',
   },
   {
     slug: 'devsecops',
@@ -190,6 +206,7 @@ export const operationsSolutions = [
     icon: Zap,
     color: '#60a5fa',
     desc: 'Integrate security throughout CI/CD pipelines with continuous scanning, policy enforcement, and automated remediation.',
+    href: '/static-application-security-testing',
   },
   {
     slug: 'devops-diagnostics',
@@ -197,6 +214,7 @@ export const operationsSolutions = [
     icon: Microscope,
     color: '#f472b6',
     desc: 'Diagnose failed deployments, pipeline issues, Kubernetes problems, and operational failures.',
+    href: '/root-cause-analysis',
   },
   {
     slug: 'release-risk-assessment',
@@ -204,6 +222,7 @@ export const operationsSolutions = [
     icon: BarChart3,
     color: '#fbbf24',
     desc: 'Assess release risk using security, operational, dependency, and business context.',
+    href: '/deployment-verification',
   },
   {
     slug: 'deployment-verification',
@@ -211,6 +230,7 @@ export const operationsSolutions = [
     icon: CheckSquare,
     color: '#34d399',
     desc: 'Validate deployments before, during, and after release.',
+    href: '/deployment-verification',
   },
   {
     slug: 'gitops-governance',
@@ -218,6 +238,7 @@ export const operationsSolutions = [
     icon: GitBranch,
     color: '#60a5fa',
     desc: 'Govern Argo CD, GitOps workflows, deployment policies, and approvals.',
+    href: '/operational-remediation',
   },
   {
     slug: 'incident-diagnostics',
@@ -225,6 +246,7 @@ export const operationsSolutions = [
     icon: AlertCircle,
     color: '#f87171',
     desc: 'Determine root cause, affected services, blast radius, and remediation paths.',
+    href: '/incident-diagnostics',
   },
 ]
 

@@ -334,12 +334,12 @@ const workflowSteps = [
 const regulations = [
   { title: 'CERT-In', description: 'Continuous software supply chain visibility and vulnerability disclosure.' },
   { title: 'MeitY', description: 'Indian software security and supply chain governance requirements.' },
-  { title: 'Executive Order 14028', description: 'US federal software supply chain security and SBOMs.', href: '/resources/solution-briefs/opsmx_executive_order_14028_compliance_reporting.html' },
-  { title: 'CRA', description: 'EU Cyber Resilience Act demands for software security and vulnerability management.', href: '/resources/solution-briefs/opsmx_cra_appsec_ai_governance_compliance_reporting_logo_fixed.html' },
+  { title: 'Executive Order 14028', description: 'US federal software supply chain security and SBOMs.', href: '/solution-briefs/opsmx_executive_order_14028_compliance_reporting.html' },
+  { title: 'CRA', description: 'EU Cyber Resilience Act demands for software security and vulnerability management.', href: '/solution-briefs/opsmx_cra_appsec_ai_governance_compliance_reporting_logo_fixed.html' },
   { title: 'EUVD', description: 'EU Vulnerability Disclosure Directive for coordinated vulnerability response.' },
-  { title: 'RBI', description: 'Reserve Bank of India guidelines for software security and risk management.', href: '/resources/solution-briefs/opsmx_rbi_appsec_compliance_reporting.html' },
-  { title: 'SEBI', description: 'Securities and Exchange Board of India compliance on cybersecurity.', href: '/resources/solution-briefs/opsmx_sebi_appsec_compliance_reporting.html' },
-  { title: 'AI Governance', description: 'Emerging requirements for AI system transparency, safety, and accountability.', href: '/resources/solution-briefs/opsmx_ai_governance_appsec_compliance_reporting.html' },
+  { title: 'RBI', description: 'Reserve Bank of India guidelines for software security and risk management.', href: '/solution-briefs/opsmx_rbi_appsec_compliance_reporting.html' },
+  { title: 'SEBI', description: 'Securities and Exchange Board of India compliance on cybersecurity.', href: '/solution-briefs/opsmx_sebi_appsec_compliance_reporting.html' },
+  { title: 'AI Governance', description: 'Emerging requirements for AI system transparency, safety, and accountability.', href: '/solution-briefs/opsmx_ai_governance_appsec_compliance_reporting.html' },
   { title: 'NIST SSDF', description: 'US NIST Secure Software Development Framework.' },
   { title: 'ISO 27001', description: 'International information security management standard.' },
   { title: 'ISO 42001', description: 'AI governance and management systems.' },
@@ -745,7 +745,7 @@ export default function RegulatoryBOMSolutionBriefPage() {
             <h2 className="text-4xl font-black text-white mb-6">Download the Solution Brief</h2>
             <p className="text-lg text-slate-300 mb-8">Get the complete guide to Regulatory BOM Reporting in PDF format.</p>
             <a
-              href="/resources/solution-briefs/regulatory-bom-reporting-suite.pdf"
+              href="/solution-briefs/regulatory-bom-reporting-suite.pdf"
               download
               className="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:from-cyan-400 hover:to-blue-500 transition-all shadow-lg shadow-cyan-500/20"
             >
