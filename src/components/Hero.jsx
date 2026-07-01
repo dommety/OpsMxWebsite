@@ -271,7 +271,7 @@ export default function Hero() {
               </a>
               <button className="group flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-slate-300 glass border border-white/10 hover:border-white/20 hover:text-white transition-all duration-200">
                 <Play className="w-4 h-4 text-cyan-400" />
-                Explore Platform
+                Free Trial
               </button>
             </motion.div>
 
