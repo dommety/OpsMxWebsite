@@ -74,6 +74,7 @@ export default function App() {
         <Route path="/incident-diagnostics" element={<IncidentDiagnosticsPage />} />
         <Route path="/operational-remediation" element={<OperationalRemediationPage />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   )
 }
