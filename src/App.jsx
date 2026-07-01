@@ -1,3 +1,4 @@
+import { HelmetProvider } from 'react-helmet-async'
 import Footer from "./components/Footer";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
@@ -38,43 +39,45 @@ const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/'
 
 export default function App() {
   return (
-    <BrowserRouter basename={basename}>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/platform" element={<PlatformPage />} />
-        <Route path="/solutions" element={<SolutionsPage />} />
-        <Route path="/videos" element={<ResourcesVideosPage />} />
-        <Route path="/case-studies" element={<CaseStudiesPage />} />
-        <Route path="/company" element={<CompanyPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/pricing" element={<PricingPage />} />
-        <Route path="/x-bom" element={<XBOMPage />} />
-        <Route path="/secrets" element={<SecretsPage />} />
-        <Route path="/static-application-security-testing" element={<SASTPage />} />
-        <Route path="/ai-security" element={<AISecurityPage />} />
-        <Route path="/api-security" element={<APISecurityPage />} />
-        <Route path="/git-security-posture" element={<GitSecurityPage />} />
-        <Route path="/ai-penetration-testing" element={<AIPenetrationTestingPage />} />
-        <Route path="/penetration-testing" element={<PenetrationTestingPage />} />
-        <Route path="/ai-bom" element={<AIBOMPage />} />
-        <Route path="/solution-briefs/advanced-bom-reporting" element={<AdvancedBOMPage />} />
-        <Route path="/solution-briefs/why-opsmx-xbom" element={<WhyOpsMxXBOMPage />} />
-        <Route path="/solution-briefs/regulatory-bom-reporting-suite" element={<RegulatoryBOMSolutionBriefPage />} />
-        <Route path="/dependency-intelligence" element={<DependencyIntelligencePage />} />
-        <Route path="/license-risk" element={<LicenseRiskPage />} />
-        <Route path="/provenance" element={<ProvenancePage />} />
-        <Route path="/audit-reporting" element={<AuditReportingPage />} />
-        <Route path="/cluster-security" element={<ClusterSecurityPage />} />
-        <Route path="/workload-security" element={<WorkloadSecurityPage />} />
-        <Route path="/threat-correlation" element={<ThreatCorrelationPage />} />
-        <Route path="/cloud-remediation" element={<CloudRemediationPage />} />
-        <Route path="/change-risk" element={<ChangeRiskPage />} />
-        <Route path="/deployment-verification" element={<DeploymentVerificationPage />} />
-        <Route path="/root-cause-analysis" element={<RootCauseAnalysisPage />} />
-        <Route path="/incident-diagnostics" element={<IncidentDiagnosticsPage />} />
-        <Route path="/operational-remediation" element={<OperationalRemediationPage />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter basename={basename}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/platform" element={<PlatformPage />} />
+          <Route path="/solutions" element={<SolutionsPage />} />
+          <Route path="/videos" element={<ResourcesVideosPage />} />
+          <Route path="/case-studies" element={<CaseStudiesPage />} />
+          <Route path="/company" element={<CompanyPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/x-bom" element={<XBOMPage />} />
+          <Route path="/secrets" element={<SecretsPage />} />
+          <Route path="/static-application-security-testing" element={<SASTPage />} />
+          <Route path="/ai-security" element={<AISecurityPage />} />
+          <Route path="/api-security" element={<APISecurityPage />} />
+          <Route path="/git-security-posture" element={<GitSecurityPage />} />
+          <Route path="/ai-penetration-testing" element={<AIPenetrationTestingPage />} />
+          <Route path="/penetration-testing" element={<PenetrationTestingPage />} />
+          <Route path="/ai-bom" element={<AIBOMPage />} />
+          <Route path="/solution-briefs/advanced-bom-reporting" element={<AdvancedBOMPage />} />
+          <Route path="/solution-briefs/why-opsmx-xbom" element={<WhyOpsMxXBOMPage />} />
+          <Route path="/solution-briefs/regulatory-bom-reporting-suite" element={<RegulatoryBOMSolutionBriefPage />} />
+          <Route path="/dependency-intelligence" element={<DependencyIntelligencePage />} />
+          <Route path="/license-risk" element={<LicenseRiskPage />} />
+          <Route path="/provenance" element={<ProvenancePage />} />
+          <Route path="/audit-reporting" element={<AuditReportingPage />} />
+          <Route path="/cluster-security" element={<ClusterSecurityPage />} />
+          <Route path="/workload-security" element={<WorkloadSecurityPage />} />
+          <Route path="/threat-correlation" element={<ThreatCorrelationPage />} />
+          <Route path="/cloud-remediation" element={<CloudRemediationPage />} />
+          <Route path="/change-risk" element={<ChangeRiskPage />} />
+          <Route path="/deployment-verification" element={<DeploymentVerificationPage />} />
+          <Route path="/root-cause-analysis" element={<RootCauseAnalysisPage />} />
+          <Route path="/incident-diagnostics" element={<IncidentDiagnosticsPage />} />
+          <Route path="/operational-remediation" element={<OperationalRemediationPage />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </HelmetProvider>
   )
 }
