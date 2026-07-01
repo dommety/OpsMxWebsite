@@ -27,7 +27,7 @@ export default {
   openInNewTab: false,
 
   // Optional: Dismissible for 7 days (set to false to always show)
-  dismissible: true,
+  dismissible: false,
 }
 
 /**
