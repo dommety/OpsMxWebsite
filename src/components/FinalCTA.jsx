@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Shield } from 'lucide-react'
+import { ArrowRight, Shield, Linkedin, Twitter, Youtube, Slack } from 'lucide-react'
 import Logo from './Logo'
 
 export default function FinalCTA() {
@@ -114,14 +114,30 @@ export default function FinalCTA() {
 
       {/* Footer */}
       <div className="relative max-w-7xl mx-auto px-6 mt-24 pt-8 border-t border-white/5">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 mb-6">
           <Logo size="sm" href="/" />
-          <p className="text-xs text-slate-700">© 2026 OpsMx. Active Defense & Remediation Platform. All rights reserved.</p>
+          <div className="flex gap-4">
+            <a href="https://www.linkedin.com/company/opsmx" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-cyan-400 transition-colors" title="LinkedIn">
+              <Linkedin className="w-5 h-5" />
+            </a>
+            <a href="https://twitter.com/OpsMX" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-cyan-400 transition-colors" title="Twitter">
+              <Twitter className="w-5 h-5" />
+            </a>
+            <a href="https://www.youtube.com/@opsmx" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-cyan-400 transition-colors" title="YouTube">
+              <Youtube className="w-5 h-5" />
+            </a>
+            <a href="https://opsmx.slack.com" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-cyan-400 transition-colors" title="Slack">
+              <Slack className="w-5 h-5" />
+            </a>
+          </div>
           <div className="flex gap-5 text-xs text-slate-700">
             <a href="#" className="hover:text-slate-400 transition-colors">Privacy</a>
             <a href="#" className="hover:text-slate-400 transition-colors">Security</a>
             <a href="#" className="hover:text-slate-400 transition-colors">Terms</a>
           </div>
+        </div>
+        <div className="text-center text-xs text-slate-700 border-t border-white/5 pt-6">
+          <p>© 2026 OpsMx. Active Defense & Remediation Platform. All rights reserved.</p>
         </div>
       </div>
     </section>
