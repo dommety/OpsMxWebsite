@@ -46,21 +46,18 @@ export default function AnnouncementBar() {
         className="fixed top-0 left-0 right-0 z-50 w-full glass border-b border-white/5"
         style={{ height: '44px' }}
       >
-        <div className="max-w-7xl mx-auto h-full px-6 flex items-center justify-between gap-4">
-          {/* Left: Badge + Message */}
-          <div className="flex items-center gap-3 flex-1 min-w-0">
-            {/* Badge */}
-            <div className="flex-shrink-0 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30">
-              <span className="text-xs font-bold uppercase tracking-wider text-cyan-400">
-                {announcement.badge}
-              </span>
-            </div>
-
-            {/* Message */}
-            <p className="text-sm font-medium text-slate-300 truncate lg:truncate-none hover:text-slate-100 transition-colors">
-              {announcement.message}
-            </p>
+        <div className="max-w-7xl mx-auto h-full px-6 flex items-center justify-center gap-4">
+          {/* Badge */}
+          <div className="flex-shrink-0 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30">
+            <span className="text-xs font-bold uppercase tracking-wider text-cyan-400">
+              {announcement.badge}
+            </span>
           </div>
+
+          {/* Centered Message */}
+          <p className="text-sm font-medium text-slate-300 hover:text-slate-100 transition-colors text-center flex-1">
+            {announcement.message}
+          </p>
 
           {/* Right: CTA Button */}
           <div className="flex items-center gap-2 flex-shrink-0">
