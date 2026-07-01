@@ -22,6 +22,7 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Logo from "./Logo";
 
 // ---- PRODUCT: the 19 new-stack pages, grouped by the 4 homepage pillars (internal routes)
 const productPillars = [
@@ -37,7 +38,7 @@ const productPillars = [
   {
     title: "Supply Chain",
     links: [
-      { label: "XBOM", to: "/xbom" },
+      { label: "XBOM", to: "/x-bom" },
       { label: "AI-BOM", to: "/ai-bom" },
       { label: "Dependency Intelligence", to: "/dependency-intelligence" },
       { label: "License Risk", to: "/license-risk" },
@@ -247,14 +248,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-6 border-t border-white/5">
-          <Link to="/" className="inline-flex items-center">
-            <img
-              src="/opsmx/logo/OpsMx-Logo-White.webp"
-              alt="OpsMx logo"
-              height="28"
-              style={{ height: "28px", width: "auto" }}
-            />
-          </Link>
+          <Logo size="sm" href="/" />
 
           <div className="flex flex-wrap items-center gap-5 text-xs text-slate-500">
             <a href="https://www.opsmx.com/privacypolicy/" className="hover:text-slate-300 transition-colors">Privacy</a>
