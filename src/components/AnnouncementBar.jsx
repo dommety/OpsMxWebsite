@@ -46,10 +46,10 @@ export default function AnnouncementBar() {
         className="fixed top-0 left-0 right-0 z-50 w-full glass border-b border-white/5"
         style={{ height: '44px' }}
       >
-        <div className="max-w-7xl mx-auto h-full px-6 flex items-center justify-center gap-4">
+        <div className="max-w-7xl mx-auto h-full px-6 flex items-center justify-center gap-2">
           {/* Badge */}
-          <div className="flex-shrink-0 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30">
-            <span className="text-xs font-bold uppercase tracking-wider text-cyan-400">
+          <div className="flex-shrink-0 px-2 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/30">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-400">
               {announcement.badge}
             </span>
           </div>
@@ -65,7 +65,7 @@ export default function AnnouncementBar() {
               href={announcement.buttonLink}
               target={announcement.openInNewTab ? '_blank' : '_self'}
               rel={announcement.openInNewTab ? 'noopener noreferrer' : ''}
-              className="px-4 py-2 rounded-lg bg-cyan-500/20 text-cyan-400 text-sm font-semibold hover:bg-cyan-500/30 hover:text-cyan-300 transition-colors duration-150 border border-cyan-500/30 whitespace-nowrap"
+              className="px-3 py-1 rounded-lg bg-cyan-500/20 text-cyan-400 text-xs font-semibold hover:bg-cyan-500/30 hover:text-cyan-300 transition-colors duration-150 border border-cyan-500/30 whitespace-nowrap"
               aria-label={`${announcement.buttonText}: ${announcement.message}`}
             >
               {announcement.buttonText}
