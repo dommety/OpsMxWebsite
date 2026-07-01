@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import AnnouncementBar from './components/AnnouncementBar'
 import HomePage from './pages/HomePage'
 import PlatformPage from './pages/PlatformPage'
 import SolutionsPage from './pages/SolutionsPage'
@@ -38,6 +39,7 @@ const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/'
 export default function App() {
   return (
     <BrowserRouter basename={basename}>
+      <AnnouncementBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/platform" element={<PlatformPage />} />
