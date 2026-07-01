@@ -1,3 +1,4 @@
+import Footer from "./components/Footer";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import PlatformPage from './pages/PlatformPage'
