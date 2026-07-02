@@ -15,6 +15,7 @@ import {
   Workflow,
 } from 'lucide-react'
 import Navbar from '../components/Navbar'
+import Seo from '../components/Seo'
 
 // AI Security capability areas
 const securityAreas = [
@@ -203,6 +204,7 @@ function OutcomeCard({ outcome, index }) {
 export default function AISecurityPage() {
   return (
     <div className="min-h-screen bg-slate-950">
+      <Seo route="/ai-security" />
       <Navbar />
 
       {/* Hero */}
