@@ -3,6 +3,9 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Shield, Zap } from 'lucide-react'
 
+// Each item now carries `href` = the real WordPress/HubSpot case-study URL
+// (extracted verbatim from the live opsmx.com Customers mega menu). External docs
+// (PDFs, go.opsmx.com, blog) open in a new tab.
 const customersData = {
   columns: [
     {
@@ -12,12 +15,12 @@ const customersData = {
       color: '#34d399',
       desc: 'Secure and compliant delivery',
       items: [
-        { icon: Shield, title: 'Enterprise Data Integration', desc: 'Mid market data platform' },
-        { icon: Shield, title: 'Crypto Exchange', desc: 'Digital asset security' },
-        { icon: Shield, title: 'Data Streaming Platform', desc: 'Real-time data processing' },
-        { icon: Shield, title: 'Fortune 500 Enterprise', desc: 'Enterprise-scale security' },
-        { icon: Shield, title: 'Health-Tech Startup', desc: 'Healthcare compliance' },
-        { icon: Shield, title: 'Multinational Conglomerate', desc: 'Global operations' },
+        { icon: Shield, title: 'Enterprise Data Integration', desc: 'Mid market data platform', href: 'https://go.opsmx.com/appsec-customer-case-study-2026' },
+        { icon: Shield, title: 'Crypto Exchange', desc: 'Digital asset security', href: 'https://go.opsmx.com/hubfs/Casestudy-Addressing-business-challenges-OpsMx-Jan%202025.pdf' },
+        { icon: Shield, title: 'Data Streaming Platform', desc: 'Real-time data processing', href: 'https://go.opsmx.com/hubfs/Casestudy-Enhancing-Vulnerability-Jan-2025.pdf' },
+        { icon: Shield, title: 'Fortune 500 Enterprise', desc: 'Enterprise-scale security', href: 'https://go.opsmx.com/hubfs/Casestudy-Cybersecurity-Enhancement-Jan-2025.pdf' },
+        { icon: Shield, title: 'Health-Tech Startup', desc: 'Healthcare compliance', href: 'https://go.opsmx.com/hubfs/Casestudy-Stop-Vulnerabilities-from-Reaching-Jan-2025.pdf' },
+        { icon: Shield, title: 'Multinational Conglomerate', desc: 'Global operations', href: 'https://go.opsmx.com/hubfs/Casestudy-Enhancing-Application-Security-Jan-2025.pdf' },
       ],
     },
     {
@@ -27,11 +30,11 @@ const customersData = {
       color: '#fbbf24',
       desc: 'Fast and reliable delivery',
       items: [
-        { icon: Zap, title: 'Cisco', desc: 'Network infrastructure leader' },
-        { icon: Zap, title: 'Interswitch', desc: 'Payment and fintech' },
-        { icon: Zap, title: 'Symphony', desc: 'Financial communication' },
-        { icon: Zap, title: 'Leading Asian Bank', desc: 'Regional financial services' },
-        { icon: Zap, title: 'Fortune 50 Bank', desc: 'Global banking operations' },
+        { icon: Zap, title: 'Cisco', desc: 'Network infrastructure leader', href: 'https://www.opsmx.com/blog/cisco-partners-with-opsmx-to-transform-software-delivery/' },
+        { icon: Zap, title: 'Interswitch', desc: 'Payment and fintech', href: 'https://fs.hubspotusercontent00.net/hubfs/2985751/OpsMx%20ISD_%20Interswitch.pdf' },
+        { icon: Zap, title: 'Symphony', desc: 'Financial communication', href: 'https://fs.hubspotusercontent00.net/hubfs/2985751/Symphony-Case%20study-OpsMx-Success-Stories.pdf' },
+        { icon: Zap, title: 'Leading Asian Bank', desc: 'Regional financial services', href: 'https://go.opsmx.com/hubfs/Case-Study-Leading-Asian-Bank-Feb-28-2025.pdf' },
+        { icon: Zap, title: 'Fortune 50 Bank', desc: 'Global banking operations', href: 'https://go.opsmx.com/hubfs/Case-Study-20X-Faster-Deployments-Feb-28-2025.pdf' },
       ],
     },
   ],
@@ -40,7 +43,13 @@ const customersData = {
 function CaseStudyItem({ item }) {
   const Icon = item.icon
   return (
-    <motion.div whileHover={{ x: 2 }}>
+    <motion.a
+      href={item.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      whileHover={{ x: 2 }}
+      className="block"
+    >
       <div className="flex items-start gap-2.5 px-2 py-1.5 rounded-lg group hover:bg-white/4 transition-colors duration-150">
         <div
           className="w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5"
@@ -50,7 +59,7 @@ function CaseStudyItem({ item }) {
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex items-center flex-wrap gap-x-1 leading-tight">
-            <span className="text-[12px] font-bold text-white transition-colors">
+            <span className="text-[12px] font-bold text-white group-hover:text-cyan-300 transition-colors">
               {item.title}
             </span>
           </div>
@@ -59,12 +68,11 @@ function CaseStudyItem({ item }) {
           </p>
         </div>
       </div>
-    </motion.div>
+    </motion.a>
   )
 }
 
 function Column({ col }) {
-  const Icon = col.icon
   const itemsWithColor = col.items.map(item => ({ ...item, color: col.color }))
 
   return (
