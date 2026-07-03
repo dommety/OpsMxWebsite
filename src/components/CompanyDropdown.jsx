@@ -3,45 +3,49 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Users, Briefcase, FileText, Users2, Award, Mail } from 'lucide-react'
 
+// Hybrid: new-stack pages where they exist (/company, /contact) as internal <Link>;
+// WordPress pages for items with no new-stack page (Press/Partners/Careers) as <a>.
+// item.to  -> internal React Router <Link>
+// item.href + external -> WordPress <a> (new tab)
 const companyItems = [
   {
     icon: Users,
     label: 'Leadership',
     desc: 'Meet our executive team',
-    href: '/company',
+    to: '/company',
   },
   {
     icon: Briefcase,
     label: 'Investors',
     desc: 'Backed by leading venture firms',
-    href: '/company',
+    to: '/company',
   },
   {
     icon: FileText,
     label: 'Press Releases',
     desc: 'News and announcements',
-    href: '#',
+    href: 'https://www.opsmx.com/news/',
     external: true,
   },
   {
     icon: Users2,
     label: 'Partners',
     desc: 'Partner with OpsMx',
-    href: '#',
+    href: 'https://www.opsmx.com/opsmx-partner-program/',
     external: true,
   },
   {
     icon: Award,
     label: 'Careers',
     desc: 'Join our team',
-    href: '#',
+    href: 'https://www.opsmx.com/careers/',
     external: true,
   },
   {
     icon: Mail,
     label: 'Contact Us',
     desc: 'Get in touch',
-    href: '/contact',
+    to: '/contact',
   },
 ]
 
@@ -108,7 +112,7 @@ export default function CompanyDropdown({ onClose }) {
                 const Component = item.external ? 'a' : Link
                 const linkProps = item.external
                   ? { href: item.href, target: '_blank', rel: 'noopener noreferrer' }
-                  : { to: item.href, onClick: closeNow }
+                  : { to: item.to, onClick: closeNow }
 
                 return (
                   <motion.div
