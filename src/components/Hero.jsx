@@ -19,20 +19,17 @@ function AnimatedGrid() {
 
 function ParticleCanvas() {
   const canvasRef = useRef(null)
-
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
     const ctx = canvas.getContext('2d')
     let animId
-
     const resize = () => {
       canvas.width = canvas.offsetWidth
       canvas.height = canvas.offsetHeight
     }
     resize()
     window.addEventListener('resize', resize)
-
     const particles = Array.from({ length: 60 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
@@ -41,7 +38,6 @@ function ParticleCanvas() {
       r: Math.random() * 1.5 + 0.5,
       opacity: Math.random() * 0.5 + 0.1,
     }))
-
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       particles.forEach((p) => {
@@ -49,13 +45,11 @@ function ParticleCanvas() {
         p.y += p.vy
         if (p.x < 0 || p.x > canvas.width) p.vx *= -1
         if (p.y < 0 || p.y > canvas.height) p.vy *= -1
-
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
         ctx.fillStyle = `rgba(34, 211, 238, ${p.opacity})`
         ctx.fill()
       })
-
       // Draw connecting lines
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
@@ -72,17 +66,14 @@ function ParticleCanvas() {
           }
         }
       }
-
       animId = requestAnimationFrame(draw)
     }
     draw()
-
     return () => {
       cancelAnimationFrame(animId)
       window.removeEventListener('resize', resize)
     }
   }, [])
-
   return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
 }
 
@@ -91,7 +82,6 @@ function FlowDiagram() {
     <div className="relative w-full max-w-lg mx-auto">
       {/* Outer glow orb */}
       <div className="absolute inset-0 bg-gradient-radial from-cyan-500/10 via-electric-500/5 to-transparent rounded-3xl blur-2xl" />
-
       {/* Glass panel */}
       <div className="relative glass-strong rounded-2xl p-6 border border-white/10">
         {/* Header */}
@@ -101,7 +91,6 @@ function FlowDiagram() {
           <div className="w-2 h-2 rounded-full bg-green-400" />
           <span className="ml-2 text-xs text-slate-500 font-mono">active-defense.engine</span>
         </div>
-
         {/* Flow nodes grid */}
         <div className="grid grid-cols-3 gap-3">
           {lifecycleSteps.map((step, i) => (
@@ -144,7 +133,6 @@ function FlowDiagram() {
                   {step.label}
                 </span>
               </motion.div>
-
               {/* Connector arrows */}
               {i < lifecycleSteps.length - 1 && (i + 1) % 3 !== 0 && (
                 <motion.div
@@ -158,7 +146,6 @@ function FlowDiagram() {
             </motion.div>
           ))}
         </div>
-
         {/* Bottom status bar */}
         <div className="mt-5 pt-4 border-t border-white/5 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -175,7 +162,6 @@ function FlowDiagram() {
           </div>
         </div>
       </div>
-
       {/* Floating metric chips */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
@@ -188,7 +174,6 @@ function FlowDiagram() {
         <div className="text-emerald-400 font-bold text-lg">94%</div>
         <div className="text-slate-500">auto-resolved</div>
       </motion.div>
-
       <motion.div
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
@@ -209,11 +194,9 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center overflow-hidden bg-navy-950">
       <AnimatedGrid />
       <ParticleCanvas />
-
       {/* Radial gradient spotlight */}
       <div className="absolute inset-0 bg-gradient-radial from-cyan-500/8 via-transparent to-transparent" style={{ backgroundPosition: '30% 50%' }} />
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-radial from-electric-500/5 via-transparent to-transparent" />
-
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-16 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left — Text */}
@@ -234,7 +217,6 @@ export default function Hero() {
                 Active Defense & Remediation Platform
               </span>
             </motion.div>
-
             {/* Headline */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -246,7 +228,6 @@ export default function Hero() {
               <br />
               <span className="text-gradient-full">Active Defense</span>
             </motion.h1>
-
             {/* Body */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -257,7 +238,6 @@ export default function Hero() {
               Continuously detect, diagnose, prioritize, remediate, verify, and govern risks
               across software, AI, supply chains, cloud, runtime, and operations.
             </motion.p>
-
             {/* CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -269,12 +249,11 @@ export default function Hero() {
                 Request a Demo
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
-              <button className="group flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-slate-300 glass border border-white/10 hover:border-white/20 hover:text-white transition-all duration-200">
+              <a href="https://ssd.sandbox.opsmx.org/login?redir=/ui/application" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-slate-300 glass border border-white/10 hover:border-white/20 hover:text-white transition-all duration-200">
                 <Play className="w-4 h-4 text-cyan-400" />
                 Free Trial
-              </button>
+              </a>
             </motion.div>
-
             {/* Lifecycle mini-strip */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -297,7 +276,6 @@ export default function Hero() {
               ))}
             </motion.div>
           </div>
-
           {/* Right — Flow Diagram */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
@@ -309,7 +287,6 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
-
       {/* Bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-navy-950 to-transparent" />
     </section>
