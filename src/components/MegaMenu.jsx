@@ -68,7 +68,7 @@ const detectColumns = [
     icon: Cloud,
     color: '#34d399',
     title: 'Cloud & Runtime',
-    description: 'Secure cloud infrastructure and production systems.',
+    description: 'Secure cloud, infra and production.',
     groups: [
       {
         label: 'Cloud Security',
