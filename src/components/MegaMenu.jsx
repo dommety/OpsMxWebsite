@@ -205,9 +205,8 @@ function OverviewCard({ onClose }) {
         <div className="mb-3">
           <Logo size="sm" href="/" />
         </div>
-        <p className="text-[12px] font-black text-white mb-1">OpsMx Active Defense</p>
         <p className="text-[11px] font-semibold text-cyan-400 leading-tight mb-3">
-          Active Defense & Remediation Platform
+          Active Defence & Remediaiton
         </p>
         <p className="text-[10px] text-slate-400 leading-relaxed">
           Detect, assess, and fix risk across code, AI, supply chain, cloud, runtime, and operations.
