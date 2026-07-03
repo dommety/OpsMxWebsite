@@ -13,7 +13,7 @@ const detectColumns = [
     icon: Code2,
     color: '#22d3ee',
     title: 'Code & AI',
-    description: 'Secure applications, APIs, AI-generated code, and AI systems.',
+    description: 'Secure Apps, APIs, AI-Code, and AI Agents.',
     groups: [
       {
         label: 'Code Security',
