@@ -89,4 +89,61 @@ export const seoByRoute = {
     title: 'Operational Remediation & Auto-Fix | OpsMx',
     description: 'Remediate operational issues with AI-guided and automated workflows. OpsMx resolves problems across deployments and infrastructure faster.',
   },
+  // ── Product hub & additional product pages ────────────────
+  '/platform': {
+    title: 'OpsMx Active Defense Platform Overview | OpsMx',
+    description: 'The unified platform behind Active Defense — detect, diagnose, prioritize, remediate, verify, and govern risk across code, AI, supply chain, cloud, and ops.',
+  },
+  '/static-application-security-testing': {
+    title: 'SAST That Drives Remediation | OpsMx',
+    description: 'Static application security testing that goes beyond findings to fixes. OpsMx prioritizes and remediates real code vulnerabilities, not just flags them.',
+  },
+  '/git-security-posture': {
+    title: 'Git Security Posture Management | OpsMx',
+    description: 'Secure your Git posture across repos, branches, and workflows. OpsMx detects misconfigurations, exposed secrets, and access risks before they are exploited.',
+  },
+  '/ai-penetration-testing': {
+    title: 'Continuous AI Penetration Testing | OpsMx',
+    description: 'Continuously pen-test AI systems for prompt injection, jailbreaks, and unsafe behavior. OpsMx finds exploitable AI risks before attackers do.',
+  },
+
+  // ── Solution briefs ───────────────────────────────────────
+  '/solution-briefs/advanced-bom-reporting': {
+    title: 'Beyond SBOM: CBOM, DBOM, QBOM & HBOM | OpsMx',
+    description: 'Go beyond SBOM with advanced BOM reporting — CBOM, DBOM, QBOM, and HBOM. OpsMx delivers complete, regulator-ready software supply chain transparency.',
+  },
+  '/solution-briefs/why-opsmx-xbom': {
+    title: 'Why OpsMx X-BOM Reporting Is Different | OpsMx',
+    description: 'See what sets OpsMx X-BOM apart — unified bill of materials across code, AI, containers, and cloud with deeper context than traditional SBOM tools.',
+  },
+  '/solution-briefs/regulatory-bom-reporting-suite': {
+    title: 'Regulatory BOM Reporting Suite | OpsMx',
+    description: 'Meet regulatory BOM requirements with the OpsMx reporting suite. Generate audit-ready bill-of-materials evidence across frameworks and mandates.',
+  },
+
+  // ── Hub / company / resource pages ────────────────────────
+  '/solutions': {
+    title: 'Solutions for Active Defense & Remediation | OpsMx',
+    description: 'Explore OpsMx solutions for securing and remediating risk across software, AI, supply chains, cloud, runtime, and operations — from detection to verified fix.',
+  },
+  '/videos': {
+    title: 'Video Hub | OpsMx',
+    description: 'Watch OpsMx demos, walkthroughs, and expert sessions on application security, remediation, DevSecOps, and AI security across the software lifecycle.',
+  },
+  '/case-studies': {
+    title: 'Customer Case Studies | OpsMx',
+    description: 'See how leading enterprises use OpsMx to secure delivery, remediate risk, and accelerate DevSecOps. Real results from real customers.',
+  },
+  '/company': {
+    title: 'About OpsMx | Active Defense & Remediation',
+    description: 'Learn about OpsMx — our mission, leadership, and investors building the Active Defense and remediation platform for modern software and AI systems.',
+  },
+  '/contact': {
+    title: 'Contact OpsMx | Talk to Our Team',
+    description: 'Get in touch with OpsMx. Talk to our team about securing and remediating risk across your software, AI, supply chain, cloud, and operations.',
+  },
+  '/pricing': {
+    title: 'Pricing | OpsMx Active Defense',
+    description: 'Modular and affordable pricing for OpsMx Active Defense. Choose the capabilities you need to detect, remediate, and govern risk across the software lifecycle.',
+  },
 }
