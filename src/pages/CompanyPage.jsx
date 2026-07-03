@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Linkedin } from 'lucide-react'
 import Navbar from '../components/Navbar'
+import Seo from '../components/Seo'
 import { capabilities, whyOpsMx, teamMembers, investors } from '../data/company'
 
 function CapabilityCard({ capability, index }) {
@@ -121,6 +122,7 @@ function InvestorCard({ investor, index }) {
 export default function CompanyPage() {
   return (
     <div className="min-h-screen bg-navy-950 text-white overflow-x-hidden">
+      <Seo route="/company" />
       <Navbar />
 
       {/* Hero */}
