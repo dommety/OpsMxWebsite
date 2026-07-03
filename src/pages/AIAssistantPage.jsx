@@ -415,13 +415,16 @@ export default function AIAssistantPage() {
           >
             Try the AI Assistant
           </motion.a>
-          <motion.button
+          <motion.a
+            href="https://www.opsmx.com/talk-to-an-application-security-expert/"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             className="px-6 py-3 rounded-lg border border-white/20 text-white font-bold hover:bg-white/5 transition-all flex items-center gap-2"
           >
-            Watch Demo
+            Request Demo
             <ArrowRight className="w-4 h-4" />
-          </motion.button>
+          </motion.a>
         </div>
 
         <div className="pt-16">
