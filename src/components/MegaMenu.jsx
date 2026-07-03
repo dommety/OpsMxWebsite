@@ -343,15 +343,27 @@ function DetectRiskRow() {
 
 // ─── ASSESS / FIX ROW — unchanged horizontal band ────────────────────────────
 
-function HorizontalRiskRow({ layer, color }) {
+function HorizontalRiskRow({ layer, color, isAssess }) {
   const allItems = layer.pillars.flatMap((p) => p.items)
 
   return (
     <div className="border-t border-white/5 px-5 py-4">
       <div className="mb-3 pb-3 border-b border-white/5">
-        <p className="text-[12px] font-black mb-1" style={{ color }}>
-          {layer.title}
-        </p>
+        {isAssess ? (
+          <Link
+            to="/opsmx/assess-risk"
+            className="flex items-center gap-1.5 group w-fit mb-1"
+          >
+            <p className="text-[12px] font-black group-hover:opacity-80 transition-opacity" style={{ color }}>
+              {layer.title}
+            </p>
+            <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" style={{ color }} />
+          </Link>
+        ) : (
+          <p className="text-[12px] font-black mb-1" style={{ color }}>
+            {layer.title}
+          </p>
+        )}
         <p className="text-[10px] text-slate-400">{layer.description}</p>
       </div>
 
@@ -421,8 +433,8 @@ export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
             {/* Detect Risk — new grouped subcategory layout */}
             <DetectRiskRow />
 
-            {/* Assess Risk — unchanged horizontal band */}
-            <HorizontalRiskRow layer={matrixData.assess} color="#34d399" />
+            {/* Assess Risk — now links to /opsmx/assess-risk */}
+            <HorizontalRiskRow layer={matrixData.assess} color="#34d399" isAssess={true} />
 
             {/* Fix Risk — unchanged horizontal band */}
             <HorizontalRiskRow layer={matrixData.fix} color="#fbbf24" />
