@@ -1,4 +1,5 @@
 import Navbar from '../components/Navbar'
+import Seo from '../components/Seo'
 import Hero from '../components/Hero'
 import CustomerLogos from '../components/CustomerLogos'
 import FourPillars from '../components/FourPillars'
@@ -11,6 +12,7 @@ import FinalCTA from '../components/FinalCTA'
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-navy-950 text-white overflow-x-hidden">
+      <Seo route="/" />
       <Navbar />
       <Hero />
       <CustomerLogos />
