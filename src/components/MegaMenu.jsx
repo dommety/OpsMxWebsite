@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Code2, Package, Cloud, GitMerge, ArrowRight, ExternalLink } from 'lucide-react'
 import Logo from './Logo'
+import { fixRiskNavigation } from '../data/fixRisk'
 
 // ─── DETECT RISK — grouped subcategory layout (NEW) ──────────────────────────
 
@@ -250,6 +251,54 @@ function OverviewCard() {
   )
 }
 
+// ─── FIX RISK ROW — navigation-driven section ────────────────────────────────
+
+function FixRiskRow({ onClose }) {
+  const color = '#fbbf24'
+
+  return (
+    <div className="border-t border-white/5 px-5 py-4">
+      <div className="mb-3 pb-3 border-b border-white/5">
+        <Link
+          to={fixRiskNavigation.href}
+          onClick={onClose}
+          className="flex items-center gap-1.5 group w-fit mb-1"
+        >
+          <p className="text-[12px] font-black group-hover:opacity-80 transition-opacity" style={{ color }}>
+            {fixRiskNavigation.title}
+          </p>
+          <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" style={{ color }} />
+        </Link>
+        <p className="text-[10px] text-slate-400">{fixRiskNavigation.description}</p>
+      </div>
+
+      <div className="flex flex-wrap gap-2">
+        {fixRiskNavigation.items.filter(item => item.enabled).map((item, idx) => (
+          <motion.div
+            key={item.title}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: idx * 0.02, duration: 0.2 }}
+          >
+            <Link
+              to={item.href}
+              onClick={onClose}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all hover:bg-white/8 cursor-pointer"
+              style={{
+                background: `${color}12`,
+                borderColor: `${color}20`,
+              }}
+            >
+              <div className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: color }} />
+              <span className="text-[9px] font-medium text-slate-300">{item.title}</span>
+            </Link>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 // ─── DETECT RISK ROW — new grouped subcategory layout ────────────────────────
 
 function DetectRiskRow() {
@@ -443,8 +492,8 @@ export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
             {/* Assess Risk — now links to /opsmx/assess-risk */}
             <HorizontalRiskRow layer={matrixData.assess} color="#34d399" isAssess={true} onClose={onClose} />
 
-            {/* Fix Risk — now links to /opsmx/fix-risk */}
-            <HorizontalRiskRow layer={matrixData.fix} color="#fbbf24" isFix={true} onClose={onClose} />
+            {/* Fix Risk — navigation-driven section with deep linking */}
+            <FixRiskRow onClose={onClose} />
           </div>
         </div>
       </div>

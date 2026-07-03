@@ -3,6 +3,41 @@
  * Configuration for agents, workflow, integrations, outcomes, and FAQ
  */
 
+// Navigation configuration for Products mega menu
+// Uses deep linking with hashes for better UX
+// Can be updated to point to dedicated pages by changing href values
+export const fixRiskNavigation = {
+  title: 'Fix Risk',
+  description: 'Use remediation agents and governed workflows to remediate security issues and verify fixes.',
+  href: '/opsmx/fix-risk',
+  items: [
+    {
+      title: 'Code Remediation Agent',
+      href: '/opsmx/fix-risk#code-remediation',
+      // futureHref: '/opsmx/code-remediation-agent', // For future dedicated page
+      enabled: true,
+    },
+    {
+      title: 'Binary Artifact Agent',
+      href: '/opsmx/fix-risk#binary-artifact',
+      // futureHref: '/opsmx/binary-artifact-agent',
+      enabled: true,
+    },
+    {
+      title: 'Cloud Remediation Agent',
+      href: '/opsmx/fix-risk#cloud-remediation',
+      // futureHref: '/opsmx/cloud-remediation-agent',
+      enabled: true,
+    },
+    {
+      title: 'DevOps & SRE Agent',
+      href: '/opsmx/fix-risk#devops-sre',
+      // futureHref: '/opsmx/devops-sre-agent',
+      enabled: true,
+    },
+  ],
+}
+
 export const remediationAgents = [
   {
     id: 'code-remediation',

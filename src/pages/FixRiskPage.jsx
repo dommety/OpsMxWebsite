@@ -109,6 +109,14 @@ function WorkflowSection() {
 }
 
 function AgentsSection() {
+  // Map agent IDs to anchor IDs for deep linking
+  const anchorMap = {
+    'code-remediation': 'code-remediation',
+    'binary-artifact': 'binary-artifact',
+    'cloud-remediation': 'cloud-remediation',
+    'devops-sre': 'devops-sre',
+  }
+
   return (
     <div className="space-y-8">
       <div>
@@ -119,10 +127,11 @@ function AgentsSection() {
         {remediationAgents.map((agent, idx) => (
           <motion.div
             key={agent.id}
+            id={anchorMap[agent.id] || agent.id}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: idx * 0.1, duration: 0.3 }}
-            className="p-8 rounded-2xl border border-white/8 bg-white/4 hover:bg-white/6 transition-colors"
+            className="p-8 rounded-2xl border border-white/8 bg-white/4 hover:bg-white/6 transition-colors scroll-mt-32"
           >
             <div className="flex items-start gap-4 mb-6">
               <div
@@ -336,6 +345,19 @@ function FAQSection() {
 export default function FixRiskPage() {
   useEffect(() => {
     document.title = 'Fix Risk with Remediation Agents & Workflows | OpsMx'
+  }, [])
+
+  useEffect(() => {
+    // Handle hash-based navigation for deep linking
+    if (window.location.hash) {
+      const elementId = window.location.hash.substring(1)
+      const element = document.getElementById(elementId)
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }, 100)
+      }
+    }
   }, [])
 
   return (
