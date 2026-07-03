@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight, Code2, GitBranch, CheckCircle2, Shield, Zap, Lock, AlertCircle, ChevronDown } from 'lucide-react'
 import Navbar from '../components/Navbar'
 
+import Seo from '../components/Seo'
 // SAST Workflow Animation
 function SASTWorkflowAnimation() {
   const steps = [
@@ -416,6 +417,7 @@ const faqs = [
 export default function SASTPage() {
   return (
     <div className="min-h-screen bg-slate-950">
+      <Seo route="/static-application-security-testing" />
       <Navbar />
 
       {/* Hero */}
