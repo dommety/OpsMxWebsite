@@ -235,12 +235,24 @@ function OverviewCard({ onClose }) {
           <p className="text-[9px] text-slate-500">Find risk everywhere</p>
         </div>
         <div>
-          <p className="text-[11px] font-bold mb-0.5" style={{ color: '#34d399' }}>Assess</p>
-          <p className="text-[9px] text-slate-500">Understand what matters</p>
+          <Link
+            to="/opsmx/assess-risk"
+            onClick={onClose}
+            className="group hover:opacity-80 transition-opacity"
+          >
+            <p className="text-[11px] font-bold mb-0.5" style={{ color: '#34d399' }}>Assess</p>
+            <p className="text-[9px] text-slate-500">Understand what matters</p>
+          </Link>
         </div>
         <div>
-          <p className="text-[11px] font-bold mb-0.5" style={{ color: '#fbbf24' }}>Fix</p>
-          <p className="text-[9px] text-slate-500">Remediate and verify</p>
+          <Link
+            to="/opsmx/fix-risk"
+            onClick={onClose}
+            className="group hover:opacity-80 transition-opacity"
+          >
+            <p className="text-[11px] font-bold mb-0.5" style={{ color: '#fbbf24' }}>Fix</p>
+            <p className="text-[9px] text-slate-500">Remediate and verify</p>
+          </Link>
         </div>
         <div>
           <Link
