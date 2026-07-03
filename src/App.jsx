@@ -1,4 +1,5 @@
 import { HelmetProvider } from 'react-helmet-async'
+import Navbar from './components/Navbar'
 import Footer from "./components/Footer";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
@@ -43,6 +44,7 @@ export default function App() {
   return (
     <HelmetProvider>
       <BrowserRouter basename={basename}>
+        <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/platform" element={<PlatformPage />} />
