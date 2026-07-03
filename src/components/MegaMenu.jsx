@@ -213,7 +213,7 @@ const matrixData = {
 
 // ─── OVERVIEW CARD — unchanged ───────────────────────────────────────────────
 
-function OverviewCard() {
+function OverviewCard({ onClose }) {
   return (
     <div className="flex flex-col gap-5 h-full sticky top-0">
       <div>
@@ -245,6 +245,7 @@ function OverviewCard() {
         <div>
           <Link
             to="/opsmx/ai-assistant"
+            onClick={onClose}
             className="group hover:opacity-80 transition-opacity"
           >
             <p className="text-[11px] font-bold mb-0.5" style={{ color: '#06b6d4' }}>⭐ OpsMx AI Assistant</p>
@@ -258,6 +259,7 @@ function OverviewCard() {
       <div className="space-y-2">
         <Link
           to="/platform"
+          onClick={onClose}
           className="flex items-center gap-1.5 text-[11px] font-bold text-cyan-400 hover:text-cyan-300 transition-colors group"
         >
           Explore Platform
@@ -505,7 +507,7 @@ export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
         <div className="grid grid-cols-5 divide-x divide-white/5">
           {/* Left: Overview */}
           <div className="p-5">
-            <OverviewCard />
+            <OverviewCard onClose={onClose} />
           </div>
 
           {/* Right: Detect + Assess + Fix */}
