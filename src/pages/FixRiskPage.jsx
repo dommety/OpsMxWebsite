@@ -394,13 +394,16 @@ export default function FixRiskPage() {
           >
             Request a Demo
           </motion.a>
-          <motion.button
+          <motion.a
+            href="https://ssd.sandbox.opsmx.org/login?redir=/ui/application"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             className="px-6 py-3 rounded-lg border border-white/20 text-white font-bold hover:bg-white/5 transition-all flex items-center gap-2"
           >
-            See Remediation Workflow
+            Try Remediation
             <ArrowRight className="w-4 h-4" />
-          </motion.button>
+          </motion.a>
         </div>
 
         <div className="pt-12">
