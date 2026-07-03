@@ -242,6 +242,13 @@ function OverviewCard() {
           <p className="text-[11px] font-bold mb-0.5" style={{ color: '#fbbf24' }}>Fix</p>
           <p className="text-[9px] text-slate-500">Remediate and verify</p>
         </div>
+        <Link
+          to="/opsmx/ai-assistant"
+          className="group hover:opacity-80 transition-opacity"
+        >
+          <p className="text-[11px] font-bold mb-0.5" style={{ color: '#06b6d4' }}>⭐ OpsMx AI Assistant</p>
+          <p className="text-[9px] text-slate-500">Ask questions. Diagnose. Remediate. Report.</p>
+        </Link>
       </div>
 
       <div className="border-t border-white/6" />
