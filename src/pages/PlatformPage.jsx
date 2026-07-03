@@ -14,6 +14,7 @@ import Seo from '../components/Seo'
 export default function PlatformPage() {
   return (
     <div className="min-h-screen bg-navy-950 text-white overflow-x-hidden">
+      <Seo route="/platform" />
       <Navbar activePage="platform" />
       <PlatformHero />
       <PlatformArchitecture />
