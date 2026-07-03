@@ -343,7 +343,7 @@ function DetectRiskRow() {
 
 // ─── ASSESS / FIX ROW — unchanged horizontal band ────────────────────────────
 
-function HorizontalRiskRow({ layer, color, isAssess }) {
+function HorizontalRiskRow({ layer, color, isAssess, onClose }) {
   const allItems = layer.pillars.flatMap((p) => p.items)
 
   return (
@@ -352,6 +352,7 @@ function HorizontalRiskRow({ layer, color, isAssess }) {
         {isAssess ? (
           <Link
             to="/opsmx/assess-risk"
+            onClick={onClose}
             className="flex items-center gap-1.5 group w-fit mb-1"
           >
             <p className="text-[12px] font-black group-hover:opacity-80 transition-opacity" style={{ color }}>
@@ -434,10 +435,10 @@ export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
             <DetectRiskRow />
 
             {/* Assess Risk — now links to /opsmx/assess-risk */}
-            <HorizontalRiskRow layer={matrixData.assess} color="#34d399" isAssess={true} />
+            <HorizontalRiskRow layer={matrixData.assess} color="#34d399" isAssess={true} onClose={onClose} />
 
             {/* Fix Risk — unchanged horizontal band */}
-            <HorizontalRiskRow layer={matrixData.fix} color="#fbbf24" />
+            <HorizontalRiskRow layer={matrixData.fix} color="#fbbf24" onClose={onClose} />
           </div>
         </div>
       </div>
