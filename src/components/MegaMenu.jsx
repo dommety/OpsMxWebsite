@@ -281,11 +281,11 @@ function FixRiskRow({ onClose }) {
 
   return (
     <div className="border-t border-white/5 px-5 py-4">
-      <div className="mb-3 pb-3 border-b border-white/5">
+      <div className="mb-3 pb-3 border-b border-white/5 flex items-center gap-4">
         <Link
           to={fixRiskNavigation.href}
           onClick={onClose}
-          className="flex items-center gap-1.5 group w-fit mb-1"
+          className="flex items-center gap-1.5 group flex-shrink-0"
         >
           <p className="text-[12px] font-black group-hover:opacity-80 transition-opacity" style={{ color }}>
             {fixRiskNavigation.title}
