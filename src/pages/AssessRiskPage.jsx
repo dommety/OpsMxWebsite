@@ -134,10 +134,10 @@ function Hero() {
                 Request a Demo
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
-              <button className="group flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-slate-300 glass border border-white/10 hover:border-white/20 hover:text-white transition-all duration-200">
-                Explore Risk Workflow
+              <a href="https://ssd.sandbox.opsmx.org/login?redir=/ui/application" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-slate-300 glass border border-white/10 hover:border-white/20 hover:text-white transition-all duration-200">
+                Try Risk Assesment
                 <ChevronRight className="w-4 h-4" />
-              </button>
+              </a>
             </motion.div>
           </div>
 
