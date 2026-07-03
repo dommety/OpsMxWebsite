@@ -248,7 +248,7 @@ function OverviewCard({ onClose }) {
             onClick={onClose}
             className="group hover:opacity-80 transition-opacity"
           >
-            <p className="text-[11px] font-bold mb-0.5" style={{ color: '#06b6d4' }}>⭐ OpsMx AI Assistant</p>
+            <p className="text-[11px] font-bold mb-0.5" style={{ color: '#06b6d4' }}>⭐ AI Assistant</p>
             <p className="text-[9px] text-slate-500">Ask questions. Diagnose. Remediate. Report.</p>
           </Link>
         </div>
