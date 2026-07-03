@@ -40,7 +40,7 @@ const detectColumns = [
     icon: Package,
     color: '#a78bfa',
     title: 'Supply Chain',
-    description: 'Understand and secure what your software is built from.',
+    description: 'Secure Supply chain - Code to Prod.',
     groups: [
       {
         label: 'Supply Chain Security',
