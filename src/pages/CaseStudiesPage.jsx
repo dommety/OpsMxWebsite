@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Navbar from '../components/Navbar'
+import Seo from '../components/Seo'
 import { caseStudiesByCategory, categories } from '../data/caseStudies'
 
 function CaseStudyCard({ study, index }) {
@@ -97,6 +98,7 @@ function CategorySection({ category, studies }) {
 export default function CaseStudiesPage() {
   return (
     <div className="min-h-screen bg-navy-950 text-white overflow-x-hidden">
+      <Seo route="/case-studies" />
       <Navbar />
 
       {/* Hero */}
