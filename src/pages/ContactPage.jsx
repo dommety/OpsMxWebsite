@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Mail, Globe, MessageSquare, Users, Handshake, Headphones, ArrowRight } from 'lucide-react'
 import Navbar from '../components/Navbar'
 
+import Seo from '../components/Seo'
 const contactOptions = [
   {
     icon: MessageSquare,
@@ -68,6 +69,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-navy-950 text-white overflow-x-hidden">
+      <Seo route="/contact" />
       <Navbar />
 
       {/* Hero */}
