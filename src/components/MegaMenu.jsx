@@ -423,7 +423,7 @@ function HorizontalRiskRow({ layer, color, isAssess, isFix, onClose }) {
 
   return (
     <div className="border-t border-white/5 px-5 py-4">
-      <div className="mb-3 pb-3 border-b border-white/5 flex items-center gap-4">
+      <div className="mb-3 flex items-center gap-4">
         {(isAssess || isFix) ? (
           <Link
             to={linkHref}
