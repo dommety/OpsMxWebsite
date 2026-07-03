@@ -416,7 +416,9 @@ function DetectRiskRow() {
 // ─── ASSESS / FIX ROW — unchanged horizontal band ────────────────────────────
 
 function HorizontalRiskRow({ layer, color, isAssess, isFix, onClose }) {
-  const allItems = layer.pillars.flatMap((p) => p.items)
+  const allItems = isAssess
+    ? layer.pillars.flatMap((p) => p.items).slice(0, 5)
+    : layer.pillars.flatMap((p) => p.items)
   const linkHref = isAssess ? '/opsmx/assess-risk' : isFix ? '/opsmx/fix-risk' : null
 
   return (
