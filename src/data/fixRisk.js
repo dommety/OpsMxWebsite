@@ -35,6 +35,18 @@ export const fixRiskNavigation = {
       // futureHref: '/opsmx/devops-sre-agent',
       enabled: true,
     },
+    {
+      title: 'Kubernetes Agent',
+      href: '/opsmx/fix-risk#kubernetes',
+      // futureHref: '/opsmx/kubernetes-agent',
+      enabled: true,
+    },
+    {
+      title: 'Compliance Agent',
+      href: '/opsmx/fix-risk#compliance',
+      // futureHref: '/opsmx/compliance-agent',
+      enabled: true,
+    },
   ],
 }
 
@@ -113,6 +125,44 @@ export const remediationAgents = [
       'Reduce failed deployments',
       'Strengthen policy enforcement',
       'Accelerate operational recovery',
+    ],
+  },
+  {
+    id: 'kubernetes',
+    title: 'Kubernetes Agent',
+    subtitle: 'Fix Kubernetes misconfigurations, policy violations, and workload security issues.',
+    color: '#06b6d4',
+    capabilities: [
+      'Pod Security Policy Fixes',
+      'RBAC Misconfiguration Remediation',
+      'Network Policy Updates',
+      'Resource Quota Enforcement',
+      'Security Context Hardening',
+    ],
+    outcomes: [
+      'Reduce Kubernetes attack surface',
+      'Enforce security policies automatically',
+      'Improve workload isolation',
+      'Strengthen cluster security posture',
+    ],
+  },
+  {
+    id: 'compliance',
+    title: 'Compliance Agent',
+    subtitle: 'Remediate compliance violations and generate audit evidence for regulatory requirements.',
+    color: '#ec4899',
+    capabilities: [
+      'Policy Violation Remediation',
+      'Audit Evidence Generation',
+      'Compliance Control Mapping',
+      'Exception Tracking & Justification',
+      'Regulatory Report Generation',
+    ],
+    outcomes: [
+      'Improve compliance posture',
+      'Reduce audit findings',
+      'Generate audit-ready evidence',
+      'Streamline compliance reporting',
     ],
   },
 ]
