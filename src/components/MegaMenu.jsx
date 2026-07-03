@@ -375,14 +375,19 @@ function HorizontalRiskRow({ layer, color, isAssess, onClose }) {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: idx * 0.02, duration: 0.2 }}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all hover:bg-white/8 cursor-pointer"
-            style={{
-              background: `${color}12`,
-              borderColor: `${color}20`,
-            }}
           >
-            <div className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: color }} />
-            <span className="text-[9px] font-medium text-slate-300">{item}</span>
+            <Link
+              to="/opsmx/assess-risk"
+              onClick={onClose}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all hover:bg-white/8 cursor-pointer"
+              style={{
+                background: `${color}12`,
+                borderColor: `${color}20`,
+              }}
+            >
+              <div className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: color }} />
+              <span className="text-[9px] font-medium text-slate-300">{item}</span>
+            </Link>
           </motion.div>
         ))}
       </div>
