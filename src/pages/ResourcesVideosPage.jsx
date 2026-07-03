@@ -1,4 +1,5 @@
 import Navbar from '../components/Navbar'
+import Seo from '../components/Seo'
 import { motion } from 'framer-motion'
 import { Play, ExternalLink, BookOpen, Zap, Users } from 'lucide-react'
 
@@ -32,6 +33,7 @@ export default function ResourcesVideosPage() {
 
   return (
     <div className="min-h-screen bg-navy-950 text-white overflow-x-hidden">
+      <Seo route="/videos" />
       <Navbar />
 
       {/* Hero section */}
