@@ -330,11 +330,11 @@ function DetectRiskRow() {
   return (
     <div className="border-t border-white/5 px-5 py-4">
       {/* Row header */}
-      <div className="mb-4 pb-2.5 border-b border-white/5 flex items-center justify-between">
-        <p className="text-[12px] font-black" style={{ color: rowColor }}>
+      <div className="mb-4 pb-2.5 border-b border-white/5 flex items-center gap-4">
+        <p className="text-[12px] font-black flex-shrink-0" style={{ color: rowColor }}>
           Detect Risk
         </p>
-        <p className="text-[10px] text-slate-400 text-right">
+        <p className="text-[10px] text-slate-400">
           Continuously detect risk across four defense areas.
         </p>
       </div>
