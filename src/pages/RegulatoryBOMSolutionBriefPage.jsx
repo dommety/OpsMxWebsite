@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight, Download, Box, Lock, Cpu, Code2, Zap, Shield, GitBranch, CheckCircle2, ChevronDown, Menu } from 'lucide-react'
 import Navbar from '../components/Navbar'
 
+import Seo from '../components/Seo'
 // X-BOM Platform Animation
 function XBOMPlatformAnimation() {
   const boms = [
@@ -444,6 +445,7 @@ const faqs = [
 export default function RegulatoryBOMSolutionBriefPage() {
   return (
     <div className="min-h-screen bg-slate-950">
+      <Seo route="/solution-briefs/regulatory-bom-reporting-suite" />
       <Navbar />
 
       {/* Hero */}
