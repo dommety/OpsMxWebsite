@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, FileBadge, ShieldCheck, Key, Fingerprint, GitCommitHorizontal, Hammer, Lock } from 'lucide-react'
 import Navbar from '../components/Navbar'
+import Seo from '../components/Seo'
 
 const features = [
   {
@@ -59,6 +60,7 @@ function OutcomeCard({ outcome, index }) {
 export default function ProvenancePage() {
   return (
     <div className="min-h-screen bg-slate-950">
+      <Seo route="/provenance" />
       <Navbar />
 
       <section className="pt-32 pb-20 px-6">

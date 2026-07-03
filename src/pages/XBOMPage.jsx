@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Package, Globe, Code2, Lock, GitBranch, Cloud, CheckCircle, Zap } from 'lucide-react'
 import Navbar from '../components/Navbar'
+import Seo from '../components/Seo'
 
 const bomTypes = [
   {
@@ -175,6 +176,7 @@ function OutcomeCard({ outcome, index }) {
 export default function XBOMPage() {
   return (
     <div className="min-h-screen bg-slate-950">
+      <Seo route="/x-bom" />
       <Navbar />
 
       {/* Hero Section */}

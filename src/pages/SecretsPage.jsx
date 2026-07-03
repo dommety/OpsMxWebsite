@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Code2, GitBranch, Package, Cloud, Zap, Lock, CheckCircle2, Shield, Database } from 'lucide-react'
 import Navbar from '../components/Navbar'
+import Seo from '../components/Seo'
 
 // Animation showing secrets workflow
 function SecretsWorkflowAnimation() {
@@ -276,6 +277,7 @@ const whyOpsMx = [
 export default function SecretsPage() {
   return (
     <div className="min-h-screen bg-slate-950">
+      <Seo route="/secrets" />
       <Navbar />
 
       {/* Hero */}

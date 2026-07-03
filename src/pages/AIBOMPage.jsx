@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Box, Code2, Database, Shield, GitBranch, Zap, CheckCircle2, ChevronDown, Cloud } from 'lucide-react'
 import Navbar from '../components/Navbar'
+import Seo from '../components/Seo'
 
 // AI-BOM Supply Chain Animation
 function AIBOMAnimation() {
@@ -341,6 +342,7 @@ const faqs = [
 export default function AIBOMPage() {
   return (
     <div className="min-h-screen bg-slate-950">
+      <Seo route="/ai-bom" />
       <Navbar />
 
       {/* Hero */}

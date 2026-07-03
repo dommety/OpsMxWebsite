@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Search, Layers, Lock, ShieldCheck, Box, FileCode2, GitBranch, AlertTriangle, CheckCircle2, Activity } from 'lucide-react'
 import Navbar from '../components/Navbar'
+import Seo from '../components/Seo'
 
 const features = [
   {
@@ -59,6 +60,7 @@ function OutcomeCard({ outcome, index }) {
 export default function DependencyIntelligencePage() {
   return (
     <div className="min-h-screen bg-slate-950">
+      <Seo route="/dependency-intelligence" />
       <Navbar />
 
       <section className="pt-32 pb-20 px-6">

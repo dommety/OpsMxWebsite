@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Gavel, FileJson2, Users, Server, Network, Shield, CheckCircle2 } from 'lucide-react'
 import Navbar from '../components/Navbar'
+import Seo from '../components/Seo'
 
 const features = [
   {
@@ -59,6 +60,7 @@ function OutcomeCard({ outcome, index }) {
 export default function ClusterSecurityPage() {
   return (
     <div className="min-h-screen bg-slate-950">
+      <Seo route="/cluster-security" />
       <Navbar />
 
       <section className="pt-32 pb-20 px-6">

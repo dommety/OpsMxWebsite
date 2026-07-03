@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, GitMerge, MapPin, Timer, Flame, CheckCircle2, XCircle, Clock } from 'lucide-react'
 import Navbar from '../components/Navbar'
+import Seo from '../components/Seo'
 
 const features = [
   {
@@ -59,6 +60,7 @@ function OutcomeCard({ outcome, index }) {
 export default function IncidentDiagnosticsPage() {
   return (
     <div className="min-h-screen bg-slate-950">
+      <Seo route="/incident-diagnostics" />
       <Navbar />
 
       <section className="pt-32 pb-20 px-6">

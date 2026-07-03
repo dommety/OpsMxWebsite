@@ -15,6 +15,7 @@ import {
   Workflow,
 } from 'lucide-react'
 import Navbar from '../components/Navbar'
+import Seo from '../components/Seo'
 
 // Problem cards
 const problems = [
@@ -317,6 +318,7 @@ function DifferentiatorCard({ diff, index }) {
 export default function APISecurityPage() {
   return (
     <div className="min-h-screen bg-slate-950">
+      <Seo route="/api-security" />
       <Navbar />
 
       {/* Hero */}

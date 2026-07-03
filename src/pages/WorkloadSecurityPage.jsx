@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Radar, Network, ScanEye, Cpu, Activity, Box } from 'lucide-react'
 import Navbar from '../components/Navbar'
+import Seo from '../components/Seo'
 
 const features = [
   {
@@ -59,6 +60,7 @@ function OutcomeCard({ outcome, index }) {
 export default function WorkloadSecurityPage() {
   return (
     <div className="min-h-screen bg-slate-950">
+      <Seo route="/workload-security" />
       <Navbar />
 
       <section className="pt-32 pb-20 px-6">

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Package, Lock, BrainCircuit, Cpu, CheckSquare, ShieldCheck, FileText } from 'lucide-react'
 import Navbar from '../components/Navbar'
+import Seo from '../components/Seo'
 
 const bomTypes = [
   { title: 'SBOM', subtitle: 'Software', icon: Package, color: '#60a5fa', description: 'Deep inventory of open-source libraries, transitive dependencies, and license compliance verification.' },
@@ -49,6 +50,7 @@ function OutcomeCard({ outcome, index }) {
 export default function AuditReportingPage() {
   return (
     <div className="min-h-screen bg-slate-950">
+      <Seo route="/audit-reporting" />
       <Navbar />
 
       <section className="pt-32 pb-20 px-6">
