@@ -6,6 +6,7 @@ import MegaMenu from './MegaMenu'
 import SolutionsMegaMenu from './SolutionsMegaMenu'
 import ResourcesMegaMenu from './ResourcesMegaMenu'
 import CustomersMegaMenu from './CustomersMegaMenu'
+import AssessRiskMegaMenu from './AssessRiskMegaMenu'
 import CompanyDropdown from './CompanyDropdown'
 import Logo from './Logo'
 
@@ -15,6 +16,7 @@ import Logo from './Logo'
 const navLinks = [
   { label: 'Products',   mega: 'products',   href: '/platform' },
   { label: 'Solutions',  mega: 'solutions',  href: '/solutions' },
+  { label: 'Assess Risk', mega: 'assessrisk', href: '/opsmx/assess-risk' },
   { label: 'Customers',  mega: 'customers',  href: 'https://www.opsmx.com/customer-case-study/' },
   { label: 'Pricing',    href: '/pricing' },
   { label: 'Resources',  mega: 'resources',  href: 'https://www.opsmx.com/guides-datasheets/' },
@@ -208,6 +210,17 @@ export default function Navbar() {
           <SolutionsMegaMenu
             onClose={closeNow}
             onMouseEnter={() => openWith('solutions')}
+            onMouseLeave={scheduleClose}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Assess Risk mega menu */}
+      <AnimatePresence>
+        {openMenu === 'assessrisk' && (
+          <AssessRiskMegaMenu
+            onClose={closeNow}
+            onMouseEnter={() => openWith('assessrisk')}
             onMouseLeave={scheduleClose}
           />
         )}
