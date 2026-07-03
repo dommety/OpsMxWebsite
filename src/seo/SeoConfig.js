@@ -4,8 +4,15 @@
 // Titles kept < 60 chars; descriptions ~150-160 chars.
 
 export const SITE_URL = 'https://www.opsmx.com'
+// Default social share image (1200x630). Replace with a real OpsMx OG image URL.
+export const OG_IMAGE = 'https://www.opsmx.com/wp-content/uploads/opsmx-og-1200x630.png'
 
 export const seoByRoute = {
+  // ── Homepage ───────────────────────────────────────────────
+  '/': {
+    title: 'OpsMx Active Defense — Active Defense & Remediation Platform',
+    description: 'Continuously detect, diagnose, prioritize, remediate, verify, and govern risks across software, AI, supply chains, cloud, runtime, and operations.',
+  },
   // ── Code & AI ──────────────────────────────────────────────
   '/secrets': {
     title: 'Secrets Detection & Management for CI/CD | OpsMx',
