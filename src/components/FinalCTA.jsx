@@ -89,9 +89,9 @@ export default function FinalCTA() {
             Request a Demo
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </a>
-          <button className="px-8 py-4 rounded-xl font-semibold text-slate-300 glass border border-white/10 hover:border-white/20 hover:text-white transition-all duration-200 text-lg">
+          <a href="https://docs.opsmx.com/" target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-xl font-semibold text-slate-300 glass border border-white/10 hover:border-white/20 hover:text-white transition-all duration-200 text-lg">
             View Documentation
-          </button>
+          </a>
         </motion.div>
 
         {/* Trust strip */}
