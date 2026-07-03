@@ -121,6 +121,21 @@ const detectColumns = [
       },
     ],
   },
+  {
+    id: 'ai-assistant',
+    icon: Code2,
+    color: '#06b6d4',
+    title: 'AI Assistant',
+    description: 'Use natural language to understand risk, diagnose problems, and automate security workflows.',
+    groups: [
+      {
+        label: 'AI Assistant',
+        items: [
+          { label: 'AI Assistant', href: '/opsmx/ai-assistant' },
+        ],
+      },
+    ],
+  },
 ]
 
 // ─── ASSESS & FIX DATA — unchanged from original ─────────────────────────────
