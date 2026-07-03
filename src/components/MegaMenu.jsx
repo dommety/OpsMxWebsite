@@ -101,7 +101,7 @@ const detectColumns = [
     icon: GitMerge,
     color: '#fbbf24',
     title: 'Operations',
-    description: 'Reduce risk across deployments and operational workflows.',
+    description: 'Secure workflows, delivery and deployments.',
     groups: [
       {
         label: 'Release & Deployment',
