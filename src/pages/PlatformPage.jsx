@@ -9,6 +9,7 @@ import PlatformIntegrations from '../components/platform/PlatformIntegrations'
 import PlatformEnterprise from '../components/platform/PlatformEnterprise'
 import PlatformOutcomes from '../components/platform/PlatformOutcomes'
 import PlatformCTA from '../components/platform/PlatformCTA'
+import Seo from '../components/Seo'
 
 export default function PlatformPage() {
   return (
