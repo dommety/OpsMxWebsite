@@ -3,6 +3,7 @@ import { ArrowRight, GitBranch, Lock, AlertCircle, CheckCircle2, Shield, Code, E
 import { useState } from 'react'
 import Navbar from '../components/Navbar'
 
+import Seo from '../components/Seo'
 // Git Security Workflow Animation
 function GitSecurityWorkflow() {
   const steps = [
@@ -200,6 +201,7 @@ const faqs = [
 export default function GitSecurityPage() {
   return (
     <div className="min-h-screen bg-slate-950">
+      <Seo route="/git-security-posture" />
       <Navbar />
 
       {/* Hero */}
