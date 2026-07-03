@@ -343,15 +343,16 @@ function DetectRiskRow() {
 
 // ─── ASSESS / FIX ROW — unchanged horizontal band ────────────────────────────
 
-function HorizontalRiskRow({ layer, color, isAssess, onClose }) {
+function HorizontalRiskRow({ layer, color, isAssess, isFix, onClose }) {
   const allItems = layer.pillars.flatMap((p) => p.items)
+  const linkHref = isAssess ? '/opsmx/assess-risk' : isFix ? '/opsmx/fix-risk' : null
 
   return (
     <div className="border-t border-white/5 px-5 py-4">
       <div className="mb-3 pb-3 border-b border-white/5">
-        {isAssess ? (
+        {(isAssess || isFix) ? (
           <Link
-            to="/opsmx/assess-risk"
+            to={linkHref}
             onClick={onClose}
             className="flex items-center gap-1.5 group w-fit mb-1"
           >
@@ -377,9 +378,9 @@ function HorizontalRiskRow({ layer, color, isAssess, onClose }) {
             transition={{ delay: idx * 0.02, duration: 0.2 }}
           >
             <Link
-              to="/opsmx/assess-risk"
-              onClick={onClose}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all hover:bg-white/8 cursor-pointer"
+              to={linkHref || '#'}
+              onClick={linkHref ? onClose : undefined}
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all hover:bg-white/8 ${linkHref ? 'cursor-pointer' : 'cursor-default'}`}
               style={{
                 background: `${color}12`,
                 borderColor: `${color}20`,
@@ -442,8 +443,8 @@ export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
             {/* Assess Risk — now links to /opsmx/assess-risk */}
             <HorizontalRiskRow layer={matrixData.assess} color="#34d399" isAssess={true} onClose={onClose} />
 
-            {/* Fix Risk — unchanged horizontal band */}
-            <HorizontalRiskRow layer={matrixData.fix} color="#fbbf24" onClose={onClose} />
+            {/* Fix Risk — now links to /opsmx/fix-risk */}
+            <HorizontalRiskRow layer={matrixData.fix} color="#fbbf24" isFix={true} onClose={onClose} />
           </div>
         </div>
       </div>
