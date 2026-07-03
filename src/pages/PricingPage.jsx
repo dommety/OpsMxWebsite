@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Check, ArrowRight } from 'lucide-react'
 import Navbar from '../components/Navbar'
 
+import Seo from '../components/Seo'
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
 const tabs = ['Security Pricing', 'DevOps/CD Pricing', 'OSS Support & Services']
@@ -248,6 +249,7 @@ export default function PricingPage() {
 
   return (
     <div className="min-h-screen bg-navy-950 text-white overflow-x-hidden">
+      <Seo route="/pricing" />
       <Navbar />
 
       {/* Hero */}
