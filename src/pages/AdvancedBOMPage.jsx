@@ -3,6 +3,7 @@ import { ArrowRight, Box, Lock, Zap, Cpu, CheckCircle2, ChevronDown } from 'luci
 import { useState } from 'react'
 import Navbar from '../components/Navbar'
 
+import Seo from '../components/Seo'
 // BOM Types Animation
 function BOMTypesAnimation() {
   const boms = [
@@ -174,6 +175,7 @@ const faqs = [
 export default function AdvancedBOMPage() {
   return (
     <div className="min-h-screen bg-slate-950">
+      <Seo route="/solution-briefs/advanced-bom-reporting" />
       <Navbar />
 
       {/* Hero */}
