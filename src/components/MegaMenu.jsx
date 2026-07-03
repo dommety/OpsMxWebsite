@@ -215,8 +215,8 @@ function OverviewCard({ onClose }) {
 
       <div className="space-y-4 py-2">
         <div>
-          <p className="text-[11px] font-bold mb-0.5" style={{ color: '#60a5fa' }}>Detect</p>
-          <p className="text-[9px] text-slate-500">Find risk everywhere</p>
+          <p className="text-[12px] font-bold mb-0.5" style={{ color: '#60a5fa' }}>Detect</p>
+          <p className="text-[11px] font-medium text-slate-400">Find risk everywhere</p>
         </div>
         <div>
           <Link
@@ -224,8 +224,8 @@ function OverviewCard({ onClose }) {
             onClick={onClose}
             className="group hover:opacity-80 transition-opacity"
           >
-            <p className="text-[11px] font-bold mb-0.5" style={{ color: '#34d399' }}>Assess</p>
-            <p className="text-[9px] text-slate-500">Understand what matters</p>
+            <p className="text-[12px] font-bold mb-0.5" style={{ color: '#34d399' }}>Assess</p>
+            <p className="text-[11px] font-medium text-slate-400">Understand what matters</p>
           </Link>
         </div>
         <div>
@@ -234,8 +234,8 @@ function OverviewCard({ onClose }) {
             onClick={onClose}
             className="group hover:opacity-80 transition-opacity"
           >
-            <p className="text-[11px] font-bold mb-0.5" style={{ color: '#fbbf24' }}>Fix</p>
-            <p className="text-[9px] text-slate-500">Remediate and verify</p>
+            <p className="text-[12px] font-bold mb-0.5" style={{ color: '#fbbf24' }}>Fix</p>
+            <p className="text-[11px] font-medium text-slate-400">Remediate and verify</p>
           </Link>
         </div>
         <div>
@@ -244,13 +244,13 @@ function OverviewCard({ onClose }) {
             onClick={onClose}
             className="group hover:opacity-80 transition-opacity"
           >
-            <p className="text-[11px] font-bold mb-0.5" style={{ color: '#06b6d4' }}>⭐ AI Assistant</p>
-            <p className="text-[9px] text-slate-500">Ask questions. Diagnose. Remediate. Report.</p>
+            <p className="text-[12px] font-bold mb-0.5" style={{ color: '#06b6d4' }}>⭐ AI Assistant</p>
+            <p className="text-[11px] font-medium text-slate-400">Ask questions. Diagnose. Remediate. Report.</p>
           </Link>
         </div>
       </div>
 
-      <div className="border-t border-white/6" />
+      <div className="border-t border-white/5" />
 
       <div className="space-y-2">
         <Link
@@ -279,7 +279,7 @@ function FixRiskRow({ onClose }) {
   const color = '#fbbf24'
 
   return (
-    <div className="border-t border-white/5 px-5 py-4">
+    <div className="border-t border-white/12 px-5 py-4">
       <div className="mb-3 flex items-center gap-4">
         <Link
           to={fixRiskNavigation.href}
@@ -327,7 +327,7 @@ function DetectRiskRow() {
   const rowColor = '#60a5fa'
 
   return (
-    <div className="border-t border-white/5 px-5 py-4">
+    <div className="border-t border-white/12 px-5 py-4">
       {/* Row header */}
       <div className="mb-4 flex items-center gap-4">
         <p className="text-[12px] font-black flex-shrink-0" style={{ color: rowColor }}>
@@ -421,7 +421,7 @@ function HorizontalRiskRow({ layer, color, isAssess, isFix, onClose }) {
   const linkHref = isAssess ? '/opsmx/assess-risk' : isFix ? '/opsmx/fix-risk' : null
 
   return (
-    <div className="border-t border-white/5 px-5 py-4">
+    <div className="border-t border-white/12 px-5 py-4">
       <div className="mb-3 flex items-center gap-4">
         {(isAssess || isFix) ? (
           <Link

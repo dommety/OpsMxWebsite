@@ -18,13 +18,14 @@ function Badge({ type }) {
 
 // ─── Solution item row ────────────────────────────────────────────────────────
 
-function SolutionItem({ item }) {
+function SolutionItem({ item, onClose }) {
   const Icon = item.icon
   const href = item.href || `/solutions/${item.slug}`
   return (
     <motion.div whileHover={{ x: 2 }}>
       <Link
         to={href}
+        onClick={onClose}
         className="flex items-start gap-2.5 px-2 py-1.5 rounded-lg group hover:bg-white/4 transition-colors duration-150"
       >
         <div
@@ -51,7 +52,7 @@ function SolutionItem({ item }) {
 
 // ─── Column ───────────────────────────────────────────────────────────────────
 
-function Column({ col }) {
+function Column({ col, onClose }) {
   return (
     <div className="flex flex-col min-w-0">
       {/* Column header */}
@@ -65,7 +66,7 @@ function Column({ col }) {
       {/* Items */}
       <div className="flex-1 space-y-0.5 overflow-y-auto max-h-[420px] pr-1 scrollbar-thin">
         {col.items.map(item => (
-          <SolutionItem key={item.slug} item={item} />
+          <SolutionItem key={item.slug} item={item} onClose={onClose} />
         ))}
       </div>
 
@@ -137,7 +138,7 @@ export default function SolutionsMegaMenu({ onClose, onMouseEnter, onMouseLeave 
         {/* 3-column grid — col 1 slightly wider */}
         <div className="grid p-4 gap-4" style={{ gridTemplateColumns: '1.25fr 1fr 1fr' }}>
           {columns.map(col => (
-            <Column key={col.id} col={col} />
+            <Column key={col.id} col={col} onClose={onClose} />
           ))}
         </div>
       </div>
