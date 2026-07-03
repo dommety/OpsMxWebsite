@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import Navbar from '../components/Navbar'
+import Seo from '../components/Seo'
 import { columns, BADGES, FEATURED_SLUGS, allSolutions } from '../data/solutions'
 import { Sparkles } from 'lucide-react'
 
@@ -102,6 +103,7 @@ function SolutionSection({ col }) {
 export default function SolutionsPage() {
   return (
     <div className="min-h-screen bg-navy-950 text-white overflow-x-hidden">
+      <Seo route="/solutions" />
       <Navbar />
 
       {/* Hero */}
