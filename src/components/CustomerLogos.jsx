@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion'
 
 const logos = [
-  'Apple', 'Cisco', 'Western Union', 'Adobe', 'Salesforce',
-  'Google', 'Bosch', 'DP World', 'Cloudera', 'Goldman Sachs',
-  'Apple', 'Cisco', 'Western Union', 'Adobe', 'Salesforce',
-  'Google', 'Bosch', 'DP World', 'Cloudera', 'Goldman Sachs',
+  'Western Union', 'Cisco', 'Salesforce', 'Google', 'IIFL',
+  'Porter', 'Netradyne', 'Strimm', 'Smart Dubai', 'Waze',
+  'Cloudera', 'Symphony', 'Xlinx', 'TC Bank',
+  'Western Union', 'Cisco', 'Salesforce', 'Google', 'IIFL',
+  'Porter', 'Netradyne', 'Strimm', 'Smart Dubai', 'Waze',
+  'Cloudera', 'Symphony', 'Xlinx', 'TC Bank',
 ]
 
 const LogoItem = ({ name }) => (
