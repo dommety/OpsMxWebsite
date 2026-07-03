@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight, Box, Lock, Cpu, Code2, Zap, CheckCircle2, ChevronDown, Shield, Cloud, GitBranch } from 'lucide-react'
 import Navbar from '../components/Navbar'
 
+import Seo from '../components/Seo'
 // X-BOM Unified Platform Animation
 function XBOMAnimation() {
   const steps = [
@@ -339,6 +340,7 @@ const faqs = [
 export default function WhyOpsMxXBOMPage() {
   return (
     <div className="min-h-screen bg-slate-950">
+      <Seo route="/solution-briefs/why-opsmx-xbom" />
       <Navbar />
 
       {/* Hero */}
