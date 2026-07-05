@@ -362,10 +362,10 @@ function DetectRiskRow() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: colIdx * 0.05, duration: 0.25 }}
-                className="col-span-1"
+                className="col-span-1 flex flex-col gap-2.5"
               >
                 {/* Column header for parent */}
-                <div className="flex items-center gap-1.5 mb-3">
+                <div className="flex items-center gap-1.5">
                   <div
                     className="w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0"
                     style={{ background: `${col.color}18`, border: `1px solid ${col.color}28` }}
@@ -374,6 +374,9 @@ function DetectRiskRow() {
                   </div>
                   <span className="text-[11px] font-bold text-white">{col.title}</span>
                 </div>
+
+                {/* Column description */}
+                <p className="text-[9px] text-slate-500 leading-snug">{col.description}</p>
 
                 {/* Two sections stacked vertically */}
                 <div className="flex flex-col gap-4">
