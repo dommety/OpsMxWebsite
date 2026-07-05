@@ -351,20 +351,14 @@ function WhyOpsMx() {
 
 function ContextEngineSection() {
   return (
-    <section id="context-engine" className="relative py-12 bg-navy-950 scroll-margin-top">
-      <div className="max-w-4xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-2xl font-black text-white mb-3">Context Engine</h2>
-          <p className="text-base text-slate-300 leading-relaxed">
-            Correlate findings with code, applications, APIs, cloud, Kubernetes, runtime, ownership, business context, and deployment data.
-          </p>
-        </motion.div>
+    <div id="context-engine" className="scroll-margin-top">
+      <div className="max-w-4xl mx-auto px-6 py-6">
+        <h2 className="text-lg font-bold text-white mb-2">Context Engine</h2>
+        <p className="text-sm text-slate-300 leading-relaxed">
+          Correlate findings with code, applications, APIs, cloud, Kubernetes, runtime, ownership, business context, and deployment data.
+        </p>
       </div>
-    </section>
+    </div>
   )
 }
 
