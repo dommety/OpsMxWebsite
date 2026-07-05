@@ -106,7 +106,7 @@ const detectColumns = [
     icon: GitMerge,
     color: '#fbbf24',
     title: 'Operations & Delivery',
-    description: 'Diagnose delivery failures, recover safely, verify releases, and understand operational risk.',
+    description: 'Secure workflows, delivery and deployments.',
     groups: [
       {
         label: 'Delivery Remediation',
