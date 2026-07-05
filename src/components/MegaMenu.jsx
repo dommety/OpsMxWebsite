@@ -55,7 +55,7 @@ const detectColumns = [
     groups: [
       {
         label: 'Bill of Material Intelligence',
-        description: 'Know what is inside your software, AI, crypto, delivery, hardware, and open source supply chain.',
+        description: '',
         items: [
           { label: 'SBOM', href: 'https://www.opsmx.com/software-bill-of-materials-with-opsmx-delivery-shield/' },
           { label: 'AI-BOM', href: '/ai-bom' },
@@ -67,7 +67,7 @@ const detectColumns = [
       },
       {
         label: 'Supply Chain Governance',
-        description: 'Govern licenses, third-party BOMs, regulatory evidence, vulnerability correlation, prioritization, audit reporting, and policy enforcement.',
+        description: '',
         items: [
           { label: 'Regulatory BOM Reporting', href: '/solution-briefs/regulatory-bom-reporting-suite' },
           { label: 'License Risk', href: '/license-risk' },
