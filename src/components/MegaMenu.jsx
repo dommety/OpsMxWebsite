@@ -42,7 +42,7 @@ const detectColumns = [
     icon: Code2,
     color: '#22d3ee',
     title: 'Code & AI Agents',
-    description: 'Secure software, AI-generated code, AI agents, models, prompts, and running applications across the software lifecycle.',
+    description: 'Secure Apps, APIs, AI-Code and AI Agents',
     isTwoSectionLayout: true,
     sections: codeAndApplicationsSections,
   },
