@@ -128,7 +128,15 @@ const detectColumns = [
   },
 ]
 
-// ─── ASSESS & FIX DATA — unchanged from original ─────────────────────────────
+// ─── ASSESS RISK TOPICS for mega menu ─────────────────────────────────────────
+
+const assessTopicsForMenu = [
+  { label: 'Vulnerability Correlation', href: '/opsmx/assess-risk#vulnerability-correlation' },
+  { label: 'Risk Prioritization', href: '/opsmx/assess-risk#risk-prioritization' },
+  { label: 'Supply Chain Risk Assessment', href: '/opsmx/assess-risk#supply-chain-risk-assessment' },
+]
+
+// ─── ASSESS & FIX DATA ─────────────────────────────────────────────────────
 
 const matrixData = {
   assess: {
@@ -447,10 +455,25 @@ function DetectRiskRow() {
 
 // ─── ASSESS / FIX ROW — unchanged horizontal band ────────────────────────────
 
-function HorizontalRiskRow({ layer, color, isAssess, isFix, onClose }) {
-  const allItems = isAssess
-    ? layer.pillars.flatMap((p) => p.items).slice(0, 5)
-    : layer.pillars.flatMap((p) => p.items)
+function HorizontalRiskRow({ layer, color, isAssess, isFix, onClose, assessTopics }) {
+  // For Assess Risk, show the special topics with anchors
+  let displayItems = []
+  if (isAssess && assessTopics) {
+    displayItems = assessTopics.map(topic => ({
+      label: topic.label,
+      href: topic.href,
+      isSpecial: true
+    }))
+  } else {
+    // For other rows, flatten items from pillars
+    const allItems = layer.pillars.flatMap((p) => p.items)
+    displayItems = allItems.map(item => ({
+      label: item,
+      href: isAssess ? '/opsmx/assess-risk' : isFix ? '/opsmx/fix-risk' : null,
+      isSpecial: false
+    }))
+  }
+
   const linkHref = isAssess ? '/opsmx/assess-risk' : isFix ? '/opsmx/fix-risk' : null
 
   return (
@@ -476,24 +499,24 @@ function HorizontalRiskRow({ layer, color, isAssess, isFix, onClose }) {
       </div>
 
       <div className="flex flex-wrap gap-2">
-        {allItems.map((item, idx) => (
+        {displayItems.map((item, idx) => (
           <motion.div
-            key={`${item}-${idx}`}
+            key={`${item.label}-${idx}`}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: idx * 0.02, duration: 0.2 }}
           >
             <Link
-              to={linkHref || '#'}
-              onClick={linkHref ? onClose : undefined}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all hover:bg-white/8 ${linkHref ? 'cursor-pointer' : 'cursor-default'}`}
+              to={item.href || '#'}
+              onClick={onClose}
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all hover:bg-white/8 cursor-pointer`}
               style={{
                 background: `${color}12`,
                 borderColor: `${color}20`,
               }}
             >
               <div className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: color }} />
-              <span className="text-[9px] font-medium text-slate-300">{item}</span>
+              <span className="text-[9px] font-medium text-slate-300">{item.label}</span>
             </Link>
           </motion.div>
         ))}
@@ -546,8 +569,8 @@ export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
             {/* Detect Risk — new grouped subcategory layout */}
             <DetectRiskRow />
 
-            {/* Assess Risk — now links to /opsmx/assess-risk */}
-            <HorizontalRiskRow layer={matrixData.assess} color="#34d399" isAssess={true} onClose={onClose} />
+            {/* Assess Risk — now links to /opsmx/assess-risk with anchor support */}
+            <HorizontalRiskRow layer={matrixData.assess} color="#34d399" isAssess={true} onClose={onClose} assessTopics={assessTopicsForMenu} />
 
             {/* Fix Risk — navigation-driven section with deep linking */}
             <FixRiskRow onClose={onClose} />
