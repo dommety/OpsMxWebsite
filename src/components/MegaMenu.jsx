@@ -7,12 +7,10 @@ import { fixRiskNavigation } from '../data/fixRisk'
 
 // ─── DETECT RISK — grouped subcategory layout (NEW) ──────────────────────────
 
-const codeAndApplicationsSections = [
+const codeAndAgentGroups = [
   {
-    id: 'code-applications',
-    title: 'Code & Applications',
+    label: 'Code & Applications',
     description: '',
-    color: '#22d3ee',
     items: [
       { label: 'SAST', href: '/static-application-security-testing' },
       { label: 'SCA', href: 'https://www.opsmx.com/software-composition-analysis-with-opsmx-delivery-shield/' },
@@ -23,15 +21,13 @@ const codeAndApplicationsSections = [
     ],
   },
   {
-    id: 'ai-agent-security',
-    title: 'AI & Agent Security',
+    label: 'AI & Agent Security',
     description: '',
-    color: '#06b6d4',
     items: [
-      { label: 'AI Agent Security', href: '/ai-security', futureHref: '/opsmx/ai-agent-security' },
-      { label: 'AI Model Security', href: '/ai-security', futureHref: '/opsmx/ai-model-security' },
-      { label: 'Prompt Security', href: '/ai-security', futureHref: '/opsmx/prompt-security' },
-      { label: 'MCP Server Security', href: '/ai-security', futureHref: '/opsmx/mcp-security' },
+      { label: 'AI Agent Security', href: '/ai-security' },
+      { label: 'AI Model Security', href: '/ai-security' },
+      { label: 'Prompt Security', href: '/ai-security' },
+      { label: 'MCP Server Security', href: '/ai-security' },
     ],
   },
 ]
@@ -43,8 +39,7 @@ const detectColumns = [
     color: '#22d3ee',
     title: 'Code & AI Agents',
     description: 'Secure Apps, APIs, AI-Code and AI Agents',
-    isTwoSectionLayout: true,
-    sections: codeAndApplicationsSections,
+    groups: codeAndAgentGroups,
   },
   {
     id: 'supply-chain',
@@ -369,96 +364,11 @@ function DetectRiskRow() {
         </p>
       </div>
 
-      {/* 4-column grid, but first column spans with 2-section layout */}
+      {/* 4-column grid */}
       <div className="grid grid-cols-4 gap-5">
         {detectColumns.map((col, colIdx) => {
           const Icon = col.icon
 
-          // Special handling for two-section layout (Code & AI Agents)
-          if (col.isTwoSectionLayout) {
-            return (
-              <motion.div
-                key={col.id}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: colIdx * 0.05, duration: 0.25 }}
-                className="col-span-1 flex flex-col gap-2.5"
-              >
-                {/* Column header for parent */}
-                <div className="flex items-center gap-1.5">
-                  <div
-                    className="w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0"
-                    style={{ background: `${col.color}18`, border: `1px solid ${col.color}28` }}
-                  >
-                    <Icon className="w-3 h-3" style={{ color: col.color }} strokeWidth={1.8} />
-                  </div>
-                  <span className="text-[11px] font-bold text-white">{col.title}</span>
-                </div>
-
-                {/* Column description */}
-                <p className="text-[9px] text-slate-500 leading-snug">{col.description}</p>
-
-                {/* Two sections stacked vertically */}
-                <div className="flex flex-col gap-4">
-                  {col.sections.map((section) => (
-                    <div key={section.id} className="flex flex-col gap-2.5">
-                      {/* Section header */}
-                      <div>
-                        <p className="text-[11px] font-bold mb-1" style={{ color: section.color }}>{section.title}</p>
-                        <p className="text-[8.5px] text-slate-400 leading-snug">{section.description}</p>
-                      </div>
-
-                      {/* Section items */}
-                      <div className="space-y-1.5">
-                        {section.items.map((item) => {
-                          const href = item.href
-                          const isExternal = href.startsWith('http')
-
-                          if (isExternal) {
-                            return (
-                              <a
-                                key={item.label}
-                                href={href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-1.5 group/item"
-                              >
-                                <div
-                                  className="w-0.5 h-0.5 rounded-full flex-shrink-0"
-                                  style={{ background: section.color, opacity: 0.4 }}
-                                />
-                                <span className="text-[9px] font-medium text-slate-400 group-hover/item:text-slate-200 transition-colors leading-tight">
-                                  {item.label}
-                                </span>
-                              </a>
-                            )
-                          }
-
-                          return (
-                            <Link
-                              key={item.label}
-                              to={href}
-                              className="flex items-center gap-1.5 group/item"
-                            >
-                              <div
-                                className="w-0.5 h-0.5 rounded-full flex-shrink-0"
-                                style={{ background: section.color, opacity: 0.4 }}
-                              />
-                              <span className="text-[9px] font-medium text-slate-400 group-hover/item:text-slate-200 transition-colors leading-tight">
-                                {item.label}
-                              </span>
-                            </Link>
-                          )
-                        })}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            )
-          }
-
-          // Standard column layout for other columns
           return (
             <motion.div
               key={col.id}
