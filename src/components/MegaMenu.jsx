@@ -62,7 +62,7 @@ const detectColumns = [
           { label: 'CBOM, DBOM, QBOM & HBOM', href: '/solution-briefs/advanced-bom-reporting' },
           { label: 'Dependency Intelligence', href: '/dependency-intelligence' },
           { label: 'Provenance', href: '/provenance' },
-          { label: 'Open Source BOM / OSS Risk', href: 'https://www.opsmx.com/open-source-risk-management-for-oss-with-opsmx-delivery-shield/' },
+          { label: 'OSS Risk & Open Source BOM', href: 'https://www.opsmx.com/open-source-risk-management-for-oss-with-opsmx-delivery-shield/' },
         ],
       },
       {
