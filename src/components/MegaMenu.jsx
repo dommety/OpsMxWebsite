@@ -85,27 +85,24 @@ const detectColumns = [
     description: 'Secure cloud, infra and production.',
     groups: [
       {
-        label: 'Cloud Security',
+        label: 'Cloud & Kubernetes Security',
         items: [
-          { label: 'CSPM', href: 'https://www.opsmx.com/cloud-security-posture-management-with-opsmx-delivery-shield/' },
+          { label: 'Cloud Security Posture Management', href: 'https://www.opsmx.com/cloud-security-posture-management-with-opsmx-delivery-shield/' },
           { label: 'IaC Security', href: 'https://www.opsmx.com/infrastructure-as-code-security-with-opsmx-delivery-shield/' },
           { label: 'Container Security', href: 'https://www.opsmx.com/kubernetes-security-with-opsmx-delivery-shield/' },
-        ],
-      },
-      {
-        label: 'Kubernetes',
-        items: [
           { label: 'Cluster Security', href: '/cluster-security' },
           { label: 'Workload Security', href: '/workload-security' },
           { label: 'Policy Enforcement', href: 'https://www.opsmx.com/deployment-firewall/' },
         ],
       },
       {
-        label: 'Runtime',
+        label: 'Runtime Risk Intelligence',
         items: [
-          { label: 'Threat Correlation', href: '/threat-correlation' },
           { label: 'Runtime Risk', href: 'https://opsmx.com/dynamic-runtime-ai-security/' },
-          { label: 'Cloud Remediation', href: '/cloud-remediation' },
+          { label: 'Threat Correlation', href: '/threat-correlation' },
+          { label: 'Threat-Informed Risk Assessment', href: '/opsmx/runtime-security' }, // TODO: create dedicated page
+          { label: 'Agent Change Risk Assessment', href: '/opsmx/runtime-security' }, // TODO: create dedicated page
+          { label: 'Continuous Risk Monitoring & Verification', href: '/opsmx/runtime-security' }, // TODO: create dedicated page
         ],
       },
     ],
