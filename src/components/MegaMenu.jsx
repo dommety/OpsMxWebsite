@@ -54,7 +54,7 @@ const detectColumns = [
     description: 'Secure supply chain from code to prod',
     groups: [
       {
-        label: 'Bill of Material Intelligence',
+        label: 'Supply Chain Security',
         description: '',
         items: [
           { label: 'SBOM', href: 'https://www.opsmx.com/software-bill-of-materials-with-opsmx-delivery-shield/' },
