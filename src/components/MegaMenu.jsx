@@ -7,33 +7,44 @@ import { fixRiskNavigation } from '../data/fixRisk'
 
 // ─── DETECT RISK — grouped subcategory layout (NEW) ──────────────────────────
 
+const codeAndApplicationsSections = [
+  {
+    id: 'code-applications',
+    title: 'Code & Applications',
+    description: 'Secure source code, open source dependencies, secrets, APIs, and running applications throughout the software development lifecycle.',
+    color: '#22d3ee',
+    items: [
+      { label: 'SAST', href: '/static-application-security-testing' },
+      { label: 'SCA', href: 'https://www.opsmx.com/software-composition-analysis-with-opsmx-delivery-shield/' },
+      { label: 'Secrets', href: '/secrets' },
+      { label: 'DAST', href: 'https://www.opsmx.com/dynamic-application-security-testing-with-opsmx-delivery-shield/' },
+      { label: 'API Security', href: '/api-security' },
+      { label: 'AI Penetration Testing', href: '/ai-penetration-testing' },
+    ],
+  },
+  {
+    id: 'ai-agent-security',
+    title: 'AI & Agent Security',
+    description: 'Protect AI-native applications, agents, models, prompts, and AI communication layers.',
+    color: '#06b6d4',
+    items: [
+      { label: 'AI Agent Security', href: '/ai-security', futureHref: '/opsmx/ai-agent-security' },
+      { label: 'AI Model Security', href: '/ai-security', futureHref: '/opsmx/ai-model-security' },
+      { label: 'Prompt Security', href: '/ai-security', futureHref: '/opsmx/prompt-security' },
+      { label: 'MCP Server Security', href: '/ai-security', futureHref: '/opsmx/mcp-security' },
+    ],
+  },
+]
+
 const detectColumns = [
   {
     id: 'code-ai',
     icon: Code2,
     color: '#22d3ee',
-    title: 'Code & AI',
-    description: 'Secure Apps, APIs, AI-Code, and AI Agents.',
-    groups: [
-      {
-        label: 'Code Security',
-        items: [
-          { label: 'SAST', href: '/static-application-security-testing' },
-          { label: 'SCA', href: 'https://www.opsmx.com/software-composition-analysis-with-opsmx-delivery-shield/' },
-          { label: 'Secrets', href: '/secrets' },
-          { label: 'AI Security', href: '/ai-security' },
-          { label: 'Code Remediation', href: 'https://www.opsmx.com/ai-guided-risk-remediation-with-opsmx-delivery-shield/' },
-        ],
-      },
-      {
-        label: 'Testing',
-        items: [
-          { label: 'DAST', href: 'https://www.opsmx.com/dynamic-application-security-testing-with-opsmx-delivery-shield/' },
-          { label: 'API Security', href: '/api-security' },
-          { label: 'Penetration Testing', href: '/penetration-testing' },
-        ],
-      },
-    ],
+    title: 'Code & AI Agents',
+    description: 'Secure software, AI-generated code, AI agents, models, prompts, and running applications across the software lifecycle.',
+    isTwoSectionLayout: true,
+    sections: codeAndApplicationsSections,
   },
   {
     id: 'supply-chain',
@@ -338,10 +349,77 @@ function DetectRiskRow() {
         </p>
       </div>
 
-      {/* 4-column grid */}
+      {/* 4-column grid, but first column spans with 2-section layout */}
       <div className="grid grid-cols-4 gap-5">
         {detectColumns.map((col, colIdx) => {
           const Icon = col.icon
+
+          // Special handling for two-section layout (Code & AI Agents)
+          if (col.isTwoSectionLayout) {
+            return (
+              <motion.div
+                key={col.id}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: colIdx * 0.05, duration: 0.25 }}
+                className="col-span-1"
+              >
+                {/* Column header for parent */}
+                <div className="flex items-center gap-1.5 mb-3">
+                  <div
+                    className="w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0"
+                    style={{ background: `${col.color}18`, border: `1px solid ${col.color}28` }}
+                  >
+                    <Icon className="w-3 h-3" style={{ color: col.color }} strokeWidth={1.8} />
+                  </div>
+                  <span className="text-[11px] font-bold text-white">{col.title}</span>
+                </div>
+
+                {/* Two sections side-by-side */}
+                <div className="grid grid-cols-2 gap-4">
+                  {col.sections.map((section) => (
+                    <div key={section.id} className="flex flex-col gap-2.5">
+                      {/* Section header */}
+                      <div>
+                        <p className="text-[11px] font-bold text-white mb-1">{section.title}</p>
+                        <p className="text-[8.5px] text-slate-400 leading-snug">{section.description}</p>
+                      </div>
+
+                      {/* Section items */}
+                      <div className="space-y-1.5">
+                        {section.items.map((item) => {
+                          const href = item.href
+                          const isExternal = href.startsWith('http')
+                          const LinkComponent = isExternal ? 'a' : Link
+                          const linkProps = isExternal
+                            ? { href: href, target: '_blank', rel: 'noopener noreferrer' }
+                            : { to: href }
+
+                          return (
+                            <LinkComponent
+                              key={item.label}
+                              {...linkProps}
+                              className="flex items-center gap-1.5 group/item"
+                            >
+                              <div
+                                className="w-0.5 h-0.5 rounded-full flex-shrink-0"
+                                style={{ background: section.color, opacity: 0.4 }}
+                              />
+                              <span className="text-[9px] font-medium text-slate-400 group-hover/item:text-slate-200 transition-colors leading-tight">
+                                {item.label}
+                              </span>
+                            </LinkComponent>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            )
+          }
+
+          // Standard column layout for other columns
           return (
             <motion.div
               key={col.id}
@@ -509,7 +587,7 @@ export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
           </div>
 
           {/* Right: Detect + Assess + Fix */}
-          <div className="col-span-4">
+          <div className="col-span-4" style={{ background: 'rgba(20, 20, 28, 0.6)' }}>
             {/* Detect Risk — new grouped subcategory layout */}
             <DetectRiskRow />
 
