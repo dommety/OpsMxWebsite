@@ -98,9 +98,7 @@ const detectColumns = [
       {
         label: 'Runtime Security',
         items: [
-          { label: 'Runtime Risk', href: 'https://opsmx.com/dynamic-runtime-ai-security/' },
           { label: 'Threat Correlation', href: '/threat-correlation' },
-          { label: 'Threat-Informed Risk Assessment', href: '/opsmx/runtime-security' },
           { label: 'Change Risk Assessment', href: '/opsmx/runtime-security' },
           { label: 'Continuous Risk Monitoring & Verification', href: '/opsmx/runtime-security' },
           { label: 'Runtime Risk Remediation', href: '/opsmx/runtime-security' },
