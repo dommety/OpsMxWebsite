@@ -375,8 +375,8 @@ function DetectRiskRow() {
                   <span className="text-[11px] font-bold text-white">{col.title}</span>
                 </div>
 
-                {/* Two sections side-by-side */}
-                <div className="grid grid-cols-2 gap-4">
+                {/* Two sections stacked vertically */}
+                <div className="flex flex-col gap-4">
                   {col.sections.map((section) => (
                     <div key={section.id} className="flex flex-col gap-2.5">
                       {/* Section header */}
