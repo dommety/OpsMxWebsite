@@ -11,7 +11,7 @@ const codeAndApplicationsSections = [
   {
     id: 'code-applications',
     title: 'Code & Applications',
-    description: 'Secure source code, open source dependencies, secrets, APIs, and running applications throughout the software development lifecycle.',
+    description: '',
     color: '#22d3ee',
     items: [
       { label: 'SAST', href: '/static-application-security-testing' },
@@ -390,15 +390,31 @@ function DetectRiskRow() {
                         {section.items.map((item) => {
                           const href = item.href
                           const isExternal = href.startsWith('http')
-                          const LinkComponent = isExternal ? 'a' : Link
-                          const linkProps = isExternal
-                            ? { href: href, target: '_blank', rel: 'noopener noreferrer' }
-                            : { to: href }
+
+                          if (isExternal) {
+                            return (
+                              <a
+                                key={item.label}
+                                href={href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-1.5 group/item"
+                              >
+                                <div
+                                  className="w-0.5 h-0.5 rounded-full flex-shrink-0"
+                                  style={{ background: section.color, opacity: 0.4 }}
+                                />
+                                <span className="text-[9px] font-medium text-slate-400 group-hover/item:text-slate-200 transition-colors leading-tight">
+                                  {item.label}
+                                </span>
+                              </a>
+                            )
+                          }
 
                           return (
-                            <LinkComponent
+                            <Link
                               key={item.label}
-                              {...linkProps}
+                              to={href}
                               className="flex items-center gap-1.5 group/item"
                             >
                               <div
@@ -408,7 +424,7 @@ function DetectRiskRow() {
                               <span className="text-[9px] font-medium text-slate-400 group-hover/item:text-slate-200 transition-colors leading-tight">
                                 {item.label}
                               </span>
-                            </LinkComponent>
+                            </Link>
                           )
                         })}
                       </div>
