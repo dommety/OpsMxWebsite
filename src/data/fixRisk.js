@@ -8,43 +8,42 @@
 // Can be updated to point to dedicated pages by changing href values
 export const fixRiskNavigation = {
   title: 'Fix Risk',
-  description: 'Use remediation agents and governed workflows to remediate security issues and verify fixes.',
+  description: 'Use remediation agents and governed workflows to remediate issues and verify fixes.',
   href: '/opsmx/fix-risk',
   items: [
     {
-      title: 'Code Remediation Agent',
+      title: 'Code Remediation',
       href: '/opsmx/fix-risk#code-remediation',
-      // futureHref: '/opsmx/code-remediation-agent', // For future dedicated page
       enabled: true,
     },
     {
-      title: 'Binary Artifact Agent',
-      href: '/opsmx/fix-risk#binary-artifact',
-      // futureHref: '/opsmx/binary-artifact-agent',
+      title: 'Dependency Remediation',
+      href: '/opsmx/fix-risk#dependency-remediation',
       enabled: true,
     },
     {
-      title: 'Cloud Remediation Agent',
-      href: '/opsmx/fix-risk#cloud-remediation',
-      // futureHref: '/opsmx/cloud-remediation-agent',
+      title: 'Cloud & IaC Remediation',
+      href: '/opsmx/fix-risk#cloud-iac-remediation',
       enabled: true,
     },
     {
-      title: 'DevOps & SRE Agent',
-      href: '/opsmx/fix-risk#devops-sre',
-      // futureHref: '/opsmx/devops-sre-agent',
+      title: 'Infrastructure & Network Remediation',
+      href: '/opsmx/fix-risk#infrastructure-network-remediation',
       enabled: true,
     },
     {
-      title: 'Kubernetes Agent',
-      href: '/opsmx/fix-risk#kubernetes',
-      // futureHref: '/opsmx/kubernetes-agent',
+      title: 'Kubernetes Remediation',
+      href: '/opsmx/fix-risk#kubernetes-remediation',
       enabled: true,
     },
     {
-      title: 'Compliance Agent',
-      href: '/opsmx/fix-risk#compliance',
-      // futureHref: '/opsmx/compliance-agent',
+      title: 'Operations & Delivery Remediation',
+      href: '/opsmx/fix-risk#operations-delivery-remediation',
+      enabled: true,
+    },
+    {
+      title: 'Compliance Remediation',
+      href: '/opsmx/fix-risk#compliance-remediation',
       enabled: true,
     },
   ],
