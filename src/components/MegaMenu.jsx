@@ -131,8 +131,14 @@ const detectColumns = [
 // ─── ASSESS RISK TOPICS for mega menu ─────────────────────────────────────────
 
 const assessTopicsForMenu = [
+  { label: 'Context Engine', href: '/opsmx/assess-risk#context-engine' },
+  { label: 'Exploitability', href: '/opsmx/assess-risk#exploitability' },
+  { label: 'Reachability', href: '/opsmx/assess-risk#reachability' },
+  { label: 'False Positive Reduction', href: '/opsmx/assess-risk#false-positive-reduction' },
+  { label: 'Risk Scoring', href: '/opsmx/assess-risk#risk-scoring' },
   { label: 'Vulnerability Correlation', href: '/opsmx/assess-risk#vulnerability-correlation' },
   { label: 'Risk Prioritization', href: '/opsmx/assess-risk#risk-prioritization' },
+  { label: 'Root Cause Diagnosis', href: '/opsmx/assess-risk#root-cause-diagnosis' },
   { label: 'Supply Chain Risk Assessment', href: '/opsmx/assess-risk#supply-chain-risk-assessment' },
 ]
 

@@ -347,6 +347,132 @@ function WhyOpsMx() {
   )
 }
 
+// ─── Context Engine ───────────────────────────────────────────────────────
+
+function ContextEngineSection() {
+  return (
+    <section id="context-engine" className="relative py-24 bg-navy-950 scroll-margin-top">
+      <div className="max-w-4xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl font-black text-white mb-6">Context Engine</h2>
+          <p className="text-lg text-slate-300 leading-relaxed">
+            Correlate findings with code, applications, APIs, cloud, Kubernetes, runtime, ownership, business context, and deployment data.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+// ─── Exploitability ───────────────────────────────────────────────────────
+
+function ExploitabilitySection() {
+  return (
+    <section id="exploitability" className="relative py-24 bg-navy-950 border-y border-white/5 scroll-margin-top">
+      <div className="max-w-4xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl font-black text-white mb-6">Exploitability</h2>
+          <p className="text-lg text-slate-300 leading-relaxed">
+            Understand whether a vulnerability can actually be exploited in the current application, deployment, and runtime context.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+// ─── Reachability ─────────────────────────────────────────────────────────
+
+function ReachabilitySection() {
+  return (
+    <section id="reachability" className="relative py-24 bg-navy-950 scroll-margin-top">
+      <div className="max-w-4xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl font-black text-white mb-6">Reachability</h2>
+          <p className="text-lg text-slate-300 leading-relaxed">
+            Identify whether vulnerable code, packages, APIs, or services are reachable from real execution paths or exposed attack surfaces.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+// ─── False Positive Reduction ─────────────────────────────────────────────
+
+function FalsePositiveReductionSection() {
+  return (
+    <section id="false-positive-reduction" className="relative py-24 bg-navy-950 border-y border-white/5 scroll-margin-top">
+      <div className="max-w-4xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl font-black text-white mb-6">False Positive Reduction</h2>
+          <p className="text-lg text-slate-300 leading-relaxed">
+            Reduce noise by combining scanner output with runtime, dependency, ownership, and business context.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+// ─── Risk Scoring ─────────────────────────────────────────────────────────
+
+function RiskScoringSection() {
+  return (
+    <section id="risk-scoring" className="relative py-24 bg-navy-950 scroll-margin-top">
+      <div className="max-w-4xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl font-black text-white mb-6">Risk Scoring</h2>
+          <p className="text-lg text-slate-300 leading-relaxed">
+            Score risk using severity, exploitability, reachability, exposure, business criticality, compliance impact, and remediation status.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+// ─── Root Cause Diagnosis ─────────────────────────────────────────────────
+
+function RootCauseDiagnosisSection() {
+  return (
+    <section id="root-cause-diagnosis" className="relative py-24 bg-navy-950 border-y border-white/5 scroll-margin-top">
+      <div className="max-w-4xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl font-black text-white mb-6">Root Cause Diagnosis</h2>
+          <p className="text-lg text-slate-300 leading-relaxed">
+            Identify why the issue exists, where it originated, which component introduced it, and what must change to fix it.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
 // ─── Vulnerability Correlation ────────────────────────────────────────────
 
 function VulnerabilityCorrelationSection() {
@@ -532,6 +658,12 @@ export default function AssessRiskPage() {
       <ProblemSection />
       <CapabilityHub />
       <WorkflowSection />
+      <ContextEngineSection />
+      <ExploitabilitySection />
+      <ReachabilitySection />
+      <FalsePositiveReductionSection />
+      <RiskScoringSection />
+      <RootCauseDiagnosisSection />
       <VulnerabilityCorrelationSection />
       <RiskPrioritizationSection />
       <SupplyChainRiskAssessmentSection />
