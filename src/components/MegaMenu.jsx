@@ -172,6 +172,27 @@ const matrixData = {
         color: '#fbbf24',
         items: ['Audit Evidence', 'Change Impact', 'Ownership Mapping', 'Compliance Reporting'],
       },
+      {
+        id: 'vulnerability-assess',
+        icon: Code2,
+        title: 'Vulnerability Correlation',
+        color: '#ef4444',
+        items: ['Code Vulnerabilities', 'Dependency Vulnerabilities', 'API Vulnerabilities', 'Runtime Vulnerabilities'],
+      },
+      {
+        id: 'risk-prioritization-assess',
+        icon: Code2,
+        title: 'Risk Prioritization',
+        color: '#f59e0b',
+        items: ['Exploitability', 'Reachability', 'Business Criticality', 'Remediation Status'],
+      },
+      {
+        id: 'supply-chain-risk-assess',
+        icon: Package,
+        title: 'Supply Chain Risk Assessment',
+        color: '#a78bfa',
+        items: ['Dependency Analysis', 'Open Source Health', 'Provenance', 'BOM Analysis'],
+      },
     ],
   },
   fix: {

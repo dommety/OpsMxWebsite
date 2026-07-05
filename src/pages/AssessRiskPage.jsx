@@ -347,6 +347,69 @@ function WhyOpsMx() {
   )
 }
 
+// ─── Vulnerability Correlation ────────────────────────────────────────────
+
+function VulnerabilityCorrelationSection() {
+  return (
+    <section id="vulnerability-correlation" className="relative py-24 bg-navy-950 scroll-margin-top">
+      <div className="max-w-4xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl font-black text-white mb-6">Vulnerability Correlation</h2>
+          <p className="text-lg text-slate-300 leading-relaxed">
+            Correlate vulnerabilities across code, dependencies, APIs, cloud, containers, Kubernetes, runtime, SBOMs, and deployments to understand true exposure and impacted business services.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+// ─── Risk Prioritization ──────────────────────────────────────────────────
+
+function RiskPrioritizationSection() {
+  return (
+    <section id="risk-prioritization" className="relative py-24 bg-navy-950 border-y border-white/5 scroll-margin-top">
+      <div className="max-w-4xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl font-black text-white mb-6">Risk Prioritization</h2>
+          <p className="text-lg text-slate-300 leading-relaxed">
+            Prioritize risks using exploitability, reachability, runtime exposure, business criticality, ownership, regulatory impact, and remediation status so teams focus on what matters most.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+// ─── Supply Chain Risk Assessment ──────────────────────────────────────────
+
+function SupplyChainRiskAssessmentSection() {
+  return (
+    <section id="supply-chain-risk-assessment" className="relative py-24 bg-navy-950 scroll-margin-top">
+      <div className="max-w-4xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl font-black text-white mb-6">Supply Chain Risk Assessment</h2>
+          <p className="text-lg text-slate-300 leading-relaxed">
+            Assess supply chain risk across dependencies, open source health, provenance, BOMs, vulnerable components, third-party software, and deployed artifacts.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
 // ─── Integrations ─────────────────────────────────────────────────────────
 
 function IntegrationsSection() {
@@ -469,6 +532,9 @@ export default function AssessRiskPage() {
       <ProblemSection />
       <CapabilityHub />
       <WorkflowSection />
+      <VulnerabilityCorrelationSection />
+      <RiskPrioritizationSection />
+      <SupplyChainRiskAssessmentSection />
       <WhyOpsMx />
       <IntegrationsSection />
       <OutcomesSection />
