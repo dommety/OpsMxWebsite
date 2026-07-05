@@ -384,7 +384,7 @@ function DetectRiskRow() {
                     <div key={section.id} className="flex flex-col gap-2.5">
                       {/* Section header */}
                       <div>
-                        <p className="text-[11px] font-bold text-white mb-1">{section.title}</p>
+                        <p className="text-[11px] font-bold mb-1" style={{ color: section.color }}>{section.title}</p>
                         <p className="text-[8.5px] text-slate-400 leading-snug">{section.description}</p>
                       </div>
 
