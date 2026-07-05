@@ -51,25 +51,31 @@ const detectColumns = [
     icon: Package,
     color: '#a78bfa',
     title: 'Supply Chain',
-    description: 'Secure Supply chain - Code to Prod.',
+    description: 'Secure supply chain from code to prod',
     groups: [
       {
-        label: 'Supply Chain Security',
+        label: 'Bill of Material Intelligence',
+        description: 'Know what is inside your software, AI, crypto, delivery, hardware, and open source supply chain.',
         items: [
           { label: 'SBOM', href: 'https://www.opsmx.com/software-bill-of-materials-with-opsmx-delivery-shield/' },
           { label: 'AI-BOM', href: '/ai-bom' },
           { label: 'CBOM, DBOM, QBOM & HBOM', href: '/solution-briefs/advanced-bom-reporting' },
-          { label: 'X-BOM', href: '/x-bom' },
           { label: 'Dependency Intelligence', href: '/dependency-intelligence' },
-          { label: 'OSS Risk', href: 'https://www.opsmx.com/open-source-risk-management-for-oss-with-opsmx-delivery-shield/' },
+          { label: 'Provenance', href: '/provenance' },
+          { label: 'Open Source BOM / OSS Risk', href: 'https://www.opsmx.com/open-source-risk-management-for-oss-with-opsmx-delivery-shield/' },
         ],
       },
       {
-        label: 'Compliance',
+        label: 'Supply Chain Governance',
+        description: 'Govern licenses, third-party BOMs, regulatory evidence, vulnerability correlation, prioritization, audit reporting, and policy enforcement.',
         items: [
+          { label: 'Regulatory BOM Reporting', href: '/solution-briefs/regulatory-bom-reporting-suite' },
           { label: 'License Risk', href: '/license-risk' },
-          { label: 'Provenance', href: '/provenance' },
+          { label: 'Third-Party BOM Ingestion', href: '/license-risk' }, // TODO: replace with dedicated page if available
+          { label: 'Vulnerability Correlation', href: '/threat-correlation' },
+          { label: 'Supply Chain Risk Prioritization', href: '/license-risk' }, // TODO: replace with dedicated page if available
           { label: 'Audit Reporting', href: '/audit-reporting' },
+          { label: 'Policy Enforcement', href: 'https://www.opsmx.com/deployment-firewall/' },
         ],
       },
     ],
@@ -467,11 +473,17 @@ function DetectRiskRow() {
                   <div key={group.label}>
                     {/* Group label */}
                     <p
-                      className="text-[8.5px] font-bold uppercase tracking-wider mb-1.5"
-                      style={{ color: col.color, opacity: 0.65 }}
+                      className="text-[11px] font-bold mb-0.5"
+                      style={{ color: col.color }}
                     >
                       {group.label}
                     </p>
+                    {/* Group description */}
+                    {group.description && (
+                      <p className="text-[8.5px] text-slate-400 leading-snug mb-1.5">
+                        {group.description}
+                      </p>
+                    )}
                     {/* Group items */}
                     <div className="space-y-1">
                       {group.items.map((item) => {
