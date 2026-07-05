@@ -25,7 +25,7 @@ const codeAndApplicationsSections = [
   {
     id: 'ai-agent-security',
     title: 'AI & Agent Security',
-    description: 'Protect AI-native applications, agents, models, prompts, and AI communication layers.',
+    description: '',
     color: '#06b6d4',
     items: [
       { label: 'AI Agent Security', href: '/ai-security', futureHref: '/opsmx/ai-agent-security' },
