@@ -16,6 +16,10 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  /* Scroll margin for anchor links to account for sticky navbar */
+  [id] {
+    scroll-margin-top: 120px;
+  }
 }
 
 @layer utilities {

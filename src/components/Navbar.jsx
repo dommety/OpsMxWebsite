@@ -31,12 +31,31 @@ const navLinks = [
 // ─────────────────────────────────────────────────────────────────────────────
 const crawlableProductLinks = [
   { label: 'Platform Overview', href: '/platform' },
+  // Assess Risk
+  { label: 'Assess Risk', href: '/opsmx/assess-risk' },
+  { label: 'Context Engine', href: '/opsmx/assess-risk#context-engine' },
+  { label: 'Vulnerability Correlation', href: '/opsmx/assess-risk#vulnerability-correlation' },
+  { label: 'Exploitability', href: '/opsmx/assess-risk#exploitability' },
+  { label: 'Reachability', href: '/opsmx/assess-risk#reachability' },
+  { label: 'Root Cause Diagnosis', href: '/opsmx/assess-risk#root-cause-diagnosis' },
+  { label: 'False Positive Reduction', href: '/opsmx/assess-risk#false-positive-reduction' },
+  { label: 'Supply Chain Risk Assessment', href: '/opsmx/assess-risk#supply-chain-risk-assessment' },
+  { label: 'Risk Scoring', href: '/opsmx/assess-risk#risk-scoring' },
+  { label: 'Risk Prioritization', href: '/opsmx/assess-risk#risk-prioritization' },
+  // Fix Risk
+  { label: 'Fix Risk', href: '/opsmx/fix-risk' },
+  { label: 'Code Remediation', href: '/opsmx/fix-risk#code-remediation' },
+  { label: 'Dependency Remediation', href: '/opsmx/fix-risk#dependency-remediation' },
+  { label: 'Cloud & IaC Remediation', href: '/opsmx/fix-risk#cloud-iac-remediation' },
+  { label: 'Infrastructure & Network Remediation', href: '/opsmx/fix-risk#infrastructure-network-remediation' },
+  { label: 'Kubernetes Remediation', href: '/opsmx/fix-risk#kubernetes-remediation' },
+  { label: 'Operations & Delivery Remediation', href: '/opsmx/fix-risk#operations-delivery-remediation' },
+  { label: 'Compliance Remediation', href: '/opsmx/fix-risk#compliance-remediation' },
   // Code & AI
   { label: 'SAST', href: '/static-application-security-testing' },
   { label: 'SCA', href: 'https://www.opsmx.com/software-composition-analysis-with-opsmx-delivery-shield/' },
   { label: 'Secrets', href: '/secrets' },
   { label: 'AI Security', href: '/ai-security' },
-  { label: 'Code Remediation', href: 'https://www.opsmx.com/ai-guided-risk-remediation-with-opsmx-delivery-shield/' },
   { label: 'DAST', href: 'https://www.opsmx.com/dynamic-application-security-testing-with-opsmx-delivery-shield/' },
   { label: 'API Security', href: '/api-security' },
   { label: 'Penetration Testing', href: '/penetration-testing' },

@@ -136,14 +136,14 @@ const detectColumns = [
 
 const assessTopicsForMenu = [
   { label: 'Context Engine', href: '/opsmx/assess-risk#context-engine' },
+  { label: 'Vulnerability Correlation', href: '/opsmx/assess-risk#vulnerability-correlation' },
   { label: 'Exploitability', href: '/opsmx/assess-risk#exploitability' },
   { label: 'Reachability', href: '/opsmx/assess-risk#reachability' },
-  { label: 'False Positive Reduction', href: '/opsmx/assess-risk#false-positive-reduction' },
-  { label: 'Risk Scoring', href: '/opsmx/assess-risk#risk-scoring' },
-  { label: 'Vulnerability Correlation', href: '/opsmx/assess-risk#vulnerability-correlation' },
-  { label: 'Risk Prioritization', href: '/opsmx/assess-risk#risk-prioritization' },
   { label: 'Root Cause Diagnosis', href: '/opsmx/assess-risk#root-cause-diagnosis' },
+  { label: 'False Positive Reduction', href: '/opsmx/assess-risk#false-positive-reduction' },
   { label: 'Supply Chain Risk Assessment', href: '/opsmx/assess-risk#supply-chain-risk-assessment' },
+  { label: 'Risk Scoring', href: '/opsmx/assess-risk#risk-scoring' },
+  { label: 'Risk Prioritization', href: '/opsmx/assess-risk#risk-prioritization' },
 ]
 
 // ─── ASSESS & FIX DATA ─────────────────────────────────────────────────────
@@ -516,18 +516,35 @@ function HorizontalRiskRow({ layer, color, isAssess, isFix, onClose, assessTopic
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: idx * 0.02, duration: 0.2 }}
           >
-            <Link
-              to={item.href || '#'}
-              onClick={onClose}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all hover:bg-white/8 cursor-pointer`}
-              style={{
-                background: `${color}12`,
-                borderColor: `${color}20`,
-              }}
-            >
-              <div className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: color }} />
-              <span className="text-[9px] font-medium text-slate-300">{item.label}</span>
-            </Link>
+            {isAssess || isFix ? (
+              // Use anchor tag for hash-based navigation on Assess/Fix Risk
+              <a
+                href={item.href || '#'}
+                onClick={onClose}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all hover:bg-white/8 cursor-pointer`}
+                style={{
+                  background: `${color}12`,
+                  borderColor: `${color}20`,
+                }}
+              >
+                <div className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: color }} />
+                <span className="text-[9px] font-medium text-slate-300">{item.label}</span>
+              </a>
+            ) : (
+              // Use Link for regular navigation
+              <Link
+                to={item.href || '#'}
+                onClick={onClose}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all hover:bg-white/8 cursor-pointer`}
+                style={{
+                  background: `${color}12`,
+                  borderColor: `${color}20`,
+                }}
+              >
+                <div className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: color }} />
+                <span className="text-[9px] font-medium text-slate-300">{item.label}</span>
+              </Link>
+            )}
           </motion.div>
         ))}
       </div>
