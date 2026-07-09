@@ -6,8 +6,9 @@ import Navbar from '../components/Navbar'
 import FinalCTA from '../components/FinalCTA'
 import AuthButton from '../components/open-security/AuthButton'
 import UserMenu from '../components/open-security/UserMenu'
-import ArtifactTypeSelector from '../components/open-security/ArtifactTypeSelector'
-import ArtifactInput from '../components/open-security/ArtifactInput'
+import TargetTypeSelector from '../components/analyze/TargetTypeSelector'
+import DynamicInputForm from '../components/analyze/DynamicInputForm'
+import EnterpriseDelegateSection from '../components/analyze/EnterpriseDelegateSection'
 import SecurityGauge from '../components/open-security/SecurityGauge'
 import VulnerabilityTable from '../components/open-security/VulnerabilityTable'
 import RemediationTable from '../components/open-security/RemediationTable'
@@ -33,8 +34,8 @@ import {
 
 export default function OpenSecurityIntelligencePage() {
   const [user, setUser] = useState(null)
-  const [selectedArtifactType, setSelectedArtifactType] = useState('github')
-  const [artifactInput, setArtifactInput] = useState('')
+  const [selectedTargetType, setSelectedTargetType] = useState('github')
+  const [targetInputValues, setTargetInputValues] = useState({})
   const [isAnalyzing, setIsAnalyzing] = useState(false)
   const [analysisResults, setAnalysisResults] = useState(null)
   const [analysisStages, setAnalysisStages] = useState([])
@@ -61,14 +62,18 @@ export default function OpenSecurityIntelligencePage() {
 
   const handleAnalyze = async () => {
     if (!user) {
-      alert('Please sign in to analyze artifacts')
+      alert('Please sign in to analyze targets')
       return
     }
 
     setIsAnalyzing(true)
     setCurrentStage(0)
 
-    const { stages, results } = await runAnalysis(selectedArtifactType, artifactInput)
+    // Get the first input field value for the analysis
+    const inputFieldName = Object.keys(targetInputValues)[0]
+    const targetValue = targetInputValues[inputFieldName] || ''
+
+    const { stages, results } = await runAnalysis(selectedTargetType, targetValue)
     setAnalysisStages(stages)
 
     // Simulate stage progression
@@ -143,7 +148,7 @@ export default function OpenSecurityIntelligencePage() {
               >
                 <div className="flex items-center gap-2">
                   <Zap className="w-4 h-4" />
-                  Analyze Artifact
+                  Analyze Anything
                 </div>
               </motion.button>
               <motion.button
@@ -191,29 +196,32 @@ export default function OpenSecurityIntelligencePage() {
                 {/* Analyze Section */}
                 <section className="space-y-6">
                   <div>
-                    <h2 className="text-2xl font-bold text-white mb-2">Analyze an Artifact</h2>
-                    <p className="text-slate-400">Select artifact type and submit for comprehensive security analysis</p>
+                    <h2 className="text-2xl font-bold text-white mb-2">Analyze Anything</h2>
+                    <p className="text-slate-400">Analyze software artifacts, running cloud environments, Kubernetes clusters, on-premises infrastructure, and enterprise applications. Generate AI-powered security analysis and remediation recommendations.</p>
                   </div>
 
                   <div className="space-y-6">
                     <div>
-                      <label className="block text-sm font-medium text-white mb-4">Artifact Type</label>
-                      <ArtifactTypeSelector selected={selectedArtifactType} onSelect={setSelectedArtifactType} />
+                      <label className="block text-sm font-medium text-white mb-4">Analysis Target</label>
+                      <TargetTypeSelector selected={selectedTargetType} onSelect={setSelectedTargetType} />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-white mb-4">Input</label>
-                      <ArtifactInput
-                        artifactType={selectedArtifactType}
-                        value={artifactInput}
-                        onInput={setArtifactInput}
+                      <label className="block text-sm font-medium text-white mb-4">Target Details</label>
+                      <DynamicInputForm
+                        selectedType={selectedTargetType}
+                        values={targetInputValues}
+                        onChange={(name, value) => setTargetInputValues({ ...targetInputValues, [name]: value })}
                         onAnalyze={handleAnalyze}
-                        isLoading={isAnalyzing}
-                        requiresAuth={!user}
+                        isAnalyzing={isAnalyzing}
+                        user={user}
                       />
                     </div>
                   </div>
                 </section>
+
+                {/* Enterprise Delegate Section */}
+                <EnterpriseDelegateSection />
 
                 {/* Analysis Progress */}
                 {isAnalyzing && (
