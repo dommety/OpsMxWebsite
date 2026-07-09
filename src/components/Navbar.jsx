@@ -16,6 +16,7 @@ const navLinks = [
   { label: 'Products',   mega: 'products',   href: '/platform' },
   { label: 'Solutions',  mega: 'solutions',  href: '/solutions' },
   { label: 'Open Security Intelligence', href: '/open-security-intelligence' },
+  { label: 'Remediation Benchmarks', href: '/remediation-benchmarks' },
   { label: 'Customers',  mega: 'customers',  href: 'https://www.opsmx.com/customer-case-study/' },
   { label: 'Pricing',    href: '/pricing' },
   { label: 'Resources',  mega: 'resources',  href: 'https://www.opsmx.com/guides-datasheets/' },
@@ -34,6 +35,7 @@ const crawlableProductLinks = [
   { label: 'Platform Overview', href: '/platform' },
   // Open Security Intelligence
   { label: 'Open Security Intelligence', href: '/open-security-intelligence' },
+  { label: 'Remediation Benchmarks', href: '/remediation-benchmarks' },
   // Assess Risk
   { label: 'Assess Risk', href: '/opsmx/assess-risk' },
   { label: 'Context Engine', href: '/opsmx/assess-risk#context-engine' },
