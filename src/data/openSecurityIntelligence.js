@@ -19,7 +19,7 @@ export const artifactTypes = [
   { id: 'binary', label: 'Binary Upload', icon: 'Download', color: '#a78bfa' },
   { id: 'ai-model', label: 'AI Model', icon: 'Zap', color: '#ec4899' },
   { id: 'helm', label: 'Helm Chart', icon: 'Box', color: '#06b6d4' },
-  { id: 'k8s', label: 'Kubernetes Manifest', icon: 'Cube', color: '#34d399' },
+  { id: 'k8s', label: 'Kubernetes Manifest', icon: 'Container', color: '#34d399' },
   { id: 'terraform', label: 'Terraform', icon: 'Layers', color: '#f59e0b' },
   { id: 'other', label: 'Other', icon: 'FileText', color: '#64748b' },
 ]

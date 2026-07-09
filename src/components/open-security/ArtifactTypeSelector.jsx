@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Code2, Package, Download, Zap, Box, Cube, Layers, FileText } from 'lucide-react'
+import { Code2, Package, Download, Zap, Box, Container, Layers, FileText } from 'lucide-react'
 import { artifactTypes } from '../../data/openSecurityIntelligence'
 
 const iconMap = {
@@ -8,7 +8,7 @@ const iconMap = {
   Download,
   Zap,
   Box,
-  Cube,
+  Container,
   Layers,
   FileText,
 }
