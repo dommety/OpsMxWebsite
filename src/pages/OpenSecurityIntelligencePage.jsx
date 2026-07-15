@@ -16,6 +16,7 @@ import ActivityItem from '../components/open-security/ActivityItem'
 import SearchBar from '../components/open-security/SearchBar'
 import ArtifactCard from '../components/open-security/ArtifactCard'
 import StatsFooter from '../components/open-security/StatsFooter'
+import Seo from '../components/Seo'
 import {
   suggestedSearches,
   mockIndexedArtifacts,
