@@ -113,6 +113,7 @@ export default function OpenSecurityIntelligencePage() {
         <meta name="description" content="Public security intelligence and remediation portal for software artifacts. Analyze, track, and remediate security issues in real-time." />
         <meta property="og:title" content="Open Security Intelligence | OpsMx" />
         <meta property="og:description" content="Public security intelligence and remediation portal for software artifacts." />
+        <link rel="canonical" href="https://www.opsmx.com/open-security-intelligence" />
       </Helmet>
 
       <div className="min-h-screen bg-gradient-to-b from-slate-950 to-navy-950">
