@@ -24,6 +24,7 @@ const ROUTES = [
   '/provenance', '/audit-reporting', '/cluster-security', '/workload-security',
   '/threat-correlation', '/cloud-remediation', '/change-risk', '/deployment-verification',
   '/root-cause-analysis', '/incident-diagnostics', '/operational-remediation',
+  '/open-security-intelligence', '/remediation-benchmarks',
 ]
 
 // RAW built shell (empty <div id="root">). Fresh `vite build` runs before this, so root
