@@ -12,7 +12,8 @@ import { dirname, join } from 'path'
 import { readFileSync, writeFileSync, mkdirSync } from 'fs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const distDir = join(__dirname, 'dist')
+const outputDir = process.env.OUT_DIR || 'dist'
+const distDir = join(__dirname, outputDir)
 const basePath = process.env.BASE_PATH || '/'
 
 const ROUTES = [
