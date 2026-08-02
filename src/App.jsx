@@ -40,6 +40,7 @@ import FixRiskPage from './pages/FixRiskPage'
 import AIAssistantPage from './pages/AIAssistantPage'
 import OperationsDeliveryPage from './pages/OperationsDeliveryPage'
 import RemediationBenchmarksPage from './pages/RemediationBenchmarksPage'
+import RequestDemoPage from './pages/RequestDemoPage'
 
 const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/'
 
@@ -74,6 +75,7 @@ export default function App() {
           <Route path="/opsmx/ai-assistant" element={<AIAssistantPage />} />
           <Route path="/opsmx/operations-delivery" element={<OperationsDeliveryPage />} />
           <Route path="/remediation-benchmarks" element={<RemediationBenchmarksPage />} />
+          <Route path="/request-a-demo" element={<RequestDemoPage />} />
           <Route path="/dependency-intelligence" element={<DependencyIntelligencePage />} />
           <Route path="/license-risk" element={<LicenseRiskPage />} />
           <Route path="/provenance" element={<ProvenancePage />} />

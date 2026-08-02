@@ -153,4 +153,8 @@ export const seoByRoute = {
     title: 'Pricing | OpsMx Active Defense',
     description: 'Modular and affordable pricing for OpsMx Active Defense. Choose the capabilities you need to detect, remediate, and govern risk across the software lifecycle.',
   },
+  '/request-a-demo': {
+    title: 'Request an OpsMx Demo | Application Security and Remediation',
+    description: 'See how OpsMx helps teams prioritize and remediate application risks across code, dependencies, cloud, Kubernetes, CI/CD, and AI applications.',
+  },
 }

@@ -187,9 +187,9 @@ export default function Navbar() {
             <a href="https://ssd.sandbox.opsmx.org/login?redir=/ui/application" target="_blank" rel="noopener noreferrer" className="hidden md:block text-sm text-slate-400 hover:text-white transition-colors px-3 py-2">
               Sign In
             </a>
-            <a href="https://www.opsmx.com/talk-to-an-application-security-expert/" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-electric-500 text-white hover:from-cyan-400 hover:to-electric-400 transition-all duration-200 shadow-lg shadow-cyan-500/20">
+            <Link to="/request-a-demo" className="text-sm font-semibold px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-electric-500 text-white hover:from-cyan-400 hover:to-electric-400 transition-all duration-200 shadow-lg shadow-cyan-500/20">
               Request Demo
-            </a>
+            </Link>
           </div>
         </div>
       </motion.nav>
