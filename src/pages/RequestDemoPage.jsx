@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Navbar from '../components/Navbar'
 import Seo from '../components/Seo'
+import SourceToProductionPipeline from '../components/SourceToProductionPipeline'
 
 export default function RequestDemoPage() {
   const formContainerId = 'hubspot-form-container'
@@ -108,6 +109,9 @@ export default function RequestDemoPage() {
                   <span className="text-cyan-400">Verify</span> every fix.
                 </p>
               </div>
+
+              {/* Source-to-Production Pipeline */}
+              <SourceToProductionPipeline />
 
               {/* Supporting Copy */}
               <p className="text-lg text-slate-300 leading-relaxed mb-8 max-w-2xl">
