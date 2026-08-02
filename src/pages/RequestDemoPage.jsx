@@ -13,7 +13,6 @@ export default function RequestDemoPage() {
     const loadHubSpotForm = () => {
       scriptLoaded.current = true
 
-      // Check if hbspt already exists (from previous page loads)
       if (window.hbspt) {
         try {
           window.hbspt.forms.create({
@@ -28,7 +27,6 @@ export default function RequestDemoPage() {
           setFormLoaded(false)
         }
       } else {
-        // Load the HubSpot forms script
         const script = document.createElement('script')
         script.src = '//js.hsforms.net/forms/embed/v2.js'
         script.charset = 'utf-8'
@@ -61,18 +59,15 @@ export default function RequestDemoPage() {
       }
     }
 
-    // Use setTimeout to ensure DOM is ready
     const timer = setTimeout(loadHubSpotForm, 100)
     return () => clearTimeout(timer)
   }, [])
 
   const capabilities = [
-    'Identify vulnerabilities and misconfigurations that can reach production',
+    'Identify vulnerabilities and misconfigurations that reach production',
     'Prioritize risks using application, runtime, and deployment context',
     'Generate and execute fixes across code, cloud, Kubernetes, and delivery workflows',
-    'Verify that remediation worked and preserve the evidence',
-    'Secure AI-generated code, AI models, and LLM applications',
-    'Automate compliance, governance, and software supply-chain controls',
+    'Verify remediation and preserve compliance evidence',
   ]
 
   return (
@@ -84,93 +79,101 @@ export default function RequestDemoPage() {
       />
       <Navbar />
 
-      {/* Hero Section with Two-Column Layout */}
-      <section className="relative pt-32 pb-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-radial from-cyan-500/5 via-transparent to-transparent" />
+      {/* Hero Section */}
+      <section className="relative pt-28 lg:pt-32 pb-8 lg:pb-0 overflow-hidden">
+        {/* Subtle background gradient */}
+        <div className="absolute inset-0 bg-gradient-radial from-cyan-500/3 via-transparent to-transparent pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-[58fr_42fr] gap-12 items-start">
-            {/* Left Column: Content */}
-            <div>
-              <div className="mb-6">
-                <span className="inline-block text-xs font-semibold text-cyan-400 tracking-wider uppercase mb-4">
+          <div className="grid lg:grid-cols-[1fr_420px] gap-8 lg:gap-12 lg:min-h-[calc(100vh-120px)] lg:items-center">
+            {/* Left Column */}
+            <div className="py-8 lg:py-0">
+              {/* Eyebrow */}
+              <div className="mb-6 lg:mb-8">
+                <span className="text-xs font-semibold text-cyan-400 tracking-wider uppercase">
                   AI-Powered Application Security and Remediation
                 </span>
-                <h1 className="text-5xl lg:text-6xl font-black leading-tight tracking-tight text-white mb-6">
-                  Find and Fix the Application Risks That Matter Most
-                </h1>
               </div>
 
-              <p className="text-lg text-slate-300 leading-relaxed mb-8 max-w-xl">
-                OpsMx helps security, development, and DevOps teams prioritize and remediate risks across code, dependencies, CI/CD pipelines, Kubernetes, cloud infrastructure, and AI applications.
-              </p>
+              {/* Headline */}
+              <h1 className="text-5xl lg:text-7xl font-black leading-tight tracking-tight text-white mb-8 lg:mb-10">
+                Find and Fix the Application Risks That Matter Most
+              </h1>
 
-              <p className="text-base text-slate-400 leading-relaxed mb-10 max-w-xl">
-                Tell us what you're trying to improve, and we'll tailor the demo to your environment and priorities.
-              </p>
-
-              {/* Proof Statement */}
-              <div className="mb-12 p-6 rounded-lg border border-white/8 bg-white/[0.02]">
-                <p className="text-sm font-semibold text-slate-300">
-                  <span className="text-cyan-400">Prioritize</span> with context. <span className="text-cyan-400">Remediate</span> with confidence. <span className="text-cyan-400">Verify</span> every fix.
+              {/* Proof Statement - Visual Differentiator */}
+              <div className="mb-10 lg:mb-12 p-6 lg:p-7 rounded-lg border border-white/10 bg-transparent">
+                <p className="text-base lg:text-lg font-semibold text-white leading-relaxed">
+                  <span className="text-cyan-400">Prioritize</span> with context.{' '}
+                  <span className="text-cyan-400">Remediate</span> with confidence.{' '}
+                  <span className="text-cyan-400">Verify</span> every fix.
                 </p>
               </div>
 
+              {/* Supporting Copy */}
+              <p className="text-lg text-slate-300 leading-relaxed mb-8 max-w-2xl">
+                OpsMx helps security, development, and DevOps teams prioritize and remediate risks across code, dependencies, CI/CD pipelines, Kubernetes, cloud infrastructure, and AI applications.
+              </p>
+
+              <p className="text-base text-slate-400 leading-relaxed mb-12 max-w-2xl">
+                Tell us what you're trying to improve, and we'll tailor the demo to your environment and priorities.
+              </p>
+
               {/* Capabilities Section */}
-              <div className="mb-12">
-                <h3 className="text-sm font-bold text-slate-200 uppercase tracking-wider mb-6">
-                  In your personalized demo, see how OpsMx can help you:
+              <div>
+                <h3 className="text-xs font-bold text-slate-300 uppercase tracking-widest mb-6">
+                  In your personalized demo, you'll see how OpsMx:
                 </h3>
-                <ul className="space-y-4">
+                <ul className="space-y-3">
                   {capabilities.map((cap, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <div className="w-5 h-5 rounded-full border border-cyan-400/50 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <div className="w-2 h-2 rounded-full bg-cyan-400" />
-                      </div>
+                      <span className="inline-flex items-center justify-center w-5 h-5 rounded-full border border-cyan-400/40 flex-shrink-0 mt-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                      </span>
                       <span className="text-slate-300 leading-relaxed">{cap}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              {/* Trust Section */}
-              <div className="border-t border-white/8 pt-8">
-                <h3 className="text-sm font-bold text-slate-200 uppercase tracking-wider mb-3">
-                  Built for enterprise application environments
+              {/* Enterprise Trust */}
+              <div className="mt-12 lg:mt-16 pt-8 lg:pt-12 border-t border-white/8">
+                <h3 className="text-xs font-bold text-slate-300 uppercase tracking-widest mb-3">
+                  Built for enterprise
                 </h3>
-                <p className="text-sm text-slate-400 leading-relaxed">
-                  Integrates with your existing source control, CI/CD, security scanners, cloud platforms, Kubernetes environments, and ticketing workflows—without requiring you to replace your current tools.
+                <p className="text-sm text-slate-400 leading-relaxed max-w-2xl">
+                  Integrates seamlessly with your source control, CI/CD, security scanners, cloud platforms, Kubernetes, and ticketing systems—without replacing your existing tools.
                 </p>
               </div>
             </div>
 
-            {/* Right Column: Form Card */}
-            <div className="sticky top-32">
-              <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] p-8 backdrop-blur-xl shadow-2xl">
-                <h2 className="text-2xl font-bold text-white mb-2">
-                  Request a Personalized Demo
+            {/* Right Column: Form */}
+            <div className="lg:sticky lg:top-32 lg:self-start">
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-7 lg:p-8">
+                {/* Form Heading */}
+                <h2 className="text-xl lg:text-2xl font-bold text-white mb-1">
+                  Request a Demo
                 </h2>
                 <p className="text-sm text-slate-400 mb-8 leading-relaxed">
-                  Tell us what you're trying to improve. We'll focus the conversation and demonstration on those priorities.
+                  Tell us your priorities. We'll focus the demo accordingly.
                 </p>
 
                 {/* HubSpot Form Container */}
                 <div id={formContainerId} className="hubspot-form-wrapper">
                   {!formLoaded && (
-                    <div className="flex items-center justify-center py-12">
+                    <div className="flex items-center justify-center py-16">
                       <div className="flex flex-col items-center gap-3">
-                        <div className="w-8 h-8 border-2 border-cyan-400/20 border-t-cyan-400 rounded-full animate-spin" />
+                        <div className="w-8 h-8 border-2 border-cyan-400/20 border-t-cyan-400 rounded-full animate-spin motion-safe:animate-spin motion-reduce:animate-none" />
                         <p className="text-xs text-slate-400">Loading form...</p>
                       </div>
                     </div>
                   )}
                 </div>
 
-                {/* Fallback message if form fails to load */}
+                {/* JavaScript Fallback */}
                 <noscript>
-                  <p className="text-xs text-slate-400 py-8 text-center">
-                    Please enable JavaScript to load the demo request form, or email us at{' '}
-                    <a href="mailto:info@opsmx.com" className="text-cyan-400 hover:text-cyan-300">
+                  <p className="text-sm text-slate-300 py-8 text-center">
+                    Please enable JavaScript, or email{' '}
+                    <a href="mailto:info@opsmx.com" className="text-cyan-400 hover:text-cyan-300 underline focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-navy-950 rounded px-1">
                       info@opsmx.com
                     </a>
                   </p>
@@ -181,21 +184,21 @@ export default function RequestDemoPage() {
         </div>
       </section>
 
-      {/* Additional context section */}
-      <section className="relative py-16 border-t border-white/5">
+      {/* Social Proof Section */}
+      <section className="relative py-16 lg:py-20 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-6 rounded-lg border border-white/8 bg-white/[0.02]">
-              <p className="text-sm font-semibold text-slate-300 mb-2">Security Leaders</p>
-              <p className="text-xs text-slate-400">See how OpsMx prioritizes risk and reduces alert fatigue with context-driven remediation.</p>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="p-5 rounded-lg border border-white/8">
+              <p className="text-sm font-semibold text-slate-200 mb-2">Security Leaders</p>
+              <p className="text-xs text-slate-400 leading-relaxed">Prioritize high-impact risks and eliminate alert fatigue with context-driven detection and remediation.</p>
             </div>
-            <div className="p-6 rounded-lg border border-white/8 bg-white/[0.02]">
-              <p className="text-sm font-semibold text-slate-300 mb-2">DevOps & Platform Teams</p>
-              <p className="text-xs text-slate-400">See how OpsMx automates remediation across infrastructure, CI/CD, and Kubernetes.</p>
+            <div className="p-5 rounded-lg border border-white/8">
+              <p className="text-sm font-semibold text-slate-200 mb-2">DevOps & Platform Teams</p>
+              <p className="text-xs text-slate-400 leading-relaxed">Automate remediation across infrastructure, CI/CD pipelines, and Kubernetes without manual intervention.</p>
             </div>
-            <div className="p-6 rounded-lg border border-white/8 bg-white/[0.02]">
-              <p className="text-sm font-semibold text-slate-300 mb-2">Development Teams</p>
-              <p className="text-xs text-slate-400">See how OpsMx helps developers secure AI-generated code and fix vulnerabilities early.</p>
+            <div className="p-5 rounded-lg border border-white/8">
+              <p className="text-sm font-semibold text-slate-200 mb-2">Development Teams</p>
+              <p className="text-xs text-slate-400 leading-relaxed">Catch and fix vulnerabilities in code and dependencies early, including AI-generated code.</p>
             </div>
           </div>
         </div>
