@@ -1,13 +1,22 @@
 import { Code, Package, Wrench, Send, Cloud, Server, ArrowRight, RotateCcw } from 'lucide-react'
 
+const colorMap = {
+  cyan: 'text-cyan-400',
+  blue: 'text-blue-400',
+  purple: 'text-purple-400',
+  pink: 'text-pink-400',
+  emerald: 'text-emerald-400',
+  yellow: 'text-yellow-400',
+}
+
 export default function SourceToProductionPipeline() {
   const stages = [
-    { icon: Code, label: 'Code', color: 'text-cyan-400' },
-    { icon: Package, label: 'Dependencies', color: 'text-blue-400' },
-    { icon: Wrench, label: 'Build', color: 'text-purple-400' },
-    { icon: Send, label: 'Deploy', color: 'text-pink-400' },
-    { icon: Cloud, label: 'Cloud/K8s', color: 'text-emerald-400' },
-    { icon: Server, label: 'Runtime', color: 'text-yellow-400' },
+    { icon: Code, label: 'Code', color: colorMap.cyan },
+    { icon: Package, label: 'Dependencies', color: colorMap.blue },
+    { icon: Wrench, label: 'Build', color: colorMap.purple },
+    { icon: Send, label: 'Deploy', color: colorMap.pink },
+    { icon: Cloud, label: 'Cloud/K8s', color: colorMap.emerald },
+    { icon: Server, label: 'Runtime', color: colorMap.yellow },
   ]
 
   return (
