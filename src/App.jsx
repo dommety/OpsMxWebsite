@@ -41,6 +41,7 @@ import AIAssistantPage from './pages/AIAssistantPage'
 import OperationsDeliveryPage from './pages/OperationsDeliveryPage'
 import RemediationBenchmarksPage from './pages/RemediationBenchmarksPage'
 import RequestDemoPage from './pages/RequestDemoPage'
+import ZeroDayContainmentPage from './pages/ZeroDayContainmentPage'
 
 const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/'
 
@@ -89,6 +90,7 @@ export default function App() {
           <Route path="/root-cause-analysis" element={<RootCauseAnalysisPage />} />
           <Route path="/incident-diagnostics" element={<IncidentDiagnosticsPage />} />
           <Route path="/operational-remediation" element={<OperationalRemediationPage />} />
+          <Route path="/solutions/zero-day-containment-and-remediation" element={<ZeroDayContainmentPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>

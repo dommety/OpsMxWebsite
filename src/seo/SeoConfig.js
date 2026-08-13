@@ -157,4 +157,8 @@ export const seoByRoute = {
     title: 'Request an OpsMx Demo | Application Security and Remediation',
     description: 'See how OpsMx helps teams prioritize and remediate application risks across code, dependencies, cloud, Kubernetes, CI/CD, and AI applications.',
   },
+  '/solutions/zero-day-containment-and-remediation': {
+    title: 'Zero-Day Containment and Remediation | OpsMx',
+    description: 'Contain zero-day vulnerabilities across code, artifacts, delivery pipelines, cloud, Kubernetes, and runtime. Stop affected deployments, coordinate remediation, and verify closure with OpsMx.',
+  },
 }

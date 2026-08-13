@@ -139,6 +139,15 @@ export const securitySolutions = [
 
 export const remediationSolutions = [
   {
+    slug: 'zero-day-containment-and-remediation',
+    title: 'Zero-Day Containment & Remediation',
+    icon: AlertTriangle,
+    color: '#f87171',
+    desc: 'Map impact radius, stop vulnerable software in motion, and coordinate verified remediation under time pressure.',
+    badge: 'featured',
+    href: '/solutions/zero-day-containment-and-remediation',
+  },
+  {
     slug: 'code-vulnerability-remediation',
     title: 'Code Vulnerability Remediation',
     icon: Code2,
@@ -260,6 +269,7 @@ export const allSolutions = [
 
 // Slugs called out for the "Featured" strip on /solutions
 export const FEATURED_SLUGS = [
+  'zero-day-containment-and-remediation',
   'x-bom-supply-chain-security',
   'ai-penetration-testing',
   'ai-code-security-remediation',
