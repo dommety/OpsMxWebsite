@@ -102,8 +102,8 @@ export const seoByRoute = {
     description: 'The unified platform behind Active Defense — detect, diagnose, prioritize, remediate, verify, and govern risk across code, AI, supply chain, cloud, and ops.',
   },
   '/static-application-security-testing': {
-    title: 'SAST That Drives Remediation | OpsMx',
-    description: 'Static application security testing that goes beyond findings to fixes. OpsMx prioritizes and remediates real code vulnerabilities, not just flags them.',
+    title: 'Automated SAST Platform For Code Security & Remediation | OpsMx',
+    description: 'Integrate fast SAST scans into GitHub, GitLab, and Jenkins. Block risky code deployments and resolve vulnerabilities faster using AI-driven remediation.',
   },
   '/git-security-posture': {
     title: 'Git Security Posture Management | OpsMx',
