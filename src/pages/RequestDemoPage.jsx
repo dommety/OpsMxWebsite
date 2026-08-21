@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Navbar from '../components/Navbar'
 import Seo from '../components/Seo'
-{/*import SourceToProductionPipeline from '../components/SourceToProductionPipeline'*/}
+import SourceToProductionPipeline from '../components/SourceToProductionPipeline'
 
 export default function RequestDemoPage() {
   const formContainerId = 'hubspot-form-container'
@@ -111,7 +111,7 @@ export default function RequestDemoPage() {
               </div>
 
               {/* Source-to-Production Pipeline */}
-            {/*<SourceToProductionPipeline />*/}
+            <SourceToProductionPipeline />
 
               {/* Supporting Copy */}
               <p className="text-lg text-slate-300 leading-relaxed mb-8 max-w-2xl">
