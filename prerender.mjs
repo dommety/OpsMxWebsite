@@ -24,7 +24,7 @@ const ROUTES = [
   '/solution-briefs/regulatory-bom-reporting-suite', '/dependency-intelligence', '/license-risk',
   '/provenance', '/audit-reporting', '/cluster-security', '/workload-security',
   '/threat-correlation', '/cloud-remediation', '/change-risk', '/deployment-verification',
-  '/root-cause-analysis', '/incident-diagnostics', '/operational-remediation',
+  '/root-cause-analysis', '/incident-diagnostics', '/operational-remediation', '/request-a-demo' ,
   '/open-security-intelligence', '/remediation-benchmarks',
 ]
 
