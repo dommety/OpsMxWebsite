@@ -167,3 +167,30 @@ export default function PlatformHero() {
               className="text-lg text-slate-300 leading-relaxed mb-3">
               OpsMx Active Defense continuously detects, diagnoses, remediates, verifies, and governs risk across modern software systems.
             </motion.p>
+            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-base text-slate-500 leading-relaxed mb-10">
+              Powered by the OpsMx Context Engine and Remediation Factory, the platform connects signals from code, AI, supply chain, cloud, runtime, and operations — then turns them into verified action.
+            </motion.p>
+
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.28 }}
+              className="flex flex-wrap gap-4">
+              <button className="group flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-cyan-500 to-electric-500 hover:from-cyan-400 hover:to-electric-400 transition-all shadow-xl shadow-cyan-500/25">
+                Request a Demo <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+              <button className="group flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-slate-300 glass border border-white/10 hover:border-white/20 hover:text-white transition-all">
+                <Play className="w-4 h-4 text-cyan-400" /> Explore Capabilities
+              </button>
+            </motion.div>
+          </div>
+
+          {/* Right — Architecture diagram */}
+          <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.35 }}>
+            <ArchDiagram />
+          </motion.div>
+        </div>
+      </div>
+
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-navy-950 to-transparent" />
+    </section>
+  )
+}
