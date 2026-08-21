@@ -18,13 +18,13 @@ const basePath = process.env.BASE_PATH || '/'
 
 const ROUTES = [
   '/', '/platform', '/solutions', '/videos', '/case-studies', '/company', '/contact',
-  '/pricing', '/x-bom', '/secrets', '/static-application-security-testing', '/ai-security',
+  '/pricing', '/request-a-demo', '/x-bom', '/secrets', '/static-application-security-testing', '/ai-security',
   '/api-security', '/git-security-posture', '/ai-penetration-testing', '/penetration-testing',
   '/ai-bom', '/solution-briefs/advanced-bom-reporting', '/solution-briefs/why-opsmx-xbom',
   '/solution-briefs/regulatory-bom-reporting-suite', '/dependency-intelligence', '/license-risk',
   '/provenance', '/audit-reporting', '/cluster-security', '/workload-security',
   '/threat-correlation', '/cloud-remediation', '/change-risk', '/deployment-verification',
-  '/root-cause-analysis', '/incident-diagnostics', '/operational-remediation', '/request-a-demo' ,
+  '/root-cause-analysis', '/incident-diagnostics', '/operational-remediation',
   '/open-security-intelligence', '/remediation-benchmarks',
 ]
 
