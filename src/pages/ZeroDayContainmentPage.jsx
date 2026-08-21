@@ -297,7 +297,7 @@ export default function ZeroDayContainmentPage() {
               Understand the complete impact radius across code, software composition, artifacts, delivery pipelines, deployments, runtime environments, and engineering ownership. Stop vulnerable software already in motion, accelerate remediation, and verify that the risk is gone.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="https://www.opsmx.com/talk-to-an-application-security-expert/" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:from-cyan-400 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2">
+              <a href="/request-a-demo" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:from-cyan-400 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2">
                 Request a Zero-Day Demo <ArrowRight className="w-4 h-4" />
               </a>
               <button className="px-8 py-3 rounded-lg border border-white/20 text-white font-semibold hover:border-white/40 hover:bg-white/5 transition-all duration-200">
@@ -821,10 +821,10 @@ export default function ZeroDayContainmentPage() {
               See how OpsMx can map the impact, stop vulnerable software in motion, coordinate remediation, and verify recovery across one focused zero-day scenario.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://www.opsmx.com/talk-to-an-application-security-expert/" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:from-cyan-400 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-cyan-500/20 inline-flex items-center justify-center gap-2">
+              <a href="/request-a-demo" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:from-cyan-400 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-cyan-500/20 inline-flex items-center justify-center gap-2">
                 Request a Zero-Day Demo <ArrowRight className="w-4 h-4" />
               </a>
-              <a href="https://www.opsmx.com/talk-to-an-application-security-expert/" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg border border-white/20 text-white font-semibold hover:border-white/40 hover:bg-white/5 transition-all duration-200 inline-flex items-center justify-center gap-2">
+              <a href="/request-a-demo" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg border border-white/20 text-white font-semibold hover:border-white/40 hover:bg-white/5 transition-all duration-200 inline-flex items-center justify-center gap-2">
                 Talk to an Expert
               </a>
             </div>

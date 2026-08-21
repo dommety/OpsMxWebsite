@@ -306,7 +306,7 @@ function OverviewCard({ onClose }) {
           <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
         </Link>
         <a
-          href="https://www.opsmx.com/talk-to-an-application-security-expert/"
+          href="/request-a-demo"
           className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-300 hover:text-white transition-colors"
         >
           Request a Demo

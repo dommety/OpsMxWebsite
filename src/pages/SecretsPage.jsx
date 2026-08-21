@@ -296,7 +296,7 @@ export default function SecretsPage() {
             </p>
             <p className="text-lg text-slate-400 mb-8 font-semibold">Find secrets. Understand blast radius. Fix them safely.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://www.opsmx.com/talk-to-an-application-security-expert/" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold hover:from-red-400 hover:to-red-500 transition-all shadow-lg shadow-red-500/20 flex items-center justify-center gap-2">
+              <a href="/request-a-demo" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold hover:from-red-400 hover:to-red-500 transition-all shadow-lg shadow-red-500/20 flex items-center justify-center gap-2">
                 See Secrets Blast Radius Demo
                 <ArrowRight className="w-4 h-4" />
               </a>
@@ -654,7 +654,7 @@ export default function SecretsPage() {
             <p className="text-lg text-slate-300 mb-8">
               See how OpsMx connects secrets, services, cloud permissions, data access, and remediation workflows into one code-to-cloud exposure view.
             </p>
-            <a href="https://www.opsmx.com/talk-to-an-application-security-expert/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold hover:from-red-400 hover:to-red-500 transition-all shadow-lg shadow-red-500/20">
+            <a href="/request-a-demo" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold hover:from-red-400 hover:to-red-500 transition-all shadow-lg shadow-red-500/20">
               See Secrets Blast Radius Demo
               <ArrowRight className="w-4 h-4" />
             </a>

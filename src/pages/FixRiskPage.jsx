@@ -649,7 +649,7 @@ function RemediationDetailSection({ section }) {
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
           <a
-            href="https://www.opsmx.com/talk-to-an-application-security-expert/"
+            href="/request-a-demo"
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-cyan-600 text-white font-bold hover:shadow-lg hover:shadow-cyan-500/30 transition-all"
@@ -885,7 +885,7 @@ export default function FixRiskPage() {
 
           <div className="flex flex-wrap gap-4 pt-8">
             <motion.a
-              href="https://www.opsmx.com/talk-to-an-application-security-expert/"
+              href="/request-a-demo"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}

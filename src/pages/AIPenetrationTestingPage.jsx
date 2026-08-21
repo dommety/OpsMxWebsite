@@ -349,7 +349,7 @@ export default function AIPenetrationTestingPage() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
               <a
-                href="https://www.opsmx.com/talk-to-an-application-security-expert/"
+                href="/request-a-demo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-3 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold hover:from-orange-400 hover:to-red-400 transition-all duration-200 shadow-lg shadow-orange-500/20 inline-flex items-center justify-center gap-2"
@@ -703,7 +703,7 @@ export default function AIPenetrationTestingPage() {
               OpsMx continuously discovers exploitable risk, coordinates remediation, and verifies that vulnerabilities are actually resolved.
             </p>
             <a
-              href="https://www.opsmx.com/talk-to-an-application-security-expert/"
+              href="/request-a-demo"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-3 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold hover:from-orange-400 hover:to-red-400 transition-all duration-200 shadow-lg shadow-orange-500/20 inline-flex items-center justify-center gap-2"

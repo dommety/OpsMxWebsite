@@ -435,7 +435,7 @@ export default function SASTPage() {
               Find vulnerabilities in source code, prioritize what matters, understand root cause, generate developer-ready fixes, and verify remediation across your secure software delivery workflow.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://www.opsmx.com/talk-to-an-application-security-expert/" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:from-cyan-400 hover:to-blue-500 transition-all shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2">
+              <a href="/request-a-demo" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:from-cyan-400 hover:to-blue-500 transition-all shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2">
                 Request a Demo
                 <ArrowRight className="w-4 h-4" />
               </a>
@@ -696,7 +696,7 @@ export default function SASTPage() {
           >
             <h2 className="text-4xl font-black text-white mb-4">Move Beyond Static Analysis</h2>
             <p className="text-lg text-slate-300 mb-8">Detect code vulnerabilities, prioritize real risk, automate remediation, and verify fixes with OpsMx.</p>
-            <a href="https://www.opsmx.com/talk-to-an-application-security-expert/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:from-cyan-400 hover:to-blue-500 transition-all shadow-lg shadow-cyan-500/20">
+            <a href="/request-a-demo" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:from-cyan-400 hover:to-blue-500 transition-all shadow-lg shadow-cyan-500/20">
               Request a Demo
               <ArrowRight className="w-4 h-4" />
             </a>

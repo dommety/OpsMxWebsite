@@ -416,7 +416,7 @@ export default function AIAssistantPage() {
             Try the AI Assistant
           </motion.a>
           <motion.a
-            href="https://www.opsmx.com/talk-to-an-application-security-expert/"
+            href="/request-a-demo"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}

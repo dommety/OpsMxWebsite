@@ -220,7 +220,7 @@ export default function GitSecurityPage() {
             </p>
             <p className="text-lg text-slate-400 mb-8 font-semibold">Continuous protection for your entire Git supply chain.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://www.opsmx.com/talk-to-an-application-security-expert/" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:from-cyan-400 hover:to-blue-500 transition-all shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2">
+              <a href="/request-a-demo" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:from-cyan-400 hover:to-blue-500 transition-all shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2">
                 Request a Demo
                 <ArrowRight className="w-4 h-4" />
               </a>
@@ -341,7 +341,7 @@ export default function GitSecurityPage() {
           >
             <h2 className="text-4xl font-black text-white mb-4">Secure Your Git Repositories Today</h2>
             <p className="text-lg text-slate-300 mb-8">Protect your code, prevent breaches, and maintain continuous security posture with OpsMx Git Security powered by OpenSSF.</p>
-            <a href="https://www.opsmx.com/talk-to-an-application-security-expert/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:from-cyan-400 hover:to-blue-500 transition-all shadow-lg shadow-cyan-500/20">
+            <a href="/request-a-demo" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:from-cyan-400 hover:to-blue-500 transition-all shadow-lg shadow-cyan-500/20">
               Request a Demo
               <ArrowRight className="w-4 h-4" />
             </a>

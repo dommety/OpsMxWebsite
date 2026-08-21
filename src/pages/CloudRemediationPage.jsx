@@ -78,7 +78,7 @@ export default function CloudRemediationPage() {
                 Delivery Shield bridges the gap between detection and resolution. Automatically patch cloud misconfigurations, fix IaC drift, and enforce compliance across AWS, Azure, and GCP, instantly.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <a href="https://www.opsmx.com/talk-to-an-application-security-expert/" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:from-cyan-400 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2">
+                <a href="/request-a-demo" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:from-cyan-400 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2">
                   Get a Demo <ArrowRight className="w-4 h-4" />
                 </a>
                 <button className="px-8 py-3 rounded-lg border border-white/20 text-white font-semibold hover:border-white/40 hover:bg-white/5 transition-all duration-200">See How It Works</button>
@@ -136,7 +136,7 @@ export default function CloudRemediationPage() {
           <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             <h2 className="text-4xl font-black text-white mb-4">Stop Managing Vulnerabilities. Start Managing Stability.</h2>
             <p className="text-lg text-slate-300 mb-8">See how Delivery Shield remediates cloud misconfigurations automatically across every provider.</p>
-            <a href="https://www.opsmx.com/talk-to-an-application-security-expert/" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:from-cyan-400 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-cyan-500/20 inline-flex items-center justify-center gap-2">
+            <a href="/request-a-demo" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:from-cyan-400 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-cyan-500/20 inline-flex items-center justify-center gap-2">
               See Remediation in Action <ArrowRight className="w-4 h-4" />
             </a>
           </motion.div>

@@ -229,7 +229,7 @@ export default function Footer() {
             </button>
           </div>
           <a
-            href="https://www.opsmx.com/talk-to-an-application-security-expert/"
+            href="/request-a-demo"
             className="text-sm font-semibold px-5 py-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-electric-500 text-white hover:from-cyan-400 hover:to-electric-400 transition-all whitespace-nowrap text-center"
           >
             Talk to an Expert

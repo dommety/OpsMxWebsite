@@ -361,7 +361,7 @@ export default function AIBOMPage() {
             </p>
             <p className="text-lg text-slate-400 mb-8 font-semibold">Know your AI. Govern your AI. Secure your AI.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://www.opsmx.com/talk-to-an-application-security-expert/" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-purple-600 text-white font-semibold hover:from-purple-400 hover:to-purple-500 transition-all shadow-lg shadow-purple-500/20 flex items-center justify-center gap-2">
+              <a href="/request-a-demo" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-purple-600 text-white font-semibold hover:from-purple-400 hover:to-purple-500 transition-all shadow-lg shadow-purple-500/20 flex items-center justify-center gap-2">
                 See AI-BOM Demo
                 <ArrowRight className="w-4 h-4" />
               </a>
@@ -604,7 +604,7 @@ export default function AIBOMPage() {
             <h2 className="text-4xl font-black text-white mb-4">Know Every AI Asset. Govern Every AI System.</h2>
             <p className="text-lg text-slate-300 mb-8">Automatically generate AI Bills of Materials covering models, prompts, datasets, agents, MCP servers, deployments, and runtime environments—while continuously supporting AI governance and compliance.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://www.opsmx.com/talk-to-an-application-security-expert/" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-purple-600 text-white font-semibold hover:from-purple-400 hover:to-purple-500 transition-all shadow-lg shadow-purple-500/20 flex items-center justify-center gap-2">
+              <a href="/request-a-demo" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-purple-600 text-white font-semibold hover:from-purple-400 hover:to-purple-500 transition-all shadow-lg shadow-purple-500/20 flex items-center justify-center gap-2">
                 Request a Demo
                 <ArrowRight className="w-4 h-4" />
               </a>

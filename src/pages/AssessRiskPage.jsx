@@ -627,7 +627,7 @@ export default function AssessRiskPage() {
               Explore Fix Risk
             </a>
             <a
-              href="https://www.opsmx.com/talk-to-an-application-security-expert/"
+              href="/request-a-demo"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 rounded-lg border-2 border-cyan-500/50 text-cyan-300 font-bold hover:bg-cyan-500/10 transition-all text-lg"

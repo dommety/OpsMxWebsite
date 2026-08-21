@@ -230,7 +230,7 @@ export default function AISecurityPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://www.opsmx.com/talk-to-an-application-security-expert/"
+                href="/request-a-demo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:from-cyan-400 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-cyan-500/20 inline-flex items-center justify-center gap-2"
@@ -431,7 +431,7 @@ export default function AISecurityPage() {
               OpsMx helps security and engineering teams adopt AI safely by securing AI-generated code, AI applications, models, notebooks, prompts, MCP servers, and remediation workflows.
             </p>
             <a
-              href="https://www.opsmx.com/talk-to-an-application-security-expert/"
+              href="/request-a-demo"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:from-cyan-400 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-cyan-500/20 inline-flex items-center justify-center gap-2"

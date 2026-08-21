@@ -33,7 +33,7 @@ const securityTiers = [
     description:
       'Advanced security and automation for small to mid-sized teams, with deeper integrations, team analytics, and faster issue resolution.',
     cta: 'Try Teams',
-    ctaHref: 'https://www.opsmx.com/talk-to-an-application-security-expert/',
+    ctaHref: '/request-a-demo',
     highlighted: true,
     features: [
       'Small & mid-size dev / DevSecOps teams',
@@ -91,7 +91,7 @@ const devopsTiers = [
     description:
       'Reliable, repeatable delivery for growing teams—streamline CI/CD, boost diagnostics, and reduce DevOps overhead with built-in support.',
     cta: 'Try Teams',
-    ctaHref: 'https://www.opsmx.com/talk-to-an-application-security-expert/',
+    ctaHref: '/request-a-demo',
     highlighted: true,
     features: [
       'Small / mid-size dev & DevOps teams',
@@ -342,7 +342,7 @@ export default function PricingPage() {
             Talk to our team about the right plan for your organization.
           </motion.p>
           <motion.a
-            href="https://www.opsmx.com/talk-to-an-application-security-expert/"
+            href="/request-a-demo"
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

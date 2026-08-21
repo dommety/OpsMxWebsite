@@ -471,7 +471,7 @@ export default function RegulatoryBOMSolutionBriefPage() {
                 <Download className="w-4 h-4" />
                 Download PDF
               </a>
-              <a href="https://www.opsmx.com/talk-to-an-application-security-expert/" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg border border-white/20 text-white font-semibold hover:border-white/40 hover:bg-white/5 transition-all flex items-center justify-center gap-2">
+              <a href="/request-a-demo" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg border border-white/20 text-white font-semibold hover:border-white/40 hover:bg-white/5 transition-all flex items-center justify-center gap-2">
                 Request Demo
                 <ArrowRight className="w-4 h-4" />
               </a>
@@ -771,7 +771,7 @@ export default function RegulatoryBOMSolutionBriefPage() {
               See how OpsMx helps enterprises generate every BOM, understand risk, drive remediation, verify fixes, and continuously report compliance.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://www.opsmx.com/talk-to-an-application-security-expert/" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:from-cyan-400 hover:to-blue-500 transition-all shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2">
+              <a href="/request-a-demo" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:from-cyan-400 hover:to-blue-500 transition-all shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2">
                 Request Demo
                 <ArrowRight className="w-4 h-4" />
               </a>
