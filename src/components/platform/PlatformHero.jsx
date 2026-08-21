@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Play, Zap } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const signals = [
   { label: 'Code', color: '#22d3ee', x: 8, y: 20 },
@@ -10,7 +11,6 @@ const signals = [
   { label: 'Runtime', color: '#60a5fa', x: 8, y: 55 },
   { label: 'Operations', color: '#fbbf24', x: 8, y: 73 },
 ]
-
 const pipeline = [
   { label: 'Signals', color: '#94a3b8', x: 8 },
   { label: 'Context Engine', color: '#22d3ee', x: 28 },
@@ -74,7 +74,6 @@ function ArchDiagram() {
     { label: 'Verification', color: '#fbbf24', icon: '✓' },
     { label: 'Governance', color: '#f472b6', icon: '⊞' },
   ]
-
   return (
     <div className="relative w-full glass-strong rounded-2xl border border-white/8 p-5 overflow-hidden">
       {/* Header bar */}
@@ -86,7 +85,6 @@ function ArchDiagram() {
           <span className="text-[10px] text-slate-600 font-mono">live</span>
         </div>
       </div>
-
       <div className="flex items-center gap-3">
         {/* Signal nodes */}
         <div className="flex flex-col gap-1.5 flex-shrink-0">
@@ -100,7 +98,6 @@ function ArchDiagram() {
             </motion.div>
           ))}
         </div>
-
         {/* Flow arrow */}
         <div className="flex flex-col items-center gap-0.5">
           <motion.div className="w-8 h-px" style={{ background: 'linear-gradient(90deg, #22d3ee40, #22d3ee)' }} initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.6 }} />
@@ -108,7 +105,6 @@ function ArchDiagram() {
             <ArrowRight className="w-3 h-3 text-cyan-400" />
           </motion.div>
         </div>
-
         {/* Pipeline stages */}
         <div className="flex-1 flex items-center gap-1.5 overflow-x-auto">
           {stages.map((s, i) => (
@@ -120,8 +116,7 @@ function ArchDiagram() {
                 <motion.div animate={{ boxShadow: [`0 0 4px ${s.color}40`, `0 0 12px ${s.color}80`, `0 0 4px ${s.color}40`] }} transition={{ duration: 2, delay: i * 0.3, repeat: Infinity }}
                   className="w-7 h-7 rounded-lg flex items-center justify-center text-sm font-bold" style={{ color: s.color, background: `${s.color}20` }}>
                   {s.icon}
-                </motion.div>
-                <span className="text-[9px] font-semibold whitespace-nowrap" style={{ color: s.color }}>{s.label}</span>
+                </motion.div><span className="text-[9px] font-semibold whitespace-nowrap" style={{ color: s.color }}>{s.label}</span>
               </motion.div>
               {i < stages.length - 1 && (
                 <motion.div animate={{ x: [0, 3, 0] }} transition={{ duration: 1, delay: i * 0.15, repeat: Infinity }}>
@@ -132,7 +127,6 @@ function ArchDiagram() {
           ))}
         </div>
       </div>
-
       {/* Bottom telemetry */}
       <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] font-mono">
         <div className="flex items-center gap-3 text-slate-600">
@@ -151,11 +145,9 @@ function ArchDiagram() {
 export default function PlatformHero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-navy-950 pt-16">
-      <div className="absolute inset-0 grid-pattern opacity-50" />
-      <ParticleCanvas />
+      <div className="absolute inset-0 grid-pattern opacity-50" /><ParticleCanvas />
       <div className="absolute inset-0 bg-gradient-radial from-cyan-500/6 via-transparent to-transparent" />
       <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-radial from-violet-500/4 via-transparent to-transparent" />
-
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left */}
@@ -165,42 +157,13 @@ export default function PlatformHero() {
               <Zap className="w-3.5 h-3.5 text-cyan-400" />
               <span className="text-xs font-semibold text-cyan-400 tracking-wider uppercase">Platform Overview</span>
             </motion.div>
-
             <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
               className="text-5xl lg:text-6xl font-black leading-[1.05] tracking-tight mb-6">
               <span className="text-white">The Platform Behind</span>
               <br />
               <span className="text-gradient-full">Active Defense</span>
             </motion.h1>
-
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }}
               className="text-lg text-slate-300 leading-relaxed mb-3">
               OpsMx Active Defense continuously detects, diagnoses, remediates, verifies, and governs risk across modern software systems.
             </motion.p>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base text-slate-500 leading-relaxed mb-10">
-              Powered by the OpsMx Context Engine and Remediation Factory, the platform connects signals from code, AI, supply chain, cloud, runtime, and operations — then turns them into verified action.
-            </motion.p>
-
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.28 }}
-              className="flex flex-wrap gap-4">
-              <button className="group flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-cyan-500 to-electric-500 hover:from-cyan-400 hover:to-electric-400 transition-all shadow-xl shadow-cyan-500/25">
-                Request a Demo <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="group flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-slate-300 glass border border-white/10 hover:border-white/20 hover:text-white transition-all">
-                <Play className="w-4 h-4 text-cyan-400" /> Explore Capabilities
-              </button>
-            </motion.div>
-          </div>
-
-          {/* Right — Architecture diagram */}
-          <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.35 }}>
-            <ArchDiagram />
-          </motion.div>
-        </div>
-      </div>
-
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-navy-950 to-transparent" />
-    </section>
-  )
-}
