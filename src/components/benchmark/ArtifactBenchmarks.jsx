@@ -19,7 +19,9 @@ export default function ArtifactBenchmarks({ artifacts = [] }) {
                 {artifact.analyzed.toLocaleString()} analyzed
               </p>
             </div>
-            <div className={`text-xs font-medium flex items-center gap-1 ${artifact.trend.startsWith('+') ? 'text-green-400' : 'text-red-400'}`}>
+            <div className={`text-xs font-medium flex items-center gap-1 ${ 
+                     artifact.trend?.startsWith('+') ?? false? 'text-green-400' : 'text-red-400'
+                        }`}>
               <TrendingUp className="w-3 h-3" />
               {artifact.trend}
             </div>

@@ -165,7 +165,7 @@ export default function Navbar() {
       <nav aria-label="All products" className="sr-only">
         <ul>
           {crawlableProductLinks.map((item) => {
-            const isExternal = item.href.startsWith('http')
+            const isExternal = item.href?.startsWith('http') ?? false
             return (
               <li key={item.label + item.href}>
                 {isExternal

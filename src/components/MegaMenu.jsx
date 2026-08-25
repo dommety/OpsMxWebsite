@@ -429,7 +429,7 @@ function DetectRiskRow() {
                     {/* Group items */}
                     <div className="space-y-1">
                       {group.items.map((item) => {
-                        const isExternal = item.href.startsWith('http')
+                        const isExternal = item.href?.startsWith('http') ?? false
                         const LinkComponent = isExternal ? 'a' : Link
                         const linkProps = isExternal
                           ? { href: item.href, target: '_blank', rel: 'noopener noreferrer' }

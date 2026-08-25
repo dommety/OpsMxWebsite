@@ -43,12 +43,11 @@ import RemediationBenchmarksPage from './pages/RemediationBenchmarksPage'
 import RequestDemoPage from './pages/RequestDemoPage'
 import ZeroDayContainmentPage from './pages/ZeroDayContainmentPage'
 
-const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/'
 
 export default function App() {
   return (
     <HelmetProvider>
-      <BrowserRouter basename={basename}>
+	<BrowserRouter>
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
