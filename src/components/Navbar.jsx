@@ -14,6 +14,8 @@ const navLinks = [
   { label: 'Solutions',  mega: 'solutions',  href: '/solutions' },
   { label: 'Remediation Benchmarks', href: '/remediation-benchmarks' },
   { label: 'Customers',  mega: 'customers',  href: 'https://www.opsmx.com/customer-case-study/' },
+  { label: 'Resources',  mega: 'resources',  href: 'https://www.opsmx.com/guides-datasheets/' },
+  { label: 'Company',    isDropdown: true },
   { label: 'Pricing',    href: '/pricing' },
 ]
 
@@ -30,8 +32,6 @@ const crawlableProductLinks = [
   { label: 'Supply Chain Risk Assessment', href: '/opsmx/assess-risk#supply-chain-risk-assessment' },
   { label: 'Risk Scoring', href: '/opsmx/assess-risk#risk-scoring' },
   { label: 'Risk Prioritization', href: '/opsmx/assess-risk#risk-prioritization' },
-  { label: 'Resources',  mega: 'resources',  href: 'https://www.opsmx.com/guides-datasheets/' },
-  { label: 'Company',    isDropdown: true },
   { label: 'Fix Risk', href: '/opsmx/fix-risk' },
   { label: 'Code Remediation', href: '/opsmx/fix-risk#code-remediation' },
   { label: 'Dependency Remediation', href: '/opsmx/fix-risk#dependency-remediation' },
