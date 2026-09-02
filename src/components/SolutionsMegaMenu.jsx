@@ -16,36 +16,40 @@ function Badge({ type }) {
   )
 }
 
-// ─── Solution item row ────────────────────────────────────────────────────────
+// ─── Solution item row (no icon; short menu phrase) ──────────────────────────
 
 function SolutionItem({ item, onClose }) {
-  const Icon = item.icon
   const href = item.href || `/solutions/${item.slug}`
+  const isExternal = href?.startsWith('http') ?? false
+  const className = 'block px-2 py-1.5 rounded-lg group hover:bg-white/5 transition-colors duration-150'
+
+  const inner = (
+    <>
+      <div className="flex items-center flex-wrap gap-x-1 leading-tight">
+        <span className="text-[12.5px] font-bold text-white group-hover:text-cyan-300 transition-colors">
+          {item.title}
+        </span>
+        {item.badge && <Badge type={item.badge} />}
+      </div>
+      {item.menu && (
+        <p className="text-[10.5px] font-medium text-slate-500 group-hover:text-slate-300 transition-colors leading-snug mt-0.5">
+          {item.menu}
+        </p>
+      )}
+    </>
+  )
+
   return (
     <motion.div whileHover={{ x: 2 }}>
-      <Link
-        to={href}
-        onClick={onClose}
-        className="flex items-start gap-2.5 px-2 py-1.5 rounded-lg group hover:bg-white/4 transition-colors duration-150"
-      >
-        <div
-          className="w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5"
-          style={{ background: `${item.color}18`, border: `1px solid ${item.color}28` }}
-        >
-          <Icon className="w-3 h-3" style={{ color: item.color }} strokeWidth={1.8} />
-        </div>
-        <div className="min-w-0 flex-1">
-          <div className="flex items-center flex-wrap gap-x-1 leading-tight">
-            <span className="text-[12px] font-bold text-white transition-colors">
-              {item.title}
-            </span>
-            {item.badge && <Badge type={item.badge} />}
-          </div>
-          <p className="text-[11px] font-medium text-slate-300 group-hover:text-slate-100 transition-colors leading-snug mt-0.5 line-clamp-1">
-            {item.desc}
-          </p>
-        </div>
-      </Link>
+      {isExternal ? (
+        <a href={href} target="_blank" rel="noopener noreferrer" onClick={onClose} className={className}>
+          {inner}
+        </a>
+      ) : (
+        <Link to={href} onClick={onClose} className={className}>
+          {inner}
+        </Link>
+      )}
     </motion.div>
   )
 }
@@ -53,19 +57,21 @@ function SolutionItem({ item, onClose }) {
 // ─── Column ───────────────────────────────────────────────────────────────────
 
 function Column({ col, onClose }) {
+  const visibleItems = col.items.filter((item) => !item.menuHidden)
+
   return (
     <div className="flex flex-col min-w-0">
       {/* Column header */}
-      <div className="px-2 pb-2 mb-1 border-b border-white/6">
+      <div className="px-2 pb-2 mb-2 border-b border-white/6">
         <p className="text-[11px] font-black uppercase tracking-widest mb-1" style={{ color: col.color }}>
           {col.heading}
         </p>
         <p className="text-[10px] font-medium text-slate-400 leading-snug">{col.desc}</p>
       </div>
 
-      {/* Items */}
-      <div className="flex-1 space-y-0.5 overflow-y-auto max-h-[420px] pr-1 scrollbar-thin">
-        {col.items.map(item => (
+      {/* Items — no icons, no scroll, short phrases only */}
+      <div className="flex-1 space-y-0.5">
+        {visibleItems.map((item) => (
           <SolutionItem key={item.slug} item={item} onClose={onClose} />
         ))}
       </div>
@@ -136,7 +142,7 @@ export default function SolutionsMegaMenu({ onClose, onMouseEnter, onMouseLeave 
         </div>
 
         {/* 3-column grid — col 1 slightly wider */}
-        <div className="grid p-4 gap-4" style={{ gridTemplateColumns: '1.25fr 1fr 1fr' }}>
+        <div className="grid p-4 gap-6" style={{ gridTemplateColumns: '1.15fr 1fr 1fr' }}>
           {columns.map(col => (
             <Column key={col.id} col={col} onClose={onClose} />
           ))}
