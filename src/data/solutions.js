@@ -13,6 +13,12 @@ export const BADGES = {
   new:         { label: 'New',         bg: 'bg-pink-500/15',    text: 'text-pink-400',    border: 'border-pink-500/30' },
 }
 
+// NOTE:
+//  - `menuHidden: true` hides an item from the Solutions MEGA-MENU only (kept in
+//    allSolutions so the /solutions landing page + routing are unchanged).
+//  - `menu` is the short phrase shown in the mega-menu. Full `desc` is kept for
+//    the /solutions landing page. The menu no longer renders icons or full desc.
+
 // ─── Column 1: Security & Compliance ─────────────────────────────────────────
 
 export const securitySolutions = [
@@ -22,6 +28,7 @@ export const securitySolutions = [
     icon: FileCheck,
     color: '#22d3ee',
     desc: 'Generate every BOM, connect risk to remediation, and continuously produce audit-ready compliance evidence.',
+    menu: 'Audit-ready BOM compliance',
     badge: 'featured',
     href: '/solution-briefs/regulatory-bom-reporting-suite',
   },
@@ -31,6 +38,7 @@ export const securitySolutions = [
     icon: Package,
     color: '#a78bfa',
     desc: 'Complete software supply chain visibility: SBOM, SaaS, APIs, AI, cryptography, pipelines, and infrastructure.',
+    menu: 'Full supply chain visibility',
     badge: 'featured',
     href: '/x-bom',
   },
@@ -42,6 +50,7 @@ export const securitySolutions = [
     desc: 'Dependency intelligence, OSS risk management, and software supply chain threat detection.',
     badge: null,
     href: '/x-bom',
+    menuHidden: true,
   },
   {
     slug: 'ai-penetration-testing',
@@ -49,6 +58,7 @@ export const securitySolutions = [
     icon: Target,
     color: '#f472b6',
     desc: 'AI-assisted attack simulation, DAST, API testing, validation, and remediation guidance.',
+    menu: 'AI-assisted attack simulation',
     badge: 'featured',
     href: '/ai-penetration-testing',
   },
@@ -58,6 +68,7 @@ export const securitySolutions = [
     icon: Code2,
     color: '#22d3ee',
     desc: 'Secure developer-written and AI-generated code with automated fix guidance.',
+    menu: 'Secure AI-generated code',
     badge: 'featured',
     href: '/ai-security',
   },
@@ -68,6 +79,7 @@ export const securitySolutions = [
     color: '#60a5fa',
     desc: 'SAST, DAST, SCA, secrets, API security, and application risk analysis.',
     href: '/static-application-security-testing',
+    menuHidden: true,
   },
   {
     slug: 'cloud-kubernetes-security',
@@ -76,6 +88,7 @@ export const securitySolutions = [
     color: '#34d399',
     desc: 'CSPM, Kubernetes security, IaC, container risk, and cloud remediation.',
     href: '/cloud-remediation',
+    menuHidden: true,
   },
   {
     slug: 'open-source-security',
@@ -84,6 +97,7 @@ export const securitySolutions = [
     color: '#a78bfa',
     desc: 'Identify and remediate open source dependency, license, and package risk.',
     href: '/dependency-intelligence',
+    menuHidden: true,
   },
   {
     slug: 'git-security-posture',
@@ -91,6 +105,7 @@ export const securitySolutions = [
     icon: GitBranch,
     color: '#22d3ee',
     desc: 'Secure Git repositories against vulnerabilities, secrets exposure, and misconfigurations.',
+    menu: 'Harden your Git repositories',
     href: '/git-security-posture',
   },
   {
@@ -100,6 +115,7 @@ export const securitySolutions = [
     color: '#60a5fa',
     desc: 'Analyze container images, packages, runtime exposure, and artifact risk.',
     href: '/workload-security',
+    menuHidden: true,
   },
   {
     slug: 'api-security',
@@ -108,6 +124,7 @@ export const securitySolutions = [
     color: '#34d399',
     desc: 'Discover, test, and remediate API vulnerabilities and exposure.',
     href: '/api-security',
+    menuHidden: true,
   },
   {
     slug: 'vulnerability-reachability-prioritization',
@@ -116,6 +133,7 @@ export const securitySolutions = [
     color: '#fbbf24',
     desc: 'Prioritize vulnerabilities using reachability, exploitability, business impact, and ownership.',
     href: '/threat-correlation',
+    menuHidden: true,
   },
   {
     slug: 'compliance-automation',
@@ -123,6 +141,7 @@ export const securitySolutions = [
     icon: FileCheck,
     color: '#fbbf24',
     desc: 'Automate evidence, policies, audit trails, and compliance reporting.',
+    menu: 'Automate audit evidence',
     href: '/audit-reporting',
   },
   {
@@ -132,10 +151,11 @@ export const securitySolutions = [
     color: '#f87171',
     desc: 'Enforce policy gates across code, pipelines, cloud, and deployments.',
     href: '/secrets',
+    menuHidden: true,
   },
 ]
 
-// ─── Column 2: Active Defense & Remediation ──────────────────────────────────
+// ─── Column 2: Fix & Remediate ───────────────────────────────────────────────
 
 export const remediationSolutions = [
   {
@@ -144,6 +164,7 @@ export const remediationSolutions = [
     icon: AlertTriangle,
     color: '#f87171',
     desc: 'Map impact radius, stop vulnerable software in motion, and coordinate verified remediation under time pressure.',
+    menu: 'Contain and fix zero-days fast',
     badge: 'featured',
     href: '/solutions/zero-day-containment-and-remediation',
   },
@@ -153,8 +174,9 @@ export const remediationSolutions = [
     icon: Code2,
     color: '#22d3ee',
     desc: 'Generate code fixes, dependency upgrades, and secure pull requests.',
+    menu: 'Auto-generate code fixes',
     badge: 'remediation',
-    href: '/ai-security',
+    href: '/opsmx/fix-risk#code-remediation', // unhidden + repointed off /ai-security (was a duplicate)
   },
   {
     slug: 'binary-artifact-remediation',
@@ -163,6 +185,7 @@ export const remediationSolutions = [
     color: '#a78bfa',
     desc: 'Remediate risks in containers, packages, images, and deployed artifacts.',
     href: '/workload-security',
+    menuHidden: true,
   },
   {
     slug: 'cloud-remediation',
@@ -170,6 +193,7 @@ export const remediationSolutions = [
     icon: Cloud,
     color: '#34d399',
     desc: 'Fix cloud misconfigurations, posture issues, exposure, and identity risks.',
+    menu: 'Fix cloud misconfigurations',
     href: '/cloud-remediation',
   },
   {
@@ -178,7 +202,8 @@ export const remediationSolutions = [
     icon: GitMerge,
     color: '#60a5fa',
     desc: 'Remediate Kubernetes misconfigurations, workload risks, drift, and operational issues.',
-    href: '/incident-diagnostics',
+    menu: 'Remediate Kubernetes risk',
+    href: '/opsmx/fix-risk#kubernetes-remediation',
   },
   {
     slug: 'devops-remediation',
@@ -186,6 +211,7 @@ export const remediationSolutions = [
     icon: Settings,
     color: '#fbbf24',
     desc: 'Fix CI/CD, GitOps, release, deployment, and operational workflow issues.',
+    menu: 'Fix CI/CD and delivery issues',
     href: '/operational-remediation',
   },
   {
@@ -194,11 +220,12 @@ export const remediationSolutions = [
     icon: TrendingDown,
     color: '#f472b6',
     desc: 'Reduce critical vulnerability queues with context-aware remediation workflows.',
+    menu: 'Clear the vulnerability queue',
     href: '/threat-correlation',
   },
 ]
 
-// ─── Column 3: Agentic Security & Operations ─────────────────────────────────
+// ─── Column 3: Ship & Operate Safely ─────────────────────────────────────────
 
 export const operationsSolutions = [
   {
@@ -207,6 +234,7 @@ export const operationsSolutions = [
     icon: Sparkles,
     color: '#a78bfa',
     desc: 'Assess security, operational, and business impact of AI agent, code, cloud, infrastructure, and deployment changes before execution.',
+    menu: 'Guardrail AI-driven changes',
     badge: 'new',
     href: '/change-risk',
   },
@@ -216,7 +244,8 @@ export const operationsSolutions = [
     icon: Zap,
     color: '#60a5fa',
     desc: 'Integrate security throughout CI/CD pipelines with continuous scanning, policy enforcement, and automated remediation.',
-    href: '/static-application-security-testing',
+    menu: 'Security across CI/CD',
+    href: '/platform', // PHASE 2: needs a dedicated DevSecOps solution page
   },
   {
     slug: 'devops-diagnostics',
@@ -224,6 +253,7 @@ export const operationsSolutions = [
     icon: Microscope,
     color: '#f472b6',
     desc: 'Diagnose failed deployments, pipeline issues, Kubernetes problems, and operational failures.',
+    menu: 'Diagnose failed deployments',
     href: '/root-cause-analysis',
   },
   {
@@ -233,6 +263,7 @@ export const operationsSolutions = [
     color: '#fbbf24',
     desc: 'Assess release risk using security, operational, dependency, and business context.',
     href: '/deployment-verification',
+    menuHidden: true,
   },
   {
     slug: 'deployment-verification',
@@ -240,6 +271,7 @@ export const operationsSolutions = [
     icon: CheckSquare,
     color: '#34d399',
     desc: 'Validate deployments before, during, and after release.',
+    menu: 'Verify every release',
     href: '/deployment-verification',
   },
   {
@@ -248,6 +280,7 @@ export const operationsSolutions = [
     icon: GitBranch,
     color: '#60a5fa',
     desc: 'Govern Argo CD, GitOps workflows, deployment policies, and approvals.',
+    menu: 'Govern Argo CD and GitOps',
     href: '/operational-remediation',
   },
   {
@@ -256,11 +289,12 @@ export const operationsSolutions = [
     icon: AlertCircle,
     color: '#f87171',
     desc: 'Determine root cause, affected services, blast radius, and remediation paths.',
+    menu: 'Root cause and blast radius',
     href: '/incident-diagnostics',
   },
 ]
 
-// All solutions flat list for routing
+// All solutions flat list for routing (includes menuHidden items — landing page unaffected)
 export const allSolutions = [
   ...securitySolutions,
   ...remediationSolutions,
@@ -287,7 +321,7 @@ export const columns = [
   },
   {
     id: 'remediation',
-    heading: 'Active Defense & Remediation',
+    heading: 'Fix & Remediate',
     desc: 'Turn security and operational findings into safe, verified fixes.',
     color: '#34d399',
     items: remediationSolutions,
@@ -296,8 +330,8 @@ export const columns = [
   },
   {
     id: 'operations',
-    heading: 'Agentic Security & Operations',
-    desc: 'Guardrail agentic changes, releases, deployments, and operational workflows.',
+    heading: 'Ship & Operate Safely',
+    desc: 'Ship releases and run operations with AI guardrails and verified fixes.',
     color: '#fbbf24',
     items: operationsSolutions,
   },
