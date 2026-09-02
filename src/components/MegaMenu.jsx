@@ -1,140 +1,74 @@
 import { useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Code2, Package, Cloud, GitMerge, ArrowRight, ExternalLink } from 'lucide-react'
-import Logo from './Logo'
+import { ArrowRight, Sparkles, BarChart3 } from 'lucide-react'
 import { fixRiskNavigation } from '../data/fixRisk'
 
-// ─── DETECT RISK — grouped subcategory layout (NEW) ──────────────────────────
+// ─── STAGE ACCENT COLORS (kept consistent with the rest of the site) ─────────
+const DETECT = '#60a5fa'
+const ASSESS = '#34d399'
+const FIX = '#fbbf24'
 
-const codeAndAgentGroups = [
+// ─── DETECT — four domains, deduplicated, hrefs mirror App.jsx routes ────────
+// NOTE: links to `https://www.opsmx.com/...` are live WordPress pages that have
+// not yet been migrated to React. They are correct for now and marked PHASE 2.
+const detectColumns = [
   {
-    label: 'Code & Applications',
-    description: '',
+    title: 'Code & AI',
     items: [
       { label: 'SAST', href: '/static-application-security-testing' },
-      { label: 'SCA', href: 'https://www.opsmx.com/software-composition-analysis-with-opsmx-delivery-shield/' },
+      { label: 'SCA', href: 'https://www.opsmx.com/software-composition-analysis-with-opsmx-delivery-shield/' }, // PHASE 2
+      { label: 'DAST', href: 'https://www.opsmx.com/dynamic-application-security-testing-with-opsmx-delivery-shield/' }, // PHASE 2
       { label: 'Secrets', href: '/secrets' },
-      { label: 'DAST', href: 'https://www.opsmx.com/dynamic-application-security-testing-with-opsmx-delivery-shield/' },
       { label: 'API Security', href: '/api-security' },
+      { label: 'AI Security', href: '/ai-security' },
       { label: 'AI Penetration Testing', href: '/ai-penetration-testing' },
     ],
   },
   {
-    label: 'AI & Agent Security',
-    description: '',
-    items: [
-      { label: 'AI Agent Security', href: '/ai-security' },
-      { label: 'AI Model Security', href: '/ai-security' },
-      { label: 'Prompt Security', href: '/ai-security' },
-      { label: 'MCP Server Security', href: '/ai-security' },
-    ],
-  },
-]
-
-const detectColumns = [
-  {
-    id: 'code-ai',
-    icon: Code2,
-    color: '#22d3ee',
-    title: 'Code & AI Agents',
-    description: 'Secure Apps, APIs, AI-Code and AI Agents',
-    groups: codeAndAgentGroups,
-  },
-  {
-    id: 'supply-chain',
-    icon: Package,
-    color: '#a78bfa',
     title: 'Supply Chain',
-    description: 'Secure supply chain from code to prod',
-    groups: [
-      {
-        label: 'Supply Chain Security',
-        description: '',
-        items: [
-          { label: 'SBOM', href: 'https://www.opsmx.com/software-bill-of-materials-with-opsmx-delivery-shield/' },
-          { label: 'AI-BOM', href: '/ai-bom' },
-          { label: 'CBOM, DBOM, QBOM & HBOM', href: '/solution-briefs/advanced-bom-reporting' },
-          { label: 'Dependency Intelligence', href: '/dependency-intelligence' },
-          { label: 'Provenance', href: '/provenance' },
-          { label: 'Open Source BOM / OSS Risk', href: 'https://www.opsmx.com/open-source-risk-management-for-oss-with-opsmx-delivery-shield/' },
-        ],
-      },
-      {
-        label: 'Supply Chain Governance',
-        description: '',
-        items: [
-          { label: 'Regulatory BOM Reporting', href: '/solution-briefs/regulatory-bom-reporting-suite' },
-          { label: 'License Risk', href: '/license-risk' },
-          { label: 'Audit Reporting', href: '/audit-reporting' },
-          { label: 'Policy Enforcement', href: 'https://www.opsmx.com/deployment-firewall/' },
-        ],
-      },
+    items: [
+      { label: 'SBOM', href: 'https://www.opsmx.com/software-bill-of-materials-with-opsmx-delivery-shield/' }, // PHASE 2
+      { label: 'AI-BOM', href: '/ai-bom' },
+      { label: 'CBOM, DBOM, QBOM & HBOM', href: '/solution-briefs/advanced-bom-reporting' },
+      { label: 'Dependency Intelligence', href: '/dependency-intelligence' },
+      { label: 'Provenance', href: '/provenance' },
+      { label: 'Open Source / OSS Risk', href: 'https://www.opsmx.com/open-source-risk-management-for-oss-with-opsmx-delivery-shield/' }, // PHASE 2
+      { label: 'License Risk', href: '/license-risk' },
+      { label: 'Regulatory BOM Reporting', href: '/solution-briefs/regulatory-bom-reporting-suite' },
+      { label: 'Audit Reporting', href: '/audit-reporting' },
+      { label: 'Policy Enforcement', href: 'https://www.opsmx.com/deployment-firewall/' }, // PHASE 2
     ],
   },
   {
-    id: 'cloud-runtime',
-    icon: Cloud,
-    color: '#34d399',
     title: 'Cloud & Runtime',
-    description: 'Secure cloud, infra and production.',
-    groups: [
-      {
-        label: 'Cloud & Kubernetes Security',
-        items: [
-          { label: 'Cloud Security Posture Management', href: 'https://www.opsmx.com/cloud-security-posture-management-with-opsmx-delivery-shield/' },
-          { label: 'IaC Security', href: 'https://www.opsmx.com/infrastructure-as-code-security-with-opsmx-delivery-shield/' },
-          { label: 'Container Security', href: 'https://www.opsmx.com/kubernetes-security-with-opsmx-delivery-shield/' },
-          { label: 'Cluster Security', href: '/cluster-security' },
-          { label: 'Workload Security', href: '/workload-security' },
-          { label: 'Policy Enforcement', href: 'https://www.opsmx.com/deployment-firewall/' },
-        ],
-      },
-      {
-        label: 'Runtime Security',
-        items: [
-          { label: 'Threat Correlation', href: '/threat-correlation' },
-          { label: 'Change Risk Assessment', href: '/opsmx/runtime-security' },
-          { label: 'Continuous Risk Monitoring & Verification', href: '/opsmx/runtime-security' },
-          { label: 'Runtime Risk Remediation', href: '/opsmx/runtime-security' },
-        ],
-      },
+    items: [
+      { label: 'Cloud Security Posture (CSPM)', href: 'https://www.opsmx.com/cloud-security-posture-management-with-opsmx-delivery-shield/' }, // PHASE 2
+      { label: 'IaC Security', href: 'https://www.opsmx.com/infrastructure-as-code-security-with-opsmx-delivery-shield/' }, // PHASE 2
+      { label: 'Container Security', href: 'https://www.opsmx.com/kubernetes-security-with-opsmx-delivery-shield/' }, // PHASE 2
+      { label: 'Cluster Security', href: '/cluster-security' },
+      { label: 'Workload Security', href: '/workload-security' },
+      { label: 'Threat Correlation', href: '/threat-correlation' },
+      // FIXED: was 3 links to /opsmx/runtime-security (no such route → 404). Now one link to the live WP runtime page. PHASE 2.
+      { label: 'Runtime Security', href: 'https://www.opsmx.com/dynamic-runtime-ai-security/' },
     ],
   },
   {
-    id: 'operations',
-    icon: GitMerge,
-    color: '#fbbf24',
     title: 'Operations & Delivery',
-    description: 'Secure workflows, releases, and deployments.',
-    groups: [
-      {
-        label: 'Delivery Remediation',
-        items: [
-          { label: 'Pipeline Failure Diagnosis', href: '/opsmx/operations-delivery#pipeline-failure-diagnosis' },
-          { label: 'Deployment Failure Diagnosis', href: '/opsmx/operations-delivery#deployment-failure-diagnosis' },
-          { label: 'Incident Root Cause Analysis', href: '/opsmx/operations-delivery#incident-root-cause-analysis' },
-          { label: 'Rollback & Roll-forward Guidance', href: '/opsmx/operations-delivery#rollback-rollforward-guidance' },
-          { label: 'Policy Gate Diagnosis', href: '/opsmx/operations-delivery#policy-gate-diagnosis' },
-          { label: 'Continuous Delivery Verification', href: '/opsmx/operations-delivery#continuous-delivery-verification' },
-        ],
-      },
-      {
-        label: 'Operations Intelligence',
-        items: [
-          { label: 'Change Risk Assessment', href: '/opsmx/operations-delivery#change-risk-assessment' },
-          { label: 'Release Readiness', href: '/opsmx/operations-delivery#release-readiness' },
-          { label: 'Deployment Risk Analysis', href: '/opsmx/operations-delivery#deployment-risk-analysis' },
-          { label: 'Environment Drift Detection', href: '/opsmx/operations-delivery#environment-drift-detection' },
-        ],
-      },
+    items: [
+      { label: 'Pipeline Failure Diagnosis', href: '/opsmx/operations-delivery#pipeline-failure-diagnosis' },
+      { label: 'Deployment Failure Diagnosis', href: '/opsmx/operations-delivery#deployment-failure-diagnosis' },
+      { label: 'Incident Root Cause Analysis', href: '/opsmx/operations-delivery#incident-root-cause-analysis' },
+      { label: 'Rollback & Roll-forward Guidance', href: '/opsmx/operations-delivery#rollback-rollforward-guidance' },
+      { label: 'Change Risk Assessment', href: '/opsmx/operations-delivery#change-risk-assessment' },
+      { label: 'Release Readiness', href: '/opsmx/operations-delivery#release-readiness' },
+      { label: 'Environment Drift Detection', href: '/opsmx/operations-delivery#environment-drift-detection' },
     ],
   },
 ]
 
-// ─── ASSESS RISK TOPICS for mega menu ─────────────────────────────────────────
-
-const assessTopicsForMenu = [
+// ─── ASSESS — anchor deep-links into the assess-risk page ────────────────────
+const assessItems = [
   { label: 'Context Engine', href: '/opsmx/assess-risk#context-engine' },
   { label: 'Vulnerability Correlation', href: '/opsmx/assess-risk#vulnerability-correlation' },
   { label: 'Exploitability', href: '/opsmx/assess-risk#exploitability' },
@@ -146,413 +80,55 @@ const assessTopicsForMenu = [
   { label: 'Risk Prioritization', href: '/opsmx/assess-risk#risk-prioritization' },
 ]
 
-// ─── ASSESS & FIX DATA ─────────────────────────────────────────────────────
-
-const matrixData = {
-  assess: {
-    title: 'Assess Risk',
-    description: 'Correlate findings, context, posture, ownership, and business impact to identify what matters.',
-    pillars: [
-      {
-        id: 'code-ai-assess',
-        icon: Code2,
-        title: 'Code & AI',
-        color: '#22d3ee',
-        items: ['Context Engine', 'Exploitability', 'Reachability', 'False Positive Reduction', 'Risk Scoring'],
-      },
-      {
-        id: 'supply-chain-assess',
-        icon: Package,
-        title: 'Supply Chain',
-        color: '#a78bfa',
-        items: ['X-BOM Intelligence', 'Dependency Impact', 'Package Reachability', 'Provenance Risk', 'Supply Chain Posture'],
-      },
-      {
-        id: 'cloud-runtime-assess',
-        icon: Cloud,
-        title: 'Cloud & Runtime',
-        color: '#34d399',
-        items: ['Posture Management', 'Blast Radius', 'Business Impact', 'Policy & Governance', 'Compliance Reporting'],
-      },
-      {
-        id: 'operations-assess',
-        icon: GitMerge,
-        title: 'Operations',
-        color: '#fbbf24',
-        items: ['Audit Evidence', 'Change Impact', 'Ownership Mapping', 'Compliance Reporting'],
-      },
-      {
-        id: 'vulnerability-assess',
-        icon: Code2,
-        title: 'Vulnerability Correlation',
-        color: '#ef4444',
-        items: ['Code Vulnerabilities', 'Dependency Vulnerabilities', 'API Vulnerabilities', 'Runtime Vulnerabilities'],
-      },
-      {
-        id: 'risk-prioritization-assess',
-        icon: Code2,
-        title: 'Risk Prioritization',
-        color: '#f59e0b',
-        items: ['Exploitability', 'Reachability', 'Business Criticality', 'Remediation Status'],
-      },
-      {
-        id: 'supply-chain-risk-assess',
-        icon: Package,
-        title: 'Supply Chain Risk Assessment',
-        color: '#a78bfa',
-        items: ['Dependency Analysis', 'Open Source Health', 'Provenance', 'BOM Analysis'],
-      },
-    ],
-  },
-  fix: {
-    title: 'Fix Risk',
-    description: 'Use remediation agents and workflows to remediate issues and verify fixes.',
-    pillars: [
-      {
-        id: 'code-ai-fix',
-        icon: Code2,
-        title: 'Code & AI',
-        color: '#22d3ee',
-        items: ['Code Remediation Agent', 'AI Code Fix Suggestions', 'PR & Patch Automation', 'Dependency Upgrade Fixes', 'Fix Verification'],
-      },
-      {
-        id: 'supply-chain-fix',
-        icon: Package,
-        title: 'Supply Chain',
-        color: '#a78bfa',
-        items: ['Binary Artifact Agent', 'Dependency Update Agent', 'Container Remediation', 'SBOM / XBOM Updates', 'Integrity Verification'],
-      },
-      {
-        id: 'cloud-runtime-fix',
-        icon: Cloud,
-        title: 'Cloud & Runtime',
-        color: '#34d399',
-        items: ['Cloud Remediation Agent', 'Kubernetes Agent', 'IaC Remediation', 'Misconfiguration Fixes', 'Continuous Verification'],
-      },
-      {
-        id: 'operations-fix',
-        icon: GitMerge,
-        title: 'Operations',
-        color: '#fbbf24',
-        items: ['DevOps & SRE Agent', 'Pipeline Security Fixes', 'Policy-as-Code Updates', 'Automated Rollback', 'Deployment Verification'],
-      },
-    ],
-  },
-}
-
-// ─── OVERVIEW CARD — unchanged ───────────────────────────────────────────────
-
-function OverviewCard({ onClose }) {
-  return (
-    <div className="flex flex-col gap-5 h-full sticky top-0">
-      <div>
-        <div className="mb-3">
-          <Logo size="sm" href="/" />
-        </div>
-        <p className="text-[11px] font-semibold text-cyan-400 leading-tight mb-3">
-          Active Defence & Remediaiton
-        </p>
-        <p className="text-[10px] text-slate-400 leading-relaxed">
-          Detect, assess, and fix risk across code, AI, supply chain, cloud, runtime, and operations.
-        </p>
-      </div>
-
-      <div className="space-y-4 py-2">
-        <div>
-          <p className="text-[12px] font-bold mb-0.5" style={{ color: '#60a5fa' }}>Detect</p>
-          <p className="text-[11px] font-medium text-slate-400">Find risk everywhere</p>
-        </div>
-        <div>
-          <Link
-            to="/opsmx/assess-risk"
-            onClick={onClose}
-            className="group hover:opacity-80 transition-opacity"
-          >
-            <p className="text-[12px] font-bold mb-0.5" style={{ color: '#34d399' }}>Assess</p>
-            <p className="text-[11px] font-medium text-slate-400">Understand what matters</p>
-          </Link>
-        </div>
-        <div>
-          <Link
-            to="/opsmx/fix-risk"
-            onClick={onClose}
-            className="group hover:opacity-80 transition-opacity"
-          >
-            <p className="text-[12px] font-bold mb-0.5" style={{ color: '#fbbf24' }}>Fix</p>
-            <p className="text-[11px] font-medium text-slate-400">Remediate and verify</p>
-          </Link>
-        </div>
-        <div>
-          <Link
-            to="/opsmx/ai-assistant"
-            onClick={onClose}
-            className="group hover:opacity-80 transition-opacity"
-          >
-            <p className="text-[12px] font-bold mb-0.5" style={{ color: '#06b6d4' }}>⭐ AI Assistant</p>
-            <p className="text-[11px] font-medium text-slate-400">Ask questions. Diagnose. Remediate. Report.</p>
-          </Link>
-        </div>
-      </div>
-
-      <div className="border-t border-white/5" />
-
-      <div className="space-y-2">
-        <Link
-          to="/platform"
-          onClick={onClose}
-          className="flex items-center gap-1.5 text-[11px] font-bold text-cyan-400 hover:text-cyan-300 transition-colors group"
-        >
-          Explore Platform
-          <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-        </Link>
-        <a
-          href="/request-a-demo"
-          className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-300 hover:text-white transition-colors"
-        >
-          Request a Demo
-          <ExternalLink className="w-2.5 h-2.5" />
-        </a>
-      </div>
-    </div>
-  )
-}
-
-// ─── FIX RISK ROW — navigation-driven section ────────────────────────────────
-
-function FixRiskRow({ onClose }) {
-  const color = '#fbbf24'
-
-  return (
-    <div className="border-t border-white/12 px-5 py-4">
-      <div className="mb-3 flex items-center gap-4">
-        <Link
-          to={fixRiskNavigation.href}
-          onClick={onClose}
-          className="flex items-center gap-1.5 group flex-shrink-0"
-        >
-          <p className="text-[12px] font-black group-hover:opacity-80 transition-opacity" style={{ color }}>
-            {fixRiskNavigation.title}
-          </p>
-          <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" style={{ color }} />
-        </Link>
-        <p className="text-[10px] text-slate-400">{fixRiskNavigation.description}</p>
-      </div>
-
-      <div className="flex flex-wrap gap-2">
-        {fixRiskNavigation.items.filter(item => item.enabled).map((item, idx) => (
-          <motion.div
-            key={item.title}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: idx * 0.02, duration: 0.2 }}
-          >
-            <Link
-              to={item.href}
-              onClick={onClose}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all hover:bg-white/8 cursor-pointer"
-              style={{
-                background: `${color}12`,
-                borderColor: `${color}20`,
-              }}
-            >
-              <div className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: color }} />
-              <span className="text-[9px] font-medium text-slate-300">{item.title}</span>
-            </Link>
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-// ─── DETECT RISK ROW — new grouped subcategory layout ────────────────────────
-
-function DetectRiskRow() {
-  const rowColor = '#60a5fa'
-
-  return (
-    <div className="border-t border-white/12 px-5 py-4">
-      {/* Row header */}
-      <div className="mb-4 flex items-center gap-4">
-        <p className="text-[12px] font-black flex-shrink-0" style={{ color: rowColor }}>
-          Detect Risk
-        </p>
-        <p className="text-[10px] text-slate-400">
-          Continuously detect risk across four defense areas.
-        </p>
-      </div>
-
-      {/* 4-column grid */}
-      <div className="grid grid-cols-4 gap-5">
-        {detectColumns.map((col, colIdx) => {
-          const Icon = col.icon
-
-          return (
-            <motion.div
-              key={col.id}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: colIdx * 0.05, duration: 0.25 }}
-              className="flex flex-col gap-2.5"
-            >
-              {/* Column header */}
-              <div className="flex items-center gap-1.5">
-                <div
-                  className="w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0"
-                  style={{ background: `${col.color}18`, border: `1px solid ${col.color}28` }}
-                >
-                  <Icon className="w-3 h-3" style={{ color: col.color }} strokeWidth={1.8} />
-                </div>
-                <span className="text-[11px] font-bold text-white">{col.title}</span>
-              </div>
-
-              {/* Column description */}
-              <p className="text-[9px] text-slate-500 leading-snug">{col.description}</p>
-
-              {/* Groups */}
-              <div className="space-y-2.5">
-                {col.groups.map((group) => (
-                  <div key={group.label}>
-                    {/* Group label */}
-                    <p
-                      className="text-[11px] font-bold mb-0.5"
-                      style={{ color: col.color }}
-                    >
-                      {group.label}
-                    </p>
-                    {/* Group description */}
-                    {group.description && (
-                      <p className="text-[8.5px] text-slate-400 leading-snug mb-1.5">
-                        {group.description}
-                      </p>
-                    )}
-                    {/* Group items */}
-                    <div className="space-y-1">
-                      {group.items.map((item) => {
-                        const isExternal = item.href?.startsWith('http') ?? false
-                        const LinkComponent = isExternal ? 'a' : Link
-                        const linkProps = isExternal
-                          ? { href: item.href, target: '_blank', rel: 'noopener noreferrer' }
-                          : { to: item.href }
-
-                        return (
-                          <LinkComponent
-                            key={item.label}
-                            {...linkProps}
-                            className="flex items-center gap-1.5 group/item"
-                          >
-                            <div
-                              className="w-0.5 h-0.5 rounded-full flex-shrink-0"
-                              style={{ background: col.color, opacity: 0.4 }}
-                            />
-                            <span className="text-[9px] font-medium text-slate-400 group-hover/item:text-slate-200 transition-colors leading-tight">
-                              {item.label}
-                            </span>
-                          </LinkComponent>
-                        )
-                      })}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          )
-        })}
-      </div>
-    </div>
-  )
-}
-
-// ─── ASSESS / FIX ROW — unchanged horizontal band ────────────────────────────
-
-function HorizontalRiskRow({ layer, color, isAssess, isFix, onClose, assessTopics }) {
-  // For Assess Risk, show the special topics with anchors
-  let displayItems = []
-  if (isAssess && assessTopics) {
-    displayItems = assessTopics.map(topic => ({
-      label: topic.label,
-      href: topic.href,
-      isSpecial: true
-    }))
-  } else {
-    // For other rows, flatten items from pillars
-    const allItems = layer.pillars.flatMap((p) => p.items)
-    displayItems = allItems.map(item => ({
-      label: item,
-      href: isAssess ? '/opsmx/assess-risk' : isFix ? '/opsmx/fix-risk' : null,
-      isSpecial: false
-    }))
+// ─── Link helper: external (WordPress) → <a target=_blank>, internal → <Link> ─
+function MegaLink({ href, className, style, onClose, children }) {
+  const isExternal = href?.startsWith('http') ?? false
+  if (isExternal) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={className} style={style} onClick={onClose}>
+        {children}
+      </a>
+    )
   }
-
-  const linkHref = isAssess ? '/opsmx/assess-risk' : isFix ? '/opsmx/fix-risk' : null
-
   return (
-    <div className="border-t border-white/12 px-5 py-4">
-      <div className="mb-3 flex items-center gap-4">
-        {(isAssess || isFix) ? (
-          <Link
-            to={linkHref}
-            onClick={onClose}
-            className="flex items-center gap-1.5 group flex-shrink-0"
-          >
-            <p className="text-[12px] font-black group-hover:opacity-80 transition-opacity" style={{ color }}>
-              {layer.title}
-            </p>
-            <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" style={{ color }} />
-          </Link>
-        ) : (
-          <p className="text-[12px] font-black flex-shrink-0" style={{ color }}>
-            {layer.title}
-          </p>
-        )}
-        <p className="text-[10px] text-slate-400">{layer.description}</p>
-      </div>
-
-      <div className="flex flex-wrap gap-2">
-        {displayItems.map((item, idx) => (
-          <motion.div
-            key={`${item.label}-${idx}`}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: idx * 0.02, duration: 0.2 }}
-          >
-            {isAssess || isFix ? (
-              // Use anchor tag for hash-based navigation on Assess/Fix Risk
-              <a
-                href={item.href || '#'}
-                onClick={onClose}
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all hover:bg-white/8 cursor-pointer`}
-                style={{
-                  background: `${color}12`,
-                  borderColor: `${color}20`,
-                }}
-              >
-                <div className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: color }} />
-                <span className="text-[9px] font-medium text-slate-300">{item.label}</span>
-              </a>
-            ) : (
-              // Use Link for regular navigation
-              <Link
-                to={item.href || '#'}
-                onClick={onClose}
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all hover:bg-white/8 cursor-pointer`}
-                style={{
-                  background: `${color}12`,
-                  borderColor: `${color}20`,
-                }}
-              >
-                <div className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: color }} />
-                <span className="text-[9px] font-medium text-slate-300">{item.label}</span>
-              </Link>
-            )}
-          </motion.div>
-        ))}
-      </div>
-    </div>
+    <Link to={href} className={className} style={style} onClick={onClose}>
+      {children}
+    </Link>
   )
 }
 
-// ─── MAIN MEGAMENU ────────────────────────────────────────────────────────────
+function StageHeader({ color, label, sub, href, onClose }) {
+  const inner = (
+    <div className="flex items-center gap-2">
+      <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: color }} />
+      <span className="text-[13px] font-bold" style={{ color }}>{label}</span>
+      <span className="text-[11px] text-slate-500">{sub}</span>
+    </div>
+  )
+  return href ? (
+    <Link to={href} onClick={onClose} className="group inline-flex items-center gap-1.5 hover:opacity-80 transition-opacity">
+      {inner}
+      <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" style={{ color }} />
+    </Link>
+  ) : inner
+}
+
+function LinkList({ items, onClose }) {
+  return (
+    <div className="flex flex-col gap-1.5">
+      {items.map((item) => (
+        <MegaLink
+          key={item.label}
+          href={item.href}
+          onClose={onClose}
+          className="text-[11px] font-medium text-slate-400 hover:text-slate-100 transition-colors leading-tight"
+        >
+          {item.label}
+        </MegaLink>
+      ))}
+    </div>
+  )
+}
 
 export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
   const menuRef = useRef(null)
@@ -564,6 +140,10 @@ export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
     document.addEventListener('mousedown', handleClick)
     return () => document.removeEventListener('mousedown', handleClick)
   }, [onClose])
+
+  const fixItems = (fixRiskNavigation?.items || [])
+    .filter((item) => item.enabled)
+    .map((item) => ({ label: item.title, href: item.href }))
 
   return (
     <motion.div
@@ -585,22 +165,87 @@ export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
           boxShadow: '0 20px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.05)',
         }}
       >
-        <div className="grid grid-cols-5 divide-x divide-white/5">
-          {/* Left: Overview */}
-          <div className="p-5">
-            <OverviewCard onClose={onClose} />
+        <div className="p-6">
+          {/* Header row */}
+          <div className="flex items-center justify-between mb-5">
+            <div className="flex items-baseline gap-3">
+              <span className="text-[15px] font-bold text-white">Detect, assess, fix</span>
+              <span className="text-[12px] text-slate-500">One platform. Three stages. From code to runtime.</span>
+            </div>
+            <Link
+              to="/platform"
+              onClick={onClose}
+              className="group inline-flex items-center gap-1.5 text-[12px] font-bold text-cyan-400 hover:text-cyan-300 transition-colors"
+            >
+              Explore the platform
+              <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+            </Link>
           </div>
 
-          {/* Right: Detect + Assess + Fix */}
-          <div className="col-span-4" style={{ background: 'rgba(20, 20, 28, 0.6)' }}>
-            {/* Detect Risk — new grouped subcategory layout */}
-            <DetectRiskRow />
+          {/* DETECT */}
+          <div className="mb-3">
+            <StageHeader color={DETECT} label="Detect" sub="Find risk everywhere" />
+          </div>
+          <div className="grid grid-cols-4 gap-6 mb-5">
+            {detectColumns.map((col, idx) => (
+              <motion.div
+                key={col.title}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.04, duration: 0.22 }}
+              >
+                <p className="text-[12px] font-bold text-white mb-2.5">{col.title}</p>
+                <LinkList items={col.items} onClose={onClose} />
+              </motion.div>
+            ))}
+          </div>
 
-            {/* Assess Risk — now links to /opsmx/assess-risk with anchor support */}
-            <HorizontalRiskRow layer={matrixData.assess} color="#34d399" isAssess={true} onClose={onClose} assessTopics={assessTopicsForMenu} />
+          <div className="border-t border-white/8 my-4" />
 
-            {/* Fix Risk — navigation-driven section with deep linking */}
-            <FixRiskRow onClose={onClose} />
+          {/* ASSESS + FIX */}
+          <div className="grid grid-cols-2 gap-9 mb-4">
+            <div>
+              <div className="mb-2.5">
+                <StageHeader color={ASSESS} label="Assess" sub="Understand what matters" href="/opsmx/assess-risk" onClose={onClose} />
+              </div>
+              <div className="grid grid-cols-2 gap-x-6">
+                <LinkList items={assessItems.slice(0, 5)} onClose={onClose} />
+                <LinkList items={assessItems.slice(5)} onClose={onClose} />
+              </div>
+            </div>
+            <div>
+              <div className="mb-2.5">
+                <StageHeader color={FIX} label="Fix & Verify" sub="Remediate, then prove it held" href={fixRiskNavigation?.href || '/opsmx/fix-risk'} onClose={onClose} />
+              </div>
+              <div className="grid grid-cols-2 gap-x-6">
+                <LinkList items={fixItems.slice(0, Math.ceil(fixItems.length / 2))} onClose={onClose} />
+                <LinkList items={fixItems.slice(Math.ceil(fixItems.length / 2))} onClose={onClose} />
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-white/8 my-4" />
+
+          {/* ACTION FOOTER */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-5">
+              <Link to="/opsmx/ai-assistant" onClick={onClose} className="flex items-center gap-1.5 text-[11px] font-medium text-slate-400 hover:text-slate-100 transition-colors">
+                <Sparkles className="w-3.5 h-3.5" style={{ color: '#c9a5f0' }} />
+                AI Assistant
+              </Link>
+              <Link to="/remediation-benchmarks" onClick={onClose} className="flex items-center gap-1.5 text-[11px] font-medium text-slate-400 hover:text-slate-100 transition-colors">
+                <BarChart3 className="w-3.5 h-3.5" style={{ color: '#f5b301' }} />
+                Remediation Benchmarks
+              </Link>
+            </div>
+            <Link
+              to="/request-a-demo"
+              onClick={onClose}
+              className="inline-flex items-center gap-1.5 text-[12px] font-semibold px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-electric-500 text-white hover:from-cyan-400 hover:to-electric-400 transition-all shadow-lg shadow-cyan-500/20"
+            >
+              Request a Demo
+              <ArrowRight className="w-3 h-3" />
+            </Link>
           </div>
         </div>
       </div>
