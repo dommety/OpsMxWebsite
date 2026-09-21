@@ -561,7 +561,6 @@ function HorizontalRiskRow({ layer, color, isAssess, isFix, onClose, assessTopic
 export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
   const menuRef = useRef(null)
 
-export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
     return () => document.removeEventListener('mousedown', handleClick)
   }, [onClose])
 
