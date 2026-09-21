@@ -141,7 +141,6 @@ const assessTopicsForMenu = [
   { label: 'Context Engine', href: '/opsmx/assess-risk#context-engine' },
   { label: 'Vulnerability Correlation', href: '/opsmx/assess-risk#vulnerability-correlation' },
   { label: 'Exploitability', href: '/opsmx/assess-risk#exploitability' },
-const assessTopicsForMenu = [
   { label: 'Risk Prioritization', href: '/opsmx/assess-risk#risk-prioritization' },
 ]
 
