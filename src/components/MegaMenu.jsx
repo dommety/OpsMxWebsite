@@ -8,18 +8,15 @@ import { fixRiskNavigation } from '../data/fixRisk'
 // ─── DETECT RISK — grouped subcategory layout (NEW) ──────────────────────────
 
 const codeAndAgentGroups = [
-
   {
     label: 'Code & Applications',
     description: '',
     items: [
       { label: 'SAST', href: '/static-application-security-testing' },
       { label: 'SCA', href: 'https://www.opsmx.com/software-composition-analysis-with-opsmx-delivery-shield/' },
-
       { label: 'Secrets', href: '/secrets' },
       { label: 'DAST', href: 'https://www.opsmx.com/dynamic-application-security-testing-with-opsmx-delivery-shield/' },
       { label: 'API Security', href: '/api-security' },
-
       { label: 'AI Penetration Testing', href: '/ai-penetration-testing' },
     ],
   },
@@ -141,6 +138,11 @@ const assessTopicsForMenu = [
   { label: 'Context Engine', href: '/opsmx/assess-risk#context-engine' },
   { label: 'Vulnerability Correlation', href: '/opsmx/assess-risk#vulnerability-correlation' },
   { label: 'Exploitability', href: '/opsmx/assess-risk#exploitability' },
+  { label: 'Reachability', href: '/opsmx/assess-risk#reachability' },
+  { label: 'Root Cause Diagnosis', href: '/opsmx/assess-risk#root-cause-diagnosis' },
+  { label: 'False Positive Reduction', href: '/opsmx/assess-risk#false-positive-reduction' },
+  { label: 'Supply Chain Risk Assessment', href: '/opsmx/assess-risk#supply-chain-risk-assessment' },
+  { label: 'Risk Scoring', href: '/opsmx/assess-risk#risk-scoring' },
   { label: 'Risk Prioritization', href: '/opsmx/assess-risk#risk-prioritization' },
 ]
 
@@ -459,12 +461,6 @@ function DetectRiskRow() {
       </div>
     </div>
   )
-
-
-
-
-
-
 }
 
 // ─── ASSESS / FIX ROW — unchanged horizontal band ────────────────────────────
@@ -561,13 +557,31 @@ function HorizontalRiskRow({ layer, color, isAssess, isFix, onClose, assessTopic
 export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
   const menuRef = useRef(null)
 
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) onClose()
+    }
+    document.addEventListener('mousedown', handleClick)
     return () => document.removeEventListener('mousedown', handleClick)
   }, [onClose])
 
   return (
     <motion.div
       ref={menuRef}
- export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
+      initial={{ opacity: 0, y: -6 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -6 }}
+      transition={{ duration: 0.18, ease: 'easeOut' }}
+      className="fixed top-16 left-0 right-0 z-50"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      <div
+        className="mx-4 lg:mx-8 xl:mx-auto xl:max-w-7xl rounded-2xl border border-white/8 overflow-hidden"
+        style={{
+          background: 'rgba(5, 7, 18, 0.97)',
+          backdropFilter: 'blur(24px)',
+          WebkitBackdropFilter: 'blur(24px)',
           boxShadow: '0 20px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.05)',
         }}
       >
@@ -575,7 +589,6 @@ export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
           {/* Left: Overview */}
           <div className="p-5">
             <OverviewCard onClose={onClose} />
-
           </div>
 
           {/* Right: Detect + Assess + Fix */}
@@ -586,12 +599,11 @@ export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
             {/* Assess Risk — now links to /opsmx/assess-risk with anchor support */}
             <HorizontalRiskRow layer={matrixData.assess} color="#34d399" isAssess={true} onClose={onClose} assessTopics={assessTopicsForMenu} />
 
-
-
             {/* Fix Risk — navigation-driven section with deep linking */}
             <FixRiskRow onClose={onClose} />
-
-
           </div>
         </div>
       </div>
+    </motion.div>
+  )
+}
