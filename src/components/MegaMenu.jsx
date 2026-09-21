@@ -7,12 +7,7 @@ import { fixRiskNavigation } from '../data/fixRisk'
 
 // ─── DETECT RISK — grouped subcategory layout (NEW) ──────────────────────────
 
-
-
-
 const codeAndAgentGroups = [
-
-
 
   {
     label: 'Code & Applications',
@@ -146,7 +141,7 @@ const assessTopicsForMenu = [
   { label: 'Context Engine', href: '/opsmx/assess-risk#context-engine' },
   { label: 'Vulnerability Correlation', href: '/opsmx/assess-risk#vulnerability-correlation' },
   { label: 'Exploitability', href: '/opsmx/assess-risk#exploitability' },
-@@ -146,414 +80,56 @@ const assessTopicsForMenu = [
+const assessTopicsForMenu = [
   { label: 'Risk Prioritization', href: '/opsmx/assess-risk#risk-prioritization' },
 ]
 
@@ -567,18 +562,14 @@ function HorizontalRiskRow({ layer, color, isAssess, isFix, onClose, assessTopic
 export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
   const menuRef = useRef(null)
 
-@@ -565,6 +141,10 @@ export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
+export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
     return () => document.removeEventListener('mousedown', handleClick)
   }, [onClose])
-
-
-
-
 
   return (
     <motion.div
       ref={menuRef}
-@@ -585,22 +165,87 @@ export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
+ export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
           boxShadow: '0 20px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.05)',
         }}
       >
@@ -586,34 +577,6 @@ export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
           {/* Left: Overview */}
           <div className="p-5">
             <OverviewCard onClose={onClose} />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
           </div>
 
@@ -627,43 +590,8 @@ export default function MegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             {/* Fix Risk — navigation-driven section with deep linking */}
             <FixRiskRow onClose={onClose} />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
           </div>
