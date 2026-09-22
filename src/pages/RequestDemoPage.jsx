@@ -1,10 +1,6 @@
-```jsx
 import { useEffect, useRef, useState } from 'react'
-
 import Navbar from '../components/Navbar'
-
 import Seo from '../components/Seo'
-
 import SourceToProductionPipeline from '../components/SourceToProductionPipeline'
 
 export default function RequestDemoPage() {
@@ -21,7 +17,6 @@ export default function RequestDemoPage() {
 
     const loadHubSpotForm = () => {
       scriptLoaded.current = true
-
       const createForm = () => {
         // Only create if the container exists and is empty (avoid double-injection)
         if (window.hbspt && window.hbspt.forms && formHostRef.current) {
