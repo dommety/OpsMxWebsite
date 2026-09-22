@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+
 import Navbar from '../components/Navbar'
 import Seo from '../components/Seo'
 import SourceToProductionPipeline from '../components/SourceToProductionPipeline'
@@ -6,19 +7,24 @@ import SourceToProductionPipeline from '../components/SourceToProductionPipeline
 export default function RequestDemoPage() {
   const formContainerId = 'hubspot-form-container'
   const [formLoaded, setFormLoaded] = useState(false)
+
   const scriptLoaded = useRef(false)
   const formHostRef = useRef(null)
 
   useEffect(() => {
     if (scriptLoaded.current) return
 
-
     const loadHubSpotForm = () => {
       scriptLoaded.current = true
 
       const createForm = () => {
-        // Only create if the container exists and is empty (avoid double-injection)
-        if (window.hbspt && window.hbspt.forms && formHostRef.current) {
+        // Only create if the container exists and is empty
+        // to avoid double-injection.
+        if (
+          window.hbspt &&
+          window.hbspt.forms &&
+          formHostRef.current
+        ) {
           try {
             window.hbspt.forms.create({
               portalId: '2985751',
@@ -38,15 +44,18 @@ export default function RequestDemoPage() {
         createForm()
       } else {
         const script = document.createElement('script')
+
         script.src = '//js.hsforms.net/forms/embed/v2.js'
         script.charset = 'utf-8'
         script.type = 'text/javascript'
         script.async = true
         script.onload = createForm
+
         script.onerror = () => {
           console.error('Failed to load HubSpot forms script')
           setFormLoaded(false)
         }
+
         document.body.appendChild(script)
       }
     }
@@ -55,76 +64,189 @@ export default function RequestDemoPage() {
 
     return () => {
       clearTimeout(timer)
-      // Let HubSpot's own nodes go with the container; React never tracked them
-      if (formHostRef.current) formHostRef.current.innerHTML = ''
+
+      // Let HubSpot's own nodes go with the container;
+      // React never tracked them.
+      if (formHostRef.current) {
+        formHostRef.current.innerHTML = ''
+      }
     }
   }, [])
-                OpsMx helps security, development, and DevOps teams prioritize and remediate risks across code, dependencies, CI/CD pipelines, Kubernetes, cloud infrastructure, and AI applications.
-              </p>
-              <p className="text-base text-slate-400 leading-relaxed mb-12 max-w-2xl">
-                Tell us what you're trying to improve, and we'll tailor the demo to your environment and priorities.
-              </p>
-              {/* Capabilities Section */}
+
+  return (
+    <>
+      <Seo
+        title="Request a Demo | OpsMx"
+        description="Request an OpsMx demo to see how security, development, and DevOps teams can prioritize and remediate risks."
+      />
+
+      <Navbar />
+
+      <main>
+        {/* Hero / Request Demo Section */}
+        <section className="relative py-16 lg:py-24">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+
+              {/* Left Column */}
               <div>
+                <p className="text-sm font-semibold text-cyan-400 mb-4">
+                  REQUEST A DEMO
                 </p>
-              </div>
-            </div>
-            {/* Right Column: Form */}
-            <div className="lg:sticky lg:top-32 lg:self-start">
-              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-7 lg:p-8">
-                {/* Form Heading */}
-                <h2 className="text-xl lg:text-2xl font-bold text-white mb-1">
-                  Request a Demo
-                </h2>
-                <p className="text-sm text-slate-400 mb-8 leading-relaxed">
-                  Tell us your priorities. We'll focus the demo accordingly.
+
+                <h1 className="text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
+                  See OpsMx in action
+                </h1>
+
+                <p className="text-base text-slate-400 leading-relaxed mb-12 max-w-2xl">
+                  OpsMx helps security, development, and DevOps teams prioritize
+                  and remediate risks across code, dependencies, CI/CD pipelines,
+                  Kubernetes, cloud infrastructure, and AI applications.
                 </p>
-                {/* HubSpot Form Container — spinner is a SIBLING overlay, never a child of the mount */}
-                <div className="relative min-h-[180px]">
-                  {!formLoaded && (
-                    <div className="absolute inset-0 flex items-center justify-center py-16 pointer-events-none">
-                      <div className="flex flex-col items-center gap-3">
-                        <div className="w-8 h-8 border-2 border-cyan-400/20 border-t-cyan-400 rounded-full animate-spin motion-safe:animate-spin motion-reduce:animate-none" />
-                        <p className="text-xs text-slate-400">Loading form...</p>
-                      </div>
+
+                <p className="text-base text-slate-400 leading-relaxed mb-12 max-w-2xl">
+                  Tell us what you're trying to improve, and we'll tailor the
+                  demo to your environment and priorities.
+                </p>
+
+                {/* Capabilities Section */}
+                <div>
+                  <h2 className="text-xl font-semibold text-white mb-6">
+                    What you can explore
+                  </h2>
+
+                  <div className="space-y-4">
+                    <div>
+                      <h3 className="text-sm font-semibold text-slate-200 mb-1">
+                        Security
+                      </h3>
+                      <p className="text-sm text-slate-400 leading-relaxed">
+                        Prioritize vulnerabilities and security risks using
+                        context-driven detection and remediation.
+                      </p>
                     </div>
-                  )}
-                  {/* HubSpot's exclusive DOM — React renders NO children here */}
-                  <div id={formContainerId} ref={formHostRef} className="hubspot-form-wrapper" />
+
+                    <div>
+                      <h3 className="text-sm font-semibold text-slate-200 mb-1">
+                        DevOps & Platform
+                      </h3>
+                      <p className="text-sm text-slate-400 leading-relaxed">
+                        Automate remediation across infrastructure, CI/CD
+                        pipelines, and Kubernetes.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h3 className="text-sm font-semibold text-slate-200 mb-1">
+                        Development
+                      </h3>
+                      <p className="text-sm text-slate-400 leading-relaxed">
+                        Find and remediate vulnerabilities in code and
+                        dependencies earlier in the development lifecycle.
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                {/* JavaScript Fallback */}
-                <noscript>
-                  <p className="text-sm text-slate-300 py-8 text-center">
-                    Please enable JavaScript, or email{' '}
-                    <a href="mailto:info@opsmx.com" className="text-cyan-400 hover:text-cyan-300 underline focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-navy-950 rounded px-1">
-                      info@opsmx.com
-                    </a>
+              </div>
+
+              {/* Right Column: Form */}
+              <div className="lg:sticky lg:top-32 lg:self-start">
+                <div className="rounded-xl border border-white/10 bg-white/[0.03] p-7 lg:p-8">
+
+                  {/* Form Heading */}
+                  <h2 className="text-xl lg:text-2xl font-bold text-white mb-1">
+                    Request a Demo
+                  </h2>
+
+                  <p className="text-sm text-slate-400 mb-8 leading-relaxed">
+                    Tell us your priorities. We'll focus the demo accordingly.
                   </p>
-                </noscript>
+
+                  {/* HubSpot Form Container */}
+                  <div className="relative min-h-[180px]">
+
+                    {!formLoaded && (
+                      <div className="absolute inset-0 flex items-center justify-center py-16 pointer-events-none">
+                        <div className="flex flex-col items-center gap-3">
+                          <div className="w-8 h-8 border-2 border-cyan-400/20 border-t-cyan-400 rounded-full animate-spin motion-safe:animate-spin motion-reduce:animate-none" />
+                          <p className="text-xs text-slate-400">
+                            Loading form...
+                          </p>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* HubSpot's exclusive DOM — React renders NO children here */}
+                    <div
+                      id={formContainerId}
+                      ref={formHostRef}
+                      className="hubspot-form-wrapper"
+                    />
+                  </div>
+
+                  {/* JavaScript Fallback */}
+                  <noscript>
+                    <p className="text-sm text-slate-300 py-8 text-center">
+                      Please enable JavaScript, or email{' '}
+                      <a
+                        href="mailto:info@opsmx.com"
+                        className="text-cyan-400 hover:text-cyan-300 underline focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-navy-950 rounded px-1"
+                      >
+                        info@opsmx.com
+                      </a>
+                    </p>
+                  </noscript>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-      {/* Social Proof Section */}
-      <section className="relative py-16 lg:py-20 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="p-5 rounded-lg border border-white/8">
-              <p className="text-sm font-semibold text-slate-200 mb-2">Security Leaders</p>
-              <p className="text-xs text-slate-400 leading-relaxed">Prioritize high-impact risks and eliminate alert fatigue with context-driven detection and remediation.</p>
-            </div>
-            <div className="p-5 rounded-lg border border-white/8">
-              <p className="text-sm font-semibold text-slate-200 mb-2">DevOps & Platform Teams</p>
-              <p className="text-xs text-slate-400 leading-relaxed">Automate remediation across infrastructure, CI/CD pipelines, and Kubernetes without manual intervention.</p>
-            </div>
-            <div className="p-5 rounded-lg border border-white/8">
-              <p className="text-sm font-semibold text-slate-200 mb-2">Development Teams</p>
-              <p className="text-xs text-slate-400 leading-relaxed">Catch and fix vulnerabilities in code and dependencies early, including AI-generated code.</p>
+        </section>
+
+        {/* Social Proof Section */}
+        <section className="relative py-16 lg:py-20 border-t border-white/5">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid md:grid-cols-3 gap-6">
+
+              <div className="p-5 rounded-lg border border-white/8">
+                <p className="text-sm font-semibold text-slate-200 mb-2">
+                  Security Leaders
+                </p>
+
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Prioritize high-impact risks and eliminate alert fatigue
+                  with context-driven detection and remediation.
+                </p>
+              </div>
+
+              <div className="p-5 rounded-lg border border-white/8">
+                <p className="text-sm font-semibold text-slate-200 mb-2">
+                  DevOps & Platform Teams
+                </p>
+
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Automate remediation across infrastructure, CI/CD pipelines,
+                  and Kubernetes without manual intervention.
+                </p>
+              </div>
+
+              <div className="p-5 rounded-lg border border-white/8">
+                <p className="text-sm font-semibold text-slate-200 mb-2">
+                  Development Teams
+                </p>
+
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Catch and fix vulnerabilities in code and dependencies early,
+                  including AI-generated code.
+                </p>
+              </div>
+
             </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+
+        {/* Existing component if required */}
+        <SourceToProductionPipeline />
+      </main>
+    </>
   )
 }
