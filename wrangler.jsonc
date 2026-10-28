@@ -11,5 +11,11 @@
   },
   "compatibility_flags": [
     "nodejs_compat"
-  ]
+  ],
+ "routes": [
+  {
+    "pattern": "www.opsmx.com/*",
+    "zone_name": "opsmx.com"
+  }
+]
 }
