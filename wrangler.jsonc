@@ -1,7 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "opsmx-active-defense-homepage",
-  "compatibility_date": "2026-06-30",
+  "name": "opsmx-active-page",
+  "compatibility_date": "2026-10-29",
   "observability": {
     "enabled": true
   },
@@ -17,5 +17,8 @@
     "pattern": "www.opsmx.com/*",
     "zone_name": "opsmx.com"
   }
-]
+],
+  "workers_dev": true,
+  "preview_urls": true
+}
 }
