@@ -10,7 +10,7 @@ const resourcesData = {
       color: '#a78bfa',
       desc: 'Learning materials and community',
       items: [
-        { icon: Newspaper, title: 'Blogs',                 desc: 'Security insights and industry updates', href: 'https://opsmx.com/blog/' },
+        { icon: Newspaper, title: 'Blogs',                 desc: 'Security insights and industry updates', href: 'https://www.opsmx.com/blog/' },
         { icon: Video,     title: 'Webinars',              desc: 'Live and recorded sessions',             href: 'https://www.opsmx.com/webinars/' },
         { icon: FileText,  title: 'Ebooks & Datasheets',   desc: 'Download resources',                    href: 'https://www.opsmx.com/guides-datasheets/' },
         { icon: BookOpen,  title: 'Customer Case Studies', desc: 'Real-world success stories',            href: 'https://www.opsmx.com/customer-case-study/' },
