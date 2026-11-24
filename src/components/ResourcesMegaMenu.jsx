@@ -15,7 +15,7 @@ const resourcesData = {
         { icon: FileText,  title: 'Ebooks & Datasheets',   desc: 'Download resources',                    href: 'https://www.opsmx.com/guides-datasheets/' },
         { icon: BookOpen,  title: 'Customer Case Studies', desc: 'Real-world success stories',            href: 'https://www.opsmx.com/customer-case-study/' },
         { icon: Video,     title: 'Video Hub',             desc: 'Product demos and tutorials',           href: 'https://www.opsmx.com/videos/' },
-        { icon: Calendar,  title: 'Events',                desc: 'Upcoming conferences and webinars',     href: 'https://opsmx.com/events/' },
+        { icon: Calendar,  title: 'Events',                desc: 'Upcoming conferences and webinars',     href: 'https://www.opsmx.com/events/' },
         { icon: Code,      title: 'Docs',                  desc: 'API and integration documentation',    href: 'https://docs.opsmx.com/' },
         { icon: Newspaper, title: 'News',                  desc: 'Company announcements',                 href: 'https://www.opsmx.com/in-the-news/' },
       ],
